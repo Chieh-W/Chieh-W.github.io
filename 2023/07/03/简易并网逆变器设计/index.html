@@ -17,18 +17,35 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/"/>
+    <link rel="canonical" href="http://example.com/2023/07/03/简易并网逆变器设计/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+        <meta name="description" content="并网逆变器的工作原理并网逆变器的工作原理是产生与电网具有相同相位和频率但幅度稍高的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在滤波后可以得到正弦输出电压。  半桥只能产生相对于地的正电压。如果每个半桥轮流扫出半个周期，那么差分信号将是完整的正弦波。  设计过程使用一个 12v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简易并网逆变器设计">
+<meta property="og:url" content="http://example.com/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="并网逆变器的工作原理并网逆变器的工作原理是产生与电网具有相同相位和频率但幅度稍高的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在滤波后可以得到正弦输出电压。  半桥只能产生相对于地的正电压。如果每个半桥轮流扫出半个周期，那么差分信号将是完整的正弦波。  设计过程使用一个 12v">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/tXE3aKoq.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/Q3xwBrEI.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/dlDwSh5z.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/y7XZTF1Y.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/9FXmWKNb.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/J4HGXrBQ.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/SEAd3Ny3.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/Lxf9ADt4.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/nmdvESWP.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/02MiKkhx.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/07/03/wFilECkm.png">
+<meta property="article:published_time" content="2023-07-03T02:44:42.000Z">
+<meta property="article:modified_time" content="2023-07-03T04:17:02.842Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="硬件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.imgtp.com/2023/07/03/tXE3aKoq.png">
     
     
     <!--- Icon Part-->
@@ -39,6 +56,8 @@
     <!--- Page Info-->
     
     <title>
+        
+            简易并网逆变器设计 -
         
         Chieh
     </title>
@@ -251,107 +270,6 @@
 <main class="page-container" id="swup">
 
     
-        
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="https://baotangguo.cn:8081/" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%A4%9C%E6%99%9A%E6%98%9F%E7%A9%BA.jpg" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
-
-
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    
-    <div class="content mt-8 flex flex-col justify-center items-center">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        
-        >
-            Chieh
-            
-            
-                <p><i id="subtitle"></i></p>
-            
-        </div>
-        
-            <div class="absolute bottom-0.5 flex flex-row justify-between max-w-[1340px] items-center w-full px-8 sm:px-12">
-                <div class="p-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 group rounded-full cursor-pointer flex justify-center items-center aspect-square h-full shadow-redefine-flat hover:shadow-redefine-flat-hover transition-shadow" onclick="scrollToMain()" >
-                    <i class="fa-solid fa-arrow-down fa-fw fa-lg group-hover:translate-y-1 transition-transform"></i>
-                </div>
-                <div class="social-contacts px-6 py-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 shadow-redefine-flat rounded-full flex flex-row gap-3 items-center">
-                    
-                        
-                            
-                                <span class="social-contact-item github">
-                                    <a target="_blank" href="https://github.com/Chieh-W">
-                                        <i class="fa-brands fa-fw fa-lg fa-github"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                        
-                    
-                        
-                            
-                                <span class="social-contact-item zhihu">
-                                    <a target="_blank" href="https://www.zhihu.com/people/bu-ru-liang-qing-38">
-                                        <i class="fa-brands fa-fw fa-lg fa-zhihu"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                        
-                    
-                        
-                            
-                                <span class="social-contact-item email ">
-                                    <a href="mailto:wwchieh@outlook.com">
-                                        <i class="fa-solid fa-fw fa-at fa-lg"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                    
-                </div>
-            </div>
-        
-    </div>
-    <script>
-        const scrollToMain = ()=> {
-            console.log('scroll');
-            const target = document.querySelector('.main-content-container');
-            target.scrollIntoView({ behavior: 'smooth'});
-        }
-    </script>
-</div>
-    
 
     <div class="main-content-container">
 
@@ -359,7 +277,7 @@
         <div class="main-content-header">
             <header class="navbar-container">
 
-    <div class="navbar-content has-home-banner">
+    <div class="navbar-content">
         <div class="left">
             
                 <a class="logo-image" href="/">
@@ -367,9 +285,9 @@
                 </a>
             
             <a class="logo-title" href="/">
-                <h1>
+                
                 Chieh
-                </h1>
+                
             </a>
         </div>
 
@@ -541,586 +459,300 @@
         <div class="main-content-body">
 
             
-                <div class="home-sidebar-container">
-    <div class="sticky-container sticky">
-        
-        
-            
-            <div class="sidebar-content" >
-                <div class="avatar flex justify-center">
-    <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E7%8C%AB%E5%92%AA%E5%A4%B4%E5%83%8F.png">
-</div>
-                <div class="author flex flex-col justify-center my-2.5 mx-0">
-    <div class="name">Chieh</div>
-    
-        <div class="label">Lv2</div>
-    
-</div>
-                <div class="statistics flex justify-around my-2.5">
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
-        <div class="label text-third-text-color text-sm">Tags</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
-        <div class="label text-third-text-color text-sm">Posts</div>
-    </a>
-</div>
-            </div>
-        
-
-    </div>
-</div>
-
-            
 
             <div class="main-content">
 
                 
-                    <div class="home-content-container">
-    <ul class="home-article-list">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-center">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">简易并网逆变器设计</h1>
+                </div>
+            
+            </div>
+
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/">
-                            一个迷宫类CTF题的分析
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E7%8C%AB%E5%92%AA%E5%A4%B4%E5%83%8F.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Chieh</span>
                         
-                            前言什么是CTFCapture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。
-使...
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
                         
                     </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Aug 26 2023 11:38:46 GMT+0800">
-                
-                    2023-08-26
-                
-            </span>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-07-03 10:44:42</span>
+        <span class="mobile">2023-07-03 10:44:42</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-07-03 12:17:02</span>
+            <span class="mobile">2023-07-03 12:17:02</span>
+            <span class="hover-info">Updated</span>
         </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
+    
 
-    <a href="/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/">Read more<span class="seo-reader-text">一个迷宫类CTF题的分析</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.8k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
 </div>
 
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/24/PCB%E8%A7%84%E5%88%99/">
-                            PCB规则
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            PCB布局的技巧1、弄清电路板物理限制
-摆放元器件之前，先确定电路板的安装孔、边缘接插件的位置以及电路板的机械尺寸限制。
-2、弄清电路板制作工艺
-电路的组装工艺和测试流程、是否需要对PCB V型切槽预留空间、元器件焊接工艺等。
-3、给集成芯片留下喘气...
-                        
                     </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Jul 24 2023 09:31:09 GMT+0800">
-                
-                    2023-07-24
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/24/PCB%E8%A7%84%E5%88%99/">Read more<span class="seo-reader-text">PCB规则</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
                 </div>
-            </li>
+            </div>
         
-            <li class="home-article-item">
 
-                
+        
 
-                
 
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="并网逆变器的工作原理"><a href="#并网逆变器的工作原理" class="headerlink" title="并网逆变器的工作原理"></a>并网逆变器的工作原理</h1><p>并网逆变器的工作原理是产生与电网具有<strong>相同相位和频率</strong>但<strong>幅度稍高</strong>的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在滤波后可以得到正弦输出电压。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/tXE3aKoq.png"
+                     
+                ></p>
+<p>半桥只能产生相对于地的正电压。如果每个半桥轮流扫出半个周期，那么差分信号将是完整的正弦波。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/Q3xwBrEI.png"
+                     
+                ></p>
+<h1 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h1><p>使用一个 12v 至 380v DC&#x2F;DC 转换器模块。它会产生约 21KHz 频率的方波电压输出给变压器。然后在变压器的输出上就会得到相同频率的方波，变压器的输出电压会按匝数比放大。根据模块的接口，可以获得 220 或 380V 电压。<code>(输出电压实际上取决于输入电压和变压器匝数比，如果输入电压为 10V，则在 220V 抽头上会得到 186V 电压，而在 15V 输入电压下，会得到 280V 电压)</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/dlDwSh5z.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/y7XZTF1Y.png"
+                     
+                ></p>
+<p>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形如下：</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/9FXmWKNb.png"
+                      alt="输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形"
+                ><figcaption>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形</figcaption></figure></p>
+<p>电路的输出需要全桥整流器转换为直流电压。这里使用了 600V 的快速二极管。变压器模块还提供隔离的 18V 绕组，在调节至 12V 和 3.3V 后，可以用于主逆变器板上的栅极驱动和逻辑电源。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/J4HGXrBQ.png"
+                     
+                ></p>
+<p><strong>总的来说，这些电路可以产生需要的高压直流总线和独立的 12V 驱动电源</strong></p>
+<p>接下来设计组装了一个 PCB，其中包含 H 桥、MOSFET 驱动器、霍尔效应电流感应、一些分压器和 LC 输出滤波器。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/SEAd3Ny3.png"
+                     
+                ></p>
+<p><strong>同步电路</strong>：部分为一个锁相环 (PLL) 它负责同步到电网。</p>
+<p><strong>采样电路</strong>：对输出电流进行采样，使用 64-FFT 来测量 谐波的相位和幅度。</p>
+<p><strong>谐波抑制电路</strong>：通过PI 控制器为每个频率注入逆谐波以将其抵消。</p>
+<p>上面的三个基本电路能够实现输出电流的低失真水平。基波的相位和幅度可以不断调整 用来驱动所需的输出电流并最大限度地减少无功分量。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/Lxf9ADt4.png"
+                     
+                ></p>
+<p>电路会生成 大约240V 信号并直接馈入电网。这个电路的变压器负责提供一点缓冲和隔离。同时在变压器闲置时会消耗 约<strong>10W</strong> 的功率。</p>
+<p>这是一个<strong>简易的学习电路</strong>，它有严重的效率损失<em><strong>只适合了解逆变器的工作原理并不适合实际中使用。</strong></em></p>
+<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="PCB-布局"><a href="#PCB-布局" class="headerlink" title="PCB 布局"></a>PCB 布局</h2><p>最初想不要输出变压器，所以将直流总线电压提高到约 380V，以便可以直接合成 240V 交流波形。当增加总线电压时，电磁干扰 (EMI) 成为一个大问题。它完全破坏了电流感应，并且示波器上出现了巨大的干扰尖峰。<strong>PCB 布局设计变得与原理图本身一样重要。</strong></p>
+<h3 id="更好地利用地线层"><a href="#更好地利用地线层" class="headerlink" title="更好地利用地线层"></a>更好地利用地线层</h3><p>地线布局和设计对于抑制 <code>EMI</code> 至关重要。最初，我认为最好不要在<code>开关节点</code>下方有<code>接地层</code>，因为任何接地电容肯定会在每次电压转换期间产生<strong>能量损失</strong>。然而事实证明<code>1.6mm</code> <code>2 层板</code>中 <code>接地层</code> 正上方的 <code>1cm²</code> PCB 走线仅呈现 3pF 的电容。在 40kHz 下将 3pF 充电至 400V 使用了 10mW的功率。<strong>能量损失微不足道</strong>。相反，将<code>接地层</code>放置在开关节点下方可显着降低 <code>EMI</code>。</p>
+<h3 id="将-LC-输出滤波器放置在靠近开关节点的位置"><a href="#将-LC-输出滤波器放置在靠近开关节点的位置" class="headerlink" title="将 LC 输出滤波器放置在靠近开关节点的位置"></a>将 LC 输出滤波器放置在靠近开关节点的位置</h3><p>开关节点直接馈入板载 LC 滤波器，走线尽可能短并位于地线层上方。我相信这可以最大限度地减少发射的 EMI。</p>
+<h3 id="LC-输出滤波电容以地为参考"><a href="#LC-输出滤波电容以地为参考" class="headerlink" title="LC 输出滤波电容以地为参考"></a>LC 输出滤波电容以地为参考</h3><p>一直不太确定输出滤波器的设计。不过商用逆变器似乎都采用 LCL 滤波器，找到的一些资料里</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/nmdvESWP.png"
+                     
+                ></p>
+<ol>
+<li>最简单的，然而负载右侧的导线上将传输快速切换的瞬态电流而且表现的像天线一样。</li>
+<li>通过添加另一个电感来解决这个问题，但要减少电磁辐射，实际需要的是接地端电容器，而不是负载上的电容器。</li>
+<li>解决了2的问题：通过C1和C2与电感器一起过滤掉尖锐的切换瞬态就可以控制电磁辐射。然而需要两个大电感器和两个大电容器。</li>
+<li>在电容器上节省了一些费用。C5和C6的值较小，仅用于消除高速切换过程中的瞬时波动。而C4实际上使输出波形变得平滑。</li>
+<li>进一步节省电感器上的费用。L9&#x2F;L10、C9&#x2F;C10的值较小，仅用于电磁干扰过滤。在它们的输出端仍然会有方波，不过这些方波的变化过程更为平缓，这样导线就不会像天线一样工作。这些组件尺寸更小，价格更便宜。然后只需要一个大型L和C（L11和C6）来使波形平滑成正弦波。</li>
+</ol>
+<p>我使用了布局 4。主要区别在于每个 LC 输出滤波器都以地为参考。这就允许 41kHz 纹波电流 流过 接地电容并直接返回直流总线。减少了电流环路的面积，从而降低了 EMI。</p>
+<h3 id="关于纹波电流的思考"><a href="#关于纹波电流的思考" class="headerlink" title="关于纹波电流的思考"></a>关于纹波电流的思考</h3><p>对于像这样的开关电源有一个一般的经验法则。规则是峰峰值纹波电流为最大输出电流的 20-30%。所以，假设峰值输出电流为 2A，我们的纹波电流目标应该在 0.4-0.6A 之间</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/02MiKkhx.png"
+                     
+                ></p>
+<p><strong>正弦波不同部分的 PWM 占空比不同</strong>，纹波电流取决于占空比，占空比为 50% 时纹波最大。在交流波形的峰值处，占空比不会是 50%。240Vrms 正弦波峰值为 340V，这需要占空比 D &#x3D; Vout&#x2F;Vin &#x3D; 340&#x2F;380 &#x3D; 90%，设计的开关频率为 41kHz。当母线电压为 380V 时，输出电压 340V 时通过 2mH 电感的纹波电流将为 0.44A。<a class="link"   target="_blank" rel="noopener" href="https://www.ti.com/lit/an/slva477b/slva477b.pdf?ts=1662800047365&ref_url=https://www.google.co.uk/" >TI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有一篇出色的文章描述了所有这些计算，这里有一个<a class="link"   target="_blank" rel="noopener" href="https://calculator.academy/ripple-current-calculator/#f1p1|f2p0" >在线纹波电流计算器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。在 2A 峰值输出电流下，纹波为 22%。找到合适的电感并确定为 2mH。</p>
+<p><strong>选择电感器</strong>时，考虑纹波电流非常重要。纹波电流叠加在峰值输出电流上。电感器不得饱和。</p>
+<h3 id="使用环形电感器"><a href="#使用环形电感器" class="headerlink" title="使用环形电感器"></a>使用环形电感器</h3><p>环形线圈可以更好地将磁通量限制在其内部，并且不会辐射磁通量。</p>
+<h1 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/wFilECkm.png"
+                     
+                ></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/">
-                            C shorp 基础(一)
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%A1%AC%E4%BB%B6/">#硬件</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">C shorp 基础(四)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
                         </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     运行第一个C#程序在代码编辑器如**visual studio**中运行以下代码。
-1Console.WriteLine(&quot;Hello World!&quot;);
-
-这是一个简单的程序，可以打印消息“Hello Worl...
-                        
                     </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 15:00:00 GMT+0800">
                 
-                    2023-07-07
                 
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/">Read more<span class="seo-reader-text">C shorp 基础(一)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/">
-                            C shorp 基础(二)
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">光伏计算公式</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
                         </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     在 C# 中操作整数和浮点数。int类型在编辑器中运行以下代码。
-12345678910int a = 18;int b = 6;int c = a + b;int d = a - b;int e = a * b;int f = a...
-                        
                     </div>
+                
+            </div>
+        
 
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 14:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
+
         
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
         
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://pl.chieh.live/',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
         
     </div>
 
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/">Read more<span class="seo-reader-text">C shorp 基础(二)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/">
-                            C shorp 基础(三)
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     使用分支和循环语句这篇内容为：如何编写检查变量并根据这些变量更改执行路径的代码。
-if 语句在编辑器中运行以下代码。
-1234int a = 5;int b = 6;if (a + b &gt; 10)    Console.Wri...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 13:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/">Read more<span class="seo-reader-text">C shorp 基础(三)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/">
-                            C shorp 基础(四)
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     C#中的列表在编辑器中输入以下代码（可以&lt;your name&gt;将替换为你自己的名字）并选择“运行”：
-12345var names = new List&lt;string&gt; &#123; &quot;&lt;yo...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 12:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/">Read more<span class="seo-reader-text">C shorp 基础(四)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/">
-                            简易并网逆变器设计
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            并网逆变器的工作原理并网逆变器的工作原理是产生与电网具有相同相位和频率但幅度稍高的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Jul 03 2023 10:44:42 GMT+0800">
-                
-                    2023-07-03
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/">Read more<span class="seo-reader-text">简易并网逆变器设计</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/">
-                            光伏计算公式
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            光伏计算公式转换效率η&#x3D; Pm(光伏板的峰值功率)&#x2F;S(光伏板面积)×Pin
-​		其中：Pin&#x3D;1KW/㎡&#x3D;100mW/cm²
-充电电压Vmax&#x3D;V额定×1.43倍
-电池组件串并联电池组件并联数&#...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Jun 28 2023 09:28:58 GMT+0800">
-                
-                    2023-06-28
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%85%89%E4%BC%8F/">光伏</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/">Read more<span class="seo-reader-text">光伏计算公式</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/">
-                            当PDF来敲门
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            我的一个朋友系列小时候打游戏肝到一个武器装备(在当时很值钱嗷)，遇到一个人说要跟我聊聊，于是乎，我就在QQ跟人聊天，结果说要发几张图片给我看价格表(PDF格式)，我信了他的邪接收了。结果我上线游戏准备交易，MD鼠标自己动了，直接把东西送给了他，cao...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon May 22 2023 11:16:10 GMT+0800">
-                
-                    2023-05-22
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E9%80%86%E5%90%91/">逆向</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/">Read more<span class="seo-reader-text">当PDF来敲门</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/">
-                            如何绕过软件收费
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            起因我的一位朋友决定在网上购买一个游戏辅助，以提高自己在游戏中的表现。他发现了一个价格相对便宜的卖家，于是立即下单购买了该辅助。
-然而，当辅助到手后，他很快就发现它还需要额外购买点卡。于是他联系了卖家，卖家告诉他需要按照一定的方法使用辅助，但是实际上...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat May 13 2023 23:11:58 GMT+0800">
-                
-                    2023-05-13
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E9%80%86%E5%90%91/">逆向</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/">Read more<span class="seo-reader-text">如何绕过软件收费</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-    </ul>
-
-    <div class="home-paginator px-7 py-5">
-        <div class="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa-regular fa-angle-right"></i></a>
-</div>
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">简易并网逆变器设计</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">并网逆变器的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">设计过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">经验总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PCB-%E5%B8%83%E5%B1%80"><span class="nav-number">3.1.</span> <span class="nav-text">PCB 布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A5%BD%E5%9C%B0%E5%88%A9%E7%94%A8%E5%9C%B0%E7%BA%BF%E5%B1%82"><span class="nav-number">3.1.1.</span> <span class="nav-text">更好地利用地线层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86-LC-%E8%BE%93%E5%87%BA%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%94%BE%E7%BD%AE%E5%9C%A8%E9%9D%A0%E8%BF%91%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">将 LC 输出滤波器放置在靠近开关节点的位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LC-%E8%BE%93%E5%87%BA%E6%BB%A4%E6%B3%A2%E7%94%B5%E5%AE%B9%E4%BB%A5%E5%9C%B0%E4%B8%BA%E5%8F%82%E8%80%83"><span class="nav-number">3.1.3.</span> <span class="nav-text">LC 输出滤波电容以地为参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%BA%B9%E6%B3%A2%E7%94%B5%E6%B5%81%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-number">3.1.4.</span> <span class="nav-text">关于纹波电流的思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%BD%A2%E7%94%B5%E6%84%9F%E5%99%A8"><span class="nav-number">3.1.5.</span> <span class="nav-text">使用环形电感器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">原理图</span></a></li></ol>
 
     </div>
 </div>
+        </div>
+    
+</div>
 
-                    <div class="comment-container pjax"></div>
+
+
                 
 
             </div>
@@ -1194,6 +826,27 @@ if 语句在编辑器中运行以下代码。
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
@@ -1295,7 +948,6 @@ if 语句在编辑器中运行以下代码。
         containers: ["#swup"],
     });
 </script>
-
 
 
 

@@ -17,18 +17,38 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/"/>
+    <link rel="canonical" href="http://example.com/2023/08/26/一个迷宫类ctf题的分析/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+        <meta name="description" content="前言什么是CTFCapture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。 使用工具操作系统：win10 逆向工具：010editor，ida pro7.0(随便哪个版本都能用) 题目：maze 开始1. 收集文件信息1.1 使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个迷宫类CTF题的分析">
+<meta property="og:url" content="http://example.com/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言什么是CTFCapture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。 使用工具操作系统：win10 逆向工具：010editor，ida pro7.0(随便哪个版本都能用) 题目：maze 开始1. 收集文件信息1.1 使">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/JqcHVaKo.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/dF1FTS9b.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/X1EUSCM2.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/u39Y9eLJ.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/DmKcWnCi.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/278dlG4H.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/DH759pr2.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/FDWioynC.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/qBJ3IUcg.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/oXeuqncK.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/KuGELRBW.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/vTAdsj5Y.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/BiQZrd1J.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/08/26/9QUpq90B.png">
+<meta property="article:published_time" content="2023-08-26T03:38:46.000Z">
+<meta property="article:modified_time" content="2023-08-26T06:13:13.841Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="软件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.imgtp.com/2023/08/26/JqcHVaKo.png">
     
     
     <!--- Icon Part-->
@@ -39,6 +59,8 @@
     <!--- Page Info-->
     
     <title>
+        
+            一个迷宫类CTF题的分析 -
         
         Chieh
     </title>
@@ -251,107 +273,6 @@
 <main class="page-container" id="swup">
 
     
-        
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="https://baotangguo.cn:8081/" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%A4%9C%E6%99%9A%E6%98%9F%E7%A9%BA.jpg" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
-
-
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    
-    <div class="content mt-8 flex flex-col justify-center items-center">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        
-        >
-            Chieh
-            
-            
-                <p><i id="subtitle"></i></p>
-            
-        </div>
-        
-            <div class="absolute bottom-0.5 flex flex-row justify-between max-w-[1340px] items-center w-full px-8 sm:px-12">
-                <div class="p-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 group rounded-full cursor-pointer flex justify-center items-center aspect-square h-full shadow-redefine-flat hover:shadow-redefine-flat-hover transition-shadow" onclick="scrollToMain()" >
-                    <i class="fa-solid fa-arrow-down fa-fw fa-lg group-hover:translate-y-1 transition-transform"></i>
-                </div>
-                <div class="social-contacts px-6 py-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 shadow-redefine-flat rounded-full flex flex-row gap-3 items-center">
-                    
-                        
-                            
-                                <span class="social-contact-item github">
-                                    <a target="_blank" href="https://github.com/Chieh-W">
-                                        <i class="fa-brands fa-fw fa-lg fa-github"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                        
-                    
-                        
-                            
-                                <span class="social-contact-item zhihu">
-                                    <a target="_blank" href="https://www.zhihu.com/people/bu-ru-liang-qing-38">
-                                        <i class="fa-brands fa-fw fa-lg fa-zhihu"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                        
-                    
-                        
-                            
-                                <span class="social-contact-item email ">
-                                    <a href="mailto:wwchieh@outlook.com">
-                                        <i class="fa-solid fa-fw fa-at fa-lg"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                    
-                </div>
-            </div>
-        
-    </div>
-    <script>
-        const scrollToMain = ()=> {
-            console.log('scroll');
-            const target = document.querySelector('.main-content-container');
-            target.scrollIntoView({ behavior: 'smooth'});
-        }
-    </script>
-</div>
-    
 
     <div class="main-content-container">
 
@@ -359,7 +280,7 @@
         <div class="main-content-header">
             <header class="navbar-container">
 
-    <div class="navbar-content has-home-banner">
+    <div class="navbar-content">
         <div class="left">
             
                 <a class="logo-image" href="/">
@@ -367,9 +288,9 @@
                 </a>
             
             <a class="logo-title" href="/">
-                <h1>
+                
                 Chieh
-                </h1>
+                
             </a>
         </div>
 
@@ -541,586 +462,341 @@
         <div class="main-content-body">
 
             
-                <div class="home-sidebar-container">
-    <div class="sticky-container sticky">
-        
-        
-            
-            <div class="sidebar-content" >
-                <div class="avatar flex justify-center">
-    <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E7%8C%AB%E5%92%AA%E5%A4%B4%E5%83%8F.png">
-</div>
-                <div class="author flex flex-col justify-center my-2.5 mx-0">
-    <div class="name">Chieh</div>
-    
-        <div class="label">Lv2</div>
-    
-</div>
-                <div class="statistics flex justify-around my-2.5">
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
-        <div class="label text-third-text-color text-sm">Tags</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
-        <div class="label text-third-text-color text-sm">Posts</div>
-    </a>
-</div>
-            </div>
-        
-
-    </div>
-</div>
-
-            
 
             <div class="main-content">
 
                 
-                    <div class="home-content-container">
-    <ul class="home-article-list">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-center">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">一个迷宫类CTF题的分析</h1>
+                </div>
+            
+            </div>
+
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/">
-                            一个迷宫类CTF题的分析
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E7%8C%AB%E5%92%AA%E5%A4%B4%E5%83%8F.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Chieh</span>
                         
-                            前言什么是CTFCapture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。
-使...
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
                         
                     </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Aug 26 2023 11:38:46 GMT+0800">
-                
-                    2023-08-26
-                
-            </span>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-08-26 11:38:46</span>
+        <span class="mobile">2023-08-26 11:38:46</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-08-26 14:13:13</span>
+            <span class="mobile">2023-08-26 14:13:13</span>
+            <span class="hover-info">Updated</span>
         </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
+    
 
-    <a href="/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/">Read more<span class="seo-reader-text">一个迷宫类CTF题的分析</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
 </div>
 
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/24/PCB%E8%A7%84%E5%88%99/">
-                            PCB规则
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            PCB布局的技巧1、弄清电路板物理限制
-摆放元器件之前，先确定电路板的安装孔、边缘接插件的位置以及电路板的机械尺寸限制。
-2、弄清电路板制作工艺
-电路的组装工艺和测试流程、是否需要对PCB V型切槽预留空间、元器件焊接工艺等。
-3、给集成芯片留下喘气...
-                        
                     </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Jul 24 2023 09:31:09 GMT+0800">
-                
-                    2023-07-24
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/24/PCB%E8%A7%84%E5%88%99/">Read more<span class="seo-reader-text">PCB规则</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
                 </div>
-            </li>
+            </div>
         
-            <li class="home-article-item">
 
-                
+        
 
-                
 
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是CTF"><a href="#什么是CTF" class="headerlink" title="什么是CTF"></a>什么是CTF</h2><p>Capture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。</p>
+<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><p>操作系统：win10</p>
+<p>逆向工具：010editor，ida pro7.0(随便哪个版本都能用)</p>
+<p>题目：maze</p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="1-收集文件信息"><a href="#1-收集文件信息" class="headerlink" title="1. 收集文件信息"></a>1. 收集文件信息</h2><p><strong>1.1 使用010editor查看文件类型</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/JqcHVaKo.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>不难看出，这是是linux下的一个ELF文件，由于使用的系统环境为Windows，所以只能静态分析😭</p>
+<p><strong>1.2 确定是否需要脱壳</strong></p>
+<p>一般linux下的文件最多加个UPX壳，所以直接搜索UPX字符串，不过搜不到，盲猜没加</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/dF1FTS9b.png"
+                      style="zoom:50%;" 
+                >
+
+<p><strong>1.3 看一看能否找到明码的flag</strong></p>
+<p>由于是CTF题，那么接下来开始三板斧</p>
+<p>直接搜一下flag字符串，看看静态文件中是否存在，果然不出所料————不存在</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/X1EUSCM2.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="2-明确分析思路"><a href="#2-明确分析思路" class="headerlink" title="2. 明确分析思路"></a>2. 明确分析思路</h2><p>这里用的是静态分析，所以接下来应该</p>
+<ol>
+<li><strong>寻找输入</strong></li>
+<li><strong>寻找关键字符串</strong></li>
+<li><strong>定位关键验证逻辑</strong></li>
+<li><strong>分析关键验证逻辑</strong>，理清思路</li>
+<li><strong>模拟运行</strong>或<strong>直接调试</strong>(but没有搭环境，pass)运行得到flag</li>
+</ol>
+<h2 id="3-详细分析"><a href="#3-详细分析" class="headerlink" title="3. 详细分析"></a>3. 详细分析</h2><p>将这一坨东西拖入IDA（要点时间，可以先去看会儿新闻联播，等它慢慢跑完，）</p>
+<p>加载完成后，可以看到IDA解析出来的函数，顺带很贴心的帮分析出了main函数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/u39Y9eLJ.png"
+                      style="zoom:50%;" 
+                >
+
+<p>双击进入main函数，看到如下一堆函数逻辑。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/DmKcWnCi.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>看起来所有功能都放main函数中了，甚至还找到了一些注册成功的输出。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/278dlG4H.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>与此同时邻居家上小学一年级的小弟弟看到这里发现了解决办法，接下来只要直接改跳转，让其跳转到Congratulations！就可以了吧！当然不行。所谓逆向，就是要分析出写程序人的意图，然后让他明白，不管怎么搞，都能还原成原始代码，还要弄炸他的心态，直接写注册码。</p>
+<p><strong>辅助工具，开整！</strong></p>
+<p>由于不想动态调试，加上程序逻辑清晰,并没有加一些花里胡哨的东西(例如花指令)，这里就使用了IDA的灵魂，<strong>F5，一键还原伪代码。</strong></p>
+<p>在main函数中直接F5，就能看到这段逻辑的伪码啦。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/DH759pr2.png"
+                      style="zoom: 33%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/FDWioynC.png"
+                      style="zoom: 50%;" 
+                >
+
+<p><strong>修改伪码</strong></p>
+<p>首先，对代码进行小小的整容外加修改(一系列的变量替换，函数名称替换，变量格式更改)，使其更加符合我们的编程习惯。 </p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/qBJ3IUcg.png"
+                      style="zoom: 33%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/oXeuqncK.png"
+                      style="zoom: 25%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/KuGELRBW.png"
+                      style="zoom: 33%;" 
+                >
+
+<p><strong>分析源码</strong><br>​     可以看出，该代码是输入<strong>nctf{xxxxx}(<strong>共24位)中的</strong>x</strong>来对内存中的<strong>x</strong>，<strong>y</strong>进行一系列的运算，用算完后的<strong>x</strong>，<strong>y</strong>在数组<strong>mazeBuffer</strong>中定位到一个值，如果这个值为**#<strong>，则输出成功，否则输出失败。那</strong>mazeBuffer<strong>是一个什么东西呢？只需要 双击</strong>mazeBuffe**r，看到它在数据段中的值</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/vTAdsj5Y.png"
+                      style="zoom:67%;" 
+                >
+
+<p>这样看起来并不直观，根据它的长度(64)，以及最后的二维数组运算**(mazeBuffer[8 * nPosY + nPosX])<strong>，我们可以大胆推断它就是一个8*8 &#x3D; 64大小的二维数组。在数据区域使用</strong>IDA的另一个小功能微调<strong>，首先按</strong>d**转换为data模式，然后在标签名右键，array，选择如下设置</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/BiQZrd1J.png"
+                      style="zoom:50%;" 
+                >
+
+<p>得到一组不太直观的二维数组，再按一下r键，让它以ascii显示。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/9QUpq90B.png"
+                      style="zoom: 33%;" 
+                >
+
+<p><strong>为什么每一次操作，x，y都会变化呢？最后检查的为什么是#呢？x，y的初始值为什么是0，0呢？</strong></p>
+<p>答案如下：</p>
+<p>这个<strong>mazeBuffer</strong>是一个游戏迷宫地图，之前分析出来的4个操作性字符(对x，y的值有影响的)分别对应左右上下，也就是会循环读取输入的操作性字符，然后让我们从上图的地图中虚拟移动。</p>
+<p>综上，得到了这个flag的终极解法。<strong>构造一条能从(0,0)点到达#位置的路径</strong>，只能走上图的空白处。大概就是**nctf{右下右右下下左下下下右右右右上上左左}**，数一数，刚好24个字，然后打开文本编辑器，将上下左右替换成对应的编码(上 &#x3D;&#x3D;&gt;.  下&#x3D;&#x3D;&gt;0 左&#x3D;&#x3D;&gt;O 右&#x3D;&#x3D;&gt;o)</p>
+<p>至此，得到了<strong>最终的flag ：nctf{o0oo00O000oooo..OO}</strong></p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1>
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>总结</p>
+
+    </div>
+    <div class="notel-content">
+      <p>1.不要有畏惧心理，再难的程序也有被破解的一天，任何系统的程序只要能被反编译，就能被分析</p>
+<p>2.要善于使用工具，很多功能IDA啊，OD啊，或者xdbg会给我们提供，工具玩的好，逆向也会更加省时省力   </p>
+<p>3.不要局限于破解，分析算法才是逆向的灵魂所在，就像我们今天走完的这段旅途，风景不也很美好么</p>
+
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/">
-                            C shorp 基础(一)
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E8%BD%AF%E4%BB%B6/">#软件</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/07/24/PCB%E8%A7%84%E5%88%99/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">PCB规则</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
                         </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     运行第一个C#程序在代码编辑器如**visual studio**中运行以下代码。
-1Console.WriteLine(&quot;Hello World!&quot;);
-
-这是一个简单的程序，可以打印消息“Hello Worl...
-                        
                     </div>
+                
+            </div>
+        
 
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 15:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
+
         
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
         
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://pl.chieh.live/',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
         
     </div>
 
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/">Read more<span class="seo-reader-text">C shorp 基础(一)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/">
-                            C shorp 基础(二)
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     在 C# 中操作整数和浮点数。int类型在编辑器中运行以下代码。
-12345678910int a = 18;int b = 6;int c = a + b;int d = a - b;int e = a * b;int f = a...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 14:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/">Read more<span class="seo-reader-text">C shorp 基础(二)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/">
-                            C shorp 基础(三)
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     使用分支和循环语句这篇内容为：如何编写检查变量并根据这些变量更改执行路径的代码。
-if 语句在编辑器中运行以下代码。
-1234int a = 5;int b = 6;if (a + b &gt; 10)    Console.Wri...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 13:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/">Read more<span class="seo-reader-text">C shorp 基础(三)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/">
-                            C shorp 基础(四)
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                                     C#中的列表在编辑器中输入以下代码（可以&lt;your name&gt;将替换为你自己的名字）并选择“运行”：
-12345var names = new List&lt;string&gt; &#123; &quot;&lt;yo...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 07 2023 12:00:00 GMT+0800">
-                
-                    2023-07-07
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-shorp/">C shorp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/">Read more<span class="seo-reader-text">C shorp 基础(四)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/">
-                            简易并网逆变器设计
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            并网逆变器的工作原理并网逆变器的工作原理是产生与电网具有相同相位和频率但幅度稍高的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Jul 03 2023 10:44:42 GMT+0800">
-                
-                    2023-07-03
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/">Read more<span class="seo-reader-text">简易并网逆变器设计</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/">
-                            光伏计算公式
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            光伏计算公式转换效率η&#x3D; Pm(光伏板的峰值功率)&#x2F;S(光伏板面积)×Pin
-​		其中：Pin&#x3D;1KW/㎡&#x3D;100mW/cm²
-充电电压Vmax&#x3D;V额定×1.43倍
-电池组件串并联电池组件并联数&#...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Jun 28 2023 09:28:58 GMT+0800">
-                
-                    2023-06-28
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%85%89%E4%BC%8F/">光伏</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/">Read more<span class="seo-reader-text">光伏计算公式</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/">
-                            当PDF来敲门
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            我的一个朋友系列小时候打游戏肝到一个武器装备(在当时很值钱嗷)，遇到一个人说要跟我聊聊，于是乎，我就在QQ跟人聊天，结果说要发几张图片给我看价格表(PDF格式)，我信了他的邪接收了。结果我上线游戏准备交易，MD鼠标自己动了，直接把东西送给了他，cao...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon May 22 2023 11:16:10 GMT+0800">
-                
-                    2023-05-22
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E9%80%86%E5%90%91/">逆向</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/">Read more<span class="seo-reader-text">当PDF来敲门</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/">
-                            如何绕过软件收费
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            起因我的一位朋友决定在网上购买一个游戏辅助，以提高自己在游戏中的表现。他发现了一个价格相对便宜的卖家，于是立即下单购买了该辅助。
-然而，当辅助到手后，他很快就发现它还需要额外购买点卡。于是他联系了卖家，卖家告诉他需要按照一定的方法使用辅助，但是实际上...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat May 13 2023 23:11:58 GMT+0800">
-                
-                    2023-05-13
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E9%80%86%E5%90%91/">逆向</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/">Read more<span class="seo-reader-text">如何绕过软件收费</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-    </ul>
-
-    <div class="home-paginator px-7 py-5">
-        <div class="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa-regular fa-angle-right"></i></a>
-</div>
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">一个迷宫类CTF题的分析</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCTF"><span class="nav-number">1.1.</span> <span class="nav-text">什么是CTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">使用工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%94%B6%E9%9B%86%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text">1. 收集文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%98%8E%E7%A1%AE%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF"><span class="nav-number">2.2.</span> <span class="nav-text">2. 明确分析思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">3. 详细分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E5%B0%BE"><span class="nav-number">3.</span> <span class="nav-text">结尾</span></a></li></ol>
 
     </div>
 </div>
+        </div>
+    
+</div>
 
-                    <div class="comment-container pjax"></div>
+
+
                 
 
             </div>
@@ -1194,6 +870,27 @@ if 语句在编辑器中运行以下代码。
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
@@ -1295,7 +992,6 @@ if 语句在编辑器中运行以下代码。
         containers: ["#swup"],
     });
 </script>
-
 
 
 

