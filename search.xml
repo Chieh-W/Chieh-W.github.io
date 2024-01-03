@@ -151,7 +151,7 @@
 <p><span style="color:green">         使用字符串做更多事情。</span></p>
 ]]></content>
       <tags>
-        <tag>C shorp</tag>
+        <tag>编程入门</tag>
       </tags>
   </entry>
   <entry>
@@ -279,7 +279,7 @@
 <p><span style="color:orange">         循环体。</span></p>
 ]]></content>
       <tags>
-        <tag>C shorp</tag>
+        <tag>编程入门</tag>
       </tags>
   </entry>
   <entry>
@@ -373,7 +373,7 @@
 <p><span style="color:blue">         数据类型的区别和精度。</span></p>
 ]]></content>
       <tags>
-        <tag>C shorp</tag>
+        <tag>编程入门</tag>
       </tags>
   </entry>
   <entry>
@@ -483,7 +483,7 @@
 <p><span style="color:pink">         搜索和排序列表。</span></p>
 ]]></content>
       <tags>
-        <tag>C shorp</tag>
+        <tag>编程入门</tag>
       </tags>
   </entry>
   <entry>
@@ -628,7 +628,7 @@
       </tags>
   </entry>
   <entry>
-    <title>当PDF来敲门</title>
+    <title>PDF病毒漏洞</title>
     <url>/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/</url>
     <content><![CDATA[<h1 id="我的一个朋友系列"><a href="#我的一个朋友系列" class="headerlink" title="我的一个朋友系列"></a>我的一个朋友系列</h1><p>小时候打游戏肝到一个武器装备(在当时很值钱嗷)，遇到一个人说要跟我聊聊，于是乎，我就在QQ跟人聊天，结果说要发几张图片给我看价格表(PDF格式)，我信了他的邪接收了。结果我上线游戏准备交易，MD鼠标自己动了，直接把东西送给了他，cao，真恶心嗷~</p>
 <p>So，如果打开了陌生人给你发送的某个东西,甚至是个图片,一个pdf 都会让电脑不知不觉成为别人的肉鸡(就是别人想对你的电脑干嘛就干嘛啦~)。</p>
@@ -1332,7 +1332,7 @@
 </blockquote>
 ]]></content>
       <tags>
-        <tag>光伏</tag>
+        <tag>硬件</tag>
       </tags>
   </entry>
   <entry>
@@ -1694,7 +1694,7 @@
 
 ]]></content>
       <tags>
-        <tag>软件</tag>
+        <tag>编程进阶</tag>
       </tags>
   </entry>
   <entry>
@@ -1796,6 +1796,378 @@
 ]]></content>
       <tags>
         <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓逆向学习笔记(二)</title>
+    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/</url>
+    <content><![CDATA[<h1 id="一、目标"><a href="#一、目标" class="headerlink" title="一、目标"></a>一、目标</h1><p>1.了解APK文件结构<br>2.双开APK，简单了解原理<br>3.汉化APK<br>4.简单修改APK名字、图标</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%BA%8C)1.jpg"
+                     
+                ></p>
+<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><p>1.教程Demo<br>2.MT管理器&#x2F;NP管理器<br>3.开发者助手<br>4.雷电模拟器</p>
+<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><h2 id="1-Apk结构"><a href="#1-Apk结构" class="headerlink" title="1.Apk结构"></a>1.Apk结构</h2><p>apk 全称 Android Package，它相当于一个压缩文件，只要在电脑上将apk后缀改为zip即可解压。</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">assets目录</td>
+<td align="center">存放APK的静态资源文件，比如视频，音频，图片等</td>
+</tr>
+<tr>
+<td align="center">lib 目录</td>
+<td align="center">armeabi-v7a基本通用所有android设备，arm64-v8a只适用于64位的android设备，x86常见用于android模拟器，其目录下的.so文件是c或c++编译的动态链接库文件</td>
+</tr>
+<tr>
+<td align="center">META-INF目录</td>
+<td align="center">保存应用的签名信息，签名信息可以验证APK文件的完整性，相当于APK的身份证(验证文件是否又被修改)</td>
+</tr>
+<tr>
+<td align="center">res目录</td>
+<td align="center">res目录存放资源文件，包括图片，字符串等等，APK的脸蛋由他的layout文件设计</td>
+</tr>
+<tr>
+<td align="center">AndroidMainfest.xml文件</td>
+<td align="center">APK的应用清单信息，它描述了应用的名字，版本，权限，引用的库文件等等信息</td>
+</tr>
+<tr>
+<td align="center">classes.dex文件</td>
+<td align="center">classes.dex是java源码编译后生成的java字节码文件，APK运行的主要逻辑</td>
+</tr>
+<tr>
+<td align="center">resources.arsc文件</td>
+<td align="center">resources.arsc是编译后的二进制资源文件，它是一个映射表，映射着资源和id，通过R文件中的id就可以找到对应的资源</td>
+</tr>
+</tbody></table>
+<h2 id="2-双开及原理"><a href="#2-双开及原理" class="headerlink" title="2.双开及原理"></a>2.双开及原理</h2><p>双开：简单来说，就是手机同时运行两个或多个相同的应用，例如同时运行两个微信</p>
+<table>
+<thead>
+<tr>
+<th align="center">原理</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">修改包名</td>
+<td align="center">让手机系统认为这是2个APP，这样的话就能生成2个数据存储路径，此时的多开就等于你打开了两个互不干扰的APP</td>
+</tr>
+<tr>
+<td align="center">修改Framework</td>
+<td align="center">对于有系统修改权限的厂商，可以修改Framework来实现双开的目的，例如：小米自带多开</td>
+</tr>
+<tr>
+<td align="center">通过虚拟化技术实现</td>
+<td align="center">虚拟Framework层、虚拟文件系统、模拟Android对组件的管理、虚拟应用进程管理 等一整套虚拟技术，将APK复制一份到虚拟空间中运行，例如：平行空间</td>
+</tr>
+<tr>
+<td align="center">以插件机制运行</td>
+<td align="center">利用反射替换，动态代{过}{滤}理，hook了系统的大部分与system—server进程通讯的函数，以此作为“欺上瞒下”的目的，欺骗系统“以为”只有一个apk在运行，瞒过插件让其“认为”自己已经安装。例如：VirtualApp</td>
+</tr>
+</tbody></table>
+<h2 id="3-汉化APK"><a href="#3-汉化APK" class="headerlink" title="3.汉化APK"></a>3.汉化APK</h2><p>汉化：使用专门的工具对外文版的软件资源进行读取、翻译、修改、回写等一系列处理，使软件的菜单、对话框、提示等用户界面显示为中文，而程序的内核和功能保持不变，这个过程即为软件汉化</p>
+<p>基本上字符串都是在arsc里，建议一键汉化，然后再润色。<br>少量没汉化到的字符串去定位去逐个汉化。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%BA%8C)2.jpg"
+                      alt="流程图"
+                ><figcaption>流程图</figcaption></figure></p>
+<h2 id="4-初识AndroidManifest-xml"><a href="#4-初识AndroidManifest-xml" class="headerlink" title="4.初识AndroidManifest.xml"></a>4.初识AndroidManifest.xml</h2><p>AndroidManifest.xml文件是整个应用程序的信息描述文件，定义了应用程序中包含的Activity,Service,Content provider和BroadcastReceiver组件信息。每个应用程序在根目录下必须包含一个AndroidManifest.xml文件，且文件名不能修改。它描述了package中暴露的组件，他们各自的实现类，各种能被处理的数据和启动位置</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">versionCode</td>
+<td align="center">版本号，主要用来更新，例如:12</td>
+</tr>
+<tr>
+<td align="center">versionName</td>
+<td align="center">版本名，给用户看的，例如:1.2</td>
+</tr>
+<tr>
+<td align="center">package</td>
+<td align="center">包名，例如：com.zj.52pj.demo</td>
+</tr>
+<tr>
+<td align="center">uses-permission android:name&#x3D;””</td>
+<td align="center">应用权限，例如：android.permission.INTERNET 代表网络权限</td>
+</tr>
+<tr>
+<td align="center">android:label&#x3D;”@string&#x2F;app_name”</td>
+<td align="center">应用名称</td>
+</tr>
+<tr>
+<td align="center">android:icon&#x3D;”@mipmap&#x2F;ic_launcher”</td>
+<td align="center">应用图标路径</td>
+</tr>
+<tr>
+<td align="center">android:debuggable&#x3D;”true”</td>
+<td align="center">应用是否开启debug权限</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓逆向学习笔记(三)</title>
+    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/</url>
+    <content><![CDATA[<h1 id="一、-目标"><a href="#一、-目标" class="headerlink" title="一、 目标"></a>一、 目标</h1><hr>
+<p>1.了解JVM、Dalvik、ART<br>2.初识smali语法<br>3.实战修改smali</p>
+<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><hr>
+<p>1.教程Demo(更新)<br>2.MT管理器&#x2F;NP管理器<br>3.雷电模拟器<br>4.jadx-gui<br>5.核心破解</p>
+<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><hr>
+<h2 id="1-什么是JVM、Dalvik、ART"><a href="#1-什么是JVM、Dalvik、ART" class="headerlink" title="1.什么是JVM、Dalvik、ART"></a>1.什么是JVM、Dalvik、ART</h2><p>JVM是JAVA虚拟机，运行JAVA字节码程序<br>Dalvik是Google专门为Android设计的一个虚拟机，Dalvik有专属的文件执行格式dex(Dalvik executable)<br>Art(Android Runtime)相当于Dalvik的升级版，本质与Dalvik无异</p>
+<h2 id="2-smali及其语法"><a href="#2-smali及其语法" class="headerlink" title="2.smali及其语法"></a>2.smali及其语法</h2><p>smali是Dalvik的寄存器语言，smali代码是dex反编译而来的。</p>
+<p>关键字</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.class</td>
+<td align="center">类名</td>
+</tr>
+<tr>
+<td align="center">.super</td>
+<td align="center">父类名，继承的上级类名名称</td>
+</tr>
+<tr>
+<td align="center">.source</td>
+<td align="center">源名</td>
+</tr>
+<tr>
+<td align="center">.field</td>
+<td align="center">变量</td>
+</tr>
+<tr>
+<td align="center">.method</td>
+<td align="center">方法名</td>
+</tr>
+<tr>
+<td align="center">.register</td>
+<td align="center">寄存器</td>
+</tr>
+<tr>
+<td align="center">.end method</td>
+<td align="center">方法名的结束</td>
+</tr>
+<tr>
+<td align="center">public</td>
+<td align="center">公有</td>
+</tr>
+<tr>
+<td align="center">protected</td>
+<td align="center">半公开，只有同一家人才能用</td>
+</tr>
+<tr>
+<td align="center">private</td>
+<td align="center">私有，只能自己使用</td>
+</tr>
+<tr>
+<td align="center">.parameter</td>
+<td align="center">方法参数</td>
+</tr>
+<tr>
+<td align="center">.prologue</td>
+<td align="center">方法开始</td>
+</tr>
+<tr>
+<td align="center">.line xxx</td>
+<td align="center">位于第xxx行</td>
+</tr>
+</tbody></table>
+<p>数据类型对应</p>
+<table>
+<thead>
+<tr>
+<th align="center">smali类型</th>
+<th align="center">java类型</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">V</td>
+<td align="center">void</td>
+<td align="center">无返回值</td>
+</tr>
+<tr>
+<td align="center">Z</td>
+<td align="center">boolean</td>
+<td align="center">布尔值类型，返回0或1</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">byte</td>
+<td align="center">字节类型，返回字节</td>
+</tr>
+<tr>
+<td align="center">S</td>
+<td align="center">short</td>
+<td align="center">短整数类型，返回数字</td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center">char</td>
+<td align="center">字符类型，返回字符</td>
+</tr>
+<tr>
+<td align="center">I</td>
+<td align="center">int</td>
+<td align="center">整数类型，返回数字</td>
+</tr>
+<tr>
+<td align="center">J</td>
+<td align="center">long （64位 需要2个寄存器存储）</td>
+<td align="center">长整数类型，返回数字</td>
+</tr>
+<tr>
+<td align="center">F</td>
+<td align="center">float</td>
+<td align="center">单浮点类型，返回数字</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">double （64位 需要2个寄存器存储）</td>
+<td align="center">双浮点类型，返回数字</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">String</td>
+<td align="center">文本类型，返回字符串</td>
+</tr>
+<tr>
+<td align="center">Lxxx&#x2F;xxx&#x2F;xxx</td>
+<td align="center">object</td>
+<td align="center">对象类型，返回对象</td>
+</tr>
+</tbody></table>
+<p>常用指令</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">const</td>
+<td align="center">重写整数属性，真假属性内容，只能是数字类型</td>
+</tr>
+<tr>
+<td align="center">const-string</td>
+<td align="center">重写字符串内容</td>
+</tr>
+<tr>
+<td align="center">const-wide</td>
+<td align="center">重写长整数类型，多用于修改到期时间。</td>
+</tr>
+<tr>
+<td align="center">return</td>
+<td align="center">返回指令</td>
+</tr>
+<tr>
+<td align="center">if-eq</td>
+<td align="center">全称equal(a&#x3D;b)，比较寄存器ab内容，相同则跳</td>
+</tr>
+<tr>
+<td align="center">if-ne</td>
+<td align="center">全称not equal(a!&#x3D;b)，ab内容不相同则跳</td>
+</tr>
+<tr>
+<td align="center">if-eqz</td>
+<td align="center">全称equal zero(a&#x3D;0)，z即是0的标记，a等于0则跳</td>
+</tr>
+<tr>
+<td align="center">if-nez</td>
+<td align="center">全称not equal zero(a!&#x3D;0)，a不等于0则跳</td>
+</tr>
+<tr>
+<td align="center">if-ge</td>
+<td align="center">全称greater equal(a&gt;&#x3D;b)，a大于或等于则跳</td>
+</tr>
+<tr>
+<td align="center">if-le</td>
+<td align="center">全称little equal(a&lt;&#x3D;b)，a小于或等于则跳</td>
+</tr>
+<tr>
+<td align="center">goto</td>
+<td align="center">强制跳到指定位置</td>
+</tr>
+<tr>
+<td align="center">switch</td>
+<td align="center">分支跳转，一般会有多个分支线，并根据指令跳转到适当位置</td>
+</tr>
+<tr>
+<td align="center">iget</td>
+<td align="center">获取寄存器数据</td>
+</tr>
+</tbody></table>
+<p>其余指令可用语法工具查询<br>定位方法：搜索弹窗关键字、抓取按钮id</p>
+<p>举个栗子：</p>
+<div class="highlight-container" data-rel="Kotlin"><figure class="iseeu highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个私有、静态、不可变的方法   方法名</span></span><br><span class="line">.method <span class="keyword">private</span> static <span class="keyword">final</span> onCreate$lambda-<span class="number">2</span>(Lkotlin/jvm/<span class="keyword">internal</span>/Ref$IntRef;Lcom/zj/wuaipojie/ui/ChallengeSecond;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/view/View;)Z <span class="comment">//(这里面是方法的参数)这里是方法返回值类型，表示布尔值类型，返回假或真</span></span><br><span class="line">    .registers <span class="number">7</span>  <span class="comment">//寄存器数量</span></span><br><span class="line"></span><br><span class="line">    .line <span class="number">33</span>  <span class="comment">//代码所在的行数</span></span><br><span class="line">    iget p0, p0, Lkotlin/jvm/<span class="keyword">internal</span>/Ref$IntRef;-&gt;element:I  <span class="comment">//读取p0(第一个参数，参考寄存器知识)中element的值赋值给p0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>/<span class="number">4</span> p5, <span class="number">0x1</span>  <span class="comment">//p5赋值1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>/<span class="number">16</span> v0, <span class="number">0xa</span> <span class="comment">//v0赋值10，在16进制里a表示10</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>-ge p0, v0, :cond_15  <span class="comment">//判断p0的值是否大于或等于v0的值(即p0的值是否大于或等于10)，如果大于或等于则跳转到:cond_15</span></span><br><span class="line"></span><br><span class="line">    .line <span class="number">34</span>  <span class="comment">//以下是常见的Toast弹窗代码</span></span><br><span class="line">    check-cast p1, Landroid/content/Context; <span class="comment">//检查Context对象引用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>-string p0, <span class="string">&quot;请先获取10个硬币哦&quot;</span> <span class="comment">//弹窗文本信息，把&quot;&quot;里的字符串数据赋值给p0</span></span><br><span class="line"></span><br><span class="line">    check-cast p0, Ljava/lang/CharSequence; <span class="comment">//检查CharSequence对象引用</span></span><br><span class="line"></span><br><span class="line">    invoke-static &#123;p1, p0, p5&#125;, Landroid/widget/Toast;-&gt;makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast; </span><br><span class="line">    <span class="comment">//将弹窗文本、显示时间等信息传给p1</span></span><br><span class="line"></span><br><span class="line">    move-result-<span class="keyword">object</span> p0  <span class="comment">//结果传递给p0</span></span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;p0&#125;, Landroid/widget/Toast;-&gt;show()V  <span class="comment">//当看到这个Toast;-&gt;show你就应该反应过来这里是弹窗代码</span></span><br><span class="line"></span><br><span class="line">    goto :goto_31  <span class="comment">//跳转到:goto_31</span></span><br><span class="line"></span><br><span class="line">    :cond_15 <span class="comment">//跳转的一个地址</span></span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;p1&#125;, Lcom/zj/wuaipojie/ui/ChallengeSecond;-&gt;isvip()Z  <span class="comment">//判断isvip方法的返回值是否为真(即结果是否为1)</span></span><br><span class="line"></span><br><span class="line">    move-result p0  <span class="comment">//结果赋值给p0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>-eqz p0, :cond_43 <span class="comment">//如果结果为0则跳转cond_43地址</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> p0, <span class="number">0x7f0d0018</span>  <span class="comment">//在arsc中的id索引，这个值可以进行查询</span></span><br><span class="line"></span><br><span class="line">    .line <span class="number">37</span></span><br><span class="line">    invoke-virtual &#123;p2, p0&#125;, Landroid/widget/ImageView;-&gt;setImageResource(I)V <span class="comment">//设置图片资源</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> p0, <span class="number">0x7f0d0008</span></span><br><span class="line"></span><br><span class="line">    .line <span class="number">38</span></span><br><span class="line">    invoke-virtual &#123;p3, p0&#125;, Landroid/widget/ImageView;-&gt;setImageResource(I)V</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> p0, <span class="number">0x7f0d000a</span></span><br><span class="line"></span><br><span class="line">    .line <span class="number">39</span></span><br><span class="line">    invoke-virtual &#123;p4, p0&#125;, Landroid/widget/ImageView;-&gt;setImageResource(I)V</span><br><span class="line"></span><br><span class="line">    .line <span class="number">40</span></span><br><span class="line">    sget-<span class="keyword">object</span> p0, Lcom/zj/wuaipojie/util/SPUtils;-&gt;INSTANCE:Lcom/zj/wuaipojie/util/SPUtils; </span><br><span class="line"></span><br><span class="line">    check-cast p1, Landroid/content/Context;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>/<span class="number">4</span> p2, <span class="number">0x2</span> <span class="comment">//p2赋值2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>-string p3, <span class="string">&quot;level&quot;</span> <span class="comment">//sp的索引</span></span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;p0, p1, p3, p2&#125;, Lcom/zj/wuaipojie/util/SPUtils;-&gt;saveInt(Landroid/content/Context;Ljava/lang/String;I)V <span class="comment">//写入数据</span></span><br><span class="line"></span><br><span class="line">    goto :goto_50 <span class="comment">//跳转地址</span></span><br><span class="line"></span><br><span class="line">    :cond_43</span><br><span class="line"></span><br><span class="line">    check-cast p1, Landroid/content/Context;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>-string p0, <span class="string">&quot;\u8bf7\u5148\u5145\u503c\u5927\u4f1a\u5458\u54e6\uff01&quot;</span> <span class="comment">//请先充值大会员哦！</span></span><br><span class="line"></span><br><span class="line">    check-cast p0, Ljava/lang/CharSequence;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;p1, p0, p5&#125;, Landroid/widget/Toast;-&gt;makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;</span><br><span class="line"></span><br><span class="line">    move-result-<span class="keyword">object</span> p0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;p0&#125;, Landroid/widget/Toast;-&gt;show()V</span><br><span class="line"></span><br><span class="line">    :goto_50</span><br><span class="line">    <span class="keyword">return</span> p5  <span class="comment">//返回p5的值</span></span><br><span class="line">.end method <span class="comment">//方法结束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否是大会员的方法</span></span><br><span class="line">.method <span class="keyword">public</span> <span class="keyword">final</span> isvip()Z</span><br><span class="line">    .registers <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>/<span class="number">4</span> v0, <span class="number">0x0</span> <span class="comment">//v0赋值0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> v0 <span class="comment">//返回v0的值</span></span><br><span class="line"></span><br><span class="line">.end method</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>修改方法：修改判断、强制跳转、修改寄存器的值</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%B8%89)1.jpg"
+                     
+                ></p>
+<h2 id="3-寄存器"><a href="#3-寄存器" class="headerlink" title="3.寄存器"></a>3.寄存器</h2><p>在smali里的所有操作都必须经过寄存器来进行:本地寄存器用v开头数字结尾的符号来表示，如v0、 v1、v2。 参数寄存器则使用p开头数字结尾的符号来表示，如p0、p1、p2。特别注意的是，p0不一定是函数中的第一个参数，在非static函数中，p0代指“this”，p1表示函数的第一个 参数，p2代表函数中的第二个参数。而在static函数中p0才对应第一个参数(因为Java的static方法中没有this方法）</p>
+]]></content>
+      <tags>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓逆向学习笔记(一)</title>
+    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/</url>
+    <content><![CDATA[<h1 id="一-什么是安卓逆向？"><a href="#一-什么是安卓逆向？" class="headerlink" title="一.什么是安卓逆向？"></a>一.什么是安卓逆向？</h1><p>安卓逆向是对已经打包好的APP进行反编译、源码分析了解APP实现逻辑的一门技术</p>
+<h1 id="二-安卓逆向可以干嘛？"><a href="#二-安卓逆向可以干嘛？" class="headerlink" title="二.安卓逆向可以干嘛？"></a>二.安卓逆向可以干嘛？</h1><p>去更新<br>去广告<br>内购&#x2F;会员破解<br>协议自动签到<br>白嫖！！！</p>
+<h1 id="三-适合人群"><a href="#三-适合人群" class="headerlink" title="三.适合人群"></a>三.适合人群</h1><p>小白、零基础人群<br>先来一碗鸡汤：<br>改天是哪天，下次是哪次，以后是多久，去经历，去后悔。<br>保持热爱，奔赴山海。我们都在奔赴各自不同的人生！！！</p>
+<h1 id="四-Magisk介绍"><a href="#四-Magisk介绍" class="headerlink" title="四.Magisk介绍"></a>四.Magisk介绍</h1><p>Magisk 是一套用于定制 Android 的开源软件，支持高于 Android 5.0 的设备。</p>
+<p>以下是一些功能亮点：</p>
+<ol>
+<li><strong>MagiskSU</strong>：为应用程序提供 root 访问权限</li>
+<li><strong>Magisk 模块</strong>：通过安装模块修改只读分区</li>
+<li><strong>MagiskHide</strong>：从根检测 &#x2F; 系统完整性检查中隐藏 Magisk(Shamiko)</li>
+<li><strong>MagiskBoot</strong> : 最完整的安卓启动镜像解包和重新打包工具</li>
+</ol>
+<h1 id="五-安装步骤"><a href="#五-安装步骤" class="headerlink" title="五.安装步骤"></a>五.安装步骤</h1><p>1.下载一个安卓模拟器，并安装;例如<a class="link"   href="https://www.ldmnq.com/" >雷电模拟器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>2.下载配置文件<br>3.安装面具</p>
+<h1 id="六-常见问题"><a href="#六-常见问题" class="headerlink" title="六.常见问题"></a>六.常见问题</h1><p><strong>1.如图，Magisk刷不上</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%911.png"
+                      style="zoom:80%;" 
+                >
+
+<p><em>需要在设置里把读写权限打开</em></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%912.jpg"
+                      style="zoom:50%;" 
+                >
+]]></content>
+      <tags>
+        <tag>逆向</tag>
       </tags>
   </entry>
 </search>
