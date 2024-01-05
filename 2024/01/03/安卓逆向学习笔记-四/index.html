@@ -17,18 +17,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/archives/2023/06/"/>
+    <link rel="canonical" href="http://example.com/2024/01/03/安卓逆向学习笔记-四/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/06/index.html">
+        <meta name="description" content="一、目标 1.了解安卓四大组件、Activity生命周期2.弹窗定位、去更新3.广告分析与布局优化 二、工具 1.教程Demo(更新)2.MT管理器&#x2F;NP管理器3.算法助手4.雷电模拟器5.开发助手 三、内容 1.广告类型启动广告   弹窗&amp;更新广告  横幅广告  2. 安卓四大组件   组件 描述    Activity(活动) 在应用中的一个Activity可以用来表示一个界">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓逆向学习笔记(四)">
+<meta property="og:url" content="http://example.com/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、目标 1.了解安卓四大组件、Activity生命周期2.弹窗定位、去更新3.广告分析与布局优化 二、工具 1.教程Demo(更新)2.MT管理器&#x2F;NP管理器3.算法助手4.雷电模拟器5.开发助手 三、内容 1.广告类型启动广告   弹窗&amp;更新广告  横幅广告  2. 安卓四大组件   组件 描述    Activity(活动) 在应用中的一个Activity可以用来表示一个界">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%9B%9B)1.jpg">
+<meta property="og:image" content="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%9B%9B)2.jpeg">
+<meta property="article:published_time" content="2024-01-03T07:47:05.000Z">
+<meta property="article:modified_time" content="2024-01-03T07:47:17.090Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="编程进阶">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%9B%9B)1.jpg">
     
     
     <!--- Icon Part-->
@@ -40,7 +48,7 @@
     
     <title>
         
-            Archive: 2023/6 -
+            安卓逆向学习笔记(四) -
         
         Chieh
     </title>
@@ -557,180 +565,291 @@
             <div class="main-content">
 
                 
-                    <div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-center">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">安卓逆向学习笔记(四)</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E7%8C%AB%E5%92%AA%E5%A4%B4%E5%83%8F.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Chieh</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-01-03 15:47:05</span>
+        <span class="mobile">2024-01-03 15:47:05</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-01-03 15:47:17</span>
+            <span class="mobile">2024-01-03 15:47:17</span>
+            <span class="hover-info">Updated</span>
+        </span>
     
 
-<div class="archive-list-container">
     
-        <section class="archive-item">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">6</span>
-            </div>
-            <ul class="article-list pl-8 text-lg leading-[1.5]">
-              
-                
-                    
-                    <li class="article-item" date-is='01-03'>
-                
-                
-                    <a href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">安卓逆向学习笔记(六)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">安卓逆向学习笔记(五)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">安卓逆向学习笔记(四)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">安卓逆向学习笔记(三)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">安卓逆向学习笔记(二)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">安卓逆向学习笔记(一)</span>
-                    </a>
-                
-              
-            </ul>
-        </section>
     
-        <section class="archive-item">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2023</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">11</span>
-            </div>
-            <ul class="article-list pl-8 text-lg leading-[1.5]">
-              
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
                 
-                    
-                    <li class="article-item" date-is='08-26'>
+                    <li>
+                        <a href="/tags/%E7%BC%96%E7%A8%8B%E8%BF%9B%E9%98%B6/">编程进阶</a>&nbsp;
+                    </li>
                 
-                
-                    <a href="/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">一个迷宫类CTF题的分析</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='07-24'>
-                
-                
-                    <a href="/2023/07/24/PCB%E8%A7%84%E5%88%99/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">PCB规则</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='07-07'>
-                
-                
-                    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">C shorp 基础(一)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">C shorp 基础(二)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">C shorp 基础(三)</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">C shorp 基础(四)</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='07-03'>
-                
-                
-                    <a href="/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">简易并网逆变器设计</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='06-28'>
-                
-                
-                    <a href="/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">光伏计算公式</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='05-22'>
-                
-                
-                    <a href="/2023/05/22/PDF%E7%97%85%E6%AF%92%E6%BC%8F%E6%B4%9E%E5%B0%9D%E8%AF%95/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">PDF病毒漏洞</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='05-13'>
-                
-                
-                    <a href="/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">绕过软件收费</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='05-12'>
-                
-                
-                    <a href="/2023/05/12/GPT%E7%BD%91%E7%AB%99%E9%97%AE%E7%AD%94%E6%B5%81%E7%A8%8B%E9%80%86%E5%90%91%E5%92%8CPython%E5%A4%8D%E7%8E%B0/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">GPT网站问答流程逆向和Python复现</span>
-                    </a>
-                
-              
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="一、目标"><a href="#一、目标" class="headerlink" title="一、目标"></a>一、目标</h1><hr>
+<p>1.了解安卓四大组件、Activity生命周期<br>2.弹窗定位、去更新<br>3.广告分析与布局优化</p>
+<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><hr>
+<p>1.教程Demo(更新)<br>2.MT管理器&#x2F;NP管理器<br>3.算法助手<br>4.雷电模拟器<br>5.开发助手</p>
+<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><hr>
+<h2 id="1-广告类型"><a href="#1-广告类型" class="headerlink" title="1.广告类型"></a>1.广告类型</h2><p>启动广告   弹窗&amp;更新广告  横幅广告</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%9B%9B)1.jpg"
+                     
+                ></p>
+<h2 id="2-安卓四大组件"><a href="#2-安卓四大组件" class="headerlink" title="2. 安卓四大组件"></a>2. 安卓四大组件</h2><table>
+<thead>
+<tr>
+<th align="center">组件</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Activity(活动)</td>
+<td align="center">在应用中的一个Activity可以用来表示一个界面，意思可以理解为“活动”，即一个活动开始，代表 Activity组件启动，活动结束，代表一个Activity的生命周期结束。一个Android应用必须通过Activity来运行和启动，Activity的生命周期交给系统统一管理。</td>
+</tr>
+<tr>
+<td align="center">Service(服务)</td>
+<td align="center">Service它可以在后台执行长时间运行操作而没有用户界面的应用组件，不依赖任何用户界面，例如后台播放音乐，后台下载文件等。</td>
+</tr>
+<tr>
+<td align="center">Broadcast Receiver(广播接收器)</td>
+<td align="center">一个用于接收广播信息，并做出对应处理的组件。比如我们常见的系统广播：通知时区改变、电量低、用户改变了语言选项等。</td>
+</tr>
+<tr>
+<td align="center">Content Provider(内容提供者)</td>
+<td align="center">作为应用程序之间唯一的共享数据的途径，Content Provider主要的功能就是存储并检索数据以及向其他应用程序提供访问数据的接口。Android内置的许多数据都是使用Content Provider形式，供开发者调用的（如视频，音频，图片，通讯录等）</td>
+</tr>
+</tbody></table>
+<h2 id="3-activity的切换"><a href="#3-activity的切换" class="headerlink" title="3. activity的切换"></a>3. activity的切换</h2><div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!---声明实现应用部分可视化界面的 Activity，必须使用 AndroidManifest 中的 &lt;activity&gt; 元素表示所有 Activity。系统不会识别和运行任何未进行声明的Activity。-----&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">&quot;@string/app_name&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.MainActivity&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span>  <span class="comment">&lt;!--当前Activity是否可以被另一个Application的组件启动：true允许被启动；false不允许被启动--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!---指明这个activity可以以什么样的意图(intent)启动---&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!--表示activity作为一个什么动作启动，android.intent.action.MAIN表示作为主activity启动---&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span>  </span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!--这是action元素的额外类别信息，android.intent.category.LAUNCHER表示这个activity为当前应用程序优先级最高的Activity--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span>  </span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.ChallengeFirst&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.ChallengeFifth&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.ChallengeFourth&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.ChallengeThird&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;false&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.ChallengeSecond&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;false&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.zj.wuaipojie.ui.AdActivity&quot;</span> /&gt;</span>  </span><br></pre></td></tr></table></figure></div>
+
+<p>启动广告流程：<br>启动Activity-&gt;广告Activity-&gt;主页Activity</p>
+<p>修改方法：<br>1.修改加载时间<br>2.Acitivity切换定位，修改Intent的Activity类名</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (position) &#123;  </span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:  </span><br><span class="line">        <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();  </span><br><span class="line">        intent.setClass(it.getContext(), ChallengeFirst.class);  </span><br><span class="line">        it.getContext().startActivity(intent);  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:  </span><br><span class="line">        <span class="type">Intent</span> <span class="variable">intent2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();  </span><br><span class="line">        intent2.setClass(it.getContext(), ChallengeSecond.class);  </span><br><span class="line">        it.getContext().startActivity(intent2);  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:  </span><br><span class="line">        <span class="type">Intent</span> <span class="variable">intent3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();  <span class="comment">//new一个Intent，</span></span><br><span class="line">        intent3.setClass(it.getContext(), AdActivity.class);  <span class="comment">//传入要切换的Acitivity的类名</span></span><br><span class="line">        it.getContext().startActivity(intent3);  <span class="comment">//启动对应的Activity</span></span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:  </span><br><span class="line">        <span class="type">Intent</span> <span class="variable">intent4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();  </span><br><span class="line">        intent4.setClass(it.getContext(), ChallengeFourth.class);  </span><br><span class="line">        it.getContext().startActivity(intent4);  </span><br><span class="line">        <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">default</span>:  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-1-Activity生命周期"><a href="#3-1-Activity生命周期" class="headerlink" title="3.1 Activity生命周期"></a>3.1 Activity生命周期</h3><table>
+<thead>
+<tr>
+<th align="center">函数名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">onCreate()</td>
+<td align="center">一个Activity启动后第一个被调用的函数，常用来在此方法中进行Activity的一些初始化操作。例如创建View，绑定数据，注册监听，加载参数等。</td>
+</tr>
+<tr>
+<td align="center">onStart()</td>
+<td align="center">当Activity显示在屏幕上时，此方法被调用但此时还无法进行与用户的交互操作。</td>
+</tr>
+<tr>
+<td align="center">onResume()</td>
+<td align="center">这个方法在onStart()之后调用，也就是在Activity准备好与用户进行交互的时候调用，此时的Activity一定位于Activity栈顶，处于运行状态。</td>
+</tr>
+<tr>
+<td align="center">onPause()</td>
+<td align="center">这个方法是在系统准备去启动或者恢复另外一个Activity的时候调用，通常在这个方法中执行一些释放资源的方法，以及保存一些关键数据。</td>
+</tr>
+<tr>
+<td align="center">onStop()</td>
+<td align="center">这个方法是在Activity完全不可见的时候调用的。</td>
+</tr>
+<tr>
+<td align="center">onDestroy()</td>
+<td align="center">这个方法在Activity销毁之前调用，之后Activity的状态为销毁状态。</td>
+</tr>
+<tr>
+<td align="center">onRestart()</td>
+<td align="center">当Activity从停止stop状态恢进入start状态时调用状态。</td>
+</tr>
+</tbody></table>
+<p>流程如图</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%9B%9B)2.jpeg"
+                     
+                ></p>
+<h2 id="4-弹窗定位-堆栈分析"><a href="#4-弹窗定位-堆栈分析" class="headerlink" title="4. 弹窗定位&amp;堆栈分析"></a>4. 弹窗定位&amp;堆栈分析</h2><p>修改方法：<br>1.修改xml中的versiocode<br>2.Hook弹窗(推荐算法助手开启弹窗定位)<br>3.修改dex弹窗代码<br>4.抓包修改响应体(也可以路由器拦截)</p>
+<h2 id="5-布局优化"><a href="#5-布局优化" class="headerlink" title="5. 布局优化"></a>5. 布局优化</h2><p>1.开发者助手抓布局<br>2.MT管理器xml搜索定位<br>3.修改xml代码</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:visibility=&quot;gone&quot;</span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%BC%96%E7%A8%8B%E8%BF%9B%E9%98%B6/">#编程进阶</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">安卓逆向学习笔记(五)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">安卓逆向学习笔记(三)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://pl.chieh.live/',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
 </div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">安卓逆向学习笔记(四)</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">一、目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">二、工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%86%85%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">三、内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B9%BF%E5%91%8A%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">1.广告类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E5%8D%93%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">2. 安卓四大组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-activity%E7%9A%84%E5%88%87%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">3. activity的切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.1 Activity生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%BC%B9%E7%AA%97%E5%AE%9A%E4%BD%8D-%E5%A0%86%E6%A0%88%E5%88%86%E6%9E%90"><span class="nav-number">3.4.</span> <span class="nav-text">4. 弹窗定位&amp;堆栈分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96"><span class="nav-number">3.5.</span> <span class="nav-text">5. 布局优化</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
 
                 
 
@@ -805,6 +924,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
