@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C shorp 基础(三)</title>
+    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/</url>
+    <content><![CDATA[<h1 id="使用分支和循环语句"><a href="#使用分支和循环语句" class="headerlink" title="         使用分支和循环语句"></a><span style="color:orange">         使用分支和循环语句</span></h1><p>这篇内容为：如何编写检查变量并根据这些变量更改执行路径的代码。</p>
+<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a><code>if</code> 语句</h2><p>在编辑器中运行以下代码。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">if</span> (a + b &gt; <span class="number">10</span>)</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10.&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/6qFG6yoy.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>修改变量的值，不难发现如果答案小于 10将不会输出任何内容。因为不符合<code>if</code>语句的判断条件。</li>
+<li>因为只编写了语句的可能分支之一：<code>真实分支</code>。那么当判断为假的情况下将没有任何代码要执行</li>
+</ul>
+<h2 id="else-语句"><a href="#else-语句" class="headerlink" title="else 语句"></a><code>else</code> 语句</h2><p>要在 true 和 false 分支中执行不同的代码，您可以创建一个<code>else</code>在条件为 false 时执行的分支。尝试这个：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">if</span> (a + b &gt; <span class="number">10</span>)</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10&quot;</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案小于 10&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/Ht3dd6PX.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li><p><code>else</code>只会在<code>if判断</code>为假时执行，可以理解为中文语境里的<code>if</code>&#x3D;<code>如果</code>，<code>else</code>&#x3D;<code>否则</code></p>
+</li>
+<li><p><code>if</code>和<code>else</code>语句下的缩进是为了方便代码的可读性。C#本身不太在意缩进或空白。因为在<code>if</code>或<code>else</code>关键词后的语句会根据条件执行。</p>
+</li>
+</ul>
+<p>因为缩进并不重要，所以你需要使用 <code>&#123;</code>  和  <code>&#125; </code>来表示想要有多个语句成为条件执行块的一部分。通常来说在所有的<code>if</code>和<code>else</code>上都会使用这些大括号。下面的例子可以试试看。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">int</span> c = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">if</span> ((a + b + c &gt; <span class="number">10</span>) &amp;&amp; (a == b))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;或者a和b的数字相等&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案不大于 10&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;或者a和b的数字不相等&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/eL7ypy3o.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>该<code>if</code>语句里的<code>==</code>符号代表变量值相等</li>
+<li>代码里    <code>&amp;&amp; </code>   代表 “和” 。也就是两个条件都必须满足才能执行 true 分支中的语句</li>
+<li>另外还有  <code>||</code>  表示 “或” 。也就是两个条件满足任意一个即可执行 true 分支的语句</li>
+<li>每个条件分支中可以有多个语句，前提是将它们在<code>&#123;   &#125;</code>里</li>
+</ul>
+<h2 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a><code>while</code>语句</h2><p>创建程序的另一个重要概念是<strong>循环</strong>。使用循环来重复想要多次执行的语句。试试以下代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (counter &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为 ： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>while</code>语句会检查条件并执行 后面的语句，直到条件为假为止。<br>此示例中还有另一个新运算符。  <code>++</code>   是<strong>增量</strong>运算符。它将 <code>counter</code> 的值加 1，并将该值存储在 <code>counter</code> 变量中。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/o5YvHSbs.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li><strong>注意：确保<code>while</code>在执行代码时循环条件确实切换为 false。否则，将创建一个 无限循环，程序永远不会结束。</strong></li>
+</ul>
+<h2 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do..while语句"></a><code>do..while</code>语句</h2><p>与while循环不同</p>
+<ul>
+<li>do while循环需要循环体<code>&#123;   &#125;</code>里的内容至少执行一次在进行判断，无论条件最终值是否为真。</li>
+<li>while循环在执行循环体之前会首先判断条件。</li>
+</ul>
+<p>示例：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125; <span class="keyword">while</span> (counter &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/y5FLSifR.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a><code>for</code> 语句</h2><p>在 C# 代码中看到的另一个常见循环语句是 <code>for</code>循环。尝试以下代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> counter = <span class="number">0</span>; counter &lt; <span class="number">10</span>; counter++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>第一部分是<strong>for 初始化</strong>程序：<code>int counter = 0;</code>声明了一个名字为<code>counter</code>的循环变量，并赋值设置为<code>0</code>。</li>
+<li>中间部分是<strong>for条件</strong>：<code>counter &lt; 10</code>声明 ，只要<code>counter</code>的值小于10，这个<code>for</code>循环就继续执行。</li>
+<li>最后一部分是<strong>for 迭代器</strong>：<code>counter++</code>指进行<code>for</code>循环时<code>counter</code>每次变量值时应该增加 1。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/KvlAaFcz.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="循环体"><a href="#循环体" class="headerlink" title="循环体"></a>循环体</h2><p><code>while</code>、<code>do</code>、 或<code>for</code>循环可以嵌套在另一个循环中，以使用外循环中的每个项目与内循环中的每个项目的组合来创建矩阵。<br>下面的代码可以生成1-10的数字：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;row的值为：  <span class="subst">&#123;row&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>下面的代码可以生成a-j的字母：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;column 的值为： <span class="subst">&#123;column&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>下面将一个上面的循环嵌套在另一个循环中以形成矩阵：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">  &#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;矩阵为： (<span class="subst">&#123;row&#125;</span>, <span class="subst">&#123;column&#125;</span>)&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>运行结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/cG9WwKW9.png"
+                      style="zoom:50%;" 
+                >
+
+<p>每次完整运行内循环时，外循环都会递增一次。</p>
+<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
+<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
+<p><span style="color:green">         字符串的修改方法。</span></p>
+<p><span style="color:blue">         C#的运算逻辑。</span></p>
+<p><span style="color:blue">         数据类型的区别和精度。</span></p>
+<p><span style="color:orange">         分支和循环语句。</span></p>
+<p><span style="color:orange">         循环体。</span></p>
+]]></content>
+      <tags>
+        <tag>编程入门</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C shorp 基础(一)</title>
     <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%80/</url>
     <content><![CDATA[<h1 id="运行第一个C-程序"><a href="#运行第一个C-程序" class="headerlink" title="         运行第一个C#程序"></a><span style="color:green">         运行第一个C#程序</span></h1><p>在代码编辑器如**<code>visual studio</code>**中运行以下代码。</p>
@@ -155,228 +283,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C shorp 基础(三)</title>
-    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%B8%89/</url>
-    <content><![CDATA[<h1 id="使用分支和循环语句"><a href="#使用分支和循环语句" class="headerlink" title="         使用分支和循环语句"></a><span style="color:orange">         使用分支和循环语句</span></h1><p>这篇内容为：如何编写检查变量并根据这些变量更改执行路径的代码。</p>
-<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a><code>if</code> 语句</h2><p>在编辑器中运行以下代码。</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">if</span> (a + b &gt; <span class="number">10</span>)</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10.&quot;</span>);</span><br></pre></td></tr></table></figure></div>
-
-<p>运行结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/6qFG6yoy.png"
-                      style="zoom:50%;" 
-                >
-
-<ul>
-<li>修改变量的值，不难发现如果答案小于 10将不会输出任何内容。因为不符合<code>if</code>语句的判断条件。</li>
-<li>因为只编写了语句的可能分支之一：<code>真实分支</code>。那么当判断为假的情况下将没有任何代码要执行</li>
-</ul>
-<h2 id="else-语句"><a href="#else-语句" class="headerlink" title="else 语句"></a><code>else</code> 语句</h2><p>要在 true 和 false 分支中执行不同的代码，您可以创建一个<code>else</code>在条件为 false 时执行的分支。尝试这个：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">if</span> (a + b &gt; <span class="number">10</span>)</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10&quot;</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案小于 10&quot;</span>);</span><br></pre></td></tr></table></figure></div>
-
-<p>运行结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/Ht3dd6PX.png"
-                      style="zoom:50%;" 
-                >
-
-<ul>
-<li><p><code>else</code>只会在<code>if判断</code>为假时执行，可以理解为中文语境里的<code>if</code>&#x3D;<code>如果</code>，<code>else</code>&#x3D;<code>否则</code></p>
-</li>
-<li><p><code>if</code>和<code>else</code>语句下的缩进是为了方便代码的可读性。C#本身不太在意缩进或空白。因为在<code>if</code>或<code>else</code>关键词后的语句会根据条件执行。</p>
-</li>
-</ul>
-<p>因为缩进并不重要，所以你需要使用 <code>&#123;</code>  和  <code>&#125; </code>来表示想要有多个语句成为条件执行块的一部分。通常来说在所有的<code>if</code>和<code>else</code>上都会使用这些大括号。下面的例子可以试试看。</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">int</span> c = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">if</span> ((a + b + c &gt; <span class="number">10</span>) &amp;&amp; (a == b))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案大于 10&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;或者a和b的数字相等&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;答案不大于 10&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;或者a和b的数字不相等&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>输出结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/eL7ypy3o.png"
-                      style="zoom:50%;" 
-                >
-
-<ul>
-<li>该<code>if</code>语句里的<code>==</code>符号代表变量值相等</li>
-<li>代码里    <code>&amp;&amp; </code>   代表 “和” 。也就是两个条件都必须满足才能执行 true 分支中的语句</li>
-<li>另外还有  <code>||</code>  表示 “或” 。也就是两个条件满足任意一个即可执行 true 分支的语句</li>
-<li>每个条件分支中可以有多个语句，前提是将它们在<code>&#123;   &#125;</code>里</li>
-</ul>
-<h2 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a><code>while</code>语句</h2><p>创建程序的另一个重要概念是<strong>循环</strong>。使用循环来重复想要多次执行的语句。试试以下代码：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (counter &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为 ： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p><code>while</code>语句会检查条件并执行 后面的语句，直到条件为假为止。<br>此示例中还有另一个新运算符。  <code>++</code>   是<strong>增量</strong>运算符。它将 <code>counter</code> 的值加 1，并将该值存储在 <code>counter</code> 变量中。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/o5YvHSbs.png"
-                      style="zoom:50%;" 
-                >
-
-<ul>
-<li><strong>注意：确保<code>while</code>在执行代码时循环条件确实切换为 false。否则，将创建一个 无限循环，程序永远不会结束。</strong></li>
-</ul>
-<h2 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do..while语句"></a><code>do..while</code>语句</h2><p>与while循环不同</p>
-<ul>
-<li>do while循环需要循环体<code>&#123;   &#125;</code>里的内容至少执行一次在进行判断，无论条件最终值是否为真。</li>
-<li>while循环在执行循环体之前会首先判断条件。</li>
-</ul>
-<p>示例：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125; <span class="keyword">while</span> (counter &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure></div>
-
-<p>输出结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/y5FLSifR.png"
-                      style="zoom:50%;" 
-                >
-
-<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a><code>for</code> 语句</h2><p>在 C# 代码中看到的另一个常见循环语句是 <code>for</code>循环。尝试以下代码：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> counter = <span class="number">0</span>; counter &lt; <span class="number">10</span>; counter++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;计数器数字为： <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>第一部分是<strong>for 初始化</strong>程序：<code>int counter = 0;</code>声明了一个名字为<code>counter</code>的循环变量，并赋值设置为<code>0</code>。</li>
-<li>中间部分是<strong>for条件</strong>：<code>counter &lt; 10</code>声明 ，只要<code>counter</code>的值小于10，这个<code>for</code>循环就继续执行。</li>
-<li>最后一部分是<strong>for 迭代器</strong>：<code>counter++</code>指进行<code>for</code>循环时<code>counter</code>每次变量值时应该增加 1。</li>
-</ul>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/KvlAaFcz.png"
-                      style="zoom:50%;" 
-                >
-
-<h2 id="循环体"><a href="#循环体" class="headerlink" title="循环体"></a>循环体</h2><p><code>while</code>、<code>do</code>、 或<code>for</code>循环可以嵌套在另一个循环中，以使用外循环中的每个项目与内循环中的每个项目的组合来创建矩阵。<br>下面的代码可以生成1-10的数字：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;row的值为：  <span class="subst">&#123;row&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>下面的代码可以生成a-j的字母：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;column 的值为： <span class="subst">&#123;column&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>下面将一个上面的循环嵌套在另一个循环中以形成矩阵：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">  &#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;矩阵为： (<span class="subst">&#123;row&#125;</span>, <span class="subst">&#123;column&#125;</span>)&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>运行结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/cG9WwKW9.png"
-                      style="zoom:50%;" 
-                >
-
-<p>每次完整运行内循环时，外循环都会递增一次。</p>
-<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
-<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
-<p><span style="color:green">         字符串的修改方法。</span></p>
-<p><span style="color:blue">         C#的运算逻辑。</span></p>
-<p><span style="color:blue">         数据类型的区别和精度。</span></p>
-<p><span style="color:orange">         分支和循环语句。</span></p>
-<p><span style="color:orange">         循环体。</span></p>
-]]></content>
-      <tags>
-        <tag>编程入门</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C shorp 基础(二)</title>
-    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/</url>
-    <content><![CDATA[<h1 id="在-C-中操作整数和浮点数。"><a href="#在-C-中操作整数和浮点数。" class="headerlink" title="         在 C# 中操作整数和浮点数。"></a><span style="color:blue">         在 C# 中操作整数和浮点数。</span></h1><h2 id="int类型"><a href="#int类型" class="headerlink" title="int类型"></a><code>int</code>类型</h2><p>在编辑器中运行以下代码。</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="built_in">int</span> c = a + b;</span><br><span class="line"><span class="built_in">int</span> d = a - b;</span><br><span class="line"><span class="built_in">int</span> e = a * b;</span><br><span class="line"><span class="built_in">int</span> f = a / b;</span><br><span class="line">Console.WriteLine(c);</span><br><span class="line">Console.WriteLine(d);</span><br><span class="line">Console.WriteLine(e);</span><br><span class="line">Console.WriteLine(f);</span><br></pre></td></tr></table></figure></div>
-
-<p>这是整数的基本数学运算之一。该<code>int</code>类型表示一个<strong>整数</strong>、正整数或负整数。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/Il58QcEG.png"
-                      style="zoom:50%;" 
-                >
-
-<p>C# 语言定义了不同数学运算的优先级，其规则与数学规则一致。<strong>乘法和除法优先于加法和减法</strong>。可以通过在要首先执行的一个或多个操作周围<strong>添加括号来强制执行不同的操作顺序</strong></p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/OIDjy7IH.png"
-                      style="zoom:50%;" 
-                >
-
-<p>即使您希望结果包含小数或小数部分但<strong>整数除法始终会产生整数结果</strong>，可以使用<strong>余数运算符</strong>获得余数。字符：<code>%</code></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">7</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">int</span> c = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">int</span> d = (a + b) / c;</span><br><span class="line"><span class="built_in">int</span> e = (a + b) % c;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;整数: <span class="subst">&#123;d&#125;</span>&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;余数: <span class="subst">&#123;e&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/IzZlUHU1.png"
-                      style="zoom:50%;" 
-                >
-
-<ul>
-<li><code>int</code>类型具有最小和最大限制，范围是    <strong>-2147483648</strong>   至   <strong>2147483647</strong></li>
-<li>计算产生的值超出这些限制，则出现<strong>下溢</strong>或<strong>溢出</strong>情况。</li>
-</ul>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/i2X29a9N.png"
-                      style="zoom:50%;" 
-                >
-
-<p>输出结果非常接近最小（负）整数。它相当于<code>最小值 + 2</code>。</p>
-<h2 id="double类型"><a href="#double类型" class="headerlink" title="double类型"></a><code>double</code>类型</h2><p><code>int</code>类型不能满足需求时，可以使用具有不同限制和精度的其他数字类型，**<code>double</code>类型<strong>表示双精度浮点数，</strong>双精度<strong>是一个相对术语，描述用于存储值的二进制位数。</strong>双精度** 数的二进制位数是<strong>单精度</strong>数的两倍。在现代计算机上，使用双精度数字比使用单精度数字更常见。<strong>单精度</strong>数字使用<code>float</code>关键字声明。</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">double</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">double</span> c = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">double</span> d = (a + b) / c;</span><br><span class="line">Console.WriteLine(d);</span><br></pre></td></tr></table></figure></div>
-
-<p>输出结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/kurA6Jf0.png"
-                      style="zoom:50%;" 
-                >
-
-<p>同样，双精度类型也有取值范围，但范围较整数类型大得多 ：</p>
-<ul>
-<li><strong><code>-1.79769313486232E+308</code> 至 <code>1.79769313486232E+308</code></strong></li>
-<li>这个范围用科学计数法表示：左边的数字<code>E</code>是有效数。右边的数字是指数</li>
-</ul>
-<p><strong>C# 中的双精度数也可能存在舍入错误</strong></p>
-<p>例如：<strong>计算1&#x2F;3的结果</strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> third = <span class="number">1.0</span> / <span class="number">3.0</span>;</span><br><span class="line">Console.WriteLine(third);</span><br></pre></td></tr></table></figure></div>
-
-<p>运行上面的代码会输出<code>0.333333333333333</code>，<strong>这个结果并不等于1&#x2F;3</strong></p>
-<h2 id="decimal类型"><a href="#decimal类型" class="headerlink" title="decimal类型"></a><code>decimal</code>类型</h2><p>与<code>double</code> 相比，<code>decimal</code>类型的范围更小，但精度更高。</p>
-<ul>
-<li>范围：  <code>-79228162514264337593543950335 </code> 到  <code>79228162514264337593543950335</code></li>
-</ul>
-<p>运行下面的代码：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> a = <span class="number">1.0</span>;</span><br><span class="line"><span class="built_in">double</span> b = <span class="number">3.0</span>;</span><br><span class="line">Console.WriteLine(a / b);</span><br><span class="line"></span><br><span class="line"><span class="built_in">decimal</span> c = <span class="number">1.0</span>M;</span><br><span class="line"><span class="built_in">decimal</span> d = <span class="number">3.0</span>M;</span><br><span class="line">Console.WriteLine(c / d);</span><br></pre></td></tr></table></figure></div>
-
-<p>输出结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/07/XR2NZIa5.png"
-                      style="zoom:50%;" 
-                >
-
-<ul>
-<li>注意，使用小数类型的数学在小数点右侧有更多的数字。</li>
-<li>数字上的后缀<code>M</code>指示常量应使用该<code>decimal</code>类型。否则，编译器将采用该<code>double</code>类型。</li>
-</ul>
-<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
-<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
-<p><span style="color:green">         字符串的修改方法。</span></p>
-<p><span style="color:blue">         C#的运算逻辑。</span></p>
-<p><span style="color:blue">         数据类型的区别和精度。</span></p>
-]]></content>
-      <tags>
-        <tag>编程入门</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C shorp 基础(四)</title>
     <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E5%9B%9B/</url>
     <content><![CDATA[<h1 id="C-中的列表"><a href="#C-中的列表" class="headerlink" title="         C#中的列表"></a><span style="color:pink">         C#中的列表</span></h1><p>在编辑器中输入以下代码（可以<code>&lt;your name&gt;</code>将替换为你自己的名字）并选择<strong>“运行”</strong>：</p>
@@ -487,54 +393,97 @@
       </tags>
   </entry>
   <entry>
-    <title>PCB规则</title>
-    <url>/2023/07/24/PCB%E8%A7%84%E5%88%99/</url>
-    <content><![CDATA[<h1 id="PCB布局的技巧"><a href="#PCB布局的技巧" class="headerlink" title="PCB布局的技巧"></a><strong>PCB布局的技巧</strong></h1><p><strong>1、弄清电路板物理限制</strong></p>
-<p>摆放元器件之前，先确定电路板的安装孔、边缘接插件的位置以及电路板的机械尺寸限制。</p>
-<p><strong>2、弄清电路板制作工艺</strong></p>
-<p>电路的组装工艺和测试流程、是否需要对PCB V型切槽预留空间、元器件焊接工艺等。</p>
-<p><strong>3、给集成芯片留下喘气空间</strong></p>
-<p>摆放元器件时，尽可能在它们之间留下至少350mil的距离，对于引脚多的芯片，留的空间需要更大。</p>
-<p><strong>4、相同器件方向一致</strong></p>
-<p>对于相同的器件，尽可能保持一致队形。便于后期电路板的组装、检查和测试，且保证焊点一致高。</p>
-<p><strong>5、减少引线交叉</strong></p>
-<p>通过调整器件位置和方向，减少引线交叉。可以为后面布线节省大量的精力。</p>
-<p><strong>6、先摆放电路边缘器件</strong></p>
-<p>对于因受机械限制而无法任意移动的器件，要先进行摆放，比如电路板上的外部接插件、开关、USB端口等。</p>
-<p><strong>7、避免器件之间冲突</strong></p>
-<p>绝对避免为了在小的电路板中布线而将器件的焊盘重叠共用，或使得器件边缘重叠，最好在所有器件之间保持40mil的距离。</p>
-<p><strong>8、将器件尽量放在同一面</strong></p>
-<p>电路板上的器件是通过自动器件摆放机器完成，器件只在一面，生产PCB过程只需要一遍即可，否则就需要两次器件摆放，浪费生产时间也浪费成本。</p>
-<p><strong>9、保持芯片管脚和器件极性一致</strong></p>
-<p>电路板上元器件的极性和方向凌乱的话，对于成功焊接电路板有阻碍。</p>
-<p><strong>10、器件位置与原理图上相似</strong></p>
-<p>设计原理图时，就已经优化了器件之间的位置关系(连线最短、交叉最少)，所以按照原理图上器件位置来摆放PCB器件会更合理。</p>
-<p><strong>PCB布线的规则</strong></p>
-<p><strong>1、走线的方向控制规则</strong></p>
-<p>即相邻层的走线方向成正交结构。避免将不同的信号线在相邻层走成同一方向，以减少不必要的层间窜扰；当由于板结构限制(如某些背板)难以避免出现该情况，特别是信号速率较高时，应考虑用地平面隔离各布线层，用地信号线隔离各信号线。</p>
-<p><strong>2、走线的开环检查规则</strong></p>
-<p>一般不允许出现一端浮空的布线(Dangling Line)， 主要是为了避免产生”天线效应”，减少不必要的干扰辐射和接受，否则可能带来不可预知的结果。</p>
-<p><strong>3、阻抗匹配检查规则</strong></p>
-<p>同一网络的布线宽度应保持一致，线宽的变化会造成线路特性阻抗的不均匀，当传输的速度较高时会产生反射，在设计中应该尽量避免这种情况。</p>
-<p><strong>4、走线长度控制规则</strong></p>
-<p>即短线规则，在设计时应该尽量让布线长度尽量短，以减少由于走线过长带来的干扰问题，特别是一些重要信号线，如时钟线，务必将其振荡器放在离器件很近的地方。</p>
-<p><strong>5、倒角规则</strong></p>
-<p>PCB设计中应避免产生锐角和直角， 产生不必要的辐射，同时工艺性能也不好。</p>
-<p><strong>6、器件去耦规则</strong></p>
-<p>在印制版上增加必要的去耦电容，滤除电源上的干扰信号，使电源信号稳定。</p>
-<p><strong>7、地线回路规则</strong></p>
-<p>环路最小规则，即信号线与其回路构成的环面积要尽可能小，环面积越小，对外的辐射越少，接收外界的干扰也越小。</p>
-<p><strong>8、电源与地线层的完整性规则</strong></p>
-<p>对于导通孔密集的区域，要注意避免孔在电源和地层的挖空区域相互连接，形成对平面层的分割，从而破坏平面层的完整性，并进而导致信号线在地层的回路面积增大。</p>
-<p><strong>9、屏蔽保护</strong></p>
-<p>对应地线回路规则，实际上也是为了尽量减小信号的回路面积，多见于一些比较重要的信号，如时钟信号，同步信号。</p>
-<p><strong>10、走线闭环检查规则</strong></p>
-<p>防止信号线在不同层间形成自环。在多层板设计中容易发生此类问题， 自环将引起辐射干扰。</p>
-<p><strong>11、孤立铜区控制规则</strong></p>
-<p>孤立铜区的出现， 将带来一些不可预知的问题， 因此将孤立铜区与别的信号相接， 有助于改善信号质量，通常是将孤立铜区接地或删除。</p>
+    <title>C shorp 基础(二)</title>
+    <url>/2023/07/07/C-shorp-%E5%9F%BA%E7%A1%80-%E4%BA%8C/</url>
+    <content><![CDATA[<h1 id="在-C-中操作整数和浮点数。"><a href="#在-C-中操作整数和浮点数。" class="headerlink" title="         在 C# 中操作整数和浮点数。"></a><span style="color:blue">         在 C# 中操作整数和浮点数。</span></h1><h2 id="int类型"><a href="#int类型" class="headerlink" title="int类型"></a><code>int</code>类型</h2><p>在编辑器中运行以下代码。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="built_in">int</span> c = a + b;</span><br><span class="line"><span class="built_in">int</span> d = a - b;</span><br><span class="line"><span class="built_in">int</span> e = a * b;</span><br><span class="line"><span class="built_in">int</span> f = a / b;</span><br><span class="line">Console.WriteLine(c);</span><br><span class="line">Console.WriteLine(d);</span><br><span class="line">Console.WriteLine(e);</span><br><span class="line">Console.WriteLine(f);</span><br></pre></td></tr></table></figure></div>
+
+<p>这是整数的基本数学运算之一。该<code>int</code>类型表示一个<strong>整数</strong>、正整数或负整数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/Il58QcEG.png"
+                      style="zoom:50%;" 
+                >
+
+<p>C# 语言定义了不同数学运算的优先级，其规则与数学规则一致。<strong>乘法和除法优先于加法和减法</strong>。可以通过在要首先执行的一个或多个操作周围<strong>添加括号来强制执行不同的操作顺序</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/OIDjy7IH.png"
+                      style="zoom:50%;" 
+                >
+
+<p>即使您希望结果包含小数或小数部分但<strong>整数除法始终会产生整数结果</strong>，可以使用<strong>余数运算符</strong>获得余数。字符：<code>%</code></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">7</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">int</span> c = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">int</span> d = (a + b) / c;</span><br><span class="line"><span class="built_in">int</span> e = (a + b) % c;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;整数: <span class="subst">&#123;d&#125;</span>&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;余数: <span class="subst">&#123;e&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/IzZlUHU1.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li><code>int</code>类型具有最小和最大限制，范围是    <strong>-2147483648</strong>   至   <strong>2147483647</strong></li>
+<li>计算产生的值超出这些限制，则出现<strong>下溢</strong>或<strong>溢出</strong>情况。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/i2X29a9N.png"
+                      style="zoom:50%;" 
+                >
+
+<p>输出结果非常接近最小（负）整数。它相当于<code>最小值 + 2</code>。</p>
+<h2 id="double类型"><a href="#double类型" class="headerlink" title="double类型"></a><code>double</code>类型</h2><p><code>int</code>类型不能满足需求时，可以使用具有不同限制和精度的其他数字类型，**<code>double</code>类型<strong>表示双精度浮点数，</strong>双精度<strong>是一个相对术语，描述用于存储值的二进制位数。</strong>双精度** 数的二进制位数是<strong>单精度</strong>数的两倍。在现代计算机上，使用双精度数字比使用单精度数字更常见。<strong>单精度</strong>数字使用<code>float</code>关键字声明。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">double</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">double</span> c = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">double</span> d = (a + b) / c;</span><br><span class="line">Console.WriteLine(d);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/kurA6Jf0.png"
+                      style="zoom:50%;" 
+                >
+
+<p>同样，双精度类型也有取值范围，但范围较整数类型大得多 ：</p>
+<ul>
+<li><strong><code>-1.79769313486232E+308</code> 至 <code>1.79769313486232E+308</code></strong></li>
+<li>这个范围用科学计数法表示：左边的数字<code>E</code>是有效数。右边的数字是指数</li>
+</ul>
+<p><strong>C# 中的双精度数也可能存在舍入错误</strong></p>
+<p>例如：<strong>计算1&#x2F;3的结果</strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> third = <span class="number">1.0</span> / <span class="number">3.0</span>;</span><br><span class="line">Console.WriteLine(third);</span><br></pre></td></tr></table></figure></div>
+
+<p>运行上面的代码会输出<code>0.333333333333333</code>，<strong>这个结果并不等于1&#x2F;3</strong></p>
+<h2 id="decimal类型"><a href="#decimal类型" class="headerlink" title="decimal类型"></a><code>decimal</code>类型</h2><p>与<code>double</code> 相比，<code>decimal</code>类型的范围更小，但精度更高。</p>
+<ul>
+<li>范围：  <code>-79228162514264337593543950335 </code> 到  <code>79228162514264337593543950335</code></li>
+</ul>
+<p>运行下面的代码：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">double</span> a = <span class="number">1.0</span>;</span><br><span class="line"><span class="built_in">double</span> b = <span class="number">3.0</span>;</span><br><span class="line">Console.WriteLine(a / b);</span><br><span class="line"></span><br><span class="line"><span class="built_in">decimal</span> c = <span class="number">1.0</span>M;</span><br><span class="line"><span class="built_in">decimal</span> d = <span class="number">3.0</span>M;</span><br><span class="line">Console.WriteLine(c / d);</span><br></pre></td></tr></table></figure></div>
+
+<p>输出结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/07/XR2NZIa5.png"
+                      style="zoom:50%;" 
+                >
+
+<ul>
+<li>注意，使用小数类型的数学在小数点右侧有更多的数字。</li>
+<li>数字上的后缀<code>M</code>指示常量应使用该<code>decimal</code>类型。否则，编译器将采用该<code>double</code>类型。</li>
+</ul>
+<h1 id="到此已经学会了："><a href="#到此已经学会了：" class="headerlink" title="到此已经学会了："></a><span style="color:Gold">到此已经学会了：</span></h1><p><span style="color:green">         使用 <code>Console.WriteLine()</code> 将文本显示在屏幕上。</span></p>
+<p><span style="color:green">         如何声明变量和将字符串们串联在一起。</span></p>
+<p><span style="color:green">         字符串的修改方法。</span></p>
+<p><span style="color:blue">         C#的运算逻辑。</span></p>
+<p><span style="color:blue">         数据类型的区别和精度。</span></p>
 ]]></content>
       <tags>
-        <tag>硬件</tag>
+        <tag>编程入门</tag>
       </tags>
   </entry>
   <entry>
@@ -622,6 +571,573 @@
 <p>完整代码：</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding=gbk</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup <span class="keyword">as</span> bs</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">prompt</span>(<span class="params">text</span>):</span><br><span class="line">    key = <span class="string">&quot;y~.,ZaabH6Ri?L7*&quot;</span>.zfill(<span class="number">16</span>).encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    iv = <span class="string">&quot;koJ)KZhR1RW)!_~M&quot;</span>.zfill(<span class="number">16</span>).encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    cipher = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="line">    temp = <span class="string">b&quot;&quot;</span></span><br><span class="line">    data = text.encode()</span><br><span class="line">    data = data + <span class="string">&quot;\0&quot;</span>.encode() * (<span class="number">16</span> - <span class="built_in">len</span>(data) % <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(<span class="built_in">len</span>(data) / <span class="number">16</span>)):</span><br><span class="line">        block = data[<span class="number">16</span> * i: <span class="number">16</span> * (i + <span class="number">1</span>)]</span><br><span class="line">        b = cipher.encrypt(block)</span><br><span class="line">        temp += b</span><br><span class="line">    res = base64.b64encode(temp).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">submit</span>(<span class="params">pro, his</span>):</span><br><span class="line">    url = <span class="string">&quot;https://gpt.tool00.com/api/v1/chat/submit&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;accept&quot;</span>: <span class="string">&quot;*/*&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip, deflate, br&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9&quot;</span>,</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cookie&quot;</span>: <span class="string">&quot;_ga=GA1.1.800331461.1681885375; FCNEC=%5B%5B%22AKsRol9hmarvKjjCFyL8FNDRa4pULxPROMocI7VYSD0RbFdjyJTZC7l-bg8X9jiqb_sgT20JjKZUcByZcxCISeOtpn6yrS-MfP7fBKq_bnxmfgqatIjGyGj94fs7mzCuRdhlqjb3wptJRkxJW7PtMVyBrDHMULZplA%3D%3D%22%5D%2Cnull%2C%5B%5D%5D; __gads=ID=687486c546a2283f-22c4ae5397e0000b:T=1683182853:RT=1683182853:S=ALNI_MZCmtWOxQGyc3bhufEj8nnhyv6Pqg; __gpi=UID=00000c01738ff6e2:T=1683182853:RT=1683182853:S=ALNI_MZfy93-Hs1rY1R4PPrdQzg6CqPS3w; _ga_60RX9FESNC=GS1.1.1683187497.3.0.1683187497.0.0.0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;origin&quot;</span>: <span class="string">&quot;https://gpt.tool00.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://gpt.tool00.com/&quot;</span>,</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;prompt&quot;</span>: pro,</span><br><span class="line">        <span class="string">&quot;his&quot;</span>: his</span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.post(url, headers=headers, data=json.dumps(data))</span><br><span class="line">    session = re.search(<span class="string">&quot;[0-9a-z]&#123;8&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;12&#125;&quot;</span>, r.headers[<span class="string">&quot;set-cookie&quot;</span>])</span><br><span class="line">    <span class="keyword">return</span> session.group()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stream</span>(<span class="params">session</span>):</span><br><span class="line">    url = <span class="string">&quot;https://gpt.tool00.com/api/v1/chat/stream&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;accept&quot;</span>: <span class="string">&quot;*/*&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip, deflate, br&quot;</span>,</span><br><span class="line">        <span class="string">&quot;accept-language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cache-control&quot;</span>: <span class="string">&quot;no-cache&quot;</span>,</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cookie&quot;</span>: <span class="string">&quot;_ga=GA1.1.800331461.1681885375; FCNEC=%5B%5B%22AKsRol9hmarvKjjCFyL8FNDRa4pULxPROMocI7VYSD0RbFdjyJTZC7l-bg8X9jiqb_sgT20JjKZUcByZcxCISeOtpn6yrS-MfP7fBKq_bnxmfgqatIjGyGj94fs7mzCuRdhlqjb3wptJRkxJW7PtMVyBrDHMULZplA%3D%3D%22%5D%2Cnull%2C%5B%5D%5D; __gads=ID=687486c546a2283f-22c4ae5397e0000b:T=1683182853:RT=1683182853:S=ALNI_MZCmtWOxQGyc3bhufEj8nnhyv6Pqg; __gpi=UID=00000c01738ff6e2:T=1683182853:RT=1683182853:S=ALNI_MZfy93-Hs1rY1R4PPrdQzg6CqPS3w; _ga_60RX9FESNC=GS1.1.1683187497.3.0.1683187497.0.0.0; session=&quot;</span> + session,</span><br><span class="line">        <span class="string">&quot;origin&quot;</span>: <span class="string">&quot;https://gpt.tool00.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://gpt.tool00.com/&quot;</span>,</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.get(url, headers=headers)</span><br><span class="line">    b = bs(r.content, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    extr = re.findall(<span class="string">&#x27;&quot;content&quot;: &quot;.*&quot;&#x27;</span>, <span class="built_in">str</span>(b))</span><br><span class="line">    ans = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i, n <span class="keyword">in</span> <span class="built_in">enumerate</span>(extr):</span><br><span class="line">        <span class="keyword">if</span> i &gt;= <span class="number">1</span>:</span><br><span class="line">            ans += n[<span class="number">12</span>:-<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&gt;&gt; &quot;</span> + ans.encode(<span class="string">&quot;utf-8&quot;</span>).decode(<span class="string">&#x27;unicode_escape&#x27;</span>))</span><br><span class="line"></span><br><span class="line">history = []</span><br><span class="line"><span class="keyword">while</span> (text := <span class="built_in">input</span>(<span class="string">&quot;&gt;&gt; &quot;</span>)):</span><br><span class="line">    <span class="keyword">if</span> text != <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">        stream(submit(prompt(text), history))</span><br><span class="line">        history.append(text)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></div>
 
+]]></content>
+      <tags>
+        <tag>编程进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PCB规则</title>
+    <url>/2023/07/24/PCB%E8%A7%84%E5%88%99/</url>
+    <content><![CDATA[<h1 id="PCB布局的技巧"><a href="#PCB布局的技巧" class="headerlink" title="PCB布局的技巧"></a><strong>PCB布局的技巧</strong></h1><p><strong>1、弄清电路板物理限制</strong></p>
+<p>摆放元器件之前，先确定电路板的安装孔、边缘接插件的位置以及电路板的机械尺寸限制。</p>
+<p><strong>2、弄清电路板制作工艺</strong></p>
+<p>电路的组装工艺和测试流程、是否需要对PCB V型切槽预留空间、元器件焊接工艺等。</p>
+<p><strong>3、给集成芯片留下喘气空间</strong></p>
+<p>摆放元器件时，尽可能在它们之间留下至少350mil的距离，对于引脚多的芯片，留的空间需要更大。</p>
+<p><strong>4、相同器件方向一致</strong></p>
+<p>对于相同的器件，尽可能保持一致队形。便于后期电路板的组装、检查和测试，且保证焊点一致高。</p>
+<p><strong>5、减少引线交叉</strong></p>
+<p>通过调整器件位置和方向，减少引线交叉。可以为后面布线节省大量的精力。</p>
+<p><strong>6、先摆放电路边缘器件</strong></p>
+<p>对于因受机械限制而无法任意移动的器件，要先进行摆放，比如电路板上的外部接插件、开关、USB端口等。</p>
+<p><strong>7、避免器件之间冲突</strong></p>
+<p>绝对避免为了在小的电路板中布线而将器件的焊盘重叠共用，或使得器件边缘重叠，最好在所有器件之间保持40mil的距离。</p>
+<p><strong>8、将器件尽量放在同一面</strong></p>
+<p>电路板上的器件是通过自动器件摆放机器完成，器件只在一面，生产PCB过程只需要一遍即可，否则就需要两次器件摆放，浪费生产时间也浪费成本。</p>
+<p><strong>9、保持芯片管脚和器件极性一致</strong></p>
+<p>电路板上元器件的极性和方向凌乱的话，对于成功焊接电路板有阻碍。</p>
+<p><strong>10、器件位置与原理图上相似</strong></p>
+<p>设计原理图时，就已经优化了器件之间的位置关系(连线最短、交叉最少)，所以按照原理图上器件位置来摆放PCB器件会更合理。</p>
+<p><strong>PCB布线的规则</strong></p>
+<p><strong>1、走线的方向控制规则</strong></p>
+<p>即相邻层的走线方向成正交结构。避免将不同的信号线在相邻层走成同一方向，以减少不必要的层间窜扰；当由于板结构限制(如某些背板)难以避免出现该情况，特别是信号速率较高时，应考虑用地平面隔离各布线层，用地信号线隔离各信号线。</p>
+<p><strong>2、走线的开环检查规则</strong></p>
+<p>一般不允许出现一端浮空的布线(Dangling Line)， 主要是为了避免产生”天线效应”，减少不必要的干扰辐射和接受，否则可能带来不可预知的结果。</p>
+<p><strong>3、阻抗匹配检查规则</strong></p>
+<p>同一网络的布线宽度应保持一致，线宽的变化会造成线路特性阻抗的不均匀，当传输的速度较高时会产生反射，在设计中应该尽量避免这种情况。</p>
+<p><strong>4、走线长度控制规则</strong></p>
+<p>即短线规则，在设计时应该尽量让布线长度尽量短，以减少由于走线过长带来的干扰问题，特别是一些重要信号线，如时钟线，务必将其振荡器放在离器件很近的地方。</p>
+<p><strong>5、倒角规则</strong></p>
+<p>PCB设计中应避免产生锐角和直角， 产生不必要的辐射，同时工艺性能也不好。</p>
+<p><strong>6、器件去耦规则</strong></p>
+<p>在印制版上增加必要的去耦电容，滤除电源上的干扰信号，使电源信号稳定。</p>
+<p><strong>7、地线回路规则</strong></p>
+<p>环路最小规则，即信号线与其回路构成的环面积要尽可能小，环面积越小，对外的辐射越少，接收外界的干扰也越小。</p>
+<p><strong>8、电源与地线层的完整性规则</strong></p>
+<p>对于导通孔密集的区域，要注意避免孔在电源和地层的挖空区域相互连接，形成对平面层的分割，从而破坏平面层的完整性，并进而导致信号线在地层的回路面积增大。</p>
+<p><strong>9、屏蔽保护</strong></p>
+<p>对应地线回路规则，实际上也是为了尽量减小信号的回路面积，多见于一些比较重要的信号，如时钟信号，同步信号。</p>
+<p><strong>10、走线闭环检查规则</strong></p>
+<p>防止信号线在不同层间形成自环。在多层板设计中容易发生此类问题， 自环将引起辐射干扰。</p>
+<p><strong>11、孤立铜区控制规则</strong></p>
+<p>孤立铜区的出现， 将带来一些不可预知的问题， 因此将孤立铜区与别的信号相接， 有助于改善信号质量，通常是将孤立铜区接地或删除。</p>
+]]></content>
+      <tags>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>光伏计算公式</title>
+    <url>/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="光伏计算公式"><a href="#光伏计算公式" class="headerlink" title="光伏计算公式"></a>光伏计算公式</h1><h2 id="转换效率"><a href="#转换效率" class="headerlink" title="转换效率"></a>转换效率</h2><p><strong>η</strong>&#x3D; <code>Pm</code>(光伏板的峰值功率)&#x2F;<code>S</code>(光伏板面积)×<code>Pin</code></p>
+<p>​		其中：<code>Pin</code>&#x3D;<code>1KW/㎡</code>&#x3D;<code>100mW/cm²</code></p>
+<h2 id="充电电压"><a href="#充电电压" class="headerlink" title="充电电压"></a>充电电压</h2><p><strong>Vmax</strong>&#x3D;<code>V额定</code>×<code>1.43倍</code></p>
+<h2 id="电池组件串并联"><a href="#电池组件串并联" class="headerlink" title="电池组件串并联"></a>电池组件串并联</h2><p><strong>电池组件并联数</strong>&#x3D;<code>负载日平均用电量</code>(Ah)&#x2F;<code>组件日平均发电量</code> (Ah)</p>
+<p><strong>电池组件串联数</strong>&#x3D;<code>系统工作电压</code>(V)×<code>系数1.43</code>&#x2F;<code>组件峰值工作电压</code>(V)</p>
+<h2 id="蓄电池容量"><a href="#蓄电池容量" class="headerlink" title="蓄电池容量"></a>蓄电池容量</h2><p><strong>蓄电池容量</strong>&#x3D;<code>负载日平均用电量</code>(Ah)×<code>连续阴雨天数</code>&#x2F;<code>最大放电深度</code></p>
+<h2 id="平均放电率"><a href="#平均放电率" class="headerlink" title="平均放电率"></a>平均放电率</h2><p><strong>平均放电率(h)</strong>&#x3D;<code>连续阴雨天数</code>×<code>负载工作时间</code>&#x2F;<code>最大放电深度</code></p>
+<h2 id="负载工作时间"><a href="#负载工作时间" class="headerlink" title="负载工作时间"></a>负载工作时间</h2><p><strong>负载工作时间(h)</strong>&#x3D;<code>∑负载功率</code>×<code>负载工作时间</code>&#x2F;<code>∑负载功率</code></p>
+<h2 id="蓄电池"><a href="#蓄电池" class="headerlink" title="蓄电池"></a>蓄电池</h2><p><strong>蓄电池容量</strong>&#x3D;<code>负载平均用电量</code>(Ah)×<code>连续阴雨天数</code>×<code>放电修正系数</code>&#x2F;<code>最大放电深度</code>×<code>低温修正系数</code></p>
+<p><strong>蓄电池串联数</strong>&#x3D;<code>系统工作电压</code>&#x2F;<code>蓄电池标称电压</code></p>
+<p><strong>蓄电池并联数</strong>&#x3D;<code>蓄电池总容量</code>&#x2F;<code>蓄电池标称容量</code></p>
+<h2 id="以峰值日照时数为依据的简易计算"><a href="#以峰值日照时数为依据的简易计算" class="headerlink" title="以峰值日照时数为依据的简易计算"></a>以峰值日照时数为依据的简易计算</h2><p><strong>组件功率</strong>&#x3D;(<code>用电器功率</code>×<code>用电时间</code>&#x2F;<code>当地峰值日照时数</code>)×<code>损耗系数</code></p>
+<blockquote>
+<p>损耗系数：取1.6～2.0根据当地污染程度、线路长短、安装角度等</p>
+</blockquote>
+<p><strong>蓄电池容量</strong>&#x3D;(<code>用电器功率</code>×<code>用电时间</code>&#x2F;<code>系统电压</code>)×<code>连续阴雨天数</code>×<code>系统安全系数</code></p>
+<blockquote>
+<p>系统安全系数：取1.6～2.0，根据蓄电池放电深度、冬季温度、逆变器转换效率等</p>
+</blockquote>
+<h2 id="以年辐射总量为依据的计算方式"><a href="#以年辐射总量为依据的计算方式" class="headerlink" title="以年辐射总量为依据的计算方式"></a>以年辐射总量为依据的计算方式</h2><p><strong>组件(方阵)</strong>&#x3D;<code>K</code>×(<code>用电器工作电压</code>×<code>用电器工作电流</code>×<code>用电时间</code>)&#x2F;<code>当地年辐射总量</code></p>
+<blockquote>
+<p>有人维护+一般使用时，**<code>K取230</code>**；</p>
+<p>无人维护+可靠使用时，**<code>K取251</code>**；</p>
+<p>无人维护+环境恶劣+要求非常可靠时，**<code>K取276</code>**。</p>
+</blockquote>
+<h2 id="以年辐射总量和斜面修正系数为依据的计算"><a href="#以年辐射总量和斜面修正系数为依据的计算" class="headerlink" title="以年辐射总量和斜面修正系数为依据的计算"></a>以年辐射总量和斜面修正系数为依据的计算</h2><p><strong>方阵功率</strong>&#x3D;<code>系数5618</code>×<code>安全系数</code>×<code>负载总用电量</code>&#x2F;<code>斜面修正系数</code>×<code>水平面年平均辐射量</code></p>
+<blockquote>
+<p>系数5618:根据充放电效率系数、组件衰减系数等：</p>
+<p>安全系数：根据使用环境、有无备用电源、是否有人值守等，取1.1～1.3。</p>
+</blockquote>
+<p><strong>蓄电池容量</strong>&#x3D;<code>10</code>×<code>负载总用电量</code>&#x2F;<code>系统工作电压</code></p>
+<blockquote>
+<p>10为无日照系数(对于连续阴雨不超过5天的均适用)。</p>
+</blockquote>
+<h2 id="以峰值日照时数为依据的多路负载计算"><a href="#以峰值日照时数为依据的多路负载计算" class="headerlink" title="以峰值日照时数为依据的多路负载计算"></a>以峰值日照时数为依据的多路负载计算</h2><p><strong>组件电流</strong>&#x3D;<code>负载日耗电量</code>(Wh)&#x2F;<code>系统直流电压</code>(V)×<code>峰值日照时数</code>(h)×<code>系统效率系数</code></p>
+<blockquote>
+<p>系统效率系数：含蓄电池充电效率0.9，逆变器转换效率0.85，组件功率衰减+线路损耗+尘埃等0.9，具体根据实际情况进行调整。</p>
+</blockquote>
+<p><strong>组件总功率</strong>&#x3D;<code>组件发电电流</code>×<code>系统直流电压</code>×<code>1.43</code></p>
+<blockquote>
+<p>系数1.43：组件峰值工作电压与系统工作电压的比值。</p>
+</blockquote>
+<p><strong>蓄电池组容量</strong>&#x3D;【<code>负载日耗电量</code>Wh&#x2F;<code>系统直流电压</code>V】×【<code>连续阴雨天数</code>&#x2F;<code>逆变器效率</code>×<code>蓄电池放电深度</code>】</p>
+<blockquote>
+<p>逆变器效率：根据设备选型约80%～93%之间：</p>
+<p>蓄电池放电深度：根据其性能参数和可靠性要求等,在50%～75%之间选择。</p>
+</blockquote>
+<h2 id="以峰值日照时数为依据的计算方法"><a href="#以峰值日照时数为依据的计算方法" class="headerlink" title="以峰值日照时数为依据的计算方法"></a>以峰值日照时数为依据的计算方法</h2><p><strong>系统蓄电池组容量的计算</strong></p>
+<p><strong>蓄电池组容量(Ah)</strong>&#x3D;<code>安全次数</code>×<code>负载日平均耗电量</code>(Ah)×<code>最大连续阴雨天数</code>×<code>低温修正系数</code>&#x2F;<code>蓄电池最大放电深度系数</code></p>
+<blockquote>
+<p>安全系数:1.1-1.4之间</p>
+<p>低温修正系数:0℃以上时取1.0，-10℃以上取1.1，-20℃以上取1.2</p>
+<p>蓄电池最大放电深度系数:浅循环取0.5，深度循环取0.75，碱性镍镉蓄电池取0.85。</p>
+</blockquote>
+<p><strong>组件串联数</strong>&#x3D;<code>系统工作电压</code>(V)×<code>系数1.43</code>&#x2F;<code>选定组件峰值工作电压</code>(V)</p>
+<p><strong>组件日平均发电量(Ah)</strong>&#x3D;<code>选定组件峰值工作电流</code>(A)×<code>峰值日照时数</code>(h)×<code>斜面修正系数</code>×<code>组件衰减损耗系数</code></p>
+<blockquote>
+<p>峰值日照时数和倾斜面修正系数为系统安装地的实际数据：组件衰减损耗修正系数主要指由于组件组合、组件功率衰减、组件灰尘遮盖、充电效率等的损失，一般取0.8。</p>
+</blockquote>
+<h2 id="连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算"><a href="#连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算" class="headerlink" title="连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算"></a><strong>连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算</strong></h2><p><strong>补充的蓄电池容量(Ah)</strong>&#x3D;<code>安全系数</code>×<code>负载日平均耗电量</code>(Ah)×<code>最大连续阴雨天数</code></p>
+<p><strong>组件并联数</strong>&#x3D;【<code>补充的蓄电池容量</code>+<code>负载日平均耗电量</code>×<code>最短间隔天数</code>】&#x2F;<code>组件平均日发电量</code>×<code>最短间隔天数</code></p>
+<blockquote>
+<p><code>负载日平均耗电量</code>&#x3D;<code>负载功率</code>&#x2F;<code>负载工作电压</code>×<code>每天工作小时数</code></p>
+</blockquote>
+<h2 id="光伏方阵发电量的计算"><a href="#光伏方阵发电量的计算" class="headerlink" title="光伏方阵发电量的计算"></a><strong>光伏方阵发电量的计算</strong></h2><p><strong>年发电量</strong>(kWh)&#x3D;<code>当地年总辐射能</code>(KWH&#x2F;㎡)×<code>光伏方阵面积</code>(㎡)×<code>组件转换效率</code>×<code>修正系数</code>。</p>
+<p>   <code>P</code>&#x3D;<code>H</code>×<code>S</code>×<code>η</code>×<code>K</code></p>
+<p><strong>修正系数K</strong>&#x3D;<code>K1 </code> ×  <code>K2</code>  ×  <code>K3</code>  ×  <code>K4</code>  ×  <code>K5</code></p>
+<blockquote>
+<p><code>K1</code>组件长期运行的衰减系数，取0.8；</p>
+<p><code>K2</code>灰尘遮挡组件及温度升高造成组件功率下降修正，取0.82；</p>
+<p><code>K3</code>为线路修正，取0.95；</p>
+<p><code>K4</code>为逆变器效率，取0.85或根据厂家数据；</p>
+<p><code>K5</code>为光伏方阵朝向及倾斜角修正系数，取0.9左右。</p>
+</blockquote>
+<h2 id="根据负载耗电量计算光伏方阵的面积"><a href="#根据负载耗电量计算光伏方阵的面积" class="headerlink" title="根据负载耗电量计算光伏方阵的面积"></a><strong>根据负载耗电量计算光伏方阵的面积</strong></h2><p><strong>光伏组件方阵面积</strong>&#x3D;<code>年耗电量</code>&#x2F;<code>当地年总辐射能</code>×<code>组件转换效率</code>×<code>修正系数</code></p>
+<p><code>S</code>&#x3D;<code>P</code>&#x2F;<code>H</code>·<code>η</code>·<code>K</code></p>
+<h2 id="太阳能辐射能量的转换"><a href="#太阳能辐射能量的转换" class="headerlink" title="太阳能辐射能量的转换"></a><strong>太阳能辐射能量的转换</strong></h2><blockquote>
+<p>1卡(cal)&#x3D;4.1868焦(J)&#x3D;1.16278毫瓦时(mWh)</p>
+<p>1千瓦时(kWh)&#x3D;3.6兆焦(MJ)</p>
+<p>1千瓦时&#x2F;㎡(KWh&#x2F;㎡)&#x3D;3.6兆焦&#x2F;㎡(MJ&#x2F;㎡)&#x3D;0.36千焦&#x2F;厘米(KJ&#x2F;cm)</p>
+<p>100毫瓦时&#x2F;厘米(mWh&#x2F;cm)&#x3D;85.98卡&#x2F;厘米(cal&#x2F;cm)</p>
+<p>1兆焦&#x2F;米(MJ&#x2F;m)&#x3D;23.889卡&#x2F;厘米(cal&#x2F;cm)&#x3D;27.8毫瓦时&#x2F;厘米(mWh&#x2F;cm)</p>
+<p>当辐射量的单位为卡&#x2F;厘米：年峰值日照时数&#x3D;辐射量×0.0116(换算系数)</p>
+<p>当辐射量的单位为兆焦&#x2F;米：年峰值日照时数&#x3D;辐射量÷3.6(换算系数)</p>
+<p>当辐射量单位为千瓦时&#x2F;米：峰值日照小时数&#x3D;辐射量÷365天</p>
+<p>当辐射量的单位为千焦&#x2F;厘米，峰值日照小时数&#x3D;辐射量÷0.36(换算系数)</p>
+</blockquote>
+<h2 id="蓄电池选型"><a href="#蓄电池选型" class="headerlink" title="蓄电池选型"></a><strong>蓄电池选型</strong></h2><p><strong>蓄电池容量</strong>≥<code>5h</code>×<code>逆变器功率</code>&#x2F;<code>蓄电池组额定电压</code></p>
+<h2 id="电价计算公式"><a href="#电价计算公式" class="headerlink" title="电价计算公式"></a><strong>电价计算公式</strong></h2><p><strong>发电成本价格1</strong>&#x3D;<code>总成本</code>÷<code>总发电量</code></p>
+<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格</code>)×<code>电站寿命范围内工作时间</code></p>
+<p><strong>发电成本价格2</strong>&#x3D;(<code>总成本</code>-<code>总补贴</code>)÷<code>总发电量</code></p>
+<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格2</code>)×<code>电站寿命范围内工作时间</code></p>
+<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格2</code>)×<code>电站寿命范围内工作时间</code>+<code>非市场因素收益</code></p>
+<h2 id="投资回报率计算"><a href="#投资回报率计算" class="headerlink" title="投资回报率计算"></a><strong>投资回报率计算</strong></h2><p><strong>无补贴</strong>：<code>年发电量</code>×<code>电价</code>÷<code>投资总成本</code>×<code>100%</code>&#x3D;<code>年回报率</code></p>
+<p><strong>有电站补贴</strong>：<code>年发电量</code>×<code>电价</code>÷(<code>投资总成本</code>-<code>补贴总额</code>)×<code>100%</code>&#x3D;<code>年回报率</code></p>
+<p><strong>有电价补贴及电站补贴</strong>：<code>年发电量</code>×(<code>电价</code>+<code>补贴电价</code>)÷(<code>投资总成本</code>-<code>补贴总额</code>)×<code>100%</code>&#x3D;<code>年回报率</code></p>
+<h2 id="光伏方阵倾角角度和方位角角度"><a href="#光伏方阵倾角角度和方位角角度" class="headerlink" title="光伏方阵倾角角度和方位角角度"></a><strong>光伏方阵倾角角度和方位角角度</strong></h2><p> <strong>组件水平倾角</strong>：</p>
+<blockquote>
+<p>0°-25° 倾角&#x3D;纬度</p>
+<p>26°-40° 倾角&#x3D;纬度+5°-10°(在我国大部分地区采取+7°)</p>
+<p>41°-55° 倾角&#x3D;纬度+10°-15°</p>
+<p>纬度&gt;55° 倾角&#x3D;纬度+15°-20°</p>
+</blockquote>
+<p><strong>方位角：</strong></p>
+<p><strong>方位角</strong>&#x3D;【<code>一天中负荷的峰值时刻</code>(24h制)-<code>12</code>】× <code>15</code>+(<code>经度</code>-<code>116</code>)</p>
+<h2 id="光伏方阵前后排间距："><a href="#光伏方阵前后排间距：" class="headerlink" title="光伏方阵前后排间距："></a><strong>光伏方阵前后排间距：</strong></h2><p>D &#x3D; <code>0.707</code>×<code>H</code> &#x2F;<code>tan</code> [ <code>acrsin</code> ( 0.648<code>cosΦ</code> - 0.399<code>sinΦ</code>) ]</p>
+<blockquote>
+<p>D：组件方阵前后间距</p>
+<p>Φ：光伏系统所处纬度(北半球为正,南半球为负)</p>
+<p>H：为后排光伏组件底边至前排遮挡物上边的垂直高度</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>绕过软件收费</title>
+    <url>/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/</url>
+    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p><strong>我的一位朋友</strong>决定在网上购买一个游戏辅助，以提高自己在游戏中的表现。他发现了一个价格相对便宜的卖家，于是立即下单购买了该辅助。</p>
+<p><strong>然而</strong>，当辅助到手后，他很快就发现它还需要额外购买点卡。于是他联系了卖家，卖家告诉他需要按照一定的方法使用辅助，但是实际上这些方法是根本行不通的。</p>
+<p>他惊骇地发现自己<em><strong>被骗了</strong></em>，因为那个卖家早在卖出之前就知道这个游戏辅助<strong>需要额外收费</strong>。我的朋友经过一番努力，试图要求退款，但是卖家却以各种理由拒绝了他的退款要求。</p>
+<p>在这个过程中，我的朋友懊恼万分。他的钱财付诸东流，同时自己还花费了很多时间和精力，而最终却毫无所获。他深深地意识到，学习破解软件是多么有助于学习和技术成长。<strong>他真的 我哭死😭</strong></p>
+<div class="highlight-container" data-rel="Ps"><figure class="iseeu highlight ps"><table><tr><td class="code"><pre><span class="line">😊请不要在联网游戏中使用游戏辅助，它们通常破坏游戏平衡，损害他人游戏体验或者导致自己账号被封。</span><br><span class="line">😘保持游戏的公正与乐趣，远离游戏辅助！</span><br><span class="line">        🤜任何邪恶 终将被绳之以法🤛</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>把游戏辅助拖进Peid查壳,嗯 无壳 ，辅助作者比较自信</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/BrpXZL29.png"
+                     
+                ></p>
+<p>不多bb，拖进OllyDBG开搞(或者X64dbg)，试着运行一下子，点击登录，出现一个弹窗</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/EAf52t7Z.png"
+                     
+                ></p>
+<p>右键尝试搜索下字符串发现有“加入黑名单”，先进去下几个断点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/SifhWiCl.png"
+                     
+                ></p>
+<p>往下翻  发现辅助作者</p>
+<p><strong>很没素质</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/DIzLAbVx.png"
+                     
+                ></p>
+<p>因为有弹窗，所以直接下一个弹窗体的断点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/jQdyLfk5.png"
+                     
+                ></p>
+<p>登陆断下来了，因为是系统领空</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/gBqetTP0.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/hqXflFOF.png"
+                     
+                ></p>
+<p>右下角窗口处有个 ”返回到“ 右键它 ”反汇编窗口跟随“</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/CHyGMoJ7.png"
+                     
+                ></p>
+<p>说明刚刚从上面这个call出来，这个call就是弹出密码错误的call，说明验证肯定在前面。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/MXbcmNUE.png"
+                     
+                ></p>
+<p>这不是刚刚那个骂人的吗 往上一翻 还真是，这个错误call上面有jmp可以跳过</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/42Z962on.png"
+                     
+                ></p>
+<p>先往上看看它怎么走的</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/MaCRHrrY.png"
+                     
+                ></p>
+<p>这里右健转到上面的跳转00414AB7</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/G3hj50Yu.png"
+                     
+                ></p>
+<p>在这里下个断点，然后把刚刚下的窗口断点删除</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/iNtbZi4r.png"
+                     
+                ></p>
+<p>已经没用了，F9运行软件，点击登录，断住了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/13/LWDtMhre.png"
+                     
+                ></p>
+<p>不能让他下去 不然不就回到错误call了 直接nop掉</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/JDvqdjxA.png"
+                     
+                ></p>
+<p>接着按f8 一步一步跟着，走到这里</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/0VsxFJLB.png"
+                     
+                ></p>
+<p>发现一个大跳，到终点看一看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/wpi7Z8ZC.png"
+                     
+                ></p>
+<p>阿这  </p>
+<p>这跳下去要挨骂了 所以咱们回去 把刚刚那个跳转nop掉</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/usqzKd4n.png"
+                     
+                ></p>
+<p>继续往下f8 走到这里 再走一步</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/GFEQSe0M.png"
+                     
+                ></p>
+<p>程序自杀了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/skPjX1so.png"
+                     
+                ></p>
+<p>估计是辅助作者留下的 暗庄  回到刚刚死掉的位置标记一下，下个断点 重新运行程序 按f7进自杀call</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/lXn3thYL.png"
+                     
+                ></p>
+<p>f8继续下去 走到这个call，程序又自杀了 刚好上面那个大跳能跳过这个自杀call</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/i6TIMzMI.png"
+                     
+                ></p>
+<p>重新运行到刚刚那里 jge改成jmp</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/V0GGiXPZ.png"
+                     
+                ></p>
+<p>继续f8往下 这个call有点眼熟阿</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/zd7G6elo.png"
+                     
+                ></p>
+<p>好像是上面那个自杀call  果然一样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/o0Mvd40j.png"
+                     
+                ></p>
+<p>直接改成jmp f8继续往下接着走一会儿，发现从刚刚的自杀call出来了</p>
+<p>f8再接着往下走，程序就弹出</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/LAVi8cqH.png"
+                     
+                ></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>时间变成了-1秒，破解到此就成功了，打开软件后就可以直接进入辅助界面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/05/14/dbR5oWmq.png"
+                     
+                ></p>
+]]></content>
+      <tags>
+        <tag>编程进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个迷宫类CTF题的分析</title>
+    <url>/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是CTF"><a href="#什么是CTF" class="headerlink" title="什么是CTF"></a>什么是CTF</h2><p>Capture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。</p>
+<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><p>操作系统：win10</p>
+<p>逆向工具：010editor，ida pro7.0(随便哪个版本都能用)</p>
+<p>题目：maze</p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="1-收集文件信息"><a href="#1-收集文件信息" class="headerlink" title="1. 收集文件信息"></a>1. 收集文件信息</h2><p><strong>1.1 使用010editor查看文件类型</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/JqcHVaKo.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>不难看出，这是是linux下的一个ELF文件，由于使用的系统环境为Windows，所以只能静态分析😭</p>
+<p><strong>1.2 确定是否需要脱壳</strong></p>
+<p>一般linux下的文件最多加个UPX壳，所以直接搜索UPX字符串，不过搜不到，盲猜没加</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/dF1FTS9b.png"
+                      style="zoom:50%;" 
+                >
+
+<p><strong>1.3 看一看能否找到明码的flag</strong></p>
+<p>由于是CTF题，那么接下来开始三板斧</p>
+<p>直接搜一下flag字符串，看看静态文件中是否存在，果然不出所料————不存在</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/X1EUSCM2.png"
+                      style="zoom:50%;" 
+                >
+
+<h2 id="2-明确分析思路"><a href="#2-明确分析思路" class="headerlink" title="2. 明确分析思路"></a>2. 明确分析思路</h2><p>这里用的是静态分析，所以接下来应该</p>
+<ol>
+<li><strong>寻找输入</strong></li>
+<li><strong>寻找关键字符串</strong></li>
+<li><strong>定位关键验证逻辑</strong></li>
+<li><strong>分析关键验证逻辑</strong>，理清思路</li>
+<li><strong>模拟运行</strong>或<strong>直接调试</strong>(but没有搭环境，pass)运行得到flag</li>
+</ol>
+<h2 id="3-详细分析"><a href="#3-详细分析" class="headerlink" title="3. 详细分析"></a>3. 详细分析</h2><p>将这一坨东西拖入IDA（要点时间，可以先去看会儿新闻联播，等它慢慢跑完，）</p>
+<p>加载完成后，可以看到IDA解析出来的函数，顺带很贴心的帮分析出了main函数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/u39Y9eLJ.png"
+                      style="zoom:50%;" 
+                >
+
+<p>双击进入main函数，看到如下一堆函数逻辑。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/DmKcWnCi.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>看起来所有功能都放main函数中了，甚至还找到了一些注册成功的输出。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/278dlG4H.png"
+                      style="zoom: 25%;" 
+                >
+
+<p>与此同时邻居家上小学一年级的小弟弟看到这里发现了解决办法，接下来只要直接改跳转，让其跳转到Congratulations！就可以了吧！当然不行。所谓逆向，就是要分析出写程序人的意图，然后让他明白，不管怎么搞，都能还原成原始代码，还要弄炸他的心态，直接写注册码。</p>
+<p><strong>辅助工具，开整！</strong></p>
+<p>由于不想动态调试，加上程序逻辑清晰,并没有加一些花里胡哨的东西(例如花指令)，这里就使用了IDA的灵魂，<strong>F5，一键还原伪代码。</strong></p>
+<p>在main函数中直接F5，就能看到这段逻辑的伪码啦。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/DH759pr2.png"
+                      style="zoom: 33%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/FDWioynC.png"
+                      style="zoom: 50%;" 
+                >
+
+<p><strong>修改伪码</strong></p>
+<p>首先，对代码进行小小的整容外加修改(一系列的变量替换，函数名称替换，变量格式更改)，使其更加符合我们的编程习惯。 </p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/qBJ3IUcg.png"
+                      style="zoom: 33%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/oXeuqncK.png"
+                      style="zoom: 25%;" 
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/KuGELRBW.png"
+                      style="zoom: 33%;" 
+                >
+
+<p><strong>分析源码</strong><br>​     可以看出，该代码是输入<strong>nctf{xxxxx}(<strong>共24位)中的</strong>x</strong>来对内存中的<strong>x</strong>，<strong>y</strong>进行一系列的运算，用算完后的<strong>x</strong>，<strong>y</strong>在数组<strong>mazeBuffer</strong>中定位到一个值，如果这个值为**#<strong>，则输出成功，否则输出失败。那</strong>mazeBuffer<strong>是一个什么东西呢？只需要 双击</strong>mazeBuffe**r，看到它在数据段中的值</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/vTAdsj5Y.png"
+                      style="zoom:67%;" 
+                >
+
+<p>这样看起来并不直观，根据它的长度(64)，以及最后的二维数组运算**(mazeBuffer[8 * nPosY + nPosX])<strong>，我们可以大胆推断它就是一个8*8 &#x3D; 64大小的二维数组。在数据区域使用</strong>IDA的另一个小功能微调<strong>，首先按</strong>d**转换为data模式，然后在标签名右键，array，选择如下设置</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/BiQZrd1J.png"
+                      style="zoom:50%;" 
+                >
+
+<p>得到一组不太直观的二维数组，再按一下r键，让它以ascii显示。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/08/26/9QUpq90B.png"
+                      style="zoom: 33%;" 
+                >
+
+<p><strong>为什么每一次操作，x，y都会变化呢？最后检查的为什么是#呢？x，y的初始值为什么是0，0呢？</strong></p>
+<p>答案如下：</p>
+<p>这个<strong>mazeBuffer</strong>是一个游戏迷宫地图，之前分析出来的4个操作性字符(对x，y的值有影响的)分别对应左右上下，也就是会循环读取输入的操作性字符，然后让我们从上图的地图中虚拟移动。</p>
+<p>综上，得到了这个flag的终极解法。<strong>构造一条能从(0,0)点到达#位置的路径</strong>，只能走上图的空白处。大概就是**nctf{右下右右下下左下下下右右右右上上左左}**，数一数，刚好24个字，然后打开文本编辑器，将上下左右替换成对应的编码(上 &#x3D;&#x3D;&gt;.  下&#x3D;&#x3D;&gt;0 左&#x3D;&#x3D;&gt;O 右&#x3D;&#x3D;&gt;o)</p>
+<p>至此，得到了<strong>最终的flag ：nctf{o0oo00O000oooo..OO}</strong></p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1>
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>总结</p>
+
+    </div>
+    <div class="notel-content">
+      <p>1.不要有畏惧心理，再难的程序也有被破解的一天，任何系统的程序只要能被反编译，就能被分析</p>
+<p>2.要善于使用工具，很多功能IDA啊，OD啊，或者xdbg会给我们提供，工具玩的好，逆向也会更加省时省力   </p>
+<p>3.不要局限于破解，分析算法才是逆向的灵魂所在，就像我们今天走完的这段旅途，风景不也很美好么</p>
+
+    </div>
+  </div>
+
+]]></content>
+      <tags>
+        <tag>编程进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓逆向学习笔记(一)</title>
+    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/</url>
+    <content><![CDATA[<h1 id="一-什么是安卓逆向？"><a href="#一-什么是安卓逆向？" class="headerlink" title="一.什么是安卓逆向？"></a>一.什么是安卓逆向？</h1><p>安卓逆向是对已经打包好的APP进行反编译、源码分析了解APP实现逻辑的一门技术</p>
+<h1 id="二-安卓逆向可以干嘛？"><a href="#二-安卓逆向可以干嘛？" class="headerlink" title="二.安卓逆向可以干嘛？"></a>二.安卓逆向可以干嘛？</h1><p>去更新<br>去广告<br>内购&#x2F;会员破解<br>协议自动签到<br>白嫖！！！</p>
+<h1 id="三-适合人群"><a href="#三-适合人群" class="headerlink" title="三.适合人群"></a>三.适合人群</h1><p>小白、零基础人群<br>先来一碗鸡汤：<br>改天是哪天，下次是哪次，以后是多久，去经历，去后悔。<br>保持热爱，奔赴山海。我们都在奔赴各自不同的人生！！！</p>
+<h1 id="四-Magisk介绍"><a href="#四-Magisk介绍" class="headerlink" title="四.Magisk介绍"></a>四.Magisk介绍</h1><p>Magisk 是一套用于定制 Android 的开源软件，支持高于 Android 5.0 的设备。</p>
+<p>以下是一些功能亮点：</p>
+<ol>
+<li><strong>MagiskSU</strong>：为应用程序提供 root 访问权限</li>
+<li><strong>Magisk 模块</strong>：通过安装模块修改只读分区</li>
+<li><strong>MagiskHide</strong>：从根检测 &#x2F; 系统完整性检查中隐藏 Magisk(Shamiko)</li>
+<li><strong>MagiskBoot</strong> : 最完整的安卓启动镜像解包和重新打包工具</li>
+</ol>
+<h1 id="五-安装步骤"><a href="#五-安装步骤" class="headerlink" title="五.安装步骤"></a>五.安装步骤</h1><p>1.下载一个安卓模拟器，并安装;例如<a class="link"   href="https://www.ldmnq.com/" >雷电模拟器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>2.下载配置文件<br>3.安装面具</p>
+<h1 id="六-常见问题"><a href="#六-常见问题" class="headerlink" title="六.常见问题"></a>六.常见问题</h1><p><strong>1.如图，Magisk刷不上</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%911.png"
+                      style="zoom:80%;" 
+                >
+
+<p><em>需要在设置里把读写权限打开</em></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%912.jpg"
+                      style="zoom:50%;" 
+                >
 ]]></content>
       <tags>
         <tag>编程进阶</tag>
@@ -1217,711 +1733,6 @@
       </tags>
   </entry>
   <entry>
-    <title>光伏计算公式</title>
-    <url>/2023/06/28/%E5%85%89%E4%BC%8F%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="光伏计算公式"><a href="#光伏计算公式" class="headerlink" title="光伏计算公式"></a>光伏计算公式</h1><h2 id="转换效率"><a href="#转换效率" class="headerlink" title="转换效率"></a>转换效率</h2><p><strong>η</strong>&#x3D; <code>Pm</code>(光伏板的峰值功率)&#x2F;<code>S</code>(光伏板面积)×<code>Pin</code></p>
-<p>​		其中：<code>Pin</code>&#x3D;<code>1KW/㎡</code>&#x3D;<code>100mW/cm²</code></p>
-<h2 id="充电电压"><a href="#充电电压" class="headerlink" title="充电电压"></a>充电电压</h2><p><strong>Vmax</strong>&#x3D;<code>V额定</code>×<code>1.43倍</code></p>
-<h2 id="电池组件串并联"><a href="#电池组件串并联" class="headerlink" title="电池组件串并联"></a>电池组件串并联</h2><p><strong>电池组件并联数</strong>&#x3D;<code>负载日平均用电量</code>(Ah)&#x2F;<code>组件日平均发电量</code> (Ah)</p>
-<p><strong>电池组件串联数</strong>&#x3D;<code>系统工作电压</code>(V)×<code>系数1.43</code>&#x2F;<code>组件峰值工作电压</code>(V)</p>
-<h2 id="蓄电池容量"><a href="#蓄电池容量" class="headerlink" title="蓄电池容量"></a>蓄电池容量</h2><p><strong>蓄电池容量</strong>&#x3D;<code>负载日平均用电量</code>(Ah)×<code>连续阴雨天数</code>&#x2F;<code>最大放电深度</code></p>
-<h2 id="平均放电率"><a href="#平均放电率" class="headerlink" title="平均放电率"></a>平均放电率</h2><p><strong>平均放电率(h)</strong>&#x3D;<code>连续阴雨天数</code>×<code>负载工作时间</code>&#x2F;<code>最大放电深度</code></p>
-<h2 id="负载工作时间"><a href="#负载工作时间" class="headerlink" title="负载工作时间"></a>负载工作时间</h2><p><strong>负载工作时间(h)</strong>&#x3D;<code>∑负载功率</code>×<code>负载工作时间</code>&#x2F;<code>∑负载功率</code></p>
-<h2 id="蓄电池"><a href="#蓄电池" class="headerlink" title="蓄电池"></a>蓄电池</h2><p><strong>蓄电池容量</strong>&#x3D;<code>负载平均用电量</code>(Ah)×<code>连续阴雨天数</code>×<code>放电修正系数</code>&#x2F;<code>最大放电深度</code>×<code>低温修正系数</code></p>
-<p><strong>蓄电池串联数</strong>&#x3D;<code>系统工作电压</code>&#x2F;<code>蓄电池标称电压</code></p>
-<p><strong>蓄电池并联数</strong>&#x3D;<code>蓄电池总容量</code>&#x2F;<code>蓄电池标称容量</code></p>
-<h2 id="以峰值日照时数为依据的简易计算"><a href="#以峰值日照时数为依据的简易计算" class="headerlink" title="以峰值日照时数为依据的简易计算"></a>以峰值日照时数为依据的简易计算</h2><p><strong>组件功率</strong>&#x3D;(<code>用电器功率</code>×<code>用电时间</code>&#x2F;<code>当地峰值日照时数</code>)×<code>损耗系数</code></p>
-<blockquote>
-<p>损耗系数：取1.6～2.0根据当地污染程度、线路长短、安装角度等</p>
-</blockquote>
-<p><strong>蓄电池容量</strong>&#x3D;(<code>用电器功率</code>×<code>用电时间</code>&#x2F;<code>系统电压</code>)×<code>连续阴雨天数</code>×<code>系统安全系数</code></p>
-<blockquote>
-<p>系统安全系数：取1.6～2.0，根据蓄电池放电深度、冬季温度、逆变器转换效率等</p>
-</blockquote>
-<h2 id="以年辐射总量为依据的计算方式"><a href="#以年辐射总量为依据的计算方式" class="headerlink" title="以年辐射总量为依据的计算方式"></a>以年辐射总量为依据的计算方式</h2><p><strong>组件(方阵)</strong>&#x3D;<code>K</code>×(<code>用电器工作电压</code>×<code>用电器工作电流</code>×<code>用电时间</code>)&#x2F;<code>当地年辐射总量</code></p>
-<blockquote>
-<p>有人维护+一般使用时，**<code>K取230</code>**；</p>
-<p>无人维护+可靠使用时，**<code>K取251</code>**；</p>
-<p>无人维护+环境恶劣+要求非常可靠时，**<code>K取276</code>**。</p>
-</blockquote>
-<h2 id="以年辐射总量和斜面修正系数为依据的计算"><a href="#以年辐射总量和斜面修正系数为依据的计算" class="headerlink" title="以年辐射总量和斜面修正系数为依据的计算"></a>以年辐射总量和斜面修正系数为依据的计算</h2><p><strong>方阵功率</strong>&#x3D;<code>系数5618</code>×<code>安全系数</code>×<code>负载总用电量</code>&#x2F;<code>斜面修正系数</code>×<code>水平面年平均辐射量</code></p>
-<blockquote>
-<p>系数5618:根据充放电效率系数、组件衰减系数等：</p>
-<p>安全系数：根据使用环境、有无备用电源、是否有人值守等，取1.1～1.3。</p>
-</blockquote>
-<p><strong>蓄电池容量</strong>&#x3D;<code>10</code>×<code>负载总用电量</code>&#x2F;<code>系统工作电压</code></p>
-<blockquote>
-<p>10为无日照系数(对于连续阴雨不超过5天的均适用)。</p>
-</blockquote>
-<h2 id="以峰值日照时数为依据的多路负载计算"><a href="#以峰值日照时数为依据的多路负载计算" class="headerlink" title="以峰值日照时数为依据的多路负载计算"></a>以峰值日照时数为依据的多路负载计算</h2><p><strong>组件电流</strong>&#x3D;<code>负载日耗电量</code>(Wh)&#x2F;<code>系统直流电压</code>(V)×<code>峰值日照时数</code>(h)×<code>系统效率系数</code></p>
-<blockquote>
-<p>系统效率系数：含蓄电池充电效率0.9，逆变器转换效率0.85，组件功率衰减+线路损耗+尘埃等0.9，具体根据实际情况进行调整。</p>
-</blockquote>
-<p><strong>组件总功率</strong>&#x3D;<code>组件发电电流</code>×<code>系统直流电压</code>×<code>1.43</code></p>
-<blockquote>
-<p>系数1.43：组件峰值工作电压与系统工作电压的比值。</p>
-</blockquote>
-<p><strong>蓄电池组容量</strong>&#x3D;【<code>负载日耗电量</code>Wh&#x2F;<code>系统直流电压</code>V】×【<code>连续阴雨天数</code>&#x2F;<code>逆变器效率</code>×<code>蓄电池放电深度</code>】</p>
-<blockquote>
-<p>逆变器效率：根据设备选型约80%～93%之间：</p>
-<p>蓄电池放电深度：根据其性能参数和可靠性要求等,在50%～75%之间选择。</p>
-</blockquote>
-<h2 id="以峰值日照时数为依据的计算方法"><a href="#以峰值日照时数为依据的计算方法" class="headerlink" title="以峰值日照时数为依据的计算方法"></a>以峰值日照时数为依据的计算方法</h2><p><strong>系统蓄电池组容量的计算</strong></p>
-<p><strong>蓄电池组容量(Ah)</strong>&#x3D;<code>安全次数</code>×<code>负载日平均耗电量</code>(Ah)×<code>最大连续阴雨天数</code>×<code>低温修正系数</code>&#x2F;<code>蓄电池最大放电深度系数</code></p>
-<blockquote>
-<p>安全系数:1.1-1.4之间</p>
-<p>低温修正系数:0℃以上时取1.0，-10℃以上取1.1，-20℃以上取1.2</p>
-<p>蓄电池最大放电深度系数:浅循环取0.5，深度循环取0.75，碱性镍镉蓄电池取0.85。</p>
-</blockquote>
-<p><strong>组件串联数</strong>&#x3D;<code>系统工作电压</code>(V)×<code>系数1.43</code>&#x2F;<code>选定组件峰值工作电压</code>(V)</p>
-<p><strong>组件日平均发电量(Ah)</strong>&#x3D;<code>选定组件峰值工作电流</code>(A)×<code>峰值日照时数</code>(h)×<code>斜面修正系数</code>×<code>组件衰减损耗系数</code></p>
-<blockquote>
-<p>峰值日照时数和倾斜面修正系数为系统安装地的实际数据：组件衰减损耗修正系数主要指由于组件组合、组件功率衰减、组件灰尘遮盖、充电效率等的损失，一般取0.8。</p>
-</blockquote>
-<h2 id="连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算"><a href="#连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算" class="headerlink" title="连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算"></a><strong>连续阴雨天之间的最短间隔天数需要补充的蓄电池容量的计算</strong></h2><p><strong>补充的蓄电池容量(Ah)</strong>&#x3D;<code>安全系数</code>×<code>负载日平均耗电量</code>(Ah)×<code>最大连续阴雨天数</code></p>
-<p><strong>组件并联数</strong>&#x3D;【<code>补充的蓄电池容量</code>+<code>负载日平均耗电量</code>×<code>最短间隔天数</code>】&#x2F;<code>组件平均日发电量</code>×<code>最短间隔天数</code></p>
-<blockquote>
-<p><code>负载日平均耗电量</code>&#x3D;<code>负载功率</code>&#x2F;<code>负载工作电压</code>×<code>每天工作小时数</code></p>
-</blockquote>
-<h2 id="光伏方阵发电量的计算"><a href="#光伏方阵发电量的计算" class="headerlink" title="光伏方阵发电量的计算"></a><strong>光伏方阵发电量的计算</strong></h2><p><strong>年发电量</strong>(kWh)&#x3D;<code>当地年总辐射能</code>(KWH&#x2F;㎡)×<code>光伏方阵面积</code>(㎡)×<code>组件转换效率</code>×<code>修正系数</code>。</p>
-<p>   <code>P</code>&#x3D;<code>H</code>×<code>S</code>×<code>η</code>×<code>K</code></p>
-<p><strong>修正系数K</strong>&#x3D;<code>K1 </code> ×  <code>K2</code>  ×  <code>K3</code>  ×  <code>K4</code>  ×  <code>K5</code></p>
-<blockquote>
-<p><code>K1</code>组件长期运行的衰减系数，取0.8；</p>
-<p><code>K2</code>灰尘遮挡组件及温度升高造成组件功率下降修正，取0.82；</p>
-<p><code>K3</code>为线路修正，取0.95；</p>
-<p><code>K4</code>为逆变器效率，取0.85或根据厂家数据；</p>
-<p><code>K5</code>为光伏方阵朝向及倾斜角修正系数，取0.9左右。</p>
-</blockquote>
-<h2 id="根据负载耗电量计算光伏方阵的面积"><a href="#根据负载耗电量计算光伏方阵的面积" class="headerlink" title="根据负载耗电量计算光伏方阵的面积"></a><strong>根据负载耗电量计算光伏方阵的面积</strong></h2><p><strong>光伏组件方阵面积</strong>&#x3D;<code>年耗电量</code>&#x2F;<code>当地年总辐射能</code>×<code>组件转换效率</code>×<code>修正系数</code></p>
-<p><code>S</code>&#x3D;<code>P</code>&#x2F;<code>H</code>·<code>η</code>·<code>K</code></p>
-<h2 id="太阳能辐射能量的转换"><a href="#太阳能辐射能量的转换" class="headerlink" title="太阳能辐射能量的转换"></a><strong>太阳能辐射能量的转换</strong></h2><blockquote>
-<p>1卡(cal)&#x3D;4.1868焦(J)&#x3D;1.16278毫瓦时(mWh)</p>
-<p>1千瓦时(kWh)&#x3D;3.6兆焦(MJ)</p>
-<p>1千瓦时&#x2F;㎡(KWh&#x2F;㎡)&#x3D;3.6兆焦&#x2F;㎡(MJ&#x2F;㎡)&#x3D;0.36千焦&#x2F;厘米(KJ&#x2F;cm)</p>
-<p>100毫瓦时&#x2F;厘米(mWh&#x2F;cm)&#x3D;85.98卡&#x2F;厘米(cal&#x2F;cm)</p>
-<p>1兆焦&#x2F;米(MJ&#x2F;m)&#x3D;23.889卡&#x2F;厘米(cal&#x2F;cm)&#x3D;27.8毫瓦时&#x2F;厘米(mWh&#x2F;cm)</p>
-<p>当辐射量的单位为卡&#x2F;厘米：年峰值日照时数&#x3D;辐射量×0.0116(换算系数)</p>
-<p>当辐射量的单位为兆焦&#x2F;米：年峰值日照时数&#x3D;辐射量÷3.6(换算系数)</p>
-<p>当辐射量单位为千瓦时&#x2F;米：峰值日照小时数&#x3D;辐射量÷365天</p>
-<p>当辐射量的单位为千焦&#x2F;厘米，峰值日照小时数&#x3D;辐射量÷0.36(换算系数)</p>
-</blockquote>
-<h2 id="蓄电池选型"><a href="#蓄电池选型" class="headerlink" title="蓄电池选型"></a><strong>蓄电池选型</strong></h2><p><strong>蓄电池容量</strong>≥<code>5h</code>×<code>逆变器功率</code>&#x2F;<code>蓄电池组额定电压</code></p>
-<h2 id="电价计算公式"><a href="#电价计算公式" class="headerlink" title="电价计算公式"></a><strong>电价计算公式</strong></h2><p><strong>发电成本价格1</strong>&#x3D;<code>总成本</code>÷<code>总发电量</code></p>
-<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格</code>)×<code>电站寿命范围内工作时间</code></p>
-<p><strong>发电成本价格2</strong>&#x3D;(<code>总成本</code>-<code>总补贴</code>)÷<code>总发电量</code></p>
-<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格2</code>)×<code>电站寿命范围内工作时间</code></p>
-<p><strong>电站盈利</strong>&#x3D;(<code>买电价格</code>-<code>发电成本价格2</code>)×<code>电站寿命范围内工作时间</code>+<code>非市场因素收益</code></p>
-<h2 id="投资回报率计算"><a href="#投资回报率计算" class="headerlink" title="投资回报率计算"></a><strong>投资回报率计算</strong></h2><p><strong>无补贴</strong>：<code>年发电量</code>×<code>电价</code>÷<code>投资总成本</code>×<code>100%</code>&#x3D;<code>年回报率</code></p>
-<p><strong>有电站补贴</strong>：<code>年发电量</code>×<code>电价</code>÷(<code>投资总成本</code>-<code>补贴总额</code>)×<code>100%</code>&#x3D;<code>年回报率</code></p>
-<p><strong>有电价补贴及电站补贴</strong>：<code>年发电量</code>×(<code>电价</code>+<code>补贴电价</code>)÷(<code>投资总成本</code>-<code>补贴总额</code>)×<code>100%</code>&#x3D;<code>年回报率</code></p>
-<h2 id="光伏方阵倾角角度和方位角角度"><a href="#光伏方阵倾角角度和方位角角度" class="headerlink" title="光伏方阵倾角角度和方位角角度"></a><strong>光伏方阵倾角角度和方位角角度</strong></h2><p> <strong>组件水平倾角</strong>：</p>
-<blockquote>
-<p>0°-25° 倾角&#x3D;纬度</p>
-<p>26°-40° 倾角&#x3D;纬度+5°-10°(在我国大部分地区采取+7°)</p>
-<p>41°-55° 倾角&#x3D;纬度+10°-15°</p>
-<p>纬度&gt;55° 倾角&#x3D;纬度+15°-20°</p>
-</blockquote>
-<p><strong>方位角：</strong></p>
-<p><strong>方位角</strong>&#x3D;【<code>一天中负荷的峰值时刻</code>(24h制)-<code>12</code>】× <code>15</code>+(<code>经度</code>-<code>116</code>)</p>
-<h2 id="光伏方阵前后排间距："><a href="#光伏方阵前后排间距：" class="headerlink" title="光伏方阵前后排间距："></a><strong>光伏方阵前后排间距：</strong></h2><p>D &#x3D; <code>0.707</code>×<code>H</code> &#x2F;<code>tan</code> [ <code>acrsin</code> ( 0.648<code>cosΦ</code> - 0.399<code>sinΦ</code>) ]</p>
-<blockquote>
-<p>D：组件方阵前后间距</p>
-<p>Φ：光伏系统所处纬度(北半球为正,南半球为负)</p>
-<p>H：为后排光伏组件底边至前排遮挡物上边的垂直高度</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>硬件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>绕过软件收费</title>
-    <url>/2023/05/13/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%B4%B9/</url>
-    <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p><strong>我的一位朋友</strong>决定在网上购买一个游戏辅助，以提高自己在游戏中的表现。他发现了一个价格相对便宜的卖家，于是立即下单购买了该辅助。</p>
-<p><strong>然而</strong>，当辅助到手后，他很快就发现它还需要额外购买点卡。于是他联系了卖家，卖家告诉他需要按照一定的方法使用辅助，但是实际上这些方法是根本行不通的。</p>
-<p>他惊骇地发现自己<em><strong>被骗了</strong></em>，因为那个卖家早在卖出之前就知道这个游戏辅助<strong>需要额外收费</strong>。我的朋友经过一番努力，试图要求退款，但是卖家却以各种理由拒绝了他的退款要求。</p>
-<p>在这个过程中，我的朋友懊恼万分。他的钱财付诸东流，同时自己还花费了很多时间和精力，而最终却毫无所获。他深深地意识到，学习破解软件是多么有助于学习和技术成长。<strong>他真的 我哭死😭</strong></p>
-<div class="highlight-container" data-rel="Ps"><figure class="iseeu highlight ps"><table><tr><td class="code"><pre><span class="line">😊请不要在联网游戏中使用游戏辅助，它们通常破坏游戏平衡，损害他人游戏体验或者导致自己账号被封。</span><br><span class="line">😘保持游戏的公正与乐趣，远离游戏辅助！</span><br><span class="line">        🤜任何邪恶 终将被绳之以法🤛</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>把游戏辅助拖进Peid查壳,嗯 无壳 ，辅助作者比较自信</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/BrpXZL29.png"
-                     
-                ></p>
-<p>不多bb，拖进OllyDBG开搞(或者X64dbg)，试着运行一下子，点击登录，出现一个弹窗</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/EAf52t7Z.png"
-                     
-                ></p>
-<p>右键尝试搜索下字符串发现有“加入黑名单”，先进去下几个断点</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/SifhWiCl.png"
-                     
-                ></p>
-<p>往下翻  发现辅助作者</p>
-<p><strong>很没素质</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/DIzLAbVx.png"
-                     
-                ></p>
-<p>因为有弹窗，所以直接下一个弹窗体的断点</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/jQdyLfk5.png"
-                     
-                ></p>
-<p>登陆断下来了，因为是系统领空</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/gBqetTP0.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/hqXflFOF.png"
-                     
-                ></p>
-<p>右下角窗口处有个 ”返回到“ 右键它 ”反汇编窗口跟随“</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/CHyGMoJ7.png"
-                     
-                ></p>
-<p>说明刚刚从上面这个call出来，这个call就是弹出密码错误的call，说明验证肯定在前面。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/MXbcmNUE.png"
-                     
-                ></p>
-<p>这不是刚刚那个骂人的吗 往上一翻 还真是，这个错误call上面有jmp可以跳过</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/42Z962on.png"
-                     
-                ></p>
-<p>先往上看看它怎么走的</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/MaCRHrrY.png"
-                     
-                ></p>
-<p>这里右健转到上面的跳转00414AB7</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/G3hj50Yu.png"
-                     
-                ></p>
-<p>在这里下个断点，然后把刚刚下的窗口断点删除</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/iNtbZi4r.png"
-                     
-                ></p>
-<p>已经没用了，F9运行软件，点击登录，断住了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/13/LWDtMhre.png"
-                     
-                ></p>
-<p>不能让他下去 不然不就回到错误call了 直接nop掉</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/JDvqdjxA.png"
-                     
-                ></p>
-<p>接着按f8 一步一步跟着，走到这里</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/0VsxFJLB.png"
-                     
-                ></p>
-<p>发现一个大跳，到终点看一看</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/wpi7Z8ZC.png"
-                     
-                ></p>
-<p>阿这  </p>
-<p>这跳下去要挨骂了 所以咱们回去 把刚刚那个跳转nop掉</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/usqzKd4n.png"
-                     
-                ></p>
-<p>继续往下f8 走到这里 再走一步</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/GFEQSe0M.png"
-                     
-                ></p>
-<p>程序自杀了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/skPjX1so.png"
-                     
-                ></p>
-<p>估计是辅助作者留下的 暗庄  回到刚刚死掉的位置标记一下，下个断点 重新运行程序 按f7进自杀call</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/lXn3thYL.png"
-                     
-                ></p>
-<p>f8继续下去 走到这个call，程序又自杀了 刚好上面那个大跳能跳过这个自杀call</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/i6TIMzMI.png"
-                     
-                ></p>
-<p>重新运行到刚刚那里 jge改成jmp</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/V0GGiXPZ.png"
-                     
-                ></p>
-<p>继续f8往下 这个call有点眼熟阿</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/zd7G6elo.png"
-                     
-                ></p>
-<p>好像是上面那个自杀call  果然一样</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/o0Mvd40j.png"
-                     
-                ></p>
-<p>直接改成jmp f8继续往下接着走一会儿，发现从刚刚的自杀call出来了</p>
-<p>f8再接着往下走，程序就弹出</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/LAVi8cqH.png"
-                     
-                ></p>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>时间变成了-1秒，破解到此就成功了，打开软件后就可以直接进入辅助界面</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/05/14/dbR5oWmq.png"
-                     
-                ></p>
-]]></content>
-      <tags>
-        <tag>编程进阶</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一个迷宫类CTF题的分析</title>
-    <url>/2023/08/26/%E4%B8%80%E4%B8%AA%E8%BF%B7%E5%AE%AB%E7%B1%BBCTF%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是CTF"><a href="#什么是CTF" class="headerlink" title="什么是CTF"></a>什么是CTF</h2><p>Capture The Flag的简称为CTF，这是计算机安全领域的一种比赛形式，产生于黑客社区。在CTF比赛中，参赛者通常会被分为两队，需要解决一系列和计算机安全相关的问题，并试图攻击对方的系统，同时保护自己的系统不被对方攻击。</p>
-<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><p>操作系统：win10</p>
-<p>逆向工具：010editor，ida pro7.0(随便哪个版本都能用)</p>
-<p>题目：maze</p>
-<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="1-收集文件信息"><a href="#1-收集文件信息" class="headerlink" title="1. 收集文件信息"></a>1. 收集文件信息</h2><p><strong>1.1 使用010editor查看文件类型</strong></p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/JqcHVaKo.png"
-                      style="zoom: 25%;" 
-                >
-
-<p>不难看出，这是是linux下的一个ELF文件，由于使用的系统环境为Windows，所以只能静态分析😭</p>
-<p><strong>1.2 确定是否需要脱壳</strong></p>
-<p>一般linux下的文件最多加个UPX壳，所以直接搜索UPX字符串，不过搜不到，盲猜没加</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/dF1FTS9b.png"
-                      style="zoom:50%;" 
-                >
-
-<p><strong>1.3 看一看能否找到明码的flag</strong></p>
-<p>由于是CTF题，那么接下来开始三板斧</p>
-<p>直接搜一下flag字符串，看看静态文件中是否存在，果然不出所料————不存在</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/X1EUSCM2.png"
-                      style="zoom:50%;" 
-                >
-
-<h2 id="2-明确分析思路"><a href="#2-明确分析思路" class="headerlink" title="2. 明确分析思路"></a>2. 明确分析思路</h2><p>这里用的是静态分析，所以接下来应该</p>
-<ol>
-<li><strong>寻找输入</strong></li>
-<li><strong>寻找关键字符串</strong></li>
-<li><strong>定位关键验证逻辑</strong></li>
-<li><strong>分析关键验证逻辑</strong>，理清思路</li>
-<li><strong>模拟运行</strong>或<strong>直接调试</strong>(but没有搭环境，pass)运行得到flag</li>
-</ol>
-<h2 id="3-详细分析"><a href="#3-详细分析" class="headerlink" title="3. 详细分析"></a>3. 详细分析</h2><p>将这一坨东西拖入IDA（要点时间，可以先去看会儿新闻联播，等它慢慢跑完，）</p>
-<p>加载完成后，可以看到IDA解析出来的函数，顺带很贴心的帮分析出了main函数。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/u39Y9eLJ.png"
-                      style="zoom:50%;" 
-                >
-
-<p>双击进入main函数，看到如下一堆函数逻辑。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/DmKcWnCi.png"
-                      style="zoom: 25%;" 
-                >
-
-<p>看起来所有功能都放main函数中了，甚至还找到了一些注册成功的输出。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/278dlG4H.png"
-                      style="zoom: 25%;" 
-                >
-
-<p>与此同时邻居家上小学一年级的小弟弟看到这里发现了解决办法，接下来只要直接改跳转，让其跳转到Congratulations！就可以了吧！当然不行。所谓逆向，就是要分析出写程序人的意图，然后让他明白，不管怎么搞，都能还原成原始代码，还要弄炸他的心态，直接写注册码。</p>
-<p><strong>辅助工具，开整！</strong></p>
-<p>由于不想动态调试，加上程序逻辑清晰,并没有加一些花里胡哨的东西(例如花指令)，这里就使用了IDA的灵魂，<strong>F5，一键还原伪代码。</strong></p>
-<p>在main函数中直接F5，就能看到这段逻辑的伪码啦。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/DH759pr2.png"
-                      style="zoom: 33%;" 
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/FDWioynC.png"
-                      style="zoom: 50%;" 
-                >
-
-<p><strong>修改伪码</strong></p>
-<p>首先，对代码进行小小的整容外加修改(一系列的变量替换，函数名称替换，变量格式更改)，使其更加符合我们的编程习惯。 </p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/qBJ3IUcg.png"
-                      style="zoom: 33%;" 
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/oXeuqncK.png"
-                      style="zoom: 25%;" 
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/KuGELRBW.png"
-                      style="zoom: 33%;" 
-                >
-
-<p><strong>分析源码</strong><br>​     可以看出，该代码是输入<strong>nctf{xxxxx}(<strong>共24位)中的</strong>x</strong>来对内存中的<strong>x</strong>，<strong>y</strong>进行一系列的运算，用算完后的<strong>x</strong>，<strong>y</strong>在数组<strong>mazeBuffer</strong>中定位到一个值，如果这个值为**#<strong>，则输出成功，否则输出失败。那</strong>mazeBuffer<strong>是一个什么东西呢？只需要 双击</strong>mazeBuffe**r，看到它在数据段中的值</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/vTAdsj5Y.png"
-                      style="zoom:67%;" 
-                >
-
-<p>这样看起来并不直观，根据它的长度(64)，以及最后的二维数组运算**(mazeBuffer[8 * nPosY + nPosX])<strong>，我们可以大胆推断它就是一个8*8 &#x3D; 64大小的二维数组。在数据区域使用</strong>IDA的另一个小功能微调<strong>，首先按</strong>d**转换为data模式，然后在标签名右键，array，选择如下设置</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/BiQZrd1J.png"
-                      style="zoom:50%;" 
-                >
-
-<p>得到一组不太直观的二维数组，再按一下r键，让它以ascii显示。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/08/26/9QUpq90B.png"
-                      style="zoom: 33%;" 
-                >
-
-<p><strong>为什么每一次操作，x，y都会变化呢？最后检查的为什么是#呢？x，y的初始值为什么是0，0呢？</strong></p>
-<p>答案如下：</p>
-<p>这个<strong>mazeBuffer</strong>是一个游戏迷宫地图，之前分析出来的4个操作性字符(对x，y的值有影响的)分别对应左右上下，也就是会循环读取输入的操作性字符，然后让我们从上图的地图中虚拟移动。</p>
-<p>综上，得到了这个flag的终极解法。<strong>构造一条能从(0,0)点到达#位置的路径</strong>，只能走上图的空白处。大概就是**nctf{右下右右下下左下下下右右右右上上左左}**，数一数，刚好24个字，然后打开文本编辑器，将上下左右替换成对应的编码(上 &#x3D;&#x3D;&gt;.  下&#x3D;&#x3D;&gt;0 左&#x3D;&#x3D;&gt;O 右&#x3D;&#x3D;&gt;o)</p>
-<p>至此，得到了<strong>最终的flag ：nctf{o0oo00O000oooo..OO}</strong></p>
-<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1>
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>总结</p>
-
-    </div>
-    <div class="notel-content">
-      <p>1.不要有畏惧心理，再难的程序也有被破解的一天，任何系统的程序只要能被反编译，就能被分析</p>
-<p>2.要善于使用工具，很多功能IDA啊，OD啊，或者xdbg会给我们提供，工具玩的好，逆向也会更加省时省力   </p>
-<p>3.不要局限于破解，分析算法才是逆向的灵魂所在，就像我们今天走完的这段旅途，风景不也很美好么</p>
-
-    </div>
-  </div>
-
-]]></content>
-      <tags>
-        <tag>编程进阶</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简易并网逆变器设计</title>
-    <url>/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/</url>
-    <content><![CDATA[<h1 id="并网逆变器的工作原理"><a href="#并网逆变器的工作原理" class="headerlink" title="并网逆变器的工作原理"></a>并网逆变器的工作原理</h1><p>并网逆变器的工作原理是产生与电网具有<strong>相同相位和频率</strong>但<strong>幅度稍高</strong>的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在滤波后可以得到正弦输出电压。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/tXE3aKoq.png"
-                     
-                ></p>
-<p>半桥只能产生相对于地的正电压。如果每个半桥轮流扫出半个周期，那么差分信号将是完整的正弦波。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/Q3xwBrEI.png"
-                     
-                ></p>
-<h1 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h1><p>使用一个 12v 至 380v DC&#x2F;DC 转换器模块。它会产生约 21KHz 频率的方波电压输出给变压器。然后在变压器的输出上就会得到相同频率的方波，变压器的输出电压会按匝数比放大。根据模块的接口，可以获得 220 或 380V 电压。<code>(输出电压实际上取决于输入电压和变压器匝数比，如果输入电压为 10V，则在 220V 抽头上会得到 186V 电压，而在 15V 输入电压下，会得到 280V 电压)</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/dlDwSh5z.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/y7XZTF1Y.png"
-                     
-                ></p>
-<p>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形如下：</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/9FXmWKNb.png"
-                      alt="输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形"
-                ><figcaption>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形</figcaption></figure></p>
-<p>电路的输出需要全桥整流器转换为直流电压。这里使用了 600V 的快速二极管。变压器模块还提供隔离的 18V 绕组，在调节至 12V 和 3.3V 后，可以用于主逆变器板上的栅极驱动和逻辑电源。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/J4HGXrBQ.png"
-                     
-                ></p>
-<p><strong>总的来说，这些电路可以产生需要的高压直流总线和独立的 12V 驱动电源</strong></p>
-<p>接下来设计组装了一个 PCB，其中包含 H 桥、MOSFET 驱动器、霍尔效应电流感应、一些分压器和 LC 输出滤波器。<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/SEAd3Ny3.png"
-                     
-                ></p>
-<p><strong>同步电路</strong>：部分为一个锁相环 (PLL) 它负责同步到电网。</p>
-<p><strong>采样电路</strong>：对输出电流进行采样，使用 64-FFT 来测量 谐波的相位和幅度。</p>
-<p><strong>谐波抑制电路</strong>：通过PI 控制器为每个频率注入逆谐波以将其抵消。</p>
-<p>上面的三个基本电路能够实现输出电流的低失真水平。基波的相位和幅度可以不断调整 用来驱动所需的输出电流并最大限度地减少无功分量。<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/Lxf9ADt4.png"
-                     
-                ></p>
-<p>电路会生成 大约240V 信号并直接馈入电网。这个电路的变压器负责提供一点缓冲和隔离。同时在变压器闲置时会消耗 约<strong>10W</strong> 的功率。</p>
-<p>这是一个<strong>简易的学习电路</strong>，它有严重的效率损失<em><strong>只适合了解逆变器的工作原理并不适合实际中使用。</strong></em></p>
-<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="PCB-布局"><a href="#PCB-布局" class="headerlink" title="PCB 布局"></a>PCB 布局</h2><p>最初想不要输出变压器，所以将直流总线电压提高到约 380V，以便可以直接合成 240V 交流波形。当增加总线电压时，电磁干扰 (EMI) 成为一个大问题。它完全破坏了电流感应，并且示波器上出现了巨大的干扰尖峰。<strong>PCB 布局设计变得与原理图本身一样重要。</strong></p>
-<h3 id="更好地利用地线层"><a href="#更好地利用地线层" class="headerlink" title="更好地利用地线层"></a>更好地利用地线层</h3><p>地线布局和设计对于抑制 <code>EMI</code> 至关重要。最初，我认为最好不要在<code>开关节点</code>下方有<code>接地层</code>，因为任何接地电容肯定会在每次电压转换期间产生<strong>能量损失</strong>。然而事实证明<code>1.6mm</code> <code>2 层板</code>中 <code>接地层</code> 正上方的 <code>1cm²</code> PCB 走线仅呈现 3pF 的电容。在 40kHz 下将 3pF 充电至 400V 使用了 10mW的功率。<strong>能量损失微不足道</strong>。相反，将<code>接地层</code>放置在开关节点下方可显着降低 <code>EMI</code>。</p>
-<h3 id="将-LC-输出滤波器放置在靠近开关节点的位置"><a href="#将-LC-输出滤波器放置在靠近开关节点的位置" class="headerlink" title="将 LC 输出滤波器放置在靠近开关节点的位置"></a>将 LC 输出滤波器放置在靠近开关节点的位置</h3><p>开关节点直接馈入板载 LC 滤波器，走线尽可能短并位于地线层上方。我相信这可以最大限度地减少发射的 EMI。</p>
-<h3 id="LC-输出滤波电容以地为参考"><a href="#LC-输出滤波电容以地为参考" class="headerlink" title="LC 输出滤波电容以地为参考"></a>LC 输出滤波电容以地为参考</h3><p>一直不太确定输出滤波器的设计。不过商用逆变器似乎都采用 LCL 滤波器，找到的一些资料里</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/nmdvESWP.png"
-                     
-                ></p>
-<ol>
-<li>最简单的，然而负载右侧的导线上将传输快速切换的瞬态电流而且表现的像天线一样。</li>
-<li>通过添加另一个电感来解决这个问题，但要减少电磁辐射，实际需要的是接地端电容器，而不是负载上的电容器。</li>
-<li>解决了2的问题：通过C1和C2与电感器一起过滤掉尖锐的切换瞬态就可以控制电磁辐射。然而需要两个大电感器和两个大电容器。</li>
-<li>在电容器上节省了一些费用。C5和C6的值较小，仅用于消除高速切换过程中的瞬时波动。而C4实际上使输出波形变得平滑。</li>
-<li>进一步节省电感器上的费用。L9&#x2F;L10、C9&#x2F;C10的值较小，仅用于电磁干扰过滤。在它们的输出端仍然会有方波，不过这些方波的变化过程更为平缓，这样导线就不会像天线一样工作。这些组件尺寸更小，价格更便宜。然后只需要一个大型L和C（L11和C6）来使波形平滑成正弦波。</li>
-</ol>
-<p>我使用了布局 4。主要区别在于每个 LC 输出滤波器都以地为参考。这就允许 41kHz 纹波电流 流过 接地电容并直接返回直流总线。减少了电流环路的面积，从而降低了 EMI。</p>
-<h3 id="关于纹波电流的思考"><a href="#关于纹波电流的思考" class="headerlink" title="关于纹波电流的思考"></a>关于纹波电流的思考</h3><p>对于像这样的开关电源有一个一般的经验法则。规则是峰峰值纹波电流为最大输出电流的 20-30%。所以，假设峰值输出电流为 2A，我们的纹波电流目标应该在 0.4-0.6A 之间</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/02MiKkhx.png"
-                     
-                ></p>
-<p><strong>正弦波不同部分的 PWM 占空比不同</strong>，纹波电流取决于占空比，占空比为 50% 时纹波最大。在交流波形的峰值处，占空比不会是 50%。240Vrms 正弦波峰值为 340V，这需要占空比 D &#x3D; Vout&#x2F;Vin &#x3D; 340&#x2F;380 &#x3D; 90%，设计的开关频率为 41kHz。当母线电压为 380V 时，输出电压 340V 时通过 2mH 电感的纹波电流将为 0.44A。<a class="link"   href="https://www.ti.com/lit/an/slva477b/slva477b.pdf?ts=1662800047365&ref_url=https://www.google.co.uk/" >TI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有一篇出色的文章描述了所有这些计算，这里有一个<a class="link"   href="https://calculator.academy/ripple-current-calculator/#f1p1|f2p0" >在线纹波电流计算器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。在 2A 峰值输出电流下，纹波为 22%。找到合适的电感并确定为 2mH。</p>
-<p><strong>选择电感器</strong>时，考虑纹波电流非常重要。纹波电流叠加在峰值输出电流上。电感器不得饱和。</p>
-<h3 id="使用环形电感器"><a href="#使用环形电感器" class="headerlink" title="使用环形电感器"></a>使用环形电感器</h3><p>环形线圈可以更好地将磁通量限制在其内部，并且不会辐射磁通量。</p>
-<h1 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img1.imgtp.com/2023/07/03/wFilECkm.png"
-                     
-                ></p>
-]]></content>
-      <tags>
-        <tag>硬件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安卓逆向学习笔记(二)</title>
-    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/</url>
-    <content><![CDATA[<h1 id="一、目标"><a href="#一、目标" class="headerlink" title="一、目标"></a>一、目标</h1><p>1.了解APK文件结构<br>2.双开APK，简单了解原理<br>3.汉化APK<br>4.简单修改APK名字、图标</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%BA%8C)1.jpg"
-                     
-                ></p>
-<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><p>1.教程Demo<br>2.MT管理器&#x2F;NP管理器<br>3.开发者助手<br>4.雷电模拟器</p>
-<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><h2 id="1-Apk结构"><a href="#1-Apk结构" class="headerlink" title="1.Apk结构"></a>1.Apk结构</h2><p>apk 全称 Android Package，它相当于一个压缩文件，只要在电脑上将apk后缀改为zip即可解压。</p>
-<table>
-<thead>
-<tr>
-<th align="center">文件</th>
-<th align="center">注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">assets目录</td>
-<td align="center">存放APK的静态资源文件，比如视频，音频，图片等</td>
-</tr>
-<tr>
-<td align="center">lib 目录</td>
-<td align="center">armeabi-v7a基本通用所有android设备，arm64-v8a只适用于64位的android设备，x86常见用于android模拟器，其目录下的.so文件是c或c++编译的动态链接库文件</td>
-</tr>
-<tr>
-<td align="center">META-INF目录</td>
-<td align="center">保存应用的签名信息，签名信息可以验证APK文件的完整性，相当于APK的身份证(验证文件是否又被修改)</td>
-</tr>
-<tr>
-<td align="center">res目录</td>
-<td align="center">res目录存放资源文件，包括图片，字符串等等，APK的脸蛋由他的layout文件设计</td>
-</tr>
-<tr>
-<td align="center">AndroidMainfest.xml文件</td>
-<td align="center">APK的应用清单信息，它描述了应用的名字，版本，权限，引用的库文件等等信息</td>
-</tr>
-<tr>
-<td align="center">classes.dex文件</td>
-<td align="center">classes.dex是java源码编译后生成的java字节码文件，APK运行的主要逻辑</td>
-</tr>
-<tr>
-<td align="center">resources.arsc文件</td>
-<td align="center">resources.arsc是编译后的二进制资源文件，它是一个映射表，映射着资源和id，通过R文件中的id就可以找到对应的资源</td>
-</tr>
-</tbody></table>
-<h2 id="2-双开及原理"><a href="#2-双开及原理" class="headerlink" title="2.双开及原理"></a>2.双开及原理</h2><p>双开：简单来说，就是手机同时运行两个或多个相同的应用，例如同时运行两个微信</p>
-<table>
-<thead>
-<tr>
-<th align="center">原理</th>
-<th align="center">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">修改包名</td>
-<td align="center">让手机系统认为这是2个APP，这样的话就能生成2个数据存储路径，此时的多开就等于你打开了两个互不干扰的APP</td>
-</tr>
-<tr>
-<td align="center">修改Framework</td>
-<td align="center">对于有系统修改权限的厂商，可以修改Framework来实现双开的目的，例如：小米自带多开</td>
-</tr>
-<tr>
-<td align="center">通过虚拟化技术实现</td>
-<td align="center">虚拟Framework层、虚拟文件系统、模拟Android对组件的管理、虚拟应用进程管理 等一整套虚拟技术，将APK复制一份到虚拟空间中运行，例如：平行空间</td>
-</tr>
-<tr>
-<td align="center">以插件机制运行</td>
-<td align="center">利用反射替换，动态代{过}{滤}理，hook了系统的大部分与system—server进程通讯的函数，以此作为“欺上瞒下”的目的，欺骗系统“以为”只有一个apk在运行，瞒过插件让其“认为”自己已经安装。例如：VirtualApp</td>
-</tr>
-</tbody></table>
-<h2 id="3-汉化APK"><a href="#3-汉化APK" class="headerlink" title="3.汉化APK"></a>3.汉化APK</h2><p>汉化：使用专门的工具对外文版的软件资源进行读取、翻译、修改、回写等一系列处理，使软件的菜单、对话框、提示等用户界面显示为中文，而程序的内核和功能保持不变，这个过程即为软件汉化</p>
-<p>基本上字符串都是在arsc里，建议一键汉化，然后再润色。<br>少量没汉化到的字符串去定位去逐个汉化。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%BA%8C)2.jpg"
-                      alt="流程图"
-                ><figcaption>流程图</figcaption></figure></p>
-<h2 id="4-初识AndroidManifest-xml"><a href="#4-初识AndroidManifest-xml" class="headerlink" title="4.初识AndroidManifest.xml"></a>4.初识AndroidManifest.xml</h2><p>AndroidManifest.xml文件是整个应用程序的信息描述文件，定义了应用程序中包含的Activity,Service,Content provider和BroadcastReceiver组件信息。每个应用程序在根目录下必须包含一个AndroidManifest.xml文件，且文件名不能修改。它描述了package中暴露的组件，他们各自的实现类，各种能被处理的数据和启动位置</p>
-<table>
-<thead>
-<tr>
-<th align="center">属性</th>
-<th align="center">定义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">versionCode</td>
-<td align="center">版本号，主要用来更新，例如:12</td>
-</tr>
-<tr>
-<td align="center">versionName</td>
-<td align="center">版本名，给用户看的，例如:1.2</td>
-</tr>
-<tr>
-<td align="center">package</td>
-<td align="center">包名，例如：com.zj.52pj.demo</td>
-</tr>
-<tr>
-<td align="center">uses-permission android:name&#x3D;””</td>
-<td align="center">应用权限，例如：android.permission.INTERNET 代表网络权限</td>
-</tr>
-<tr>
-<td align="center">android:label&#x3D;”@string&#x2F;app_name”</td>
-<td align="center">应用名称</td>
-</tr>
-<tr>
-<td align="center">android:icon&#x3D;”@mipmap&#x2F;ic_launcher”</td>
-<td align="center">应用图标路径</td>
-</tr>
-<tr>
-<td align="center">android:debuggable&#x3D;”true”</td>
-<td align="center">应用是否开启debug权限</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>编程进阶</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安卓逆向学习笔记(三)</title>
     <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/</url>
     <content><![CDATA[<h1 id="一、-目标"><a href="#一、-目标" class="headerlink" title="一、 目标"></a>一、 目标</h1><hr>
@@ -2136,35 +1947,179 @@
       </tags>
   </entry>
   <entry>
-    <title>安卓逆向学习笔记(一)</title>
-    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/</url>
-    <content><![CDATA[<h1 id="一-什么是安卓逆向？"><a href="#一-什么是安卓逆向？" class="headerlink" title="一.什么是安卓逆向？"></a>一.什么是安卓逆向？</h1><p>安卓逆向是对已经打包好的APP进行反编译、源码分析了解APP实现逻辑的一门技术</p>
-<h1 id="二-安卓逆向可以干嘛？"><a href="#二-安卓逆向可以干嘛？" class="headerlink" title="二.安卓逆向可以干嘛？"></a>二.安卓逆向可以干嘛？</h1><p>去更新<br>去广告<br>内购&#x2F;会员破解<br>协议自动签到<br>白嫖！！！</p>
-<h1 id="三-适合人群"><a href="#三-适合人群" class="headerlink" title="三.适合人群"></a>三.适合人群</h1><p>小白、零基础人群<br>先来一碗鸡汤：<br>改天是哪天，下次是哪次，以后是多久，去经历，去后悔。<br>保持热爱，奔赴山海。我们都在奔赴各自不同的人生！！！</p>
-<h1 id="四-Magisk介绍"><a href="#四-Magisk介绍" class="headerlink" title="四.Magisk介绍"></a>四.Magisk介绍</h1><p>Magisk 是一套用于定制 Android 的开源软件，支持高于 Android 5.0 的设备。</p>
-<p>以下是一些功能亮点：</p>
-<ol>
-<li><strong>MagiskSU</strong>：为应用程序提供 root 访问权限</li>
-<li><strong>Magisk 模块</strong>：通过安装模块修改只读分区</li>
-<li><strong>MagiskHide</strong>：从根检测 &#x2F; 系统完整性检查中隐藏 Magisk(Shamiko)</li>
-<li><strong>MagiskBoot</strong> : 最完整的安卓启动镜像解包和重新打包工具</li>
-</ol>
-<h1 id="五-安装步骤"><a href="#五-安装步骤" class="headerlink" title="五.安装步骤"></a>五.安装步骤</h1><p>1.下载一个安卓模拟器，并安装;例如<a class="link"   href="https://www.ldmnq.com/" >雷电模拟器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>2.下载配置文件<br>3.安装面具</p>
-<h1 id="六-常见问题"><a href="#六-常见问题" class="headerlink" title="六.常见问题"></a>六.常见问题</h1><p><strong>1.如图，Magisk刷不上</strong></p>
+    <title>安卓逆向学习笔记(五)</title>
+    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/</url>
+    <content><![CDATA[<h1 id="一、目标"><a href="#一、目标" class="headerlink" title="一、目标"></a>一、目标</h1><hr>
+<p>1.配置java环境<br>2.了解并掌握动态调试<br>3.了解并掌握Log插桩</p>
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%911.png"
-                      style="zoom:80%;" 
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%85%AD)1.jpg"
+                      align="left" style="zoom: 40%;" 
                 >
 
-<p><em>需要在设置里把读写权限打开</em></p>
-<img  
+<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><hr>
+<p>1.教程Demo<br>2.MT管理器&#x2F;NP管理器<br>3.jeb<br>4.雷电模拟器<br>5.XappDebug</p>
+<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><hr>
+<h2 id="1-配置java环境"><a href="#1-配置java环境" class="headerlink" title="1.配置java环境"></a>1.配置java环境</h2><p>1.下载jdk文件并安装(课件里有)<br>2.配置java环境<br>ps：在视频里面环境配置只配置了一个JAVA_HOME<br>还有一个Path和CLASSPATH，请参考这篇文档，写得很详细，配置完后记得cmd窗口输入java验证一下<br><a class="link"   href="https://blog.csdn.net/xhmico/article/details/122390181" >java 环境配置(详细教程) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="2-什么是动态调试"><a href="#2-什么是动态调试" class="headerlink" title="2.什么是动态调试"></a>2.什么是动态调试</h2><p>动态调试是指自带的调试器跟踪自己软件的运行，可以在调试的过程中知道参数或者局部变量的值以及履清代码运行的先后顺序。多用于爆破注册码(CTF必备技能)</p>
+<h2 id="3-动态调试步骤"><a href="#3-动态调试步骤" class="headerlink" title="3.动态调试步骤"></a>3.动态调试步骤</h2><h3 id="1-修改debug权限"><a href="#1-修改debug权限" class="headerlink" title="1.修改debug权限"></a>1.修改debug权限</h3><p>方法一:在AndroidManifest.xml里添加可调试权限</p>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="code"><pre><span class="line">android:debuggable=&quot;true&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>方法二：XappDebug模块hook对应的app</p>
+<p>项目地址</p>
+<p><a class="link"   href="https://github.com/Palatis/XAppDebug" >XappDebug <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>方法三：Magisk命令(重启失效)</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">1.  adb shell #adb进入命令行模式</span><br><span class="line"></span><br><span class="line">2.  su #切换至超级用户</span><br><span class="line"></span><br><span class="line">3.  magisk resetprop ro.debuggable 1</span><br><span class="line"></span><br><span class="line">4.  stop;start; #一定要通过该方式重启</span><br></pre></td></tr></table></figure></div>
+
+<p>方法四:刷入MagiskHide Props Config模块(永久有效，但我这两台手机都不行，哭死，呜呜呜)</p>
+<p>一般来说，在4选项中如果有ro.debuggable那就直接修改<br>没有的话就</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%912.jpg"
-                      style="zoom:50%;" 
-                >
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%85%AD"
+                     
+                >2.jpg” align&#x3D;”left” )</p>
+<p>修改ro.debuggable的值为1</p>
+<h3 id="2-端口转发以及开启adb权限"><a href="#2-端口转发以及开启adb权限" class="headerlink" title="2.端口转发以及开启adb权限"></a>2.端口转发以及开启adb权限</h3><p>版本号点击七次开启开发者模式并开启adb调试权限</p>
+<p>夜神模拟器：adb connect 127.0.0.1:62001</p>
+<h3 id="3-下段点"><a href="#3-下段点" class="headerlink" title="3.下段点"></a>3.下段点</h3><p>ctrl+b下断点</p>
+<h3 id="4-debug模式启动"><a href="#4-debug模式启动" class="headerlink" title="4.debug模式启动"></a>4.debug模式启动</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">adb shell am start -D -n com.zj.wuaipojie/.ui.MainActivity</span><br></pre></td></tr></table></figure></div>
+
+<p>adb shell am start -D -n<br>adb shell am start -D -n 包名&#x2F;类名<br>am start -n 表示启动一个activity<br>am start -D 表示将应用设置为可调试模式</p>
+<h3 id="5-Jeb附加调试进程"><a href="#5-Jeb附加调试进程" class="headerlink" title="5.Jeb附加调试进程"></a>5.Jeb附加调试进程</h3><p>激活jeb</p>
+<p>在线python运行<br><a class="link"   href="https://tool.lu/coderunner/" >https://tool.lu/coderunner/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>算号代码：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os, sys, struct, time, binascii, hashlib</span><br><span class="line"></span><br><span class="line">RC4_Key2= <span class="string">&#x27;Eg\xa2\x99_\x83\xf1\x10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rc4</span>(<span class="params">Key, inData</span>):</span><br><span class="line">    Buf = <span class="string">&quot;&quot;</span></span><br><span class="line">    S = <span class="built_in">range</span>(<span class="number">256</span>)</span><br><span class="line">    K = (<span class="built_in">map</span>(<span class="keyword">lambda</span> x:<span class="built_in">ord</span>(x), Key) * (<span class="number">256</span> / <span class="built_in">len</span>(Key) + <span class="number">1</span>))[:<span class="number">256</span>]</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        j = (S[i] + K[i] + j) % <span class="number">256</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(inData)):</span><br><span class="line">        i = (i + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">        j = (j + S[i]) % <span class="number">256</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]</span><br><span class="line">        Buf += <span class="built_in">chr</span>(S[(S[j] + S[i]) % <span class="number">256</span>] ^ <span class="built_in">ord</span>(inData[x]))</span><br><span class="line">    <span class="keyword">return</span> Buf</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Long2Int</span>(<span class="params">longdata</span>):</span><br><span class="line">    lo = longdata &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    hi = (longdata &gt;&gt; <span class="number">32</span>) &amp; <span class="number">0x7FFFFFFF</span></span><br><span class="line">    <span class="keyword">return</span> hi, lo</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">KeygenSN</span>(<span class="params">LicenseSerial, MachineID</span>):</span><br><span class="line">    mhi, mlo = Long2Int(MachineID)</span><br><span class="line">    lhi, llo = Long2Int(LicenseSerial)</span><br><span class="line">    hi_Key = (mhi - lhi + <span class="number">0x55667788</span>) &amp; <span class="number">0x7FFFFFFF</span></span><br><span class="line">    lo_Key = (mlo + llo + <span class="number">0x11223344</span>) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    Z0, = struct.unpack(<span class="string">&#x27;&lt;Q&#x27;</span>, struct.pack(<span class="string">&#x27;&lt;LL&#x27;</span>, lo_Key, hi_Key))</span><br><span class="line">    Z1 = <span class="built_in">int</span>(time.time()) ^ <span class="number">0x56739ACD</span></span><br><span class="line">    s = <span class="built_in">sum</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x:<span class="built_in">int</span>(x, <span class="number">16</span>), <span class="string">&quot;%x&quot;</span> % Z1)) % <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;%dZ%d%d&quot;</span> % (Z0, Z1, s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ParsePost</span>(<span class="params">buf</span>):</span><br><span class="line">    Info = struct.unpack(<span class="string">&#x27;&lt;3L2Q4LQ3L&#x27;</span>, buf[:<span class="number">0x40</span>])</span><br><span class="line">    flag, CRC, UserSerial, LicenseSerial, MachineID, build_type, \</span><br><span class="line">          Ver_Major, Ver_Minor, Ver_Buildid, Ver_Timestamp, \</span><br><span class="line">          TimeOffset, Kclass, Random2 = Info</span><br><span class="line">    SysInfoData = buf[<span class="number">0x40</span>:]</span><br><span class="line">    <span class="keyword">assert</span> CRC == binascii.crc32(buf[<span class="number">8</span>:]) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    <span class="keyword">return</span> Info, SysInfoData</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">DecodeRc4Str</span>(<span class="params">buf</span>):</span><br><span class="line">    buf = buf.decode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">    i, s = ParsePost(rc4(buf[:<span class="number">8</span>] + RC4_Key2, buf[<span class="number">8</span>:]))</span><br><span class="line">    <span class="keyword">return</span> i, s</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GetJebLicenseKey</span>():</span><br><span class="line">    licdata = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> licdata:</span><br><span class="line">        i, MachineID = DecodeRc4Str(licdata)</span><br><span class="line">        SN = KeygenSN(i[<span class="number">3</span>], i[<span class="number">4</span>])</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;JEB License Key:&quot;</span>, SN</span><br><span class="line">        <span class="keyword">return</span> SN</span><br><span class="line"></span><br><span class="line">GetJebLicenseKey()</span><br><span class="line">raw_input(<span class="string">&quot;Enter to Exit...&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>快捷键：<br>^F6进入方法<br>F6跳过方法<br>F7从方法中跳出来<br>R运行到光标处</p>
+<h2 id="3-Log插桩"><a href="#3-Log插桩" class="headerlink" title="3.Log插桩"></a>3.Log插桩</h2><p>定义：Log插桩指的是反编译APK文件时，在对应的smali文件里，添加相应的smali代码，将程序中的关键信息，以log日志的形式进行输出。</p>
+<p>调用命令</p>
+<div class="highlight-container" data-rel="Smali"><figure class="iseeu highlight smali"><table><tr><td class="code"><pre><span class="line"><span class="built_in"></span></span><br><span class="line"><span class="built_in">invoke-static </span>&#123;对应寄存器&#125;, <span class="class">Lcom/mtools/LogUtils;</span>-&gt;v(<span class="class">Ljava/lang/Object;</span>)V</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <tags>
+        <tag>编程进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓逆向学习笔记(二)</title>
+    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/</url>
+    <content><![CDATA[<h1 id="一、目标"><a href="#一、目标" class="headerlink" title="一、目标"></a>一、目标</h1><p>1.了解APK文件结构<br>2.双开APK，简单了解原理<br>3.汉化APK<br>4.简单修改APK名字、图标</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%BA%8C)1.jpg"
+                     
+                ></p>
+<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><p>1.教程Demo<br>2.MT管理器&#x2F;NP管理器<br>3.开发者助手<br>4.雷电模拟器</p>
+<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><h2 id="1-Apk结构"><a href="#1-Apk结构" class="headerlink" title="1.Apk结构"></a>1.Apk结构</h2><p>apk 全称 Android Package，它相当于一个压缩文件，只要在电脑上将apk后缀改为zip即可解压。</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">assets目录</td>
+<td align="center">存放APK的静态资源文件，比如视频，音频，图片等</td>
+</tr>
+<tr>
+<td align="center">lib 目录</td>
+<td align="center">armeabi-v7a基本通用所有android设备，arm64-v8a只适用于64位的android设备，x86常见用于android模拟器，其目录下的.so文件是c或c++编译的动态链接库文件</td>
+</tr>
+<tr>
+<td align="center">META-INF目录</td>
+<td align="center">保存应用的签名信息，签名信息可以验证APK文件的完整性，相当于APK的身份证(验证文件是否又被修改)</td>
+</tr>
+<tr>
+<td align="center">res目录</td>
+<td align="center">res目录存放资源文件，包括图片，字符串等等，APK的脸蛋由他的layout文件设计</td>
+</tr>
+<tr>
+<td align="center">AndroidMainfest.xml文件</td>
+<td align="center">APK的应用清单信息，它描述了应用的名字，版本，权限，引用的库文件等等信息</td>
+</tr>
+<tr>
+<td align="center">classes.dex文件</td>
+<td align="center">classes.dex是java源码编译后生成的java字节码文件，APK运行的主要逻辑</td>
+</tr>
+<tr>
+<td align="center">resources.arsc文件</td>
+<td align="center">resources.arsc是编译后的二进制资源文件，它是一个映射表，映射着资源和id，通过R文件中的id就可以找到对应的资源</td>
+</tr>
+</tbody></table>
+<h2 id="2-双开及原理"><a href="#2-双开及原理" class="headerlink" title="2.双开及原理"></a>2.双开及原理</h2><p>双开：简单来说，就是手机同时运行两个或多个相同的应用，例如同时运行两个微信</p>
+<table>
+<thead>
+<tr>
+<th align="center">原理</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">修改包名</td>
+<td align="center">让手机系统认为这是2个APP，这样的话就能生成2个数据存储路径，此时的多开就等于你打开了两个互不干扰的APP</td>
+</tr>
+<tr>
+<td align="center">修改Framework</td>
+<td align="center">对于有系统修改权限的厂商，可以修改Framework来实现双开的目的，例如：小米自带多开</td>
+</tr>
+<tr>
+<td align="center">通过虚拟化技术实现</td>
+<td align="center">虚拟Framework层、虚拟文件系统、模拟Android对组件的管理、虚拟应用进程管理 等一整套虚拟技术，将APK复制一份到虚拟空间中运行，例如：平行空间</td>
+</tr>
+<tr>
+<td align="center">以插件机制运行</td>
+<td align="center">利用反射替换，动态代{过}{滤}理，hook了系统的大部分与system—server进程通讯的函数，以此作为“欺上瞒下”的目的，欺骗系统“以为”只有一个apk在运行，瞒过插件让其“认为”自己已经安装。例如：VirtualApp</td>
+</tr>
+</tbody></table>
+<h2 id="3-汉化APK"><a href="#3-汉化APK" class="headerlink" title="3.汉化APK"></a>3.汉化APK</h2><p>汉化：使用专门的工具对外文版的软件资源进行读取、翻译、修改、回写等一系列处理，使软件的菜单、对话框、提示等用户界面显示为中文，而程序的内核和功能保持不变，这个过程即为软件汉化</p>
+<p>基本上字符串都是在arsc里，建议一键汉化，然后再润色。<br>少量没汉化到的字符串去定位去逐个汉化。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E4%BA%8C)2.jpg"
+                      alt="流程图"
+                ><figcaption>流程图</figcaption></figure></p>
+<h2 id="4-初识AndroidManifest-xml"><a href="#4-初识AndroidManifest-xml" class="headerlink" title="4.初识AndroidManifest.xml"></a>4.初识AndroidManifest.xml</h2><p>AndroidManifest.xml文件是整个应用程序的信息描述文件，定义了应用程序中包含的Activity,Service,Content provider和BroadcastReceiver组件信息。每个应用程序在根目录下必须包含一个AndroidManifest.xml文件，且文件名不能修改。它描述了package中暴露的组件，他们各自的实现类，各种能被处理的数据和启动位置</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">versionCode</td>
+<td align="center">版本号，主要用来更新，例如:12</td>
+</tr>
+<tr>
+<td align="center">versionName</td>
+<td align="center">版本名，给用户看的，例如:1.2</td>
+</tr>
+<tr>
+<td align="center">package</td>
+<td align="center">包名，例如：com.zj.52pj.demo</td>
+</tr>
+<tr>
+<td align="center">uses-permission android:name&#x3D;””</td>
+<td align="center">应用权限，例如：android.permission.INTERNET 代表网络权限</td>
+</tr>
+<tr>
+<td align="center">android:label&#x3D;”@string&#x2F;app_name”</td>
+<td align="center">应用名称</td>
+</tr>
+<tr>
+<td align="center">android:icon&#x3D;”@mipmap&#x2F;ic_launcher”</td>
+<td align="center">应用图标路径</td>
+</tr>
+<tr>
+<td align="center">android:debuggable&#x3D;”true”</td>
+<td align="center">应用是否开启debug权限</td>
+</tr>
+</tbody></table>
 ]]></content>
       <tags>
         <tag>编程进阶</tag>
@@ -2261,62 +2216,6 @@
 <h2 id="4-弹窗定位-堆栈分析"><a href="#4-弹窗定位-堆栈分析" class="headerlink" title="4. 弹窗定位&amp;堆栈分析"></a>4. 弹窗定位&amp;堆栈分析</h2><p>修改方法：<br>1.修改xml中的versiocode<br>2.Hook弹窗(推荐算法助手开启弹窗定位)<br>3.修改dex弹窗代码<br>4.抓包修改响应体(也可以路由器拦截)</p>
 <h2 id="5-布局优化"><a href="#5-布局优化" class="headerlink" title="5. 布局优化"></a>5. 布局优化</h2><p>1.开发者助手抓布局<br>2.MT管理器xml搜索定位<br>3.修改xml代码</p>
 <div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="code"><pre><span class="line">android:visibility=&quot;gone&quot;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <tags>
-        <tag>编程进阶</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安卓逆向学习笔记(五)</title>
-    <url>/2024/01/03/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/</url>
-    <content><![CDATA[<h1 id="一、目标"><a href="#一、目标" class="headerlink" title="一、目标"></a>一、目标</h1><hr>
-<p>1.配置java环境<br>2.了解并掌握动态调试<br>3.了解并掌握Log插桩</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%85%AD)1.jpg"
-                      align="left" style="zoom: 40%;" 
-                >
-
-<h1 id="二、工具"><a href="#二、工具" class="headerlink" title="二、工具"></a>二、工具</h1><hr>
-<p>1.教程Demo<br>2.MT管理器&#x2F;NP管理器<br>3.jeb<br>4.雷电模拟器<br>5.XappDebug</p>
-<h1 id="三、内容"><a href="#三、内容" class="headerlink" title="三、内容"></a>三、内容</h1><hr>
-<h2 id="1-配置java环境"><a href="#1-配置java环境" class="headerlink" title="1.配置java环境"></a>1.配置java环境</h2><p>1.下载jdk文件并安装(课件里有)<br>2.配置java环境<br>ps：在视频里面环境配置只配置了一个JAVA_HOME<br>还有一个Path和CLASSPATH，请参考这篇文档，写得很详细，配置完后记得cmd窗口输入java验证一下<br><a class="link"   href="https://blog.csdn.net/xhmico/article/details/122390181" >java 环境配置(详细教程) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h2 id="2-什么是动态调试"><a href="#2-什么是动态调试" class="headerlink" title="2.什么是动态调试"></a>2.什么是动态调试</h2><p>动态调试是指自带的调试器跟踪自己软件的运行，可以在调试的过程中知道参数或者局部变量的值以及履清代码运行的先后顺序。多用于爆破注册码(CTF必备技能)</p>
-<h2 id="3-动态调试步骤"><a href="#3-动态调试步骤" class="headerlink" title="3.动态调试步骤"></a>3.动态调试步骤</h2><h3 id="1-修改debug权限"><a href="#1-修改debug权限" class="headerlink" title="1.修改debug权限"></a>1.修改debug权限</h3><p>方法一:在AndroidManifest.xml里添加可调试权限</p>
-<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="code"><pre><span class="line">android:debuggable=&quot;true&quot;</span><br></pre></td></tr></table></figure></div>
-
-<p>方法二：XappDebug模块hook对应的app</p>
-<p>项目地址</p>
-<p><a class="link"   href="https://github.com/Palatis/XAppDebug" >XappDebug <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>方法三：Magisk命令(重启失效)</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">1.  adb shell #adb进入命令行模式</span><br><span class="line"></span><br><span class="line">2.  su #切换至超级用户</span><br><span class="line"></span><br><span class="line">3.  magisk resetprop ro.debuggable 1</span><br><span class="line"></span><br><span class="line">4.  stop;start; #一定要通过该方式重启</span><br></pre></td></tr></table></figure></div>
-
-<p>方法四:刷入MagiskHide Props Config模块(永久有效，但我这两台手机都不行，哭死，呜呜呜)</p>
-<p>一般来说，在4选项中如果有ro.debuggable那就直接修改<br>没有的话就</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://chieh-1301921315.cos.na-siliconvalley.myqcloud.com/blog%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91(%E5%85%AD"
-                     
-                >2.jpg” align&#x3D;”left” )</p>
-<p>修改ro.debuggable的值为1</p>
-<h3 id="2-端口转发以及开启adb权限"><a href="#2-端口转发以及开启adb权限" class="headerlink" title="2.端口转发以及开启adb权限"></a>2.端口转发以及开启adb权限</h3><p>版本号点击七次开启开发者模式并开启adb调试权限</p>
-<p>夜神模拟器：adb connect 127.0.0.1:62001</p>
-<h3 id="3-下段点"><a href="#3-下段点" class="headerlink" title="3.下段点"></a>3.下段点</h3><p>ctrl+b下断点</p>
-<h3 id="4-debug模式启动"><a href="#4-debug模式启动" class="headerlink" title="4.debug模式启动"></a>4.debug模式启动</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">adb shell am start -D -n com.zj.wuaipojie/.ui.MainActivity</span><br></pre></td></tr></table></figure></div>
-
-<p>adb shell am start -D -n<br>adb shell am start -D -n 包名&#x2F;类名<br>am start -n 表示启动一个activity<br>am start -D 表示将应用设置为可调试模式</p>
-<h3 id="5-Jeb附加调试进程"><a href="#5-Jeb附加调试进程" class="headerlink" title="5.Jeb附加调试进程"></a>5.Jeb附加调试进程</h3><p>激活jeb</p>
-<p>在线python运行<br><a class="link"   href="https://tool.lu/coderunner/" >https://tool.lu/coderunner/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>算号代码：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os, sys, struct, time, binascii, hashlib</span><br><span class="line"></span><br><span class="line">RC4_Key2= <span class="string">&#x27;Eg\xa2\x99_\x83\xf1\x10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rc4</span>(<span class="params">Key, inData</span>):</span><br><span class="line">    Buf = <span class="string">&quot;&quot;</span></span><br><span class="line">    S = <span class="built_in">range</span>(<span class="number">256</span>)</span><br><span class="line">    K = (<span class="built_in">map</span>(<span class="keyword">lambda</span> x:<span class="built_in">ord</span>(x), Key) * (<span class="number">256</span> / <span class="built_in">len</span>(Key) + <span class="number">1</span>))[:<span class="number">256</span>]</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        j = (S[i] + K[i] + j) % <span class="number">256</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(inData)):</span><br><span class="line">        i = (i + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">        j = (j + S[i]) % <span class="number">256</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]</span><br><span class="line">        Buf += <span class="built_in">chr</span>(S[(S[j] + S[i]) % <span class="number">256</span>] ^ <span class="built_in">ord</span>(inData[x]))</span><br><span class="line">    <span class="keyword">return</span> Buf</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Long2Int</span>(<span class="params">longdata</span>):</span><br><span class="line">    lo = longdata &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    hi = (longdata &gt;&gt; <span class="number">32</span>) &amp; <span class="number">0x7FFFFFFF</span></span><br><span class="line">    <span class="keyword">return</span> hi, lo</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">KeygenSN</span>(<span class="params">LicenseSerial, MachineID</span>):</span><br><span class="line">    mhi, mlo = Long2Int(MachineID)</span><br><span class="line">    lhi, llo = Long2Int(LicenseSerial)</span><br><span class="line">    hi_Key = (mhi - lhi + <span class="number">0x55667788</span>) &amp; <span class="number">0x7FFFFFFF</span></span><br><span class="line">    lo_Key = (mlo + llo + <span class="number">0x11223344</span>) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    Z0, = struct.unpack(<span class="string">&#x27;&lt;Q&#x27;</span>, struct.pack(<span class="string">&#x27;&lt;LL&#x27;</span>, lo_Key, hi_Key))</span><br><span class="line">    Z1 = <span class="built_in">int</span>(time.time()) ^ <span class="number">0x56739ACD</span></span><br><span class="line">    s = <span class="built_in">sum</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x:<span class="built_in">int</span>(x, <span class="number">16</span>), <span class="string">&quot;%x&quot;</span> % Z1)) % <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;%dZ%d%d&quot;</span> % (Z0, Z1, s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ParsePost</span>(<span class="params">buf</span>):</span><br><span class="line">    Info = struct.unpack(<span class="string">&#x27;&lt;3L2Q4LQ3L&#x27;</span>, buf[:<span class="number">0x40</span>])</span><br><span class="line">    flag, CRC, UserSerial, LicenseSerial, MachineID, build_type, \</span><br><span class="line">          Ver_Major, Ver_Minor, Ver_Buildid, Ver_Timestamp, \</span><br><span class="line">          TimeOffset, Kclass, Random2 = Info</span><br><span class="line">    SysInfoData = buf[<span class="number">0x40</span>:]</span><br><span class="line">    <span class="keyword">assert</span> CRC == binascii.crc32(buf[<span class="number">8</span>:]) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    <span class="keyword">return</span> Info, SysInfoData</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">DecodeRc4Str</span>(<span class="params">buf</span>):</span><br><span class="line">    buf = buf.decode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">    i, s = ParsePost(rc4(buf[:<span class="number">8</span>] + RC4_Key2, buf[<span class="number">8</span>:]))</span><br><span class="line">    <span class="keyword">return</span> i, s</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GetJebLicenseKey</span>():</span><br><span class="line">    licdata = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> licdata:</span><br><span class="line">        i, MachineID = DecodeRc4Str(licdata)</span><br><span class="line">        SN = KeygenSN(i[<span class="number">3</span>], i[<span class="number">4</span>])</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;JEB License Key:&quot;</span>, SN</span><br><span class="line">        <span class="keyword">return</span> SN</span><br><span class="line"></span><br><span class="line">GetJebLicenseKey()</span><br><span class="line">raw_input(<span class="string">&quot;Enter to Exit...&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>快捷键：<br>^F6进入方法<br>F6跳过方法<br>F7从方法中跳出来<br>R运行到光标处</p>
-<h2 id="3-Log插桩"><a href="#3-Log插桩" class="headerlink" title="3.Log插桩"></a>3.Log插桩</h2><p>定义：Log插桩指的是反编译APK文件时，在对应的smali文件里，添加相应的smali代码，将程序中的关键信息，以log日志的形式进行输出。</p>
-<p>调用命令</p>
-<div class="highlight-container" data-rel="Smali"><figure class="iseeu highlight smali"><table><tr><td class="code"><pre><span class="line"><span class="built_in"></span></span><br><span class="line"><span class="built_in">invoke-static </span>&#123;对应寄存器&#125;, <span class="class">Lcom/mtools/LogUtils;</span>-&gt;v(<span class="class">Ljava/lang/Object;</span>)V</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
       <tags>
@@ -2440,6 +2339,107 @@
 ]]></content>
       <tags>
         <tag>编程进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简易并网逆变器设计</title>
+    <url>/2023/07/03/%E7%AE%80%E6%98%93%E5%B9%B6%E7%BD%91%E9%80%86%E5%8F%98%E5%99%A8%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<h1 id="并网逆变器的工作原理"><a href="#并网逆变器的工作原理" class="headerlink" title="并网逆变器的工作原理"></a>并网逆变器的工作原理</h1><p>并网逆变器的工作原理是产生与电网具有<strong>相同相位和频率</strong>但<strong>幅度稍高</strong>的波形，以驱动正向电流。这可以使用 2 个半桥和滤波电路来完成，每个半桥都作为同步降压转换器工作，其滤波后的输出电压与 PWM 占空比成正比。通过以正弦方式改变占空比，在滤波后可以得到正弦输出电压。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/tXE3aKoq.png"
+                     
+                ></p>
+<p>半桥只能产生相对于地的正电压。如果每个半桥轮流扫出半个周期，那么差分信号将是完整的正弦波。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/Q3xwBrEI.png"
+                     
+                ></p>
+<h1 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h1><p>使用一个 12v 至 380v DC&#x2F;DC 转换器模块。它会产生约 21KHz 频率的方波电压输出给变压器。然后在变压器的输出上就会得到相同频率的方波，变压器的输出电压会按匝数比放大。根据模块的接口，可以获得 220 或 380V 电压。<code>(输出电压实际上取决于输入电压和变压器匝数比，如果输入电压为 10V，则在 220V 抽头上会得到 186V 电压，而在 15V 输入电压下，会得到 280V 电压)</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/dlDwSh5z.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/y7XZTF1Y.png"
+                     
+                ></p>
+<p>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形如下：</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/9FXmWKNb.png"
+                      alt="输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形"
+                ><figcaption>输入电压为 10V、使用 500x 探头 (21kHz) 时 220V 分接头上的波形</figcaption></figure></p>
+<p>电路的输出需要全桥整流器转换为直流电压。这里使用了 600V 的快速二极管。变压器模块还提供隔离的 18V 绕组，在调节至 12V 和 3.3V 后，可以用于主逆变器板上的栅极驱动和逻辑电源。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/J4HGXrBQ.png"
+                     
+                ></p>
+<p><strong>总的来说，这些电路可以产生需要的高压直流总线和独立的 12V 驱动电源</strong></p>
+<p>接下来设计组装了一个 PCB，其中包含 H 桥、MOSFET 驱动器、霍尔效应电流感应、一些分压器和 LC 输出滤波器。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/SEAd3Ny3.png"
+                     
+                ></p>
+<p><strong>同步电路</strong>：部分为一个锁相环 (PLL) 它负责同步到电网。</p>
+<p><strong>采样电路</strong>：对输出电流进行采样，使用 64-FFT 来测量 谐波的相位和幅度。</p>
+<p><strong>谐波抑制电路</strong>：通过PI 控制器为每个频率注入逆谐波以将其抵消。</p>
+<p>上面的三个基本电路能够实现输出电流的低失真水平。基波的相位和幅度可以不断调整 用来驱动所需的输出电流并最大限度地减少无功分量。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/Lxf9ADt4.png"
+                     
+                ></p>
+<p>电路会生成 大约240V 信号并直接馈入电网。这个电路的变压器负责提供一点缓冲和隔离。同时在变压器闲置时会消耗 约<strong>10W</strong> 的功率。</p>
+<p>这是一个<strong>简易的学习电路</strong>，它有严重的效率损失<em><strong>只适合了解逆变器的工作原理并不适合实际中使用。</strong></em></p>
+<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="PCB-布局"><a href="#PCB-布局" class="headerlink" title="PCB 布局"></a>PCB 布局</h2><p>最初想不要输出变压器，所以将直流总线电压提高到约 380V，以便可以直接合成 240V 交流波形。当增加总线电压时，电磁干扰 (EMI) 成为一个大问题。它完全破坏了电流感应，并且示波器上出现了巨大的干扰尖峰。<strong>PCB 布局设计变得与原理图本身一样重要。</strong></p>
+<h3 id="更好地利用地线层"><a href="#更好地利用地线层" class="headerlink" title="更好地利用地线层"></a>更好地利用地线层</h3><p>地线布局和设计对于抑制 <code>EMI</code> 至关重要。最初，我认为最好不要在<code>开关节点</code>下方有<code>接地层</code>，因为任何接地电容肯定会在每次电压转换期间产生<strong>能量损失</strong>。然而事实证明<code>1.6mm</code> <code>2 层板</code>中 <code>接地层</code> 正上方的 <code>1cm²</code> PCB 走线仅呈现 3pF 的电容。在 40kHz 下将 3pF 充电至 400V 使用了 10mW的功率。<strong>能量损失微不足道</strong>。相反，将<code>接地层</code>放置在开关节点下方可显着降低 <code>EMI</code>。</p>
+<h3 id="将-LC-输出滤波器放置在靠近开关节点的位置"><a href="#将-LC-输出滤波器放置在靠近开关节点的位置" class="headerlink" title="将 LC 输出滤波器放置在靠近开关节点的位置"></a>将 LC 输出滤波器放置在靠近开关节点的位置</h3><p>开关节点直接馈入板载 LC 滤波器，走线尽可能短并位于地线层上方。我相信这可以最大限度地减少发射的 EMI。</p>
+<h3 id="LC-输出滤波电容以地为参考"><a href="#LC-输出滤波电容以地为参考" class="headerlink" title="LC 输出滤波电容以地为参考"></a>LC 输出滤波电容以地为参考</h3><p>一直不太确定输出滤波器的设计。不过商用逆变器似乎都采用 LCL 滤波器，找到的一些资料里</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/nmdvESWP.png"
+                     
+                ></p>
+<ol>
+<li>最简单的，然而负载右侧的导线上将传输快速切换的瞬态电流而且表现的像天线一样。</li>
+<li>通过添加另一个电感来解决这个问题，但要减少电磁辐射，实际需要的是接地端电容器，而不是负载上的电容器。</li>
+<li>解决了2的问题：通过C1和C2与电感器一起过滤掉尖锐的切换瞬态就可以控制电磁辐射。然而需要两个大电感器和两个大电容器。</li>
+<li>在电容器上节省了一些费用。C5和C6的值较小，仅用于消除高速切换过程中的瞬时波动。而C4实际上使输出波形变得平滑。</li>
+<li>进一步节省电感器上的费用。L9&#x2F;L10、C9&#x2F;C10的值较小，仅用于电磁干扰过滤。在它们的输出端仍然会有方波，不过这些方波的变化过程更为平缓，这样导线就不会像天线一样工作。这些组件尺寸更小，价格更便宜。然后只需要一个大型L和C（L11和C6）来使波形平滑成正弦波。</li>
+</ol>
+<p>我使用了布局 4。主要区别在于每个 LC 输出滤波器都以地为参考。这就允许 41kHz 纹波电流 流过 接地电容并直接返回直流总线。减少了电流环路的面积，从而降低了 EMI。</p>
+<h3 id="关于纹波电流的思考"><a href="#关于纹波电流的思考" class="headerlink" title="关于纹波电流的思考"></a>关于纹波电流的思考</h3><p>对于像这样的开关电源有一个一般的经验法则。规则是峰峰值纹波电流为最大输出电流的 20-30%。所以，假设峰值输出电流为 2A，我们的纹波电流目标应该在 0.4-0.6A 之间</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/02MiKkhx.png"
+                     
+                ></p>
+<p><strong>正弦波不同部分的 PWM 占空比不同</strong>，纹波电流取决于占空比，占空比为 50% 时纹波最大。在交流波形的峰值处，占空比不会是 50%。240Vrms 正弦波峰值为 340V，这需要占空比 D &#x3D; Vout&#x2F;Vin &#x3D; 340&#x2F;380 &#x3D; 90%，设计的开关频率为 41kHz。当母线电压为 380V 时，输出电压 340V 时通过 2mH 电感的纹波电流将为 0.44A。<a class="link"   href="https://www.ti.com/lit/an/slva477b/slva477b.pdf?ts=1662800047365&ref_url=https://www.google.co.uk/" >TI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有一篇出色的文章描述了所有这些计算，这里有一个<a class="link"   href="https://calculator.academy/ripple-current-calculator/#f1p1|f2p0" >在线纹波电流计算器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。在 2A 峰值输出电流下，纹波为 22%。找到合适的电感并确定为 2mH。</p>
+<p><strong>选择电感器</strong>时，考虑纹波电流非常重要。纹波电流叠加在峰值输出电流上。电感器不得饱和。</p>
+<h3 id="使用环形电感器"><a href="#使用环形电感器" class="headerlink" title="使用环形电感器"></a>使用环形电感器</h3><p>环形线圈可以更好地将磁通量限制在其内部，并且不会辐射磁通量。</p>
+<h1 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img1.imgtp.com/2023/07/03/wFilECkm.png"
+                     
+                ></p>
+]]></content>
+      <tags>
+        <tag>硬件</tag>
       </tags>
   </entry>
 </search>
