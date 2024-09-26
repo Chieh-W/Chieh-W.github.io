@@ -1,0 +1,960 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>C语言 - 从入门到选购内存 | Ch1eh8</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.0.13"><!-- inject head--><link rel="canonical" href="http://chieh.pro/2024/02/22/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98/"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"><!-- aplayer--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="前言 C语言是一种通用的、过程化的计算机编程语言，由1972年开发。它以其简洁、效率和灵活性而闻名。 特点： 结构化编程：C语言支持结构化编程，包括函数、循环和条件语句。 指针：C语言允许使用指针，直接访问内存地址。 低级访问：C语言提供对底层硬件的低级访问，使其适合于操作系统和嵌入式系统"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="Ch1eh8"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.0.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script>let mdate = "";
+mdate = (mdate.split(","));
+let ndate = new Date();
+for (let i of mdate) {
+    if (i === (ndate.getMonth()+1) + "-" + (ndate.getDate())) {
+        document.documentElement.classList.add('memorial');
+    }
+}
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2023-05-31 00:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可"},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好呀🙂",
+            noon: "💤该午休咯💤",
+            afternoon: "来杯下午茶🍵",
+            night: "别熬夜啦😊",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'fancybox',
+    post_ai: false,
+    right_menu: false,
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- background img--><!-- loading--><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>汇总</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>记录</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/equipment/"><i class="solitude  fas fa-laptop"></i><span>相册</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  fas fa-music"></i><span>音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><span>关于</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/C/">C++<sup>1</sup></a><a href="/tags/C/">C#<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/">C语言<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">C语言 - 从入门到选购内存</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>汇总</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>记录</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/equipment/"><i class="solitude  fas fa-laptop"></i><span>相册</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  fas fa-music"></i><span>音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><span>关于</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/C%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98.jpg?imageSlim" alt="C语言 - 从入门到选购内存"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>C语言</span></a></div></div></div></div><h1 class="post-title">C语言 - 从入门到选购内存</h1><div id="post-meta"><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/C%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98.jpg?imageSlim"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><img src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/%E6%BA%90P.jpg?imageSlim" style="zoom: 50%;" />
+
+<p>C语言是一种通用的、过程化的计算机编程语言，由1972年开发。它以其简洁、效率和灵活性而闻名。</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li><p><strong>结构化编程：</strong>C语言支持结构化编程，包括函数、循环和条件语句。</p>
+</li>
+<li><p><strong>指针：</strong>C语言允许使用指针，直接访问内存地址。</p>
+</li>
+<li><p><strong>低级访问：</strong>C语言提供对底层硬件的低级访问，使其适合于操作系统和嵌入式系统编程。</p>
+</li>
+<li><p><strong>可移植性：</strong>C语言代码可以在各种平台上编译和执行，具有很强的可移植性。</p>
+</li>
+<li><p><strong>效率：</strong>C语言编译后的代码高效紧凑，适合资源受限的系统。</p>
+</li>
+</ul>
+<h1 id="变量与类型"><a href="#变量与类型" class="headerlink" title="变量与类型"></a>变量与类型</h1><p>C语言是一种静态类型语言，这意呈着所有变量在编译时必须指定数据类型。与诸如Python、JavaScript、PHP等解释型语言不同，C语言要求在声明变量时明确其类型。变量名可以包含字母、数字和下划线，但不能以数字开头。在C中，变量可以在声明时初始化。一旦变量被声明，其值可以随时被更新，但新值必须与原始类型匹配。例如，尝试将浮点数赋值给整型变量会导致编译警告，并且浮点数会被转换为整数。C语言支持多种内置数据类型，包括int、char、short、long、float、double和long double等。</p>
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>C语言提供了多种整数类型：char、int、short和long，以适应不同的使用场景和存储需求。char类型通常用于存储ASCII字符，但也可以存储-128到127之间的小整数，占用至少一个字节。int类型是最常用的整数类型，占用至少两个字节。short类型也占用至少两个字节，而long类型至少占用四个字节。这些类型的具体大小和存储范围依赖于编译器实现和系统架构，但有一定的保证：short不会比int长，long至少与int一样长。ANSI C规范为每种类型设定了最小值范围。在不同的硬件平台上，如Arduino开发板，这些类型的大小和范围可能会有所不同，例如Arduino Uno上的int是两个字节，而在Arduino MKR 1010上是四个字节，显示出不同板子之间的显著差异。无论哪种Arduino开发板，short都是两个字节，long是四个字节，其范围分别保持不变。</p>
+<h3 id="无符号整数"><a href="#无符号整数" class="headerlink" title="无符号整数"></a>无符号整数</h3><p>在C语言中，给基本的整数数据类型（如char、int、short、long）前面加上”unsigned”关键字，可以让这些类型只能表示正数和零，而不能表示负数。这样，这些数据类型的值的范围就从0开始，能表示的最大数值也相应增大。</p>
+<p>比如，使用unsigned char后，它能表示的数值范围是0到至少255；</p>
+<p>unsigned int能表示的范围是0到至少65,535；</p>
+<p>unsigned short的范围是0到至少65,535；</p>
+<p>unsigned long的范围是0到至少4,294,967,295。</p>
+<p>这种特性在需要确保数据始终为非负的情况下非常有用。</p>
+<h3 id="溢出的问题"><a href="#溢出的问题" class="headerlink" title="溢出的问题"></a>溢出的问题</h3><p>在处理C语言中的整数类型时，确保数值不超出其定义的范围是非常重要的。如果一个数值超出了其类型所能表示的最大范围，结果会发生”溢出”。在C语言中，这种溢出并不会导致错误或异常，而是会按照一种特定的方式”环绕”回到其类型的最小值附近。</p>
+<p>例如，对于一个<code>unsigned char</code>类型，其能表示的数值范围是0到255。如果你有一个值为255的<code>unsigned char</code>变量，并对其加1，结果会变成0，因为它超出了<code>unsigned char</code>能表示的最大值，所以就环绕回到了最小值。同样，如果你有一个值为255的<code>unsigned char</code>变量，并给它加上10，结果会变成9，因为加上10后数值达到了265，超出了<code>unsigned char</code>的范围，所以它会从0开始继续数，直到9。</p>
+<p>这种行为称为”模运算”或”取模环绕”，是因为当数值超过类型所能表示的最大值时，它会从该类型所能表示的最小值开始，继续计数，直到达到超出部分的等效值。因此，在编写程序时，特别是涉及到可能会增加或减少数值的操作时，非常重要的一点是要考虑到这种溢出行为，确保程序的逻辑能够正确处理或避免溢出情况。</p>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> j = <span class="number">255</span>;</span><br><span class="line">  j = j + <span class="number">10</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%u&quot;</span>, j); <span class="comment">/* 9 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当处理有符号的整数类型并且数值超出了该类型所能表示的范围时，C语言的行为是未定义的。这意味着程序可能会表现出不可预测的结果。例如，如果你有一个<code>char</code>类型的变量（在大多数系统上，它是有符号的，并且能表示的范围大约是-128到127），并且给它赋予超出这个范围的值，你将无法确定程序会如何响应。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="type">char</span> j = <span class="number">127</span>;</span><br><span class="line">  j = j + <span class="number">10</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%u&quot;</span>, j); <span class="comment">/* 4294967177 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个值为127的<code>char</code>类型变量被加上了10，理论上这会超出<code>char</code>类型所能表示的最大值。然而，打印出的结果是一个非常大的无符号整数（4294967177），这是因为在打印时使用了<code>%u</code>格式说明符，它是用于无符号整数的。由于<code>char</code>被解释为一个非常大的无符号整数，这个数实际上是一个溢出结果的表现。</p>
+<p>这种未定义的行为强调了在编程时需要特别注意变量的类型和可能的值范围。C语言不会自动检查类型溢出或下溢，因此程序员需要通过逻辑检查和适当的编程实践来避免这种情况。例如，可以通过在进行数学运算之前检查值是否会超出范围来预防溢出。此外，了解并使用合适的数据类型（如使用更大的整数类型或无符号类型）也可以帮助减少这种风险。</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点类型在C语言中用于表示可以有小数部分的数字，这包括了正数、负数以及分数。与整数不同，浮点数能表示的数值范围更广，并且能表示整数不能表示的数值，比如非整数值。浮点数通常以小数点形式或是科学计数法（例如1.29e-3或-2.3e+5）来表示，后者表示数值乘以10的指定次幂。</p>
+<p>C语言提供了三种基本的浮点类型：</p>
+<ol>
+<li><p><strong>float</strong>：这是最小的浮点类型，通常用32位比特来实现，能够表示的范围至少在10^-37到10^+37之间。在32位系统中，float的精度大约是7位十进制数字。</p>
+</li>
+<li><p><strong>double</strong>：比float类型能表示的数值范围更广，通常用64位比特来实现。double提供的精度更高，大约是15位十进制数字，适合需要更高数值精度的计算。</p>
+</li>
+<li><p><strong>long double</strong>：提供比double还要大的数值范围和更高的精度，通常用80位比特来实现。long double的精度和数值范围最大，适合对精度要求极高的计算场景。</p>
+</li>
+</ol>
+<p>不同的C语言实现和不同的硬件平台可能会有不同的表示方式。例如，在现代的Mac上，float是用32位表示，double用64位表示，而long double可能用80位表示。浮点数的具体实现（包括精度和能表示的数值范围）依赖于具体的编译器和硬件，但任何C语言的实现都必须满足以上提到的最小要求。浮点数在处理科学计算、图形处理和其他需要非整数数值的领域中非常重要。</p>
+<p>你可以通过下面的代码来比较大小</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;char size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">char</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;int size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;short size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">short</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;long size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">long</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;float size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;double size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">double</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;long double size: %lu bytes\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">long</span> <span class="type">double</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>在C语言中，常量是一种一旦被定义就不能改变值的特殊类型。声明常量的方法有两种主要形式：</p>
+<ol>
+<li><p><strong>使用<code>const</code>关键字</strong>：这种方法的声明方式与变量相似，但需要在声明前加上<code>const</code>关键字，并且在声明时必须初始化常量。例如，<code>const int age = 37;</code>定义了一个整型常量<code>age</code>，其值为37。一般来说，按照惯例，常量的名字会全部大写，如<code>const int AGE = 37;</code>，这样做主要是为了提高代码的可读性，使得常量和变量容易区分。</p>
+</li>
+<li><p><strong>使用<code>#define</code>预处理器指令</strong>：这种方式不需要指定类型，也不使用等号<code>=</code>，并且末尾不加分号。例如，<code>#define AGE 37</code>定义了一个常量<code>AGE</code>，其值为37。<code>#define</code>方式定义的常量在预处理阶段就被处理了，编译器会在编译之前将所有<code>AGE</code>的实例替换为37。这意味着它在编译时不占用内存，并且类型是根据使用的上下文来推断的。</p>
+</li>
+</ol>
+<p>无论使用哪种方法定义常量，其命名规则与变量相同：可以包含字母（无论大小写）、数字和下划线，但不能以数字开头。例如，<code>AGE</code>和<code>Age10</code>都是有效的常量名，而<code>1AGE</code>则是无效的。</p>
+<p>总的来说，常量在C语言中是一种很有用的特性，能够提高程序的可读性和维护性，同时帮助避免硬编码的值被意外改变，从而增加代码的稳定性。</p>
+<img src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/C%20%E4%BB%A3%E7%A0%81.jpg?imageSlim" style="zoom: 80%;" />
+
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>C语言提供了一系列丰富的运算符，用于在程序中执行各种数据操作。这些运算符可以分为以下几个主要类别：</p>
+<ol>
+<li><p><strong>算术运算符</strong>：用于执行基本的数学计算，如加法（<code>+</code>）、减法（<code>-</code>）、乘法（<code>*</code>）、除法（<code>/</code>）和取模（<code>%</code>）。取模运算符用于求两个数相除的余数。</p>
+</li>
+<li><p><strong>比较运算符</strong>：用于比较两个值之间的关系，包括等于（<code>==</code>）、不等于（<code>!=</code>）、大于（<code>&gt;</code>）、小于（<code>&lt;</code>）、大于等于（<code>&gt;=</code>）、小于等于（<code>&lt;=</code>）。</p>
+</li>
+<li><p><strong>逻辑运算符</strong>：用于组合或修改条件表达式，包括逻辑与（<code>&amp;&amp;</code>）、逻辑或（<code>||</code>）和逻辑非（<code>!</code>）。</p>
+</li>
+<li><p><strong>复合赋值运算符</strong>：将赋值操作与另一种操作（如加法或乘法）结合在一起，例如加等于（<code>+=</code>）、减等于（<code>-=</code>）、乘等于（<code>*=</code>）、除等于（<code>/=</code>）等。</p>
+</li>
+<li><p><strong>位运算符</strong>：直接对整数类型的操作数的二进制位进行操作。包括位与（<code>&amp;</code>）、位或（<code>|</code>）、位异或（<code>^</code>）、位非（<code>~</code>）、左移（<code>&lt;&lt;</code>）和右移（<code>&gt;&gt;</code>）。</p>
+</li>
+<li><p><strong>指针运算符</strong>：用于直接操作内存地址。包括取地址（<code>&amp;</code>）和解引用（<code>*</code>）运算符。取地址运算符用于获取变量的内存地址，而解引用运算符用于访问指针指向的值。</p>
+</li>
+<li><p><strong>结构运算符</strong>：用于访问结构体成员。包括成员访问（<code>.</code>）和成员通过指针访问（<code>-&gt;</code>）运算符。</p>
+</li>
+<li><p><strong>混合运算符</strong>：这不是一个官方的分类，但可以用来指那些不易归入其他类别的运算符，如逗号（<code>,</code>）运算符，它用于在表达式中分隔多个操作。</p>
+</li>
+</ol>
+<p>理解和熟练使用这些运算符对于编写有效和高效的C程序至关重要。每种运算符都有其特定的用途和操作规则，合理使用这些运算符可以帮助解决各种编程问题。</p>
+<img src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/%E5%90%AF%E5%8A%A8.jpg?imageSlim" alt="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/%E5%90%AF%E5%8A%A8.jpg?imageSlim" style="zoom: 33%;" />
+
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><h3 id="二元运算符："><a href="#二元运算符：" class="headerlink" title="二元运算符："></a><strong>二元运算符：</strong></h3><ul>
+<li>就像数学中的符号，需要两个数字才能工作。</li>
+<li>例如：加法 (+)、减法 (-)、乘法 (*) 和除法 (&#x2F;)。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">操作符</th>
+<th>名字</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>=</code></td>
+<td>赋值</td>
+<td><code>a = b</code></td>
+</tr>
+<tr>
+<td align="center"><code>+</code></td>
+<td>加</td>
+<td><code>a + b</code></td>
+</tr>
+<tr>
+<td align="center"><code>-</code></td>
+<td>减</td>
+<td><code>a - b</code></td>
+</tr>
+<tr>
+<td align="center"><code>*</code></td>
+<td>乘</td>
+<td><code>a * b</code></td>
+</tr>
+<tr>
+<td align="center"><code>/</code></td>
+<td>除</td>
+<td><code>a / b</code></td>
+</tr>
+<tr>
+<td align="center"><code>%</code></td>
+<td>取模</td>
+<td><code>a % b</code></td>
+</tr>
+</tbody></table>
+<h3 id="一元运算符："><a href="#一元运算符：" class="headerlink" title="一元运算符："></a><strong>一元运算符：</strong></h3><ul>
+<li>只需要一个数字来工作。</li>
+<li>例如：正号 (+) 和负号 (-)。</li>
+<li>自增 (++) 和自减 (–) 运算符：<ul>
+<li>让数字增加或减少 1。</li>
+<li>++a 表示先增加 1 再使用 a 的值，而 a++ 表示先使用 a 的值再增加 1。</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">名字</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>+</code></td>
+<td align="center">一元加</td>
+<td align="center"><code>+a</code></td>
+</tr>
+<tr>
+<td align="center"><code>-</code></td>
+<td align="center">一元减</td>
+<td align="center"><code>-a</code></td>
+</tr>
+<tr>
+<td align="center"><code>++</code></td>
+<td align="center">自增</td>
+<td align="center"><code>a++</code> or <code>++a</code></td>
+</tr>
+<tr>
+<td align="center"><code>--</code></td>
+<td align="center">自减</td>
+<td align="center"><code>a--</code> or <code>--a</code></td>
+</tr>
+</tbody></table>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">名字</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>==</code></td>
+<td align="center">相等</td>
+<td align="center"><code>a == b</code></td>
+</tr>
+<tr>
+<td align="center"><code>!=</code></td>
+<td align="center">不相等</td>
+<td align="center"><code>a != b</code></td>
+</tr>
+<tr>
+<td align="center"><code>&gt;</code></td>
+<td align="center">大于</td>
+<td align="center"><code>a &gt; b</code></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;</code></td>
+<td align="center">小于</td>
+<td align="center"><code>a &lt; b</code></td>
+</tr>
+<tr>
+<td align="center"><code>&gt;=</code></td>
+<td align="center">大于等于</td>
+<td align="center"><code>a &gt;= b</code></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;=</code></td>
+<td align="center">小于等于</td>
+<td align="center"><code>a &lt;= b</code></td>
+</tr>
+</tbody></table>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li><code>!</code> 非（例如：<code>!a</code>）</li>
+<li><code>&amp;&amp;</code> 与（例如：<code>a &amp;&amp; b</code>）</li>
+<li><code>||</code> 或（例如：<code>a || b</code>）</li>
+</ul>
+<h2 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h2><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">名字</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>+=</code></td>
+<td align="center">加且赋值</td>
+<td align="center"><code>a += b</code></td>
+</tr>
+<tr>
+<td align="center"><code>-=</code></td>
+<td align="center">减且赋值</td>
+<td align="center"><code>a -= b</code></td>
+</tr>
+<tr>
+<td align="center"><code>*=</code></td>
+<td align="center">乘且赋值</td>
+<td align="center"><code>a *= b</code></td>
+</tr>
+<tr>
+<td align="center"><code>/=</code></td>
+<td align="center">除且赋值</td>
+<td align="center"><code>a /= b</code></td>
+</tr>
+<tr>
+<td align="center"><code>%=</code></td>
+<td align="center">求模且赋值</td>
+<td align="center"><code>a %= b</code></td>
+</tr>
+</tbody></table>
+<h2 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h2><ul>
+<li>C 语言中唯一需要三个操作数的运算符。</li>
+<li>就像一个简短的 if&#x2F;else 语句。</li>
+<li>格式：<code>&lt;条件&gt; ? &lt;表达式&gt; : &lt;表达式&gt;</code></li>
+<li>例如：<code>a ? b : c</code> 表示：如果 <code>a</code> 为 true，执行 <code>b</code>，否则执行 <code>c</code>。</li>
+<li>优点：比 if&#x2F;else 语句更简洁，可以内联在表达式中。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line"><span class="type">int</span> c = a &gt; b ? a : b; <span class="comment">// 如果 a 大于 b，则将 a 赋值给 c，否则将 b 赋值给 c</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>c</code> 将被赋值为 <code>a</code>（因为 <code>a</code> 大于 <code>b</code>）。</p>
+<h2 id="sizeof运算符："><a href="#sizeof运算符：" class="headerlink" title="sizeof运算符："></a>sizeof运算符：</h2><p>返回给定操作数的大小（以字节为单位）。</p>
+<ul>
+<li>可以传入变量或类型。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;int 型变量 a 的大小：%d 字节\n&quot;</span>, <span class="keyword">sizeof</span>(a)); <span class="comment">// 输出：4 字节（在大多数系统上）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;char 型变量的大小：%d 字节\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">char</span>)); <span class="comment">// 输出：1 字节</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>其他用法：</strong></p>
+<ul>
+<li>检查数组的大小：<code>sizeof(数组名) / sizeof(数组元素类型)</code></li>
+<li>获取结构体或联合体的成员数量：<code>sizeof(结构体或联合体名称)</code></li>
+<li>检查指针的大小：<code>sizeof(指针变量)</code></li>
+</ul>
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a><strong>运算符优先级</strong></h2><p>决定了在表达式中先执行哪些运算。优先级较高的运算符会先执行。</p>
+<p><strong>C 语言运算符优先级（从高到低）：</strong></p>
+<ol>
+<li><strong>括号</strong></li>
+<li><strong>一元运算符</strong>（例如：+、-、++、–）</li>
+<li><strong>乘法和除法</strong></li>
+<li><strong>加法和减法</strong></li>
+<li><strong>移位运算符</strong>（例如：&lt;&lt;、&gt;&gt;）</li>
+<li><strong>关系运算符</strong>（例如：&#x3D;&#x3D;、!&#x3D;、&lt;、&gt;）</li>
+<li><strong>逻辑运算符</strong>（例如：&amp;&amp;、||、!）</li>
+<li><strong>赋值运算符</strong>（例如：&#x3D;、+&#x3D;、-&#x3D;）</li>
+<li><strong>逗号运算符</strong>（,）</li>
+</ol>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a + b * c</span><br></pre></td></tr></table></figure>
+
+<p>在这个表达式中，乘法运算符 (*) 的优先级高于加法运算符 (+)，因此会先执行乘法，再执行加法。</p>
+<p><strong>使用括号控制优先级：</strong></p>
+<p>可以使用括号来改变运算符的优先级。括号内的表达式会优先执行。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(a + b) * c</span><br></pre></td></tr></table></figure>
+
+<p>在这个表达式中，括号强制先执行加法，然后再执行乘法。</p>
+<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a><strong>条件语句</strong></h1><p>允许程序根据不同的条件执行不同的代码块。</p>
+<p><strong>C 语言中有两种主要的条件语句：</strong></p>
+<h2 id="1-if-else-语句"><a href="#1-if-else-语句" class="headerlink" title="1. if&#x2F;else 语句"></a><strong>1. if&#x2F;else 语句</strong></h2><ul>
+<li>检查一个条件是否为真。</li>
+<li>如果条件为真，则执行 if 块中的代码。</li>
+<li>如果条件为假，则执行 else 块中的代码（可选）。</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  <span class="comment">// if 块中的代码</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// else 块中的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (age &gt;= <span class="number">18</span>) &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;你已成年。\n&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;你未成年。\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-switch-语句"><a href="#2-switch-语句" class="headerlink" title="2. switch 语句"></a><strong>2. switch 语句</strong></h2><ul>
+<li>检查一个变量的值是否等于多个给定的值之一。</li>
+<li>如果变量的值与某个给定值匹配，则执行相应的代码块。</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (variable) &#123;</span><br><span class="line">  <span class="keyword">case</span> value1:</span><br><span class="line">    <span class="comment">// case 1 中的代码</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value2:</span><br><span class="line">    <span class="comment">// case 2 中的代码</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="comment">// 默认情况下执行的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> grade = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (grade) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;优秀！\n&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&#x27;B&#x27;</span>:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;良好。\n&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;一般。\n&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;无效成绩。\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><p><strong>C 语言中的循环</strong>允许程序重复执行一段代码，直到某个条件满足。</p>
+<h2 id="1-for-循环"><a href="#1-for-循环" class="headerlink" title="1. for 循环"></a><strong>1. for 循环</strong></h2><ul>
+<li>使用一个计数器变量来控制循环的次数。</li>
+<li>计数器变量在每次循环中都会更新。</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; condition; increment/decrement) &#123;</span><br><span class="line">  <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-while-循环"><a href="#2-while-循环" class="headerlink" title="2. while 循环"></a><strong>2. while 循环</strong></h2><ul>
+<li>只要给定的条件为真，就会一直执行循环体。</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">  <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i);</span><br><span class="line">  i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-do-while-循环"><a href="#3-do-while-循环" class="headerlink" title="3. do-while 循环"></a><strong>3. do-while 循环</strong></h2><ul>
+<li>与 while 循环类似，但会先执行循环体，然后再检查条件。</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="comment">// 循环体</span></span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i);</span><br><span class="line">  i++;</span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="区别："><a href="#区别：" class="headerlink" title="区别："></a><strong>区别：</strong></h3><ul>
+<li><strong>for 循环</strong>最适合当你知道循环的执行次数时。</li>
+<li><strong>while 循环</strong>最适合当你不确定循环的执行次数时。</li>
+<li><strong>do-while 循环</strong>最适合当你希望循环体至少执行一次时。</li>
+</ul>
+<h2 id="使用-break-跳出循环"><a href="#使用-break-跳出循环" class="headerlink" title="使用 break 跳出循环"></a>使用 break 跳出循环</h2><p><strong><code>break</code> 语句</strong>会立即终止当前循环，并继续执行循环后的代码。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i == <span class="number">5</span>) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，当 <code>i</code> 等于 5 时，<code>break</code> 语句会跳出循环。因此，循环只打印数字 0 到 4。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>break</code> 语句只能用于循环内部。</li>
+<li>它会跳出最内层的循环。</li>
+<li>如果需要跳出嵌套循环，可以使用嵌套的 <code>break</code> 语句。</li>
+</ul>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组是一种数据结构，它可以存储多个相同类型的值。</p>
+<p><strong>C 语言中数组的特点：</strong></p>
+<ul>
+<li>数组中的每个元素都有一个唯一的索引（从 0 开始）。</li>
+<li>数组中的所有元素必须具有相同的类型。</li>
+<li>数组的大小在编译时确定，并且在程序运行时不能改变。</li>
+</ul>
+<p><strong>声明数组：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type array_name[size];</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>type</code> 是数组元素的数据类型。</li>
+<li><code>array_name</code> 是数组的名称。</li>
+<li><code>size</code> 是数组的大小（元素的数量）。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> numbers[<span class="number">5</span>]; <span class="comment">// 声明一个包含 5 个整数的数组</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>访问数组元素：</strong></p>
+<p>可以使用索引来访问数组元素。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_name[index]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>array_name</code> 是数组的名称。</li>
+<li><code>index</code> 是要访问的元素的索引。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers[<span class="number">0</span>] = <span class="number">10</span>; <span class="comment">// 将数组中的第一个元素设置为 10</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>数组的优点：</strong></p>
+<ul>
+<li>便于存储和管理相关数据。</li>
+<li>访问数组元素的速度很快，因为它们在内存中是连续存储的。</li>
+</ul>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p><strong>字符串</strong>在 C 语言中是一种特殊类型的数组，它存储一组字符。</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li>字符串以一个空字符（’\0’）结尾。空字符表示字符串的结束。</li>
+<li>字符串数组的大小必须足够大，以容纳所有字符和空字符。</li>
+</ul>
+<p><strong>声明字符串：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> string_name[size];</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>string_name</code> 是字符串的名称。</li>
+<li><code>size</code> 是字符串的大小（字符的数量 + 1，用于空字符）。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> name[<span class="number">10</span>]; <span class="comment">// 声明一个可以容纳 9 个字符和一个空字符的字符串</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>初始化字符串：</strong></p>
+<p>字符串可以在声明时使用字符串文字初始化：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> name[] = <span class="string">&quot;John Doe&quot;</span>; <span class="comment">// 声明并初始化一个字符串</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>访问字符串字符：</strong></p>
+<p>可以使用索引来访问字符串中的字符：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string_name[index]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>string_name</code> 是字符串的名称。</li>
+<li><code>index</code> 是要访问的字符的索引。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, name[<span class="number">0</span>]); <span class="comment">// 打印字符串中的第一个字符</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>字符串的优点：</strong></p>
+<ul>
+<li>便于存储和操作文本数据。</li>
+<li>可以使用标准库函数轻松地处理字符串。</li>
+</ul>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p><strong>指针很难，但是别怕</strong>，指针是 C 语言中一个强大的特性，它允许你直接操作内存地址。</p>
+<img src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/%E8%80%81%E5%A4%A7%E7%88%B7.jpg?imageSlim" style="zoom: 50%;" />
+
+
+
+<p><strong>理解指针：</strong></p>
+<ul>
+<li>指针是一个变量，它存储另一个变量的内存地址。</li>
+<li>指针的值是一个地址，指向被指向的变量。</li>
+</ul>
+<p><strong>声明指针：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type *pointer_name;</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>type</code> 是被指向变量的数据类型。</li>
+<li><code>pointer_name</code> 是指针的名称。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ptr; <span class="comment">// 声明一个指向整数的指针</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用指针：</strong></p>
+<ul>
+<li>使用取地址运算符 (&amp;) 获取变量的地址：<code>&amp;variable</code></li>
+<li>使用解引用运算符 (*) 来访问被指向的变量：<code>*pointer</code></li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> *ptr = &amp;a; <span class="comment">// ptr 现在指向 a 的内存地址</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *ptr); <span class="comment">// 输出 a 的值，即 10</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>指针的优点：</strong></p>
+<ul>
+<li>提供对内存的低级访问。</li>
+<li>允许高效的数据结构和算法。</li>
+<li>在某些情况下可以提高性能。</li>
+</ul>
+<p><strong>指针的注意事项：</strong></p>
+<ul>
+<li>指针可以指向无效的内存地址，导致程序崩溃。</li>
+<li>使用指针需要小心，以避免内存泄漏和数据损坏。</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p><strong>函数</strong>是 C 语言中将代码组织成可重用块的主要机制。</p>
+<p><strong>理解函数：</strong></p>
+<ul>
+<li>函数是一组执行特定任务的语句。</li>
+<li>函数可以接收输入（称为参数）并返回输出（称为返回值）。</li>
+</ul>
+<p><strong>声明函数：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return_type <span class="title function_">function_name</span><span class="params">(parameter_list)</span> &#123;</span><br><span class="line">  <span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>return_type</code> 是函数返回的值的数据类型。</li>
+<li><code>function_name</code> 是函数的名称。</li>
+<li><code>parameter_list</code> 是函数接收的参数列表。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>调用函数：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> result = sum(<span class="number">5</span>, <span class="number">10</span>); <span class="comment">// 调用 sum 函数并存储结果</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>函数的优点：</strong></p>
+<ul>
+<li>代码可重用性：函数可以根据需要多次调用。</li>
+<li>模块化：函数将代码组织成易于管理的块。</li>
+<li>可测试性：函数可以独立于程序的其他部分进行测试。</li>
+</ul>
+<p><strong>函数的注意事项：</strong></p>
+<ul>
+<li>函数必须在使用前声明。</li>
+<li>函数的参数和返回值类型必须匹配其声明。</li>
+<li>函数调用会产生开销，因此应谨慎使用。</li>
+</ul>
+<h1 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h1><p><strong>输入&#x2F;输出 (I&#x2F;O)</strong> 操作允许程序与外部世界进行交互。</p>
+<p><strong>C 语言中的 I&#x2F;O：</strong></p>
+<ul>
+<li>C 语言本身不提供 I&#x2F;O 功能。</li>
+<li>I&#x2F;O 功能由 C 标准库中的 <code>stdio.h</code> 头文件提供。</li>
+</ul>
+<p><strong>常用的 I&#x2F;O 函数：</strong></p>
+<ul>
+<li><strong>输入：</strong><ul>
+<li><code>scanf</code>：从标准输入读取格式化数据。</li>
+</ul>
+</li>
+<li><strong>输出：</strong><ul>
+<li><code>printf</code>：以格式化方式向标准输出写入数据。</li>
+<li><code>fprintf</code>：以格式化方式向文件写入数据。</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;age);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;你的年龄是：%d\n&quot;</span>, age);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>打开文件时要小心，以避免内存泄漏。</li>
+<li>使用 <code>fflush</code> 函数刷新输出缓冲区，以确保数据立即写入文件。</li>
+</ul>
+<h1 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h1><p><strong>变量作用域</strong>定义了变量在程序中可用的范围。</p>
+<p><strong>C 语言中的变量作用域：</strong></p>
+<ul>
+<li><strong>全局变量：</strong><ul>
+<li>在函数外部声明。</li>
+<li>在整个程序中可用。</li>
+</ul>
+</li>
+<li><strong>局部变量：</strong><ul>
+<li>在函数内部声明。</li>
+<li>只在声明它们的函数中可用。</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局变量</span></span><br><span class="line"><span class="type">int</span> global_variable = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">some_function</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="comment">// 局部变量</span></span><br><span class="line">  <span class="type">int</span> local_variable = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>global_variable</code> 是一个全局变量，可以在 <code>some_function</code> 中使用。但是，<code>local_variable</code> 是一个局部变量，只能在 <code>some_function</code> 中使用。</p>
+<p><strong>作用域规则：</strong></p>
+<ul>
+<li>内部作用域中的变量覆盖外部作用域中的同名变量。</li>
+<li>变量只能在声明它们的作用域内使用。</li>
+<li>全局变量在程序启动时初始化，而局部变量在函数调用时初始化。</li>
+</ul>
+<h1 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h1><p><strong>静态变量</strong>是在函数内部使用 <code>static</code> 关键字声明的变量。</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li>在没有初始化的情况下，静态变量会被初始化为 0。</li>
+<li>静态变量在函数调用之间保留其值。</li>
+<li>即使函数返回，静态变量也不会被销毁。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">some_function</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">static</span> <span class="type">int</span> counter = <span class="number">0</span>; <span class="comment">// 静态变量</span></span><br><span class="line"></span><br><span class="line">  counter++;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;计数器：%d\n&quot;</span>, counter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>counter</code> 是一个静态变量。每次调用 <code>some_function</code> 时，<code>counter</code> 都会增加 1。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>允许函数在调用之间记住信息。</li>
+<li>可以用于实现计数器、累加器和其他需要在函数调用之间保留状态的变量。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>静态变量只在声明它们的函数中可见。</li>
+<li>使用静态变量时要小心，因为它们可能会导致意外的行为，例如函数间共享意外的状态。</li>
+</ul>
+<h1 id="类型定义"><a href="#类型定义" class="headerlink" title="类型定义"></a>类型定义</h1><p><strong>类型定义</strong>（<code>typedef</code>）允许你创建新的数据类型，这些类型是现有类型的别名。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> existing_type new_type_name;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> my_int;</span><br></pre></td></tr></table></figure>
+
+<p>现在，<code>my_int</code> 可以像 <code>int</code> 一样使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_int a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>提高代码可读性和可维护性。</li>
+<li>允许你创建特定于应用程序的自定义类型。</li>
+<li>可以简化复杂数据类型的声明。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>类型定义不会创建新的数据类型，而是创建别名。</li>
+<li>类型定义只在声明它们的文件中有效。</li>
+</ul>
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p><strong>枚举类型</strong>（<code>enum</code>）允许你创建具有固定且有限值的自定义类型。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">enum_name</span> &#123;</span></span><br><span class="line">  value1,</span><br><span class="line">  value2,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">colors</span> &#123;</span></span><br><span class="line">  RED,</span><br><span class="line">  GREEN,</span><br><span class="line">  BLUE</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在，<code>colors</code> 类型可以像这样使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">colors</span> <span class="title">color</span> =</span> RED;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>提高代码可读性和可维护性。</li>
+<li>确保变量只能取预定义的值。</li>
+<li>可以简化复杂数据类型的声明。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>枚举类型中的值从 0 开始自动编号，除非显式指定。</li>
+<li>枚举类型只在声明它们的文件中有效。</li>
+</ul>
+<h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><p><strong>结构体</strong>（<code>struct</code>）允许你创建包含不同类型数据的复合数据类型。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">struct_name</span> &#123;</span></span><br><span class="line">  type member1;</span><br><span class="line">  type member2;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">person</span> &#123;</span></span><br><span class="line">  <span class="type">char</span> name[<span class="number">50</span>];</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> height;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在，<code>person</code> 类型可以像这样使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">person</span> <span class="title">john</span>;</span></span><br><span class="line">john.name = <span class="string">&quot;John Doe&quot;</span>;</span><br><span class="line">john.age = <span class="number">30</span>;</span><br><span class="line">john.height = <span class="number">1.80</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>组织和存储相关数据。</li>
+<li>简化复杂数据类型的声明。</li>
+<li>提高代码可读性和可维护性。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>结构体中的成员可以通过点运算符 (.) 访问。</li>
+<li>结构体是按值传递的，这意味着对结构体变量的更改不会影响原始结构体。</li>
+</ul>
+<h1 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h1><p><strong>命令行参数</strong>允许你从命令行向 C 程序传递数据。</p>
+<p><strong>获取命令行参数：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">  <span class="comment">// argc：命令行参数的数量（包括程序名称）</span></span><br><span class="line">  <span class="comment">// argv：一个字符串数组，包含命令行参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (argc &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;第一个命令行参数：%s\n&quot;</span>, argv[<span class="number">1</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./program argument1 argument2</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一个命令行参数：argument1</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong></p>
+<ul>
+<li><code>argc</code> 始终至少为 1，因为它包括程序名称。</li>
+<li><code>argv[0]</code> 是程序名称。</li>
+<li>命令行参数以字符串形式传递。</li>
+</ul>
+<h1 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h1><p><strong>头文件</strong>（<code>.h</code>）用于在多个源文件中共享函数、变量和类型定义。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>模块化：将代码组织成更小的、可管理的块。</li>
+<li>代码重用：允许在多个源文件中使用相同的代码。</li>
+<li>可维护性：更容易更新和维护代码。</li>
+</ul>
+<p><strong>使用头文件：</strong></p>
+<ul>
+<li><strong>包含头文件：</strong>使用 <code>#include</code> 指令将头文件包含到源文件中：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;header.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>声明函数和变量：</strong>在头文件中声明函数和变量，以便可以在其他源文件中使用它们：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// header.h</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>定义函数和变量：</strong>在源文件中定义函数和变量：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// source.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;header.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>头文件通常以 <code>.h</code> 为扩展名。</li>
+<li>头文件应该只包含声明，而不应该包含定义。</li>
+<li>避免在头文件中使用 <code>#define</code>，因为这可能会导致编译器错误。</li>
+</ul>
+<h1 id="预处理器"><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h1><p><strong>预处理器</strong>是在编译器处理源代码之前对源代码进行处理的程序。</p>
+<p><strong>功能：</strong></p>
+<ul>
+<li><strong>宏定义：</strong>使用 <code>#define</code> 预处理器指令定义宏，就像常量一样。</li>
+<li><strong>条件编译：</strong>使用 <code>#ifdef</code>、<code>#ifndef</code>、<code>#if</code>、<code>#else</code> 和 <code>#endif</code> 预处理器指令根据条件编译代码块。</li>
+<li><strong>文件包含：</strong>使用 <code>#include</code> 预处理器指令将头文件包含到源文件中。</li>
+<li><strong>其他功能：</strong>还提供其他功能，如错误处理和调试。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14159</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> DEBUG</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;调试信息：...\n&quot;</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>简化代码：宏定义可以简化重复的代码。</li>
+<li>条件编译：允许根据条件编译不同的代码块。</li>
+<li>模块化：通过包含头文件实现代码模块化。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>预处理器指令不是 C 语言的一部分，而是编译器处理源代码之前执行的。</li>
+<li>使用预处理器时要小心，因为滥用它可能会导致难以调试的代码。</li>
+</ul>
+<h1 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a><strong>条件编译</strong></h1><p>允许根据条件编译代码块。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> constant</span></span><br><span class="line">  <span class="comment">// 如果常量已定义，则编译此代码块</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">  <span class="comment">// 否则，编译此代码块</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> DEBUG</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;调试信息：...\n&quot;</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>根据条件编译不同的代码块。</li>
+<li>允许在不同的环境（例如调试和发布）中编译代码。</li>
+<li>提高代码的可维护性。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>条件编译指令不是 C 语言的一部分，而是编译器处理源代码之前执行的。</li>
+<li>使用条件编译时要小心，因为滥用它可能会导致难以调试的代码。</li>
+</ul>
+<h1 id="符号常量"><a href="#符号常量" class="headerlink" title="符号常量"></a>符号常量</h1><p><strong>符号常量</strong>（也被称为宏）使用 <code>#define</code> 预处理器指令定义。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> constant_name value</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14159</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>简化代码：符号常量可以简化重复的代码。</li>
+<li>提高可读性：符号常量使代码更易于理解。</li>
+<li>提高可维护性：符号常量更容易更新和维护。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>符号常量不是变量，它们的值在编译时确定。</li>
+<li>使用符号常量时要小心，因为滥用它可能会导致难以调试的代码。</li>
+</ul>
+<h2 id="ifdef-预处理器指令检查某个符号常量或宏是否被定义过。"><a href="#ifdef-预处理器指令检查某个符号常量或宏是否被定义过。" class="headerlink" title="#ifdef 预处理器指令检查某个符号常量或宏是否被定义过。"></a><strong><code>#ifdef</code> 预处理器指令检查某个符号常量或宏是否被定义过。</strong></h2><p><strong>语法：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> constant_name</span></span><br><span class="line">  <span class="comment">// 如果常量已定义，则编译此代码块</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> DEBUG</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;调试信息：...\n&quot;</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<ul>
+<li>根据符号常量或宏是否被定义来编译不同的代码块。</li>
+<li>允许在不同的环境（例如调试和发布）中编译代码。</li>
+<li>提高代码的可维护性。</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li><code>#ifdef</code> 指令不是 C 语言的一部分，而是编译器处理源代码之前执行的。</li>
+<li>使用 <code>#ifdef</code> 时要小心，因为滥用它可能会导致难以调试的代码。</li>
+</ul>
+<h2 id="你可以使用的预定义的符号常量"><a href="#你可以使用的预定义的符号常量" class="headerlink" title="你可以使用的预定义的符号常量"></a>你可以使用的预定义的符号常量</h2><p>预处理器还定义了很多你可以直接使用的符号常量，它们的名字的前后有两个下划线作为标识，包括：</p>
+<ul>
+<li><strong><code>__LINE__</code></strong> 代表源代码文件中的当前行</li>
+<li><strong><code>__FILE__</code></strong> 代表文件的名字</li>
+<li><strong><code>__DATE__</code></strong> 表示编译日期，格式为 <code>Mmm gg aaaa</code></li>
+<li><strong><code>__TIME__</code></strong> 表示编译实践，格式为 <code>hh:mm:ss</code></li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>先挖个坑，只写了基础内容，具体的例子或实例什么时候想起来了，再详细补充。</p>
+<img src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/BUG.jpg?imageSlim" style="zoom: 50%;" />
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src= "/img/loading.avif" data-lazy-src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">Ch1eh8</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>C语言<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%84%8A%E6%A4%8E%E7%97%85%E5%BA%B7%E5%A4%8D/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++-从入门到脊椎病康复</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src= "/img/loading.avif" data-lazy-src="/img/ch1eh8.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">Ch1eh8</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:4"><div class="length-num">4</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:3"><div class="length-num">3</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:1"><div class="length-num">1</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E7%B1%BB%E5%9E%8B"><span class="toc-text">变量与类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0"><span class="toc-text">整数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0"><span class="toc-text">无符号整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">溢出的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">算术运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="toc-text">二元运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="toc-text">一元运算符：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">比较运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">复合赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">三目运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sizeof%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="toc-text">sizeof运算符：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">运算符优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-text">条件语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-if-else-%E8%AF%AD%E5%8F%A5"><span class="toc-text">1. if&#x2F;else 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-switch-%E8%AF%AD%E5%8F%A5"><span class="toc-text">2. switch 语句</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-text">循环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-for-%E5%BE%AA%E7%8E%AF"><span class="toc-text">1. for 循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-while-%E5%BE%AA%E7%8E%AF"><span class="toc-text">2. while 循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-do-while-%E5%BE%AA%E7%8E%AF"><span class="toc-text">3. do-while 循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-break-%E8%B7%B3%E5%87%BA%E5%BE%AA%E7%8E%AF"><span class="toc-text">使用 break 跳出循环</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-text">输入与输出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">变量作用域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="toc-text">静态变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">类型定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-text">枚举类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-text">预处理器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="toc-text">条件编译</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%B8%B8%E9%87%8F"><span class="toc-text">符号常量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ifdef-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E6%8C%87%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%9F%90%E4%B8%AA%E7%AC%A6%E5%8F%B7%E5%B8%B8%E9%87%8F%E6%88%96%E5%AE%8F%E6%98%AF%E5%90%A6%E8%A2%AB%E5%AE%9A%E4%B9%89%E8%BF%87%E3%80%82"><span class="toc-text">#ifdef 预处理器指令检查某个符号常量或宏是否被定义过。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E9%A2%84%E5%AE%9A%E4%B9%89%E7%9A%84%E7%AC%A6%E5%8F%B7%E5%B8%B8%E9%87%8F"><span class="toc-text">你可以使用的预定义的符号常量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2024/03/26/HTML-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0Markdown/" title="HTML-从入门到Markdown"><div class="thumbnail"><img alt="HTML-从入门到Markdown" src= "/img/loading.avif" data-lazy-src="/img/default.avif"></div><div class="content"><span class="title" href="/2024/03/26/HTML-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0Markdown/" title="HTML-从入门到Markdown">HTML-从入门到Markdown</span></div></a><a class="aside-list-item" href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9D%9F/" title="C#-从入门到入坟"><div class="thumbnail"><img alt="C#-从入门到入坟" src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/C%2B%2B%2B%2B%E5%B0%81%E9%9D%A2.jpg?imageSlim"></div><div class="content"><span class="title" href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9D%9F/" title="C#-从入门到入坟">C#-从入门到入坟</span><span class="article-recent_post_categories" href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9D%9F/">编程</span></div></a><a class="aside-list-item" href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%84%8A%E6%A4%8E%E7%97%85%E5%BA%B7%E5%A4%8D/" title="C++-从入门到脊椎病康复"><div class="thumbnail"><img alt="C++-从入门到脊椎病康复" src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/C%2B%2B.png?imageSlim"></div><div class="content"><span class="title" href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%84%8A%E6%A4%8E%E7%97%85%E5%BA%B7%E5%A4%8D/" title="C++-从入门到脊椎病康复">C++-从入门到脊椎病康复</span><span class="article-recent_post_categories" href="/2024/03/25/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%84%8A%E6%A4%8E%E7%97%85%E5%BA%B7%E5%A4%8D/">编程</span></div></a><a class="aside-list-item" href="/2024/02/22/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98/" title="C语言 - 从入门到选购内存"><div class="thumbnail"><img alt="C语言 - 从入门到选购内存" src= "/img/loading.avif" data-lazy-src="https://blog-1301921315.cos.ap-hongkong.myqcloud.com/C%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98.jpg?imageSlim"></div><div class="content"><span class="title" href="/2024/02/22/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98/" title="C语言 - 从入门到选购内存">C语言 - 从入门到选购内存</span><span class="article-recent_post_categories" href="/2024/02/22/C-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E9%80%89%E8%B4%AD%E5%86%85%E5%AD%98/">编程</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer_deal"></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">Ch1eh8</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a><a class="footer-bar-link cc" href="/%5Bobject%20Object%5D"><i class="solitude fa-solid fa-copyright"></i><i class="solitude fa-brands fa-creative-commons-by"></i><i class="solitude fa-brands fa-creative-commons-nc"></i><i class="solitude fa-brands fa-creative-commons-nd"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.0.13"></script><script src="/js/main.js?v=2.0.13"></script><script src="/js/third_party/waterfall.min.js?v=2.0.13"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=2.0.13"></script><script>dark()
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>var meting_api = 'https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><!-- Tianli-Talk--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="7076579412" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--efu-main)"></meting-js></div></body></html><script>const posts=["2024/03/26/HTML-从入门到Markdown/","2024/03/25/C-从入门到入坟/","2024/03/25/C-从入门到脊椎病康复/","2024/02/22/C-从入门到选购内存/"];function toRandomPost(){ pjax.loadUrl(GLOBAL_CONFIG.root+posts[Math.floor(Math.random()*posts.length)]); }</script>
